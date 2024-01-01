@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 });
 
 // https://us-central1-ecobloom-gdsc-challenge.cloudfunctions.net/api/test
-https: app.get("/test", (req, res) => {
+app.get("/test", (req, res) => {
     res.send("Hello from Firebase!");
 });
 
