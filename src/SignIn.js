@@ -104,10 +104,7 @@ export default function SignIn() {
 
     return (
         <>
-            <head>
-                <title>SignIn · EcoBloom</title>
-            </head>
-            <body>
+            <div>
                 <button onClick={linkWithGoogle}>Link with Google</button>
                 <button onClick={onSubmit}>Sign In With Google</button>
                 <h4>Sign In With Email</h4>
@@ -147,9 +144,7 @@ export default function SignIn() {
                         Sign Up
                     </button>
                 </form>
-            </body>
+            </div>
         </>
     );
 }
-
-SignIn.front = true;
