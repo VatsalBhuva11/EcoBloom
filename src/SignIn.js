@@ -3,7 +3,6 @@ import {
     signInWithPopup,
     signInWithEmailAndPassword,
     GoogleAuthProvider,
-    EmailAuthProvider,
     linkWithPopup,
     createUserWithEmailAndPassword,
 } from "firebase/auth";
@@ -12,11 +11,10 @@ import { useState } from "react";
 let googleProvider = new GoogleAuthProvider();
 googleProvider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
-let emailProvider = new EmailAuthProvider();
-
 export default function SignIn() {
     const auth = getAuth();
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
 
     function linkWithGoogle(event) {
@@ -40,8 +38,9 @@ export default function SignIn() {
             });
     }
 
-    function onSubmit(event) {
+    function googleSignIn(event) {
         event.preventDefault();
+
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -86,19 +85,39 @@ export default function SignIn() {
 
     function emailSignUp(event) {
         event.preventDefault();
-        console.log(email, password);
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed Up
-                const user = userCredential.user;
-                console.log(user);
-                // ...
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
+            method: "POST",
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("User in DB: ");
+                console.log(data);
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed Up
+                        console.log("User in Firebase");
+                        const user = userCredential.user;
+                        console.log(user);
+                        // ...
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        // ..
+                        console.log(error);
+                    });
+                console.log("Success:", data);
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-                console.log(error);
+                console.error("Error:", error);
             });
     }
 
@@ -106,7 +125,7 @@ export default function SignIn() {
         <>
             <div>
                 <button onClick={linkWithGoogle}>Link with Google</button>
-                <button onClick={onSubmit}>Sign In With Google</button>
+                <button onClick={googleSignIn}>Sign In With Google</button>
                 <h4>Sign In With Email</h4>
                 <form id="emailSignIn" action="emailSignIn">
                     <input
@@ -130,6 +149,11 @@ export default function SignIn() {
                 <form id="emailSignUp" action="emailSignUp">
                     <input
                         type="text"
+                        placeholder="Name"
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <input
+                        type="text"
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -144,6 +168,20 @@ export default function SignIn() {
                         Sign Up
                     </button>
                 </form>
+                <button
+                    onClick={() => {
+                        fetch(`${process.env.REACT_APP_LOCAL_API_URL}`)
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log("Success:", data);
+                            })
+                            .catch((error) => {
+                                console.error("Error:", error);
+                            });
+                    }}
+                >
+                    Test API
+                </button>
             </div>
         </>
     );
