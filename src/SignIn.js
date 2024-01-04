@@ -1,25 +1,23 @@
 import {
-    getAuth,
     signInWithPopup,
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     linkWithPopup,
     createUserWithEmailAndPassword,
 } from "firebase/auth";
+import { auth, storage } from "./index.js";
+import { ref } from "firebase/storage";
 import { useState } from "react";
 
-let googleProvider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-
 export default function SignIn() {
-    const auth = getAuth();
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
 
     function linkWithGoogle(event) {
         event.preventDefault();
-        const auth = getAuth();
         linkWithPopup(auth.currentUser, googleProvider)
             .then((result) => {
                 // Accounts successfully linked.
@@ -85,16 +83,13 @@ export default function SignIn() {
 
     function emailSignUp(event) {
         event.preventDefault();
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`, {
+
+        // let files = document.querySelector('input[type="file"]').files;
+        let formData = new FormData(document.getElementById("emailSignUp"));
+
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
             method: "POST",
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                password: password,
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            },
+            body: formData,
         })
             .then((response) => response.json())
             .then((data) => {
@@ -159,27 +154,36 @@ export default function SignIn() {
                 </form>
                 <br />
                 <h4 className="text-3xl font-bold underline">Sign Up</h4>
-                <form id="emailSignUp" action="emailSignUp">
+                <form
+                    id="emailSignUp"
+                    name="emailSignUp"
+                    encType="multipart/form-data"
+                >
                     <input
                         className="inp"
                         type="text"
                         placeholder="Name"
+                        name="name"
                         onChange={(e) => setName(e.target.value)}
                     />
                     <input
                         className="inp"
                         type="text"
                         placeholder="Email"
+                        name="email"
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                         className="inp"
                         type="password"
                         placeholder="Password"
+                        name="password"
                         onChange={(e) => {
                             setPassword(e.target.value);
                         }}
                     />
+
+                    {/* <input type="file" i    d="profile" name="profile" /> */}
                     <button
                         className="btn btn-lime"
                         type="submit"
@@ -191,7 +195,7 @@ export default function SignIn() {
                 <button
                     className="btn btn-lime"
                     onClick={() => {
-                        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}`)
+                        fetch(`${process.env.REACT_APP_LOCAL_API_URL}`)
                             .then((response) => response.json())
                             .then((data) => {
                                 console.log("Success:", data);
