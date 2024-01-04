@@ -15,7 +15,7 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "npx tailwindcss -i ./src/App.css -o ./src/output.css && react-scripts start",
         "build": "cross-env CI=false react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
@@ -39,6 +39,7 @@
         ]
     },
     "devDependencies": {
+        "tailwindcss": "^3.4.0",
         "webpack": "^5.89.0",
         "webpack-cli": "^5.1.4"
     }

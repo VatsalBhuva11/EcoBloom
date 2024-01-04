@@ -124,9 +124,16 @@ export default function SignIn() {
     return (
         <>
             <div>
-                <button onClick={linkWithGoogle}>Link with Google</button>
-                <button onClick={googleSignIn}>Sign In With Google</button>
-                <h4>Sign In With Email</h4>
+                <button className="btn" onClick={linkWithGoogle}>
+                    Link with Google
+                </button>
+
+                <button className="btn" onClick={googleSignIn}>
+                    Sign In With Google
+                </button>
+                <h1 className="text-3xl font-bold underline">
+                    Sign In With Email
+                </h1>
                 <form id="emailSignIn" action="emailSignIn">
                     <input
                         type="text"
