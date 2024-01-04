@@ -124,11 +124,11 @@ export default function SignIn() {
     return (
         <>
             <div>
-                <button className="btn" onClick={linkWithGoogle}>
+                <button className="btn btn-lime" onClick={linkWithGoogle}>
                     Link with Google
                 </button>
 
-                <button className="btn" onClick={googleSignIn}>
+                <button className="btn btn-lime" onClick={googleSignIn}>
                     Sign In With Google
                 </button>
                 <h1 className="text-3xl font-bold underline">
@@ -136,46 +136,60 @@ export default function SignIn() {
                 </h1>
                 <form id="emailSignIn" action="emailSignIn">
                     <input
+                        className="inp"
                         type="text"
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
+                        className="inp"
                         type="password"
                         placeholder="Password"
                         onChange={(e) => {
                             setPassword(e.target.value);
                         }}
                     />
-                    <button type="submit" onClick={emailSignIn}>
+                    <button
+                        className="btn btn-lime"
+                        type="submit"
+                        onClick={emailSignIn}
+                    >
                         Sign In
                     </button>
                 </form>
                 <br />
-                <h4>Sign Up</h4>
+                <h4 className="text-3xl font-bold underline">Sign Up</h4>
                 <form id="emailSignUp" action="emailSignUp">
                     <input
+                        className="inp"
                         type="text"
                         placeholder="Name"
                         onChange={(e) => setName(e.target.value)}
                     />
                     <input
+                        className="inp"
                         type="text"
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
+                        className="inp"
                         type="password"
                         placeholder="Password"
                         onChange={(e) => {
                             setPassword(e.target.value);
                         }}
                     />
-                    <button type="submit" onClick={emailSignUp}>
+                    <button
+                        className="btn btn-lime"
+                        type="submit"
+                        onClick={emailSignUp}
+                    >
                         Sign Up
                     </button>
                 </form>
                 <button
+                    className="btn btn-lime"
                     onClick={() => {
                         fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}`)
                             .then((response) => response.json())
