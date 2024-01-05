@@ -28,11 +28,7 @@ export default function filesUpload(req, res, next) {
 
     bb.on("file", (fieldname, file, info) => {
         const { filename, mimeType, encoding } = info;
-        console.log(info);
         const filepath = path.join(tmpdir, filename);
-        console.log(
-            `Handling file upload field ${fieldname}: ${filename} (${filepath})`
-        );
         const writeStream = fs.createWriteStream(filepath);
         file.pipe(writeStream);
 

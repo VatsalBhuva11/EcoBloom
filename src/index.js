@@ -19,10 +19,12 @@ const firebaseConfig = {
     measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
-export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const analytics = getAnalytics(app);
-export const storage = getStorage(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const analytics = getAnalytics(app);
+const storage = getStorage(app);
+
+export { app, auth, analytics, storage };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
