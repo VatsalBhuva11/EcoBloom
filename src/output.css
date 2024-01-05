@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 /*
 ! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
 */
@@ -435,7 +437,7 @@ video {
   display: none;
 }
 
-*, ::before, ::after {
+*, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -485,7 +487,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-::backdrop {
+::backdrop{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -535,140 +537,175 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.fixed {
+.fixed{
   position: fixed;
 }
 
-.left-0 {
+.left-0{
   left: 0px;
 }
 
-.left-\[-100\%\] {
+.left-\[-100\%\]{
   left: -100%;
 }
 
-.top-0 {
+.top-0{
   top: 0px;
 }
 
-.m-4 {
+.m-4{
   margin: 1rem;
 }
 
-.mx-auto {
+.mx-4{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.mx-auto{
   margin-left: auto;
   margin-right: auto;
 }
 
-.block {
+.block{
   display: block;
 }
 
-.flex {
+.flex{
   display: flex;
 }
 
-.h-24 {
+.h-0{
+  height: 0px;
+}
+
+.h-0\.5{
+  height: 0.125rem;
+}
+
+.h-24{
   height: 6rem;
 }
 
-.h-full {
+.h-full{
   height: 100%;
 }
 
-.w-\[60\%\] {
+.w-\[60\%\]{
   width: 60%;
 }
 
-.w-full {
+.w-full{
   width: 100%;
 }
 
-.max-w-\[1240px\] {
+.max-w-\[1240px\]{
   max-width: 1240px;
 }
 
-.items-center {
+.items-center{
   align-items: center;
 }
 
-.justify-between {
+.justify-between{
   justify-content: space-between;
 }
 
-.border-b {
+.border-b{
   border-bottom-width: 1px;
 }
 
-.border-r {
+.border-r{
   border-right-width: 1px;
 }
 
-.border-gray-600 {
+.border-gray-600{
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 
-.border-r-gray-900 {
+.border-r-gray-900{
   --tw-border-opacity: 1;
   border-right-color: rgb(17 24 39 / var(--tw-border-opacity));
 }
 
-.bg-\[\#000300\] {
+.bg-\[\#000300\]{
   --tw-bg-opacity: 1;
   background-color: rgb(0 3 0 / var(--tw-bg-opacity));
 }
 
-.p-4 {
+.bg-\[\#EEF0E5\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 240 229 / var(--tw-bg-opacity));
+}
+
+.p-4{
   padding: 1rem;
 }
 
-.px-4 {
+.px-4{
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.text-3xl {
+.text-center{
+  text-align: center;
+}
+
+.font-inter{
+  font-family: Inter;
+}
+
+.text-3xl{
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 
-.font-bold {
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.font-bold{
   font-weight: 700;
 }
 
-.uppercase {
+.font-semibold{
+  font-weight: 600;
+}
+
+.uppercase{
   text-transform: uppercase;
 }
 
-.text-\[\#00df9a\] {
+.text-\[\#00df9a\]{
   --tw-text-opacity: 1;
   color: rgb(0 223 154 / var(--tw-text-opacity));
 }
 
-.text-white {
+.text-\[\#304D30\]{
+  --tw-text-opacity: 1;
+  color: rgb(48 77 48 / var(--tw-text-opacity));
+}
+
+.text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.underline {
+.underline{
   text-decoration-line: underline;
 }
 
-.duration-500 {
+.duration-500{
   transition-duration: 500ms;
 }
 
-.ease-in-out {
+.ease-in-out{
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.btn {
+.btn{
   border-radius: 0.25rem;
   border-width: 2px;
   padding-top: 0.5rem;
@@ -678,24 +715,24 @@ video {
   font-weight: 700;
 }
 
-.btn-lime {
+.btn-lime{
   --tw-bg-opacity: 1;
   background-color: rgb(63 98 18 / var(--tw-bg-opacity));
 }
 
-.btn-lime:hover {
+.btn-lime:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(54 83 20 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.btn-lime {
+.btn-lime{
   --tw-text-opacity: 1;
   color: rgb(217 249 157 / var(--tw-text-opacity));
 }
 
-.inp {
+.inp{
   border-radius: 0.25rem;
   border-width: 2px;
   --tw-border-opacity: 1;
@@ -703,12 +740,12 @@ video {
   padding: 0.5rem;
 }
 
-@media (min-width: 768px) {
-  .md\:flex {
+@media (min-width: 768px){
+  .md\:flex{
     display: flex;
   }
 
-  .md\:hidden {
+  .md\:hidden{
     display: none;
   }
 }
