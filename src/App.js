@@ -1,5 +1,11 @@
+import Navbar from "./Navbar";
 import SignIn from "./SignIn";
 
 export default function App() {
-    return <SignIn />;
+    return (
+        <div>
+            <Navbar />;
+            <SignIn />;
+        </div>
+    );
 }
