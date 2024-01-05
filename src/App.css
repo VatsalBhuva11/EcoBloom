@@ -1,10 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-* {
-    @apply bg-black;
-}
+ 
 
 .btn {
     @apply font-bold py-2 px-4 rounded border-2;
