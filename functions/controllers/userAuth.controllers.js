@@ -1,14 +1,12 @@
 import express from "express";
 import User from "../models/user.model.js";
 import dotenv from "dotenv";
-import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
-import { initializeApp } from "firebase/app";
-import firebaseConfig from "../config/firebase.config.js";
+import { storage } from "../index.js";
+import { ref, uploadBytesResumable } from "firebase/storage";
+import { response_200, response_400 } from "../utils/responseCodes.js";
 
 dotenv.config();
 const router = express.Router();
-initializeApp(firebaseConfig);
-const storage = getStorage();
 
 // Create a new user
 router.post("/register", async (req, res) => {
@@ -28,8 +26,8 @@ router.post("/register", async (req, res) => {
             extension !== "jpg" &&
             extension !== "jpeg"
         ) {
-            // console.log(email);
-            res.json(
+            response_400(
+                res,
                 "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
             );
         } else {
@@ -53,7 +51,7 @@ router.post("/register", async (req, res) => {
                 photoPathFirestore: pathToFile,
             });
             console.log("Successfully created new user in DB!");
-            res.json(user);
+            response_200(res, "Successfully created new user in DB");
         }
     } catch (err) {
         console.log(err);
