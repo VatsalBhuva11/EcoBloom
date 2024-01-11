@@ -2,11 +2,19 @@ import express from "express";
 import User from "../models/user.model.js";
 import filesUpload from "../middlewares/upload.middleware.js";
 import dotenv from "dotenv";
-import { Storage } from "@google-cloud/storage";
+import {
+    getStorage,
+    ref,
+    getDownloadURL,
+    uploadBytesResumable,
+} from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import firebaseConfig from "../config/firebase.config.js";
+
 dotenv.config();
 const router = express.Router();
-const storage = new Storage();
-const myBucket = storage.bucket(process.env.BUCKET_ID);
+initializeApp(firebaseConfig);
+const storage = getStorage();
 
 // Create a new user
 router.post("/register", filesUpload, async (req, res) => {
@@ -16,25 +24,24 @@ router.post("/register", filesUpload, async (req, res) => {
         const file = req.files[0];
         const filename = file.originalname;
         const pathToFile = `/profile/${filename}_${Date.now()}`;
-        const fileRef = myBucket.file(pathToFile);
-        console.log(fileRef);
+        console.log(pathToFile);
+        const storageRef = ref(storage, pathToFile);
 
-        const stream = fileRef.createWriteStream({
-            metadata: {
-                contentType: file.mimeType,
-            },
-            resumable: false,
-        });
+        const metadata = {
+            contentType: file.mimetype,
+        };
 
-        stream.on("error", (err) => {
-            console.log(err);
-            res.json(err);
-        });
-
-        stream.on("finish", () => {
-            fileRef.makePublic().then((publicUrl) => {
-                res.json(publicUrl);
-            });
+        const snapshot = await uploadBytesResumable(
+            storageRef,
+            file.buffer,
+            metadata
+        );
+        const downloadURL = await getDownloadURL(snapshot.ref);
+        console.log("File uploaded successfully!");
+        res.json({
+            downloadURL,
+            pathToFile,
+            filename,
         });
     } catch (err) {
         console.log(err);

@@ -154,3 +154,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+functions/ecobloom-gdsc-challenge-firebase-adminsdk-q3jdk-c197b9a6ea.json

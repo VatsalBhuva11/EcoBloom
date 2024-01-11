@@ -1,32 +1,28 @@
-
-import About from "./Components/About";
-import Hero from "./Components/Hero";
-import Navbar from "./Components/Navbar";
-import Signup from "./Pages/Signup";
-import PastCampaigns from "./Components/PastCampaigns";
-import Login from "./Pages/Login";
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-    Link,
-  } from "react-router-dom";
+// import About from "./Components/About";
+// import Hero from "./Components/Hero";
+// import Navbar from "./Components/Navbar";
+// import Signup from "./Pages/Signup";
+// import PastCampaigns from "./Components/PastCampaigns";
+// import Login from "./Pages/Login";
+// import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import SignIn from "./SignIn";
 
 export default function App() {
     return (
         <div>
-            <BrowserRouter>
+            {/* <BrowserRouter>
                 <Navbar />
-                <Hero/>           
+                <Hero />
                 <About />
-                <PastCampaigns/>
+                <PastCampaigns />
                 <Routes>
-                    <Route path='/login' element={<Login/>} />
-                    <Route path='/signup' element={<Signup/>} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
                 </Routes>
-                {/* <Login/>
-                <Signup/> */}
-            </BrowserRouter>
+                <Login/>
+                <Signup/>
+            </BrowserRouter> */}
+            <SignIn />
         </div>
     );
 }

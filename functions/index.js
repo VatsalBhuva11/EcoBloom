@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.config.js";
 import router from "./routes/index.routes.js";
 import { onRequest } from "firebase-functions/v2/https";
+import { initializeApp } from "firebase/app";
 dotenv.config();
 
 const app = express();
