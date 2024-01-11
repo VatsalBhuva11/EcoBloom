@@ -183,7 +183,7 @@ export default function SignIn() {
                         }}
                     />
 
-                    {/* <input type="file" i    d="profile" name="profile" /> */}
+                    <input type="file" id="profile" name="profile" />
                     <button
                         className="btn btn-lime"
                         type="submit"
