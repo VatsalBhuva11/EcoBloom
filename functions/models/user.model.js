@@ -15,7 +15,7 @@ const User = new Schema({
         type: String,
         required: true,
     },
-    photoUrl: {
+    photoPathFirestore: {
         type: String,
         default: "",
     },
