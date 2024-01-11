@@ -25,7 +25,7 @@ const Navbar = () => {
         <button className='lg:text-[17px] md:text-[14px] lg:ml-6 lg:mr-4 md:ml-3 md:mr-2 font-bold border  border-white px-7 py-2 mb-0 rounded-lg'>Login</button>
         </Link>
         <Link to='/signup'>
-        <button className='lg:text-[17px] md:text-[14px] font-bold lg:ml-4 md:ml-2 border border-white px-6 py-2 mb-0 rounded-lg lg:mr-12 md:mr-6'>Sign In</button>
+        <button className='lg:text-[17px] md:text-[14px] font-bold lg:ml-4 md:ml-2 border border-white px-6 py-2 mb-0 rounded-lg lg:mr-12 md:mr-6'>Sign Up</button>
         </Link>
         
       </ul>
