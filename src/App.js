@@ -1,12 +1,13 @@
-import React from "react";
-// import Home from "./Pages/Home";
-// import UserDashboard from "./Pages/UserDashboard";
-import SignIn from "./SignIn";
+import React from 'react'
+import Home from './Pages/Home';
+import UserDashboard from './Pages/UserDashboard';
+import SignupInitial from './Pages/SignupInitial';
 
 export default function App() {
     return (
         <div>
-            {/* <Home/> */}
+            {/* <SignupInitial/> */}
+            <Home/>
             {/* <UserDashboard/> */}
             <SignIn></SignIn>
         </div>

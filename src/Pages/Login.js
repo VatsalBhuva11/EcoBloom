@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
   return (
-    <div>
-        <div className=' bg-[#EEF0E5]'> 
+    <div className='h-screen'>
+        <div className=' bg-[#EEF0E5] h-screen'> 
             <div className=" flex justify-between items-center">
                 <div class="flex flex-col items-center px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
                     <div class="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
@@ -16,7 +16,7 @@ export default function Login() {
                                 Login
                             </h1>
                             <p className=" text-xs">Glad you're back!</p>
-                            </div>
+                            </div> 
                             
                             <form class="space-y-4 md:space-y-6" action="#">
                                 <div>
@@ -38,7 +38,7 @@ export default function Login() {
                                     </div>
                                     <a href="#" class="text-sm font-medium text-primary-600 hover:underline">Forgot password?</a>
                                 </div>
-                                <button type="submit" class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+                                <button type="submit" class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300">Sign in</button>
                                 <p class="text-sm  text-black">
                                     Don’t have an account yet? <Link to="/signup" class="font-bold text-primary-600 hover:underline ">Sign up</Link>
                                 </p>
