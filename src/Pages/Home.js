@@ -7,7 +7,10 @@ import PastCampaigns from "../Components/PastCampaigns";
 import Login from './Login'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "../SignIn";
-
+import SignupInitial from './SignupInitial';
+import JoinUs from '../Components/JoinUs';
+import CreateCampaigns from '../Components/CreateCampaigns';
+import Footer from '../Components/Footer';
 
 export default function Home() {
   return (
@@ -18,9 +21,15 @@ export default function Home() {
                         <><Navbar />
                             {/* <Hero /> */}
                             <About />
-                            <PastCampaigns /></>} />
+                            <PastCampaigns />
+                            <JoinUs/>
+                            <CreateCampaigns/>
+                            <Footer/>
+                            </>} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/signup' element={<Signup />} />
+                    <Route path='/signup' element={<SignupInitial />} />
+                    <Route path='/signup/user' element={<Signup/>}/>
+                    {/* <Route path='/signuporg' element={<Signup/>}/> */}
                 </Routes>
             </BrowserRouter>
     </div>
