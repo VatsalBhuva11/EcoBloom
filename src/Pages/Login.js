@@ -12,16 +12,39 @@ export default function Login() {
     function emailSignIn(event) {
         event.preventDefault();
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                console.log("Signed in! ", user);
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/login`, {
+            method: "POST",
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                return response.json();
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(error);
+            .then((token) =>
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in
+                        const user = userCredential.user;
+                        console.log("Signed in! ", user);
+                        localStorage.setItem("accountData", token.data);
+                        console.log("Set token in LS");
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(error);
+                    })
+            )
+            .catch((err) => {
+                console.error(err);
             });
     }
 
@@ -41,7 +64,11 @@ export default function Login() {
                                     </p>
                                 </div>
 
-                                <form class="space-y-4 md:space-y-6" action="#">
+                                <form
+                                    class="space-y-4 md:space-y-6"
+                                    action="#"
+                                    id="userLoginForm"
+                                >
                                     <div>
                                         <label
                                             for="text"

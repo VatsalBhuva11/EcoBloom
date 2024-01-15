@@ -14,8 +14,8 @@ initializeApp(firebaseConfig);
 const storage = getStorage();
 
 app.use(cors());
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 connectDB();
 // https://us-central1-ecobloom-gdsc-challenge.cloudfunctions.net/api
