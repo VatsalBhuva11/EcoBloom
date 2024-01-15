@@ -16,6 +16,10 @@ const User = new Schema({
         type: String,
         required: true,
     },
+    phone: {
+        type: String,
+        required: false,
+    },
     registeredCampaigns: [
         {
             type: mongoose.Schema.Types.ObjectId,

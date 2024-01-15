@@ -44,66 +44,67 @@ router.post("/register", async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const files = req.files; //logo, banner, document
-        console.log("FILES: ", files);
-        const checkDoc =
-            files.filter((file) => file.fieldname === "document").length > 0;
-        if (!name || !email || !password || !checkDoc) {
+
+        if (!name || !email || !password) {
             throw new Error(
                 "Following fields are mandatory: name, email, password, documentToVerify"
             );
-        }
-        const extensions = files.map((file) =>
-            file.originalname.split(".").pop()
-        );
-        const validate = extensions.filter(
-            (extension) =>
-                extension !== "jpg" &&
-                extension !== "png" &&
-                extension !== "jpeg"
-        );
-        //email variable, update record in DB
-
-        if (validate.length > 0) {
-            response_400(
-                res,
-                "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
-            );
         } else {
-            // const pathToLogo = `/org/${email}/logo_${Date.now()}.jpg`;
-            // const pathToBanner = `/org/${email}/banner_${Date.now()}.jpg`;
-            // const pathToDocument = `/org/${email}/document_${Date.now()}.jpg`;
+            const extensions = files.map((file) =>
+                file.originalname.split(".").pop()
+            );
+            const validate = extensions.filter(
+                (extension) =>
+                    extension !== "jpg" &&
+                    extension !== "png" &&
+                    extension !== "jpeg"
+            );
+            //email variable, update record in DB
 
-            const filesToUpload = [];
-            const paths = {};
-            for (let i = 0; i < files.length; i++) {
-                filesToUpload.push(
-                    uploadFile(email, files[i], extensions[i], paths)
+            if (validate.length > 0) {
+                response_400(
+                    res,
+                    "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
                 );
-            }
+            } else {
+                // const pathToLogo = `/org/${email}/logo_${Date.now()}.jpg`;
+                // const pathToBanner = `/org/${email}/banner_${Date.now()}.jpg`;
+                // const pathToDocument = `/org/${email}/document_${Date.now()}.jpg`;
 
-            Promise.all(filesToUpload)
-                .then((values) => {
-                    console.log(values);
-                })
-                .then(async () => {
-                    const org = await Organization.create({
-                        name,
-                        email,
-                        logo: paths["logo"],
-                        banner: paths["banner"],
-                        document: paths["document"],
-                    });
-                    console.log("Successfully created new organization in DB!");
-                    response_200(
-                        res,
-                        "Successfully created new organization in DB",
-                        org
+                const filesToUpload = [];
+                const paths = {};
+                for (let i = 0; i < files.length; i++) {
+                    filesToUpload.push(
+                        uploadFile(email, files[i], extensions[i], paths)
                     );
-                })
-                .catch((err) => {
-                    console.log(err);
-                    response_500(res, "Error creating organization", err);
-                });
+                }
+
+                Promise.all(filesToUpload)
+                    .then((values) => {
+                        console.log(values);
+                    })
+                    .then(async () => {
+                        const org = await Organization.create({
+                            name,
+                            email,
+                            logo: paths["logo"],
+                            banner: paths["banner"],
+                            document: paths["document"],
+                        });
+                        console.log(
+                            "Successfully created new organization in DB!"
+                        );
+                        response_200(
+                            res,
+                            "Successfully created new organization in DB",
+                            org
+                        );
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        response_500(res, "Error creating organization", err);
+                    });
+            }
         }
     } catch (err) {
         console.log(err);

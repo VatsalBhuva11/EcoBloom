@@ -106,23 +106,27 @@ export default function UserAuth() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log("User in DB: ");
-                console.log(data);
-                createUserWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        // Signed Up
-                        console.log("User in Firebase");
-                        const user = userCredential.user;
-                        console.log(user);
-                        // ...
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        // ..
-                        console.log(error);
-                    });
-                console.log("Success:", data);
+                if (data.status === "error") {
+                    throw new Error("Invalid form input. Please check again,");
+                } else {
+                    console.log("User in DB: ");
+                    console.log(data);
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            // Signed Up
+                            console.log("User in Firebase");
+                            const user = userCredential.user;
+                            console.log(user);
+                            // ...
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            // ..
+                            console.log(error);
+                        });
+                    console.log("Success:", data);
+                }
             })
             .catch((error) => {
                 console.error("Error:", error);
