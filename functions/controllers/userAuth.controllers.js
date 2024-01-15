@@ -18,38 +18,43 @@ router.post("/register", async (req, res) => {
         const extension = filename.split(".").pop();
 
         //email variable, update record in DB
-
-        if (
-            extension !== "png" &&
-            extension !== "jpg" &&
-            extension !== "jpeg"
-        ) {
-            response_400(
-                res,
-                "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
+        if (!name || !email || !password || !file) {
+            throw new Error(
+                "Following fields are mandatory: name, email, password, photo"
             );
         } else {
-            const pathToFile = `/user/${email}/profile_${Date.now()}.${extension}`;
-            const storageRef = ref(storage, pathToFile);
+            if (
+                extension !== "png" &&
+                extension !== "jpg" &&
+                extension !== "jpeg"
+            ) {
+                response_400(
+                    res,
+                    "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
+                );
+            } else {
+                const pathToFile = `/user/${email}/profile.${extension}`;
+                const storageRef = ref(storage, pathToFile);
 
-            const metadata = {
-                contentType: file.mimetype,
-            };
+                const metadata = {
+                    contentType: file.mimetype,
+                };
 
-            const snapshot = await uploadBytesResumable(
-                storageRef,
-                file.buffer,
-                metadata
-            );
-
-            const user = await User.create({
-                name,
-                email,
-                password,
-                photoPathFirestore: pathToFile,
-            });
-            console.log("Successfully created new user in DB!");
-            response_200(res, "Successfully created new user in DB");
+                const snapshot = await uploadBytesResumable(
+                    storageRef,
+                    file.buffer,
+                    metadata
+                );
+                if (snapshot.state === "success") {
+                    const user = await User.create({
+                        name,
+                        email,
+                        photoPathFirestore: pathToFile,
+                    });
+                    console.log("Successfully created new user in DB!");
+                    response_200(res, "Successfully created new user in DB");
+                }
+            }
         }
     } catch (err) {
         console.log(err);

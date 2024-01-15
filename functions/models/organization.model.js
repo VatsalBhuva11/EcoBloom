@@ -11,10 +11,6 @@ const Organization = new Schema({
         required: true,
         unique: true,
     },
-    password: {
-        type: String,
-        required: true,
-    },
     logo: {
         type: String,
         required: false,
