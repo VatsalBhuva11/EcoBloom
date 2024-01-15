@@ -3,9 +3,13 @@ import User from "../models/user.model.js";
 import dotenv from "dotenv";
 import { storage } from "../index.js";
 import { ref, uploadBytesResumable } from "firebase/storage";
+import jwt from "jsonwebtoken";
+import filesUpload from "../middlewares/upload.middleware.js";
+
 import {
     response_200,
     response_400,
+    response_404,
     response_500,
 } from "../utils/responseCodes.js";
 
@@ -13,7 +17,7 @@ dotenv.config();
 const router = express.Router();
 
 // Create a new user
-router.post("/register", async (req, res) => {
+router.post("/register", filesUpload, async (req, res) => {
     try {
         const { name, email, password, phone } = req.body;
         const file = req.files[0];
@@ -75,6 +79,34 @@ router.post("/register", async (req, res) => {
     } catch (err) {
         console.log(err);
         res.send(err);
+    }
+});
+
+router.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        console.log(email, password);
+        if (!email || !password) {
+            response_400(res, "Email and password are required.");
+        } else {
+            const checkUser = await User.findOne({ email });
+            if (!checkUser) {
+                response_404(res, "User not found. Please register first.");
+            } else {
+                const token = jwt.sign(
+                    {
+                        role: "user",
+                        name: checkUser.name,
+                        email,
+                    },
+                    process.env.JWT_SECRET_KEY
+                );
+                response_200(res, "Token generated", token);
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while logging in user", err);
     }
 });
 

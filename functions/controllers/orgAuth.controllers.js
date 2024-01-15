@@ -3,9 +3,11 @@ import Organization from "../models/organization.model.js";
 import dotenv from "dotenv";
 import { storage } from "../index.js";
 import { ref, uploadBytesResumable } from "firebase/storage";
+import jwt from "jsonwebtoken";
 import {
     response_200,
     response_400,
+    response_404,
     response_500,
 } from "../utils/responseCodes.js";
 
@@ -109,6 +111,37 @@ router.post("/register", async (req, res) => {
     } catch (err) {
         console.log(err);
         res.send(err);
+    }
+});
+
+router.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        console.log(email, password);
+        if (!email || !password) {
+            response_400(res, "Email and password are required.");
+        } else {
+            const checkOrg = await Organization.findOne({ email });
+            if (!checkOrg) {
+                response_404(
+                    res,
+                    "Organization not found. Please register first."
+                );
+            } else {
+                const token = jwt.sign(
+                    {
+                        role: "org",
+                        name: checkOrg.name,
+                        email,
+                    },
+                    process.env.JWT_SECRET_KEY
+                );
+                response_200(res, "Token generated", token);
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while logging in organization", err);
     }
 });
 
