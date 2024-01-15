@@ -25,43 +25,50 @@ router.post("/register", async (req, res) => {
                 "Following fields are mandatory: name, email, password, photo"
             );
         } else {
-            const extension = filename.split(".").pop();
-            if (
-                extension !== "png" &&
-                extension !== "jpg" &&
-                extension !== "jpeg"
-            ) {
-                response_400(
-                    res,
-                    "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
-                );
+            if (password.length < 6) {
+                response_400(res, "Password length must be atleast 6.");
             } else {
-                const pathToFile = `/user/${email}/profile.${extension}`;
-                const storageRef = ref(storage, pathToFile);
-
-                const metadata = {
-                    contentType: file.mimetype,
-                };
-
-                const snapshot = await uploadBytesResumable(
-                    storageRef,
-                    file.buffer,
-                    metadata
-                );
-                if (snapshot.state === "success") {
-                    const user = await User.create({
-                        name,
-                        email,
-                        photoPathFirestore: pathToFile,
-                        phone,
-                    });
-                    console.log("Successfully created new user in DB!");
-                    response_200(res, "Successfully created new user in DB");
-                } else {
-                    response_500(
+                const extension = filename.split(".").pop();
+                if (
+                    extension !== "png" &&
+                    extension !== "jpg" &&
+                    extension !== "jpeg"
+                ) {
+                    response_400(
                         res,
-                        "Error occurred while uploading user file"
+                        "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
                     );
+                } else {
+                    const pathToFile = `/user/${email}/profile.${extension}`;
+                    const storageRef = ref(storage, pathToFile);
+
+                    const metadata = {
+                        contentType: file.mimetype,
+                    };
+
+                    const snapshot = await uploadBytesResumable(
+                        storageRef,
+                        file.buffer,
+                        metadata
+                    );
+                    if (snapshot.state === "success") {
+                        const user = await User.create({
+                            name,
+                            email,
+                            photoPathFirestore: pathToFile,
+                            phone,
+                        });
+                        console.log("Successfully created new user in DB!");
+                        response_200(
+                            res,
+                            "Successfully created new user in DB"
+                        );
+                    } else {
+                        response_500(
+                            res,
+                            "Error occurred while uploading user file"
+                        );
+                    }
                 }
             }
         }
