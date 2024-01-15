@@ -5,13 +5,16 @@ import {
     linkWithPopup,
     createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { auth, storage } from "./index.js";
-import { ref } from "firebase/storage";
+import { auth } from "./index.js";
 import { useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+
+//figure out sign out, and how to manage auth state.
+//organization registration
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-export default function SignIn() {
+export default function UserAuth() {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -68,17 +71,27 @@ export default function SignIn() {
 
     function emailSignIn(event) {
         event.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                console.log(user);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(error);
-            });
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const uid = user.uid;
+                console.log("User is signed in! :", user);
+                // ...
+            } else {
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in
+                        const user = userCredential.user;
+                        console.log("Initially not signed");
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(error);
+                    });
+            }
+        });
     }
 
     function emailSignUp(event) {
@@ -208,6 +221,14 @@ export default function SignIn() {
                     Test API
                 </button>
             </div>
+            <button
+                className="btn btn-lime"
+                onClick={() => {
+                    auth.signOut();
+                }}
+            >
+                Sign out!
+            </button>
         </>
     );
 }

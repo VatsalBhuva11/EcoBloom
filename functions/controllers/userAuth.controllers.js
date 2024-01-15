@@ -14,10 +14,8 @@ router.post("/register", async (req, res) => {
         const { name, email, password } = req.body;
         const file = req.files[0];
         const filename = file.originalname;
-        console.log(name, email, password);
 
         const extension = filename.split(".").pop();
-        console.log(extension);
 
         //email variable, update record in DB
 
@@ -31,7 +29,7 @@ router.post("/register", async (req, res) => {
                 "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
             );
         } else {
-            const pathToFile = `/${email}/profile_${Date.now()}.jpg`;
+            const pathToFile = `/user/${email}/profile_${Date.now()}.${extension}`;
             const storageRef = ref(storage, pathToFile);
 
             const metadata = {
