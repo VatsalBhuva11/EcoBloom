@@ -2,7 +2,7 @@ import React from "react";
 import login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../index.js";
+import { auth } from "../firebase.js";
 import { useState } from "react";
 
 export default function Signup() {
@@ -26,11 +26,10 @@ export default function Signup() {
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 if (data.status === "error") {
-                    throw new Error("Invalid form input. Please check again,");
+                    throw new Error("Invalid form input. Please check again.");
                 } else {
-                    console.log("User in DB: ");
-                    console.log(data);
                     createUserWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                             // Signed Up
@@ -79,7 +78,7 @@ export default function Signup() {
                                             for="text"
                                             class="block mb-2 text-sm font-medium text-gray-900 "
                                         >
-                                            Name
+                                            Name<sup> *</sup>
                                         </label>
                                         <input
                                             type="name"
@@ -95,7 +94,7 @@ export default function Signup() {
                                             for="email"
                                             class="block mb-2 text-sm font-medium text-gray-900 "
                                         >
-                                            Email
+                                            Email<sup> *</sup>
                                         </label>
                                         <input
                                             type="email"
@@ -130,7 +129,7 @@ export default function Signup() {
                                             for="password"
                                             class="block mb-2 text-sm font-medium text-gray-900"
                                         >
-                                            Password
+                                            Password<sup> *</sup>
                                         </label>
                                         <input
                                             type="password"
@@ -149,8 +148,7 @@ export default function Signup() {
                                             for="password"
                                             class="block mb-2 text-sm font-medium text-gray-900"
                                         >
-                                            {" "}
-                                            Confirm Password
+                                            Confirm Password<sup> *</sup>
                                         </label>
                                         <input
                                             type="password"
@@ -171,7 +169,7 @@ export default function Signup() {
                                             for="profile"
                                             class="mb-2 text-sm font-medium text-gray-900"
                                         >
-                                            Upload your photo!
+                                            Upload your photo! <sup> *</sup>
                                         </label>
                                         <input
                                             type="file"
