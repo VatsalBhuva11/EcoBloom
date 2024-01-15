@@ -26,7 +26,6 @@ export default function Signup() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 if (data.status === "error") {
                     throw new Error("Invalid form input. Please check again.");
                 } else {
