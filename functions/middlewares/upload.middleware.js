@@ -2,6 +2,7 @@ import busboy from "busboy";
 import path from "path";
 import fs from "fs";
 import os from "os";
+import { response_400 } from "../utils/responseCodes.js";
 
 export default function filesUpload(req, res, next) {
     // See https://cloud.google.com/functions/docs/writing/http#multipart_data
@@ -28,42 +29,48 @@ export default function filesUpload(req, res, next) {
 
     bb.on("file", (fieldname, file, info) => {
         const { filename, mimeType, encoding } = info;
-        const filepath = path.join(tmpdir, filename);
-        const writeStream = fs.createWriteStream(filepath);
-        file.pipe(writeStream);
+        if (!fieldname.startsWith("optional") && !info.filename) {
+            response_400(res, "Mandatory file not found");
+            //HANDLE OPTIONAL FILES
+        } else if (fieldname.startsWith("optional") && !info.filename) {
+            console.log("No file.");
+            file.resume();
+        } else {
+            const filepath = path.join(tmpdir, filename);
+            const writeStream = fs.createWriteStream(filepath);
+            file.pipe(writeStream);
+            fileWrites.push(
+                new Promise((resolve, reject) => {
+                    file.on("end", () => writeStream.end());
+                    writeStream.on("finish", () => {
+                        fs.readFile(filepath, (err, buffer) => {
+                            const size = Buffer.byteLength(buffer);
+                            if (err) {
+                                return reject(err);
+                            }
 
-        fileWrites.push(
-            new Promise((resolve, reject) => {
-                file.on("end", () => writeStream.end());
-                writeStream.on("finish", () => {
-                    fs.readFile(filepath, (err, buffer) => {
-                        const size = Buffer.byteLength(buffer);
-                        console.log(`${filename} is ${size} bytes`);
-                        if (err) {
-                            return reject(err);
-                        }
+                            files.push({
+                                fieldname,
+                                originalname: filename,
+                                encoding,
+                                mimeType,
+                                buffer,
+                                size,
+                            });
 
-                        files.push({
-                            fieldname,
-                            originalname: filename,
-                            encoding,
-                            mimeType,
-                            buffer,
-                            size,
+                            try {
+                                fs.unlinkSync(filepath);
+                            } catch (error) {
+                                return reject(error);
+                            }
+
+                            resolve();
                         });
-
-                        try {
-                            fs.unlinkSync(filepath);
-                        } catch (error) {
-                            return reject(error);
-                        }
-
-                        resolve();
                     });
-                });
-                writeStream.on("error", reject);
-            })
-        );
+                    writeStream.on("error", reject);
+                })
+            );
+        }
     });
 
     bb.on("finish", () => {

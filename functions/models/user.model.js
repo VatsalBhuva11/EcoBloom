@@ -11,13 +11,10 @@ const User = new Schema({
         unique: true, // Prevent duplicate emails
         required: true,
     },
-    password: {
-        type: String,
-        required: true,
-    },
+
     photoPathFirestore: {
         type: String,
-        default: "",
+        required: true,
     },
     registeredCampaigns: [
         {

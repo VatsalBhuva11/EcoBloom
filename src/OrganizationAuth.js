@@ -196,9 +196,9 @@ export default function OrganizationAuth() {
                         }}
                     />
 
-                    <input type="file" id="logo" name="logo" />
-                    <input type="file" id="banner" name="banner" />
-                    <input type="file" id="document" name="document" />
+                    <input type="file" id="logo" name="optionalLogo" />
+                    <input type="file" id="banner" name="optionalBanner" />
+                    <input type="file" id="document" name="document" required />
                     <button
                         className="btn btn-lime"
                         type="submit"

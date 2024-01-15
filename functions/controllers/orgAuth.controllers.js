@@ -13,8 +13,9 @@ dotenv.config();
 const router = express.Router();
 
 // Create a new user
-async function uploadFile(email, fileType, file, extensions, paths) {
-    const pathToFile = `/org/${email}/${fileType}_${Date.now()}.${extensions}`;
+async function uploadFile(email, file, extensions, paths) {
+    const fileType = file.fieldname.toLowerCase().replace("optional", "");
+    const pathToFile = `/org/${email}/${fileType}.${extensions}`;
     const storageRef = ref(storage, pathToFile);
     const metadata = {
         contentType: file.mimetype,
@@ -43,6 +44,14 @@ router.post("/register", async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const files = req.files; //logo, banner, document
+        console.log("FILES: ", files);
+        const checkDoc =
+            files.filter((file) => file.fieldname === "document").length > 0;
+        if (!name || !email || !password || !checkDoc) {
+            throw new Error(
+                "Following fields are mandatory: name, email, password, documentToVerify"
+            );
+        }
         const extensions = files.map((file) =>
             file.originalname.split(".").pop()
         );
@@ -66,15 +75,9 @@ router.post("/register", async (req, res) => {
 
             const filesToUpload = [];
             const paths = {};
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < files.length; i++) {
                 filesToUpload.push(
-                    uploadFile(
-                        email,
-                        i === 0 ? "logo" : i === 1 ? "banner" : "document",
-                        files[i],
-                        extensions[i],
-                        paths
-                    )
+                    uploadFile(email, files[i], extensions[i], paths)
                 );
             }
 
@@ -86,7 +89,6 @@ router.post("/register", async (req, res) => {
                     const org = await Organization.create({
                         name,
                         email,
-                        password,
                         logo: paths["logo"],
                         banner: paths["banner"],
                         document: paths["document"],
