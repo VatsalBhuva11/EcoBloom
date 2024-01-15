@@ -1,9 +1,30 @@
 import React from "react";
-import logo from "../assets/images/logo.png";
 import login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase.js";
+import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    function emailSignIn(event) {
+        event.preventDefault();
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log("Signed in! ", user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(error);
+            });
+    }
+
     return (
         <div className="h-screen">
             <div className=" bg-[#EEF0E5] h-screen">
@@ -34,6 +55,9 @@ export default function Login() {
                                             id="email"
                                             class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                                             placeholder="Email"
+                                            onChange={(e) =>
+                                                setEmail(e.target.value)
+                                            }
                                             required
                                         />
                                     </div>
@@ -50,6 +74,9 @@ export default function Login() {
                                             id="password"
                                             placeholder="••••••••"
                                             class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                            onChange={(e) =>
+                                                setPassword(e.target.value)
+                                            }
                                             required
                                         />
                                     </div>
@@ -83,6 +110,7 @@ export default function Login() {
                                     <button
                                         type="submit"
                                         class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                        onClick={emailSignIn}
                                     >
                                         Sign in
                                     </button>
