@@ -15,14 +15,17 @@ const Organization = new Schema({
         type: String,
         required: true,
     },
+    logo: {
+        type: String,
+        required: false,
+    },
     banner: {
         type: String,
-        required: true,
+        required: false,
     },
-    documents: {
-        type: Array,
+    document: {
+        type: String,
         required: true,
-        default: [],
     },
     isVerified: {
         type: Boolean,
