@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /*
 ! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
@@ -1274,6 +1274,15 @@ video {
 .placeholder-black::placeholder{
   --tw-placeholder-opacity: 1;
   color: rgb(0 0 0 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-gray-700::placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-opacity-70::placeholder{
+  --tw-placeholder-opacity: 0.7;
 }
 
 .shadow{

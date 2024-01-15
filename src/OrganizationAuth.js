@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./index.js";
 import { useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 //figure out sign out, and how to manage auth state.
 //organization registration
@@ -18,6 +18,9 @@ export default function OrganizationAuth() {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const [user, loading, error] = useAuthState(auth);
 
     function linkWithGoogle(event) {
         event.preventDefault();
@@ -71,27 +74,18 @@ export default function OrganizationAuth() {
 
     function emailSignIn(event) {
         event.preventDefault();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/auth.user
-                const uid = user.uid;
-                console.log("User is signed in! :", user);
-                // ...
-            } else {
-                signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        // Signed in
-                        const user = userCredential.user;
-                        console.log("Initially not signed");
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        console.log(error);
-                    });
-            }
-        });
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log("Initially not signed");
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(error);
+            });
     }
 
     function emailSignUp(event) {
@@ -106,23 +100,26 @@ export default function OrganizationAuth() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log("Org in DB: ");
-                console.log(data);
-                createUserWithEmailAndPassword(auth, email, password)
-                    .then((orgCredential) => {
-                        // Signed Up
-                        console.log("Org in Firebase");
-                        const user = orgCredential.user;
-                        console.log(user);
-                        // ...
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        // ..
-                        console.log(error);
-                    });
-                console.log("Success:", data);
+                if (data.status === "error") {
+                    throw new Error("Invalid form input. Please check again,");
+                } else {
+                    console.log("Org in DB: ");
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((orgCredential) => {
+                            // Signed Up
+                            console.log("Org in Firebase");
+                            const user = orgCredential.user;
+                            console.log(user);
+                            // ...
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            // ..
+                            console.log(error);
+                        });
+                    console.log("Success:", data);
+                }
             })
             .catch((error) => {
                 console.error("Error:", error);
