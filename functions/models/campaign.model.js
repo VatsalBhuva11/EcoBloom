@@ -43,6 +43,14 @@ const Campaign = new Schema({
         type: Date,
         required: true,
     },
+    endDate: {
+        type: Date,
+        required: true,
+    },
+    status: {
+        type: String,
+        enum: ["UPCOMING", "COMPLETED"],
+    },
     type: {
         type: String,
         enum: [

@@ -8,22 +8,14 @@ const Community = new Schema({
         required: true,
         unique: true,
     },
+    userCount: {
+        type: Number,
+        default: 0,
+    },
     joinedUsers: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
-        },
-    ],
-    orgPosts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Post",
-        },
-    ],
-    userPosts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Post",
         },
     ],
 });

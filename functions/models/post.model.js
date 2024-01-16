@@ -10,11 +10,6 @@ const Post = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organization",
     },
-    community: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Community",
-        required: true,
-    },
     photos: [String],
     content: {
         type: String,
