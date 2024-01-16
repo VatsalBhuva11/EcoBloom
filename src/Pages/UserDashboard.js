@@ -32,8 +32,9 @@ const UserDashboard = () => {
     };
 
     const [name, setName] = useState("");
-    const [profile, setProfile] = useState(person);
     const [user, loading, error] = useAuthState(auth);
+    const [profile, setProfile] = useState(person);
+    const [communities, setCommunities] = useState([]);
     const [loader, setLoader] = useState(true);
 
     useEffect(() => {
@@ -50,6 +51,7 @@ const UserDashboard = () => {
                     .then(function (url) {
                         setProfile(url);
                         setName(userData.data.name);
+                        setCommunities(userData.data.communities);
                         setLoader(false);
                     })
                     .catch(function (error) {
@@ -163,7 +165,30 @@ const UserDashboard = () => {
                         Joined Communities
                     </p>
                     <div className="flex flex-col gap-2 2xl:gap-5">
-                        <a href="">
+                        {communities ? (
+                            communities.map((community, key) => (
+                                <a key={key} href="">
+                                    <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
+                                        <img
+                                            className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
+                                            src={person}
+                                            alt=""
+                                        />
+                                        <div className="flex flex-col">
+                                            <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
+                                                {community.orgName}
+                                            </p>
+                                            <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
+                                                {community.userCount} People
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            ))
+                        ) : (
+                            <div>No community joined!</div>
+                        )}
+                        {/* <a href="">
                             <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
                                 <img
                                     className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
@@ -247,7 +272,7 @@ const UserDashboard = () => {
                                     </p>
                                 </div>
                             </div>
-                        </a>
+                        </a> */}
                     </div>
                     <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.20rem] w-56 2xl:w-64 my-4 2xl:my-5 hover:scale-105 duration-300">
                         View More{" "}
