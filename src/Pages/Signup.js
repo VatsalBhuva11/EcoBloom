@@ -58,7 +58,7 @@ export default function Signup() {
                 <div className=" flex justify-between items-center">
                     <div class="flex flex-col items-center px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
                         <div class="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
-                            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                            <div class="p-1 space-y-1 md:space-y-2 sm:p-3 px-4">
                                 <div className="content">
                                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                                         Create Account
@@ -164,21 +164,9 @@ export default function Signup() {
                                             }
                                         />
                                     </div>
-                                    <div>
-                                        <label
-                                            for="profile"
-                                            class="mb-2 text-sm font-medium text-gray-900"
-                                        >
-                                            Upload your photo! <sup> *</sup>
-                                        </label>
-                                        <input
-                                            type="file"
-                                            name="profile"
-                                            id="profile"
-                                            class=" bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
-                                            accept="image/*"
-                                            required
-                                        />
+                                    <div>                                       
+                                        <label class="block mb-2 text-sm font-medium text-[#0f1035]" for="file_input">Upload Photo<sup>*</sup></label>
+                                        <input class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]" aria-describedby="file_input_help" id="file_input" type="file"/>
                                     </div>
                                     <button
                                         type="submit"
@@ -198,7 +186,7 @@ export default function Signup() {
                                     </p>
                                 </form>
                             </div>
-                            <div className="flex justify-between my-2">
+                            <div className="flex justify-around my-2">
                                 <div className=" cursor-pointer hover:underline">
                                     Terms&Conditions
                                 </div>

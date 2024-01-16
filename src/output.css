@@ -1039,6 +1039,12 @@ video {
   gap: 1.75rem;
 }
 
+.space-y-1 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
 .space-y-2 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1244,6 +1250,10 @@ video {
 
 .object-cover{
   object-fit: cover;
+}
+
+.p-1{
+  padding: 0.25rem;
 }
 
 .p-11{
@@ -1667,6 +1677,58 @@ video {
   padding: 0.5rem;
 }
 
+.file\:rounded-lg::-webkit-file-upload-button{
+  border-radius: 0.5rem;
+}
+
+.file\:rounded-lg::file-selector-button{
+  border-radius: 0.5rem;
+}
+
+.file\:bg-\[\#0f1035\]::-webkit-file-upload-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 16 53 / var(--tw-bg-opacity));
+}
+
+.file\:bg-\[\#0f1035\]::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 16 53 / var(--tw-bg-opacity));
+}
+
+.file\:p-2::-webkit-file-upload-button{
+  padding: 0.5rem;
+}
+
+.file\:p-2::file-selector-button{
+  padding: 0.5rem;
+}
+
+.file\:font-bold::-webkit-file-upload-button{
+  font-weight: 700;
+}
+
+.file\:font-bold::file-selector-button{
+  font-weight: 700;
+}
+
+.file\:text-white::-webkit-file-upload-button{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.file\:text-white::file-selector-button{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.file\:duration-300::-webkit-file-upload-button{
+  transition-duration: 300ms;
+}
+
+.file\:duration-300::file-selector-button{
+  transition-duration: 300ms;
+}
+
 .hover\:scale-100:hover{
   --tw-scale-x: 1;
   --tw-scale-y: 1;
@@ -1735,6 +1797,18 @@ video {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.file\:hover\:scale-105:hover::-webkit-file-upload-button{
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.file\:hover\:scale-105:hover::file-selector-button{
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .focus\:outline-none:focus{
@@ -1845,6 +1919,10 @@ video {
     padding: 3rem;
   }
 
+  .sm\:p-3{
+    padding: 0.75rem;
+  }
+
   .sm\:p-8{
     padding: 2rem;
   }
@@ -1952,6 +2030,12 @@ video {
 
   .md\:gap-20{
     gap: 5rem;
+  }
+
+  .md\:space-y-2 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
   }
 
   .md\:space-y-4 > :not([hidden]) ~ :not([hidden]){
