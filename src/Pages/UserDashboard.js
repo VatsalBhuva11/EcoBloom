@@ -14,6 +14,8 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase.js";
 import { jwtDecode } from "jwt-decode";
+import HashLoader from "react-spinners/HashLoader";
+import { signOut } from "firebase/auth";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -33,18 +35,10 @@ const UserDashboard = () => {
     useEffect(() => {
         const token = localStorage.getItem("accountData");
         const userData = jwtDecode(token);
-        console.log(userData);
         fetch(`${process.env.REACT_APP_LOCAL_API_URL}/user/${userData.userId}`)
             .then((userData) => userData.json())
             .then((userData) => {
-                console.log(userData.data);
                 setName(userData.data.name);
-                if (user) {
-                    console.log("User is logged in");
-                } else {
-                    console.log("User is not logged in");
-                    // window.location.href = "/login";
-                }
             })
             .catch((err) => {
                 console.error(err);
@@ -52,9 +46,15 @@ const UserDashboard = () => {
             });
     }, [user]);
 
-    console.log(user);
     if (loading) {
-        return <h1>Loading Screen</h1>;
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <HashLoader color="#36d7b7" size={100} />
+            </div>
+        );
+    }
+    if (!loading && !user) {
+        window.location.href = "/login";
     }
 
     return (
@@ -126,7 +126,15 @@ const UserDashboard = () => {
                     <a className="p-4 border-b border-gray-600 hover:scale-100 duration-300">
                         Edit Name
                     </a>
-                    <a className="p-4 hover:scale-100 duration-300">Logout</a>
+                    <a
+                        className="p-4 hover:scale-100 duration-300"
+                        onClick={async () => {
+                            signOut(auth);
+                            // window.location.href = "/login";
+                        }}
+                    >
+                        Logout
+                    </a>
                 </div>
             </div>
 
