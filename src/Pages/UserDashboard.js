@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiBadgeDollar } from "react-icons/ci";
 import { FaRegEnvelope } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa";
@@ -13,6 +13,7 @@ import map from "../assets/images/map.png";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase.js";
+import { jwtDecode } from "jwt-decode";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -25,8 +26,36 @@ const UserDashboard = () => {
     const handleNav = () => {
         setNav(!nav);
     };
+
+    const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
+
+    useEffect(() => {
+        const token = localStorage.getItem("accountData");
+        const userData = jwtDecode(token);
+        console.log(userData);
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/user/${userData.userId}`)
+            .then((userData) => userData.json())
+            .then((userData) => {
+                console.log(userData.data);
+                setName(userData.data.name);
+                if (user) {
+                    console.log("User is logged in");
+                } else {
+                    console.log("User is not logged in");
+                    // window.location.href = "/login";
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+                setName("ERROR");
+            });
+    }, [user]);
+
     console.log(user);
+    if (loading) {
+        return <h1>Loading Screen</h1>;
+    }
 
     return (
         <div className="h-screen">
@@ -65,7 +94,7 @@ const UserDashboard = () => {
                             src={person}
                             alt=""
                         />
-                        <div className="text-3xl hidden sm:flex">Hizrian</div>
+                        <div className="text-3xl hidden sm:flex">{name}</div>
                         <a className="ml-2 mr-5 cursor-pointer text-3xl">
                             {" "}
                             <div onClick={handleNav1} className="block">

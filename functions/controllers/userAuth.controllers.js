@@ -99,6 +99,7 @@ router.post("/login", async (req, res) => {
                         role: "user",
                         name: checkUser.name,
                         email,
+                        userId: checkUser._id,
                     },
                     process.env.JWT_SECRET_KEY
                 );
