@@ -4,48 +4,54 @@ import { Link } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [user, loading, error] = useAuthState(auth);
 
     function emailSignIn(event) {
         event.preventDefault();
-
-        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/login`, {
-            method: "POST",
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(response.statusText);
-                }
-                return response.json();
+        if (user) {
+            window.location.href = "/user/dashboard";
+        } else {
+            fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/login`, {
+                method: "POST",
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
             })
-            .then((token) =>
-                signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        // Signed in
-                        const user = userCredential.user;
-                        console.log("Signed in! ", user);
-                        localStorage.setItem("accountData", token.data);
-                        console.log("Set token in LS");
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        console.log(error);
-                    })
-            )
-            .catch((err) => {
-                console.error(err);
-            });
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(response.statusText);
+                    }
+                    return response.json();
+                })
+                .then((token) =>
+                    signInWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            // Signed in
+                            const user = userCredential.user;
+                            console.log("Signed in! ", user);
+                            localStorage.setItem("accountData", token.data);
+                            console.log("Set token in LS");
+                            window.location.href = "/user/dashboard";
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            console.log(error);
+                        })
+                )
+                .catch((err) => {
+                    console.error(err);
+                });
+        }
     }
 
     return (
