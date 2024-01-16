@@ -11,6 +11,7 @@ import SignupInitial from "./SignupInitial";
 import JoinUs from "../Components/JoinUs";
 import CreateCampaigns from "../Components/CreateCampaigns";
 import Footer from "../Components/Footer";
+import UserDashboard from "./UserDashboard";
 
 export default function Home() {
     return (
@@ -35,6 +36,7 @@ export default function Home() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignupInitial />} />
                     <Route path="/signup/user" element={<Signup />} />
+                    <Route path="/user/dashboard" element={<UserDashboard />} />
                     {/* <Route path='/signuporg' element={<Signup/>}/> */}
                 </Routes>
             </BrowserRouter>
