@@ -69,3 +69,4 @@ const Campaign = new Schema({
 });
 
 export default mongoose.model("campaign", Campaign);
+export { Campaign };

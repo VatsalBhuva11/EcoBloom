@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import Community from "./community.model.js";
+import Campaign from "./campaign.model.js";
 const Schema = mongoose.Schema;
 
 const User = new Schema({

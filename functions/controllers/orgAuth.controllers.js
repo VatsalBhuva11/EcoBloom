@@ -96,6 +96,7 @@ router.post("/register", async (req, res) => {
                         });
                         const community = await Community.create({
                             organization: org.id,
+                            orgName: org.name,
                         });
                         console.log(
                             "Successfully created new organization in DB!"

@@ -8,6 +8,10 @@ const Community = new Schema({
         required: true,
         unique: true,
     },
+    orgName: {
+        type: String,
+        required: true,
+    },
     userCount: {
         type: Number,
         default: 0,
@@ -21,3 +25,4 @@ const Community = new Schema({
 });
 
 export default mongoose.model("community", Community);
+export { Community };
