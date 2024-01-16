@@ -38,12 +38,6 @@ const User = new Schema({
             ref: "Community",
         },
     ],
-    posts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Post",
-        },
-    ],
 });
 
 export default mongoose.model("user", User);

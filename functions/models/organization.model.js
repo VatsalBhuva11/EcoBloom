@@ -5,6 +5,7 @@ const Organization = new Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     email: {
         type: String,
@@ -28,6 +29,12 @@ const Organization = new Schema({
         required: true,
         default: false,
     },
+    orgPosts: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post",
+        },
+    ],
     campaigns: [
         {
             type: mongoose.Schema.Types.ObjectId,
