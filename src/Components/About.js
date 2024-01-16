@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa'
 
 
 
-export default function About_LandingPage() {
+export default function About() {
   return (
     <div className="w-full h-screen bg-[#EEF0E5] justify-between pt-12">
     <div className="max-w-[1240px] mx-auto justify-center items-center">
