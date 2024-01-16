@@ -13,6 +13,7 @@ import map from "../assets/images/map.png";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase.js";
+import { MdOutlineLocalGroceryStore } from "react-icons/md";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -44,7 +45,7 @@ const UserDashboard = () => {
         </div>
         <div className='flex justify-end items-center text-2xl sm:text-2xl md:text-3xl mr-1'>
           <a className='mx-1 sm:mx-2 lg:mx-3 xl:mx-8 cursor-pointer hover:scale-110 duration-300'>
-            <FaRegEnvelope/>
+            <MdOutlineLocalGroceryStore/>
           </a>
           <a className='mx-1 sm:mx-3 lg:mx-5 xl:mx-8 cursor-pointer hover:scale-110 duration-300'>
             <FaRegBell/>

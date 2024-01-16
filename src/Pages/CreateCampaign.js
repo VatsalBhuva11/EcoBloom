@@ -89,10 +89,10 @@ const CreateCampaign = () => {
           </div>
         </div>
         <div className='flex gap-10'>
-          <button className='text-xl sm:text-2xl bg-[#0F1035] text-[#EEF0E5] w-40 h-12 rounded-lg'>
+          <button className='text-xl sm:text-2xl bg-[#0F1035] text-[#EEF0E5] w-40 h-12 rounded-lg hover:scale-105 duration-300'>
             CREATE
           </button>
-          <button className='text-xl sm:text-2xl bg-[#EEF0E5] text-[#0F1035] w-40 h-12 rounded-lg border-2 border-[#0F1035]'>
+          <button className='text-xl sm:text-2xl bg-[#EEF0E5] text-[#0F1035] w-40 h-12 rounded-lg border-2 border-[#0F1035] hover:scale-105 duration-300'>
             CANCEL
           </button>
         </div>
