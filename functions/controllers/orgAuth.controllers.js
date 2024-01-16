@@ -10,6 +10,7 @@ import {
     response_404,
     response_500,
 } from "../utils/responseCodes.js";
+import Community from "../models/community.model.js";
 
 dotenv.config();
 const router = express.Router();
@@ -92,6 +93,9 @@ router.post("/register", async (req, res) => {
                             logo: paths["logo"],
                             banner: paths["banner"],
                             document: paths["document"],
+                        });
+                        const community = await Community.create({
+                            organization: org.id,
                         });
                         console.log(
                             "Successfully created new organization in DB!"
