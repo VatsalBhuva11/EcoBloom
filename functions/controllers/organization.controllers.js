@@ -20,6 +20,7 @@ router.get("/:orgName", async (req, res) => {
     try {
         const orgName = req.params.orgName;
         const org = await Organization.findOne({ name: orgName });
+
         if (!org || !org.isVerified) {
             response_404(
                 res,
@@ -30,7 +31,7 @@ router.get("/:orgName", async (req, res) => {
             const communityData = await Community.findOne({
                 organization: org.id,
             });
-            const campaigns = await Campaign.findMany({
+            const campaigns = await Campaign.find({
                 organization: org.id,
             });
             const upcomingCampaigns = campaigns.filter(
