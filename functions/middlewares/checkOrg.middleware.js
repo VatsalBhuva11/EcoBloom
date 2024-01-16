@@ -3,7 +3,7 @@ import {
     response_400,
     response_401,
     response_500,
-} from "../utils/responseCodes";
+} from "../utils/responseCodes.js";
 export default async function checkUser(req, res, next) {
     try {
         const token = req.headers["X-AccountData"];
