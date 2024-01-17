@@ -9,12 +9,16 @@ import { useAuthState } from "react-firebase-hooks/auth";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [clicked, setClicked] = useState(false);
+    const [status, setStatus] = useState("none"); // ["none", "failure"] , redirect upon success
     const [user, loading, error] = useAuthState(auth);
 
     function emailSignIn(event) {
         event.preventDefault();
+        setStatus("none");
+        setClicked(true);
 
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/login`, {
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/login`, {
             method: "POST",
             body: JSON.stringify({
                 email: email,
@@ -26,6 +30,8 @@ export default function Login() {
         })
             .then((response) => {
                 if (!response.ok) {
+                    setClicked(false);
+                    setStatus("failure");
                     throw new Error(response.statusText);
                 }
                 return response.json();
@@ -35,18 +41,19 @@ export default function Login() {
                     .then((userCredential) => {
                         // Signed in
                         const user = userCredential.user;
-                        console.log("Signed in! ", user);
                         localStorage.setItem("accountData", token.data);
-                        console.log("Set token in LS");
                         window.location.href = "/user/dashboard";
                     })
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
+                        setStatus("failure");
                         console.log(error);
                     })
             )
             .catch((err) => {
+                setClicked(false);
+                setStatus("failure");
                 console.error(err);
             });
     }
@@ -109,6 +116,13 @@ export default function Login() {
                                             }
                                             required
                                         />
+                                        {status === "failure" ? (
+                                            <p class="text-sm text-red-500">
+                                                Error occurred while logging in.
+                                                Please check your
+                                                credentials/network.
+                                            </p>
+                                        ) : null}
                                     </div>
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-start">
@@ -137,13 +151,24 @@ export default function Login() {
                                             Forgot password?
                                         </a>
                                     </div>
-                                    <button
-                                        type="submit"
-                                        class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
-                                        onClick={emailSignIn}
-                                    >
-                                        Sign in
-                                    </button>
+
+                                    {!clicked ? (
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                            onClick={emailSignIn}
+                                        >
+                                            Sign in
+                                        </button>
+                                    ) : (
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-[#5a5d5f] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                            disabled
+                                        >
+                                            Signing you in...
+                                        </button>
+                                    )}
                                     <p class="text-sm  text-black">
                                         Don't have an account yet?{" "}
                                         <Link

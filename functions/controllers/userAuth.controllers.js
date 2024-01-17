@@ -87,7 +87,6 @@ router.post("/register", filesUpload, async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email, password);
         if (!email || !password) {
             response_400(res, "Email and password are required.");
         } else {
