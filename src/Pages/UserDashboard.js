@@ -168,7 +168,7 @@ const UserDashboard = () => {
                         Joined Communities
                     </p>
                     <div className="flex flex-col gap-2 2xl:gap-5">
-                        {communities ? (
+                        {/* {communities ? (
                             communities.map((community, key) => (
                                 <a key={key} href="">
                                     <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
@@ -190,59 +190,59 @@ const UserDashboard = () => {
                             ))
                         ) : (
                             <div>No community joined!</div>
-                        )}
+                        )} */}
+                        <a href="">
+                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
+                                <img
+                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
+                                    src={person}
+                                    alt=""
+                                />
+                                <div className="flex flex-col">
+                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
+                                        GreenPeace Organisation
+                                    </p>
+                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
+                                        2 Person(s)
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
+                                <img
+                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
+                                    src={person}
+                                    alt=""
+                                />
+                                <div className="flex flex-col">
+                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
+                                        TestOrg
+                                    </p>
+                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
+                                        1 Person(s)
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
+                                <img
+                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
+                                    src={person}
+                                    alt=""
+                                />
+                                <div className="flex flex-col">
+                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
+                                        EcoBloom Org
+                                    </p>
+                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
+                                        45 Person(s)
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                         {/* <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
                             <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
                                 <img
                                     className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
@@ -309,7 +309,7 @@ const UserDashboard = () => {
                                     </div>
                                     <div className="flex flex-col">
                                         <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
+                                            Environment Helpers!
                                         </p>
                                         <div className="flex justify-between items-baseline gap-3 ">
                                             <div>
@@ -317,7 +317,7 @@ const UserDashboard = () => {
                                                     24TH JAN,2024
                                                 </div>
                                                 <div className="text-[0.7rem]">
-                                                    210 Peoples joined
+                                                    210 Person(s) joined
                                                 </div>
                                             </div>
                                             <div className="flex justify-center items-center text-[20px] gap-1">
@@ -337,15 +337,15 @@ const UserDashboard = () => {
                                     </div>
                                     <div className="flex flex-col">
                                         <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
+                                            Clean Ocean!
                                         </p>
                                         <div className="flex justify-between items-baseline gap-3 ">
                                             <div>
                                                 <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
+                                                    28TH JAN,2024
                                                 </div>
                                                 <div className="text-[0.7rem]">
-                                                    210 Peoples joined
+                                                    115 Person(s) joined
                                                 </div>
                                             </div>
                                             <div className="flex justify-center items-center text-[20px] gap-1">
@@ -365,15 +365,15 @@ const UserDashboard = () => {
                                     </div>
                                     <div className="flex flex-col">
                                         <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
+                                            By the mountains!
                                         </p>
                                         <div className="flex justify-between items-baseline gap-3 ">
                                             <div>
                                                 <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
+                                                    2ND FEB,2024
                                                 </div>
                                                 <div className="text-[0.7rem]">
-                                                    210 Peoples joined
+                                                    20 Person(s) joined
                                                 </div>
                                             </div>
                                             <div className="flex justify-center items-center text-[20px] gap-1">
@@ -393,15 +393,15 @@ const UserDashboard = () => {
                                     </div>
                                     <div className="flex flex-col">
                                         <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
+                                            Make it Green!
                                         </p>
                                         <div className="flex justify-between items-baseline gap-3 ">
                                             <div>
                                                 <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
+                                                    8TH FEB,2024
                                                 </div>
                                                 <div className="text-[0.7rem]">
-                                                    210 Peoples joined
+                                                    15 Person(s) joined
                                                 </div>
                                             </div>
                                             <div className="flex justify-center items-center text-[20px] gap-1">
