@@ -12,6 +12,7 @@ import {
     response_500,
 } from "../utils/responseCodes.js";
 import Community from "../models/community.model.js";
+import filesUpload from "../middlewares/upload.middleware.js";
 
 dotenv.config();
 const router = express.Router();
@@ -44,7 +45,7 @@ async function uploadFile(email, file, extensions, paths) {
     }
 }
 
-router.post("/register", async (req, res) => {
+router.post("/register", filesUpload, async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const files = req.files; //logo, banner, document
@@ -123,7 +124,6 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email, password);
         if (!email || !password) {
             response_400(res, "Email and password are required.");
         } else {
@@ -136,9 +136,8 @@ router.post("/login", async (req, res) => {
             } else {
                 const token = jwt.sign(
                     {
-                        role: "org",
                         name: checkOrg.name,
-                        email,
+                        orgId: checkOrg._id,
                     },
                     process.env.JWT_SECRET_KEY
                 );

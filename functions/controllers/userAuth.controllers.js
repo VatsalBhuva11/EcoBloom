@@ -95,9 +95,7 @@ router.post("/login", async (req, res) => {
             } else {
                 const token = jwt.sign(
                     {
-                        role: "user",
                         name: checkUser.name,
-                        email,
                         userId: checkUser._id,
                     },
                     process.env.JWT_SECRET_KEY
