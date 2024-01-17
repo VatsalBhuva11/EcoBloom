@@ -18,6 +18,7 @@ import HashLoader from "react-spinners/HashLoader";
 import { signOut } from "firebase/auth";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
+import Logout from "./logout_pop.js"
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -30,6 +31,8 @@ const UserDashboard = () => {
     const handleNav = () => {
         setNav(!nav);
     };
+    const [showMyModel, setShowMyModal]=useState(false);
+    const handleOnClose = () => setShowMyModal(false)
 
     const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
@@ -148,9 +151,8 @@ const UserDashboard = () => {
                     </a>
                     <a
                         className="p-4 hover:scale-100 duration-300"
-                        onClick={() => {
-                            signOut(auth);
-                        }}
+                        
+                        onClick={()=>setShowMyModal(true)}
                     >
                         Logout
                     </a>
@@ -533,6 +535,7 @@ const UserDashboard = () => {
                     </button>
                 </div>
             </div>
+            <Logout onClose={handleOnClose} visible={showMyModel}/>
         </div>
     );
 };
