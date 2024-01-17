@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useState } from "react";
 
-export default function Signup() {
+export default function UserSignup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,52 +22,39 @@ export default function Signup() {
         }
 
         // let files = document.querySelector('input[type="file"]').files;
+        let formData = new FormData(document.getElementById("emailSignUp"));
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed Up
-                const user = userCredential.user;
-                // ...
-                let formData = new FormData(
-                    document.getElementById("emailSignUp")
-                );
-                formData.append("firebaseUid", user.uid);
-                fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
-                    {
-                        method: "POST",
-                        body: formData,
-                    }
-                )
-                    .then((response) => response.json())
-                    .then((data) => {
-                        setSignUpClicked(false);
-                        if (data.status === "error") {
-                            setStatus("failure");
-                            throw new Error(
-                                "Invalid form input. Please check again."
-                            );
-                        } else {
-                            setSignUpClicked(false);
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
+            method: "POST",
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === "error") {
+                    setStatus("failure");
+                    setSignUpClicked(false);
+                    throw new Error("Invalid form input. Please check again.");
+                } else {
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            // Signed Up
                             setStatus("success");
-
-                            console.log("Success:", data);
-                        }
-                    })
-                    .catch((error) => {
-                        setSignUpClicked(false);
-                        setStatus("failure");
-                        console.error("Error:", error);
-                    });
+                            setSignUpClicked(false);
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            setStatus("failure");
+                            setSignUpClicked(false);
+                            console.log(error);
+                        });
+                    console.log("Success:", data);
+                }
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                setSignUpClicked(false);
-
                 setStatus("failure");
-                // ..
-                console.log(error);
+                setSignUpClicked(false);
+                console.error("Error:", error);
             });
     }
 
@@ -263,6 +250,16 @@ export default function Signup() {
                     </div>
                 </div>
             </div>
+            <button
+                onClick={() => {
+                    auth.currentUser.getIdTokenResult().then((tokenResult) => {
+                        console.log(tokenResult.claims);
+                        // alert(tokenResult.claims);
+                    });
+                }}
+            >
+                Check claims
+            </button>
         </div>
     );
 }
