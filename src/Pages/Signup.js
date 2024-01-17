@@ -10,8 +10,10 @@ export default function Signup() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [signUpClicked, setSignUpClicked] = useState(false);
+    const [status, setStatus] = useState("none");
 
     function emailSignUp(event) {
+        setSignUpClicked(true);
         event.preventDefault();
         if (password !== confirmPassword) {
             console.log("Passwords do not match!");
@@ -32,7 +34,7 @@ export default function Signup() {
                 );
                 formData.append("firebaseUid", user.uid);
                 fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`,
                     {
                         method: "POST",
                         body: formData,
@@ -40,12 +42,15 @@ export default function Signup() {
                 )
                     .then((response) => response.json())
                     .then((data) => {
+                        setSignUpClicked(false);
                         if (data.status === "error") {
+                            setStatus("failure");
                             throw new Error(
                                 "Invalid form input. Please check again."
                             );
                         } else {
                             console.log("Success:", data);
+                            setStatus("success");
                         }
                     })
                     .catch((error) => {
@@ -55,6 +60,7 @@ export default function Signup() {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                setStatus("failure");
                 // ..
                 console.log(error);
             });
@@ -189,14 +195,36 @@ export default function Signup() {
                                             required
                                         />
                                     </div>
-                                    {/* {!signUpClicked ? } */}
-                                    <button
-                                        type="submit"
-                                        class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
-                                        onClick={emailSignUp}
-                                    >
-                                        Create Account
-                                    </button>
+                                    {!signUpClicked ? (
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                            onClick={emailSignUp}
+                                        >
+                                            Create Account
+                                        </button>
+                                    ) : (
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-[#5a5d5f] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                            disabled
+                                        >
+                                            Creating Account...
+                                        </button>
+                                    )}
+                                    {status === "success" ? (
+                                        <p class="text-md text-green-500 font-bold">
+                                            Successfully registered user!{" "}
+                                            <a href="/login" class="underline">
+                                                Please login to continue.
+                                            </a>
+                                        </p>
+                                    ) : status === "failure" ? (
+                                        <p class="text-sm text-red-500">
+                                            Error occurred while registering
+                                            user. Please try again.
+                                        </p>
+                                    ) : null}
                                     <p class="text-sm  text-black">
                                         Already have an account?{" "}
                                         <Link
