@@ -171,9 +171,22 @@ export default function Signup() {
                                             }
                                         />
                                     </div>
-                                    <div>                                       
-                                        <label class="block mb-2 text-sm font-medium text-[#0f1035]" for="file_input">Upload Photo<sup>*</sup></label>
-                                        <input class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]" aria-describedby="file_input_help" id="file_input" type="file"/>
+                                    <div>
+                                        <label
+                                            class="block mb-2 text-sm font-medium text-[#0f1035]"
+                                            for="file_input"
+                                        >
+                                            Upload Photo<sup>*</sup>
+                                        </label>
+                                        <input
+                                            class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                                            aria-describedby="file_input_help"
+                                            id="profile"
+                                            name="profile"
+                                            type="file"
+                                            accept="image/*"
+                                            required
+                                        />
                                     </div>
                                     <button
                                         type="submit"
