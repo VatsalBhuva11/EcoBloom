@@ -17,6 +17,7 @@ export default function Signup() {
         event.preventDefault();
         if (password !== confirmPassword) {
             console.log("Passwords do not match!");
+            setSignUpClicked(false);
             return;
         }
 
@@ -25,9 +26,7 @@ export default function Signup() {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed Up
-                console.log("User in Firebase");
                 const user = userCredential.user;
-                console.log(user);
                 // ...
                 let formData = new FormData(
                     document.getElementById("emailSignUp")
@@ -49,17 +48,23 @@ export default function Signup() {
                                 "Invalid form input. Please check again."
                             );
                         } else {
-                            console.log("Success:", data);
+                            setSignUpClicked(false);
                             setStatus("success");
+
+                            console.log("Success:", data);
                         }
                     })
                     .catch((error) => {
+                        setSignUpClicked(false);
+                        setStatus("failure");
                         console.error("Error:", error);
                     });
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                setSignUpClicked(false);
+
                 setStatus("failure");
                 // ..
                 console.log(error);
@@ -220,7 +225,7 @@ export default function Signup() {
                                             </a>
                                         </p>
                                     ) : status === "failure" ? (
-                                        <p class="text-sm text-red-500">
+                                        <p class="text-md text-red-500">
                                             Error occurred while registering
                                             user. Please try again.
                                         </p>
