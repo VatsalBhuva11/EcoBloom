@@ -9,6 +9,7 @@ export default function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [signUpClicked, setSignUpClicked] = useState(false);
 
     function emailSignUp(event) {
         event.preventDefault();
@@ -31,7 +32,7 @@ export default function Signup() {
                 );
                 formData.append("firebaseUid", user.uid);
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`,
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
                     {
                         method: "POST",
                         body: formData,
@@ -188,6 +189,7 @@ export default function Signup() {
                                             required
                                         />
                                     </div>
+                                    {/* {!signUpClicked ? } */}
                                     <button
                                         type="submit"
                                         class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"

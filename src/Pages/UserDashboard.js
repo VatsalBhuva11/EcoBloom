@@ -40,7 +40,9 @@ const UserDashboard = () => {
     useEffect(() => {
         const token = localStorage.getItem("accountData");
         const userData = jwtDecode(token);
-        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/user/${userData.userId}`)
+        fetch(
+            `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userData.userId}`
+        )
             .then((userData) => userData.json())
             .then((userData) => {
                 const storageRef = ref(
