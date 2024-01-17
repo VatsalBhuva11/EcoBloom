@@ -20,7 +20,7 @@ const router = express.Router();
 // Create a new user
 router.post("/register", filesUpload, async (req, res) => {
     try {
-        const { name, email, password, phone, firebaseUid } = req.body;
+        const { name, email, password, phone } = req.body;
         const file = req.files[0];
         const filename = file.originalname;
 
@@ -62,7 +62,6 @@ router.post("/register", filesUpload, async (req, res) => {
                             email,
                             photoPathFirestore: pathToFile,
                             phone,
-                            firebaseUid,
                         });
                         console.log("Successfully created new user in DB!");
                         response_200(

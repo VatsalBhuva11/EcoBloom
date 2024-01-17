@@ -2,7 +2,7 @@ import React from "react";
 import About from "../Components/About";
 import Hero from "../Components/Hero";
 import Navbar from "../Components/Navbar";
-import Signup from "./Signup";
+import UserSignup from "./UserSignup";
 import PastCampaigns from "../Components/PastCampaigns";
 import Login from "./Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,6 +12,7 @@ import JoinUs from "../Components/JoinUs";
 import CreateCampaigns from "../Components/CreateCampaigns";
 import Footer from "../Components/Footer";
 import UserDashboard from "./UserDashboard";
+import OrgSignup from "./OrgSignup";
 
 export default function Home() {
     return (
@@ -35,9 +36,9 @@ export default function Home() {
                     />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignupInitial />} />
-                    <Route path="/signup/user" element={<Signup />} />
+                    <Route path="/signup/user" element={<UserSignup />} />
                     <Route path="/user/dashboard" element={<UserDashboard />} />
-                    {/* <Route path='/signuporg' element={<Signup/>}/> */}
+                    <Route path="/signup/org" element={<OrgSignup />} />
                 </Routes>
             </BrowserRouter>
         </div>

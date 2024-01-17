@@ -4,12 +4,12 @@ import cors from "cors";
 import connectDB from "./config/db.config.js";
 import router from "./routes/index.routes.js";
 import { onRequest } from "firebase-functions/v2/https";
-// import { getStorage } from "firebase/storage";
+import { beforeUserCreated } from "firebase-functions/v2/identity";
+import User from "./models/user.model.js";
+
 dotenv.config();
 
 const app = express();
-
-// const storage = getStorage();
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +29,23 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api", router);
+
+export const beforecreated = beforeUserCreated(async (event) => {
+    const checkUser = await User.findOne({ email: event.data.email });
+    console.log("EVENT: ", event);
+    if (checkUser) {
+        return {
+            customClaims: {
+                role: "user",
+            },
+        };
+    }
+    return {
+        customClaims: {
+            role: "org",
+        },
+    };
+});
 
 export const ecobloom = onRequest({ cors: true }, app);
 // export { storage };

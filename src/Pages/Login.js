@@ -18,7 +18,7 @@ export default function Login() {
         setStatus("none");
         setClicked(true);
 
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/login`, {
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/login`, {
             method: "POST",
             body: JSON.stringify({
                 email: email,
@@ -42,7 +42,16 @@ export default function Login() {
                         // Signed in
                         const user = userCredential.user;
                         localStorage.setItem("accountData", token.data);
-                        window.location.href = "/user/dashboard";
+                        auth.currentUser
+                            .getIdTokenResult()
+                            .then((tokenResult) => {
+                                console.log(tokenResult.claims);
+                                if (tokenResult.claims.role === "user") {
+                                    window.location.href = "/user/dashboard";
+                                } else {
+                                    window.location.href = "/org/dashboard";
+                                }
+                            });
                     })
                     .catch((error) => {
                         const errorCode = error.code;
