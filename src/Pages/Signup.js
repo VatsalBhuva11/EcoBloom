@@ -34,7 +34,7 @@ export default function Signup() {
                 );
                 formData.append("firebaseUid", user.uid);
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`,
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
                     {
                         method: "POST",
                         body: formData,
