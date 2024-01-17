@@ -1,4 +1,6 @@
 import * as dotenv from "dotenv";
+import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
 dotenv.config();
 
 const config = {
@@ -10,5 +12,9 @@ const config = {
     appId: process.env.APP_ID,
     measurementId: process.env.MEASUREMENT_ID,
 };
+initializeApp(config);
+
+const storage = getStorage();
 
 export default config;
+export { storage };

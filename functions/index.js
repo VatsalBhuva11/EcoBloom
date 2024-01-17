@@ -4,27 +4,31 @@ import cors from "cors";
 import connectDB from "./config/db.config.js";
 import router from "./routes/index.routes.js";
 import { onRequest } from "firebase-functions/v2/https";
-import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
-import firebaseConfig from "./config/firebase.config.js";
+// import { getStorage } from "firebase/storage";
 dotenv.config();
 
 const app = express();
-initializeApp(firebaseConfig);
-const storage = getStorage();
+
+// const storage = getStorage();
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 connectDB();
-// https://us-central1-ecobloom-gdsc-challenge.cloudfunctions.net/api
+//https://ecobloom-rsxx5czyua-uc.a.run.app
 app.get("/", (req, res) => {
-    const message = "EcoBloom API";
+    const message = "EcoBloom API at /";
     res.json(message);
 });
 
-app.use("/", router);
+//https://ecobloom-rsxx5czyua-uc.a.run.app/api
+app.get("/api", (req, res) => {
+    const message = "EcoBloom API at /api";
+    res.json(message);
+});
 
-export const api = onRequest({ cors: true }, app);
-export { storage };
+app.use("/api", router);
+
+export const ecobloom = onRequest({ cors: true }, app);
+// export { storage };

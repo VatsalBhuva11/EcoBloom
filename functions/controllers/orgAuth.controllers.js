@@ -1,7 +1,8 @@
 import express from "express";
 import Organization from "../models/organization.model.js";
 import dotenv from "dotenv";
-import { storage } from "../index.js";
+import { storage } from "../config/firebase.config.js";
+
 import { ref, uploadBytesResumable } from "firebase/storage";
 import jwt from "jsonwebtoken";
 import {
