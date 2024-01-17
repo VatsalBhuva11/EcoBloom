@@ -1,7 +1,7 @@
 import React from "react";
 import logout_logo from "../assets/images/logout_image.png";
 import { signOut } from "firebase/auth";
-import { auth, storage } from "../firebase.js";
+import { auth } from "../firebase.js";
 
 const Logout = ({ visible, onClose }) => {
     const handleOnClose = (e) => {
@@ -28,9 +28,7 @@ const Logout = ({ visible, onClose }) => {
                 <div className="flex justify-around mt-7 mb-5">
                     <button
                         className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
-                        onClick={() => {
-                            window.location.href = "/user/dashboard";
-                        }}
+                        onClick={() => {}}
                     >
                         Cancel
                     </button>

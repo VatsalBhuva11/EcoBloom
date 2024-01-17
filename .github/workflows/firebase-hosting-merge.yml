@@ -7,7 +7,7 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - main
 env:
-    REACT_APP_DEPLOYED_API_URL: ${{ secrets.REACT_APP_DEPLOYED_API_URL }}
+    REACT_APP_LOCAL_API_URL: ${{ secrets.REACT_APP_LOCAL_API_URL }}
     REACT_APP_LOCAL_API_URL: ${{ secrets.REACT_APP_LOCAL_API_URL }}
     REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
     REACT_APP_DEPLOYED_URL: ${{ secrets.REACT_APP_DEPLOYED_URL }} 
