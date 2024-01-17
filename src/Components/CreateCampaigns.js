@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import campaign from "../assets/images/campaign.png";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -38,5 +38,5 @@ export default function CreateCampaigns() {
         </div>
       </div>
     </div>
-  )
+  );
 }
