@@ -577,14 +577,6 @@ video {
   top: 5.25rem;
 }
 
-.top-\[7\.25rem\]{
-  top: 7.25rem;
-}
-
-.top-\[7\.75rem\]{
-  top: 7.75rem;
-}
-
 .col-span-2{
   grid-column: span 2 / span 2;
 }
@@ -664,10 +656,6 @@ video {
 
 .mb-5{
   margin-bottom: 1.25rem;
-}
-
-.mb-8{
-  margin-bottom: 2rem;
 }
 
 .ml-2{
@@ -846,10 +834,6 @@ video {
   height: 600px;
 }
 
-.h-\[797px\]{
-  height: 797px;
-}
-
 .h-auto{
   height: auto;
 }
@@ -884,10 +868,6 @@ video {
 
 .w-\[105px\]{
   width: 105px;
-}
-
-.w-\[110\%\]{
-  width: 110%;
 }
 
 .w-\[18px\]{
@@ -1032,10 +1012,6 @@ video {
   gap: 0.5rem;
 }
 
-.gap-20{
-  gap: 5rem;
-}
-
 .gap-3{
   gap: 0.75rem;
 }
@@ -1050,10 +1026,6 @@ video {
 
 .gap-7{
   gap: 1.75rem;
-}
-
-.gap-8{
-  gap: 2rem;
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]){
@@ -1382,10 +1354,6 @@ video {
 
 .pt-32{
   padding-top: 8rem;
-}
-
-.pt-5{
-  padding-top: 1.25rem;
 }
 
 .pt-8{
@@ -2146,16 +2114,8 @@ video {
     margin-top: 0.75rem;
   }
 
-  .lg\:h-\[797px\]{
-    height: 797px;
-  }
-
   .lg\:flex-row{
     flex-direction: row;
-  }
-
-  .lg\:justify-center{
-    justify-content: center;
   }
 
   .lg\:justify-around{
@@ -2252,11 +2212,6 @@ video {
   .\32xl\:my-5{
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
-  }
-
-  .\32xl\:my-6{
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
   }
 
   .\32xl\:mt-0{

@@ -13,7 +13,8 @@ import Campaign, {
 } from "../models/campaign.model.js";
 import User from "../models/user.model.js";
 import filesUpload from "../middlewares/upload.middleware.js";
-import { storage } from "../index.js";
+import { storage } from "../config/firebase.config.js";
+
 import { ref, uploadBytesResumable } from "firebase/storage";
 // import checkOrg from "../middlewares/checkOrg.middleware.js";
 import checkUser from "../middlewares/checkOrg.middleware.js";
