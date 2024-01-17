@@ -1,5 +1,5 @@
-import React from 'react'
-import joinUs from '../assets/images/joinUs.png'
+import React from "react";
+import joinUs from "../assets/images/joinUs.png";
 import { IoIosPeople } from "react-icons/io";
 
 export default function JoinUs() {
@@ -20,5 +20,5 @@ export default function JoinUs() {
         </div>
       </div>
     </div>
-  )
+  );
 }
