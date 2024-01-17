@@ -18,7 +18,7 @@ export default function Login() {
         setStatus("none");
         setClicked(true);
 
-        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/login`, {
+        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/login`, {
             method: "POST",
             body: JSON.stringify({
                 email: email,
