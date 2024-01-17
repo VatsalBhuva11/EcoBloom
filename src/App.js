@@ -9,7 +9,8 @@ export default function App() {
     return (
         <div>
             {/* <SignupInitial/> */}
-            <Home />
+            {/* <Home /> */}
+            <CommunityChat/>
             {/* <UserDashboard/> */}
             {/* <SignIn></SignIn> */}
             {/* <OrganizationAuth></OrganizationAuth> */}
