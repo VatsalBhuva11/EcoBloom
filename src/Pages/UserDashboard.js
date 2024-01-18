@@ -15,7 +15,7 @@ import { jwtDecode } from "jwt-decode";
 import HashLoader from "react-spinners/HashLoader";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
-import Logout from "./logout_pop.js"
+import Logout from "./logout_pop.js";
 import EditPassword from "./EditPassword.js";
 import { TbMessages } from "react-icons/tb";
 import { Link } from "react-router-dom";
@@ -31,11 +31,11 @@ const UserDashboard = () => {
     const handleNav = () => {
         setNav(!nav);
     };
-    const [showMyModel, setShowMyModal]=useState(false);
-    const handleOnClose = () => setShowMyModal(false)
+    const [showMyModel, setShowMyModal] = useState(false);
+    const handleOnClose = () => setShowMyModal(false);
 
-    const [showMyModel1, setShowMyModal1]=useState(false);
-    const handleOnClose1 = () => setShowMyModal1(false)
+    const [showMyModel1, setShowMyModal1] = useState(false);
+    const handleOnClose1 = () => setShowMyModal1(false);
 
     const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
@@ -60,6 +60,7 @@ const UserDashboard = () => {
                                 storage,
                                 userData.data.photoPathFirestore
                             );
+                            console.log(userData.data);
                             getDownloadURL(storageRef)
                                 .then(function (url) {
                                     setProfile(url);
@@ -118,10 +119,16 @@ const UserDashboard = () => {
                     </a>
                 </div>
                 <div className="flex justify-end items-center text-2xl sm:text-2xl md:text-3xl mr-1">
-                    <Link to='/store' className="mx-1 sm:mx-2 lg:mx-3 xl:mx-8 cursor-pointer hover:scale-110 duration-300">
+                    <Link
+                        to="/store"
+                        className="mx-1 sm:mx-2 lg:mx-3 xl:mx-8 cursor-pointer hover:scale-110 duration-300"
+                    >
                         <MdOutlineLocalGroceryStore />
                     </Link>
-                    <Link to='/chat' className="mx-1 sm:mx-3 lg:mx-5 xl:mx-8 cursor-pointer hover:scale-110 duration-300">
+                    <Link
+                        to="/chat"
+                        className="mx-1 sm:mx-3 lg:mx-5 xl:mx-8 cursor-pointer hover:scale-110 duration-300"
+                    >
                         <TbMessages />
                     </Link>
                     <div className="flex mx-2 sm:mx-5 lg:mx-8 items-center">
@@ -153,7 +160,10 @@ const UserDashboard = () => {
                             : "ease-up-down duration-0 fixed left-[-200%]"
                     }
                 >
-                    <a onClick={()=>setShowMyModal1(true)} className="p-4 border-b border-gray-600 hover:scale-100 duration-300">
+                    <a
+                        onClick={() => setShowMyModal1(true)}
+                        className="p-4 border-b border-gray-600 hover:scale-100 duration-300"
+                    >
                         Edit Password
                     </a>
                     <a className="p-4 border-b border-gray-600 hover:scale-100 duration-300">
@@ -548,7 +558,7 @@ const UserDashboard = () => {
                 </div>
             </div>
             <Logout onClose={handleOnClose} visible={showMyModel} />
-            <EditPassword onClose={handleOnClose1} visible={showMyModel1}/>
+            <EditPassword onClose={handleOnClose1} visible={showMyModel1} />
             <button
                 onClick={() => {
                     console.log("Auth.currentUser: ", auth.currentUser);

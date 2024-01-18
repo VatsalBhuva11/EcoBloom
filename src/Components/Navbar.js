@@ -69,7 +69,7 @@ const Navbar = () => {
                     {role === "user" || role === "org" ? (
                         <button
                             onClick={() => setShowMyModal(true)}
-                            className="bg-red-600 lg:text-[17px] md:text-[14px] font-bold lg:ml-4 md:ml-2 border border-white px-6 py-2 mb-0 rounded-lg lg:mr-12 md:mr-6"
+                            className="lg:text-[17px] md:text-[14px] font-bold lg:ml-4 md:ml-2 border border-white px-6 py-2 mb-0 rounded-lg lg:mr-12 md:mr-6 bg-red-500"
                         >
                             Logout
                         </button>
@@ -118,9 +118,18 @@ const Navbar = () => {
                                 ? "Dashboard"
                                 : "Login"}
                         </Link>
-                        <Link to="/signup" className="p-4 ">
-                            Sign Up
-                        </Link>
+                        {role === "user" || role === "org" ? (
+                            <button
+                                onClick={() => setShowMyModal(true)}
+                                className="p-4 border-b border-gray-100 bg-red-500"
+                            >
+                                Logout
+                            </button>
+                        ) : (
+                            <Link to="/signup" className="p-4 ">
+                                Sign Up
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>
