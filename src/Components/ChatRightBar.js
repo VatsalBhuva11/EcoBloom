@@ -4,11 +4,11 @@ import member from "../assets/images/member.png";
 import deleteicon from "../assets/images/delete.png";
 
 export default function ChatRightBar() {
-  return (
-    <div className="h-screen">
-      <div className="flex">
-        <div className=" hidden xl:flex  bg-[#0f1035] w-[100%] flex-col h-screen pb-2 border-t border-[#eef0e5]">
-          {/* <div className="flex justify-between items-center mt-5 mb-5 p-[1.5rem] border-b-2 border-b-gray-300">
+    return (
+        <div className='h-screen'>
+            <div className='flex'>
+                <div className=' hidden xl:flex  bg-[#0f1035] w-[100%] flex-col h-screen pb-2 border-[#eef0e5]'>
+                    {/* <div className="flex justify-between items-center mt-5 mb-5 p-[1.5rem] border-b-2 border-b-gray-300">
                         <div className=' text-[25px] font-inter text-gray-300'>Group Info</div>
                         <img className='w-[18px] h-[22px] 2xl:w-[24px] 2xl:h-[32px] cursor-pointer hover:scale-105 duration-300 rounded-full ' src={arrow} alt="" />
                     </div> */}

@@ -20,7 +20,7 @@ const Navbar = () => {
       <ul className='hidden md:flex md:items-center'>
         <a className=' lg:text-[23px] md:text-[20px] lg:mx-6 md:mx-3' href="">Home</a>
         <a className='lg:text-[23px] md:text-[20px] lg:mx-6 md:mx-3' href="">About</a>
-        <a className='lg:text-[23px] md:text-[20px] lg:mx-6 md:mx-3' href="">Contact</a>
+        <Link to='/store' className='lg:text-[23px] md:text-[20px] lg:mx-6 md:mx-3' >Store</Link>
         <Link to='/login'>
         <button className='lg:text-[17px] md:text-[14px] lg:ml-6 lg:mr-4 md:ml-3 md:mr-2 font-bold border  border-white px-7 py-2 mb-0 rounded-lg'>Login</button>
         </Link>
@@ -38,7 +38,7 @@ const Navbar = () => {
         <div className=' uppercase p-4 grid grid-cols-1 text-[18px]'>
           <a className='p-4 border-b border-gray-100'>Home</a>
           <a className='p-4 border-b border-gray-100'>About</a>
-          <a className='p-4 border-b border-gray-100'>Contact</a>
+          <Link to='/store' className='p-4 border-b border-gray-100'>Store</Link>
           <Link to='/login' className='p-4 border-b border-gray-100'>Login</Link>
           <Link to='/signup' className='p-4 '>Sign Up</Link>
         </div>

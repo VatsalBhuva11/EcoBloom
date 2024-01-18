@@ -13,6 +13,7 @@ import CreateCampaigns from "../Components/CreateCampaigns";
 import Footer from "../Components/Footer";
 import UserDashboard from "./UserDashboard";
 import OrgSignup from "./OrgSignup";
+import Store from "./Store";
 
 export default function Home() {
     return (
@@ -39,7 +40,8 @@ export default function Home() {
                     <Route path="/signup/user" element={<UserSignup />} />
                     <Route path="/user/dashboard" element={<UserDashboard />} />
                     <Route path="/signup/org" element={<OrgSignup />} />
-                </Routes>
+                    <Route path =  "/store" element={<Store/>}/>
+                   </Routes>
             </BrowserRouter>
         </div>
     );
