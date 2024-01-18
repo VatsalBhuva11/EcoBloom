@@ -18,10 +18,6 @@ export default function Login() {
         setStatus("none");
         setClicked(true);
 
-        const role = auth.currentUser.getIdTokenResult().then((tokenResult) => {
-            return tokenResult.claims.role;
-        });
-
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in

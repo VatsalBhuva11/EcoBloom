@@ -9,8 +9,8 @@ export default function OrgSignup() {
         formData.append("name", "testOrg");
         formData.append("email", "testOrg@gmail.com");
         formData.append("password", "testOrg");
-        let email = "testOrg@gmail.com";
-        let password = "testOrg";
+        const email = "testOrg@gmail.com";
+        const password = "testOrg";
 
         fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/org/register`, {
             method: "POST",
@@ -21,17 +21,20 @@ export default function OrgSignup() {
                 if (data.status === "error") {
                     throw new Error("Invalid form input. Please check again.");
                 } else {
+                    console.log("Success registration on DB:", data);
                     createUserWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                             // Signed Up
-                            console.log("Signed up org!", userCredential.user);
+                            console.log(
+                                "Signed up org on firebase!",
+                                userCredential.user
+                            );
                         })
                         .catch((error) => {
                             const errorCode = error.code;
                             const errorMessage = error.message;
                             console.log(error);
                         });
-                    console.log("Success:", data);
                 }
             })
             .catch((error) => {
