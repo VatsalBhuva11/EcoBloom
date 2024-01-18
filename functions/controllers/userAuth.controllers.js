@@ -17,19 +17,50 @@ const router = express.Router();
 // Create a new user
 router.post("/register", async (req, res) => {
     try {
-        const { name, email, password, phone } = req.body;
-        const file = req.files[0];
-        const filename = file.originalname;
+        const { name, email, phone, photoURL } = req.body;
 
         //email variable, update record in DB
-        if (!name || !email || !password || !file) {
+        if (!name || !email) {
             throw new Error(
                 "Following fields are mandatory: name, email, password, photo"
             );
         } else {
-            if (password.length < 6) {
-                response_400(res, "Password length must be atleast 6.");
+            if (photoURL) {
+                const response = await fetch(photoURL);
+                const buffer = await response.buffer();
+                const storagePath = `/user/${email}/profile.jpg`;
+                const storageRef = ref(storage, storagePath);
+                const metadata = {
+                    contentType: "image/jpeg",
+                };
+                const snapshot = await uploadBytesResumable(
+                    storageRef,
+                    buffer,
+                    metadata
+                );
+                if (snapshot.state === "success") {
+                    const user = await User.create({
+                        name,
+                        email,
+                        photoPathFirestore: storagePath,
+                        phone,
+                    });
+                    console.log("Successfully created new user in DB!");
+                    response_200(res, "Successfully created new user in DB");
+                } else {
+                    response_500(
+                        res,
+                        "Error occurred while uploading user file"
+                    );
+                }
             } else {
+                if (!req.files[0]) {
+                    throw new Error(
+                        "Following fields are mandatory: name, email, password, photo"
+                    );
+                }
+                const file = req.files[0];
+                const filename = file.originalname;
                 const extension = filename.split(".").pop();
                 if (
                     extension !== "png" &&
