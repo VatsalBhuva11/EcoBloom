@@ -23,10 +23,18 @@ export default function Login() {
                 // Signed in
                 const user = userCredential.user;
                 console.log(user);
-                setClicked(false);
+                // redirect based on role
                 auth.currentUser.getIdTokenResult().then((tokenResult) => {
-                    console.log(tokenResult.claims);
-                    window.location.href = "/user/dashboard";
+                    setClicked(false);
+                    if (tokenResult.claims.role === "user") {
+                        window.location.href = "/user/dashboard";
+                    } else if (tokenResult.claims.role === "org") {
+                        window.location.href = "/org/dashboard";
+                    } else {
+                        setStatus("failure");
+                        console.log("Error: Invalid role");
+                        window.location.href = "/login";
+                    }
                 });
             })
             .catch((error) => {
