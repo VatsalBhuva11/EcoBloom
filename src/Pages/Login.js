@@ -27,9 +27,9 @@ export default function Login() {
                 auth.currentUser.getIdTokenResult().then((tokenResult) => {
                     setClicked(false);
                     if (tokenResult.claims.role === "user") {
-                        window.location.href = "/user/dashboard";
+                        window.location.replace("/user/dashboard");
                     } else if (tokenResult.claims.role === "org") {
-                        window.location.href = "/org/dashboard";
+                        window.location.replace("/org/dashboard");
                     } else {
                         setStatus("failure");
                         console.log("Error: Invalid role");
