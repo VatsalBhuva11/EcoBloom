@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { CiBadgeDollar } from "react-icons/ci";
-import { FaRegEnvelope } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa";
 import { TiArrowSortedUp } from "react-icons/ti";
 import { TiArrowSortedDown } from "react-icons/ti";
@@ -15,7 +13,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { jwtDecode } from "jwt-decode";
 import HashLoader from "react-spinners/HashLoader";
-import { signOut } from "firebase/auth";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
 import Logout from "./logout_pop.js";
@@ -41,30 +38,42 @@ const UserDashboard = () => {
     const [loader, setLoader] = useState(true);
 
     useEffect(() => {
-        const token = localStorage.getItem("accountData");
-        const userData = jwtDecode(token);
-        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/user/${userData.userId}`)
-            .then((userData) => userData.json())
-            .then((userData) => {
-                const storageRef = ref(
-                    storage,
-                    userData.data.photoPathFirestore
-                );
-                getDownloadURL(storageRef)
-                    .then(function (url) {
-                        setProfile(url);
-                        setName(userData.data.name);
-                        setCommunities(userData.data.communities);
-                        setLoader(false);
-                    })
-                    .catch(function (error) {
-                        console.error(error);
-                    });
-            })
-            .catch((err) => {
-                console.error(err);
-                setName("ERROR");
-            });
+        if (auth.currentUser) {
+            auth.currentUser
+                .getIdTokenResult()
+                .then((tokenResult) => {
+                    return tokenResult.claims.userId;
+                })
+                .then((userId) => {
+                    fetch(
+                        `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
+                    )
+                        .then((userData) => userData.json())
+                        .then((userData) => {
+                            const storageRef = ref(
+                                storage,
+                                userData.data.photoPathFirestore
+                            );
+                            getDownloadURL(storageRef)
+                                .then(function (url) {
+                                    setProfile(url);
+                                    setName(userData.data.name);
+                                    setCommunities(userData.data.communities);
+                                    setLoader(false);
+                                })
+                                .catch(function (error) {
+                                    console.error(error);
+                                });
+                        })
+                        .catch((err) => {
+                            console.error("ERROR WHILE FETCHING: ", err);
+                            setName("ERROR");
+                        });
+                })
+                .catch((err) => {
+                    console.error("ERROR IN auth.currentUser: ", err);
+                });
+        }
     }, [user]);
 
     if (loading || loader) {
@@ -533,6 +542,17 @@ const UserDashboard = () => {
                 </div>
             </div>
             <Logout onClose={handleOnClose} visible={showMyModel} />
+            <button
+                onClick={() => {
+                    console.log("Auth.currentUser: ", auth.currentUser);
+                    auth.currentUser.getIdTokenResult().then((tokenResult) => {
+                        console.log(tokenResult.claims);
+                        // alert(tokenResult.claims);
+                    });
+                }}
+            >
+                Check claims
+            </button>
         </div>
     );
 };

@@ -4,9 +4,13 @@ import cors from "cors";
 import connectDB from "./config/db.config.js";
 import router from "./routes/index.routes.js";
 import { onRequest } from "firebase-functions/v2/https";
-import { beforeUserCreated } from "firebase-functions/v2/identity";
+import {
+    beforeUserCreated,
+    beforeUserSignedIn,
+} from "firebase-functions/v2/identity";
 import User from "./models/user.model.js";
-
+import Organization from "./models/organization.model.js";
+import { response_500 } from "./utils/responseCodes.js";
 dotenv.config();
 
 const app = express();
@@ -30,6 +34,8 @@ app.get("/api", (req, res) => {
 
 app.use("/api", router);
 
+export const ecobloom = onRequest({ cors: true }, app);
+
 export const beforecreated = beforeUserCreated(async (event) => {
     const checkUser = await User.findOne({ email: event.data.email });
     console.log("EVENT: ", event);
@@ -47,5 +53,34 @@ export const beforecreated = beforeUserCreated(async (event) => {
     };
 });
 
-export const ecobloom = onRequest({ cors: true }, app);
-// export { storage };
+export const beforesignin = beforeUserSignedIn(async (event) => {
+    try {
+        const email = event.data.email;
+        const checkUser = await User.findOne({ email });
+        if (checkUser) {
+            return {
+                displayName: checkUser.name,
+                customClaims: {
+                    role: "user",
+                    userId: checkUser._id,
+                },
+            };
+        } else {
+            const checkOrg = await Organization.findOne({ email });
+            return {
+                displayName: checkOrg.name,
+                customClaims: {
+                    role: "org",
+                    orgId: checkOrg._id,
+                },
+            };
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(
+            "Error",
+            "Error occurred while logging in organization",
+            err
+        );
+    }
+});

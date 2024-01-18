@@ -45,7 +45,7 @@ async function uploadFile(email, file, extensions, paths) {
     }
 }
 
-router.post("/register", filesUpload, async (req, res) => {
+router.post("/register", async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const files = req.files; //logo, banner, document
@@ -118,35 +118,6 @@ router.post("/register", filesUpload, async (req, res) => {
     } catch (err) {
         console.log(err);
         res.send(err);
-    }
-});
-
-router.post("/login", async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        if (!email || !password) {
-            response_400(res, "Email and password are required.");
-        } else {
-            const checkOrg = await Organization.findOne({ email });
-            if (!checkOrg) {
-                response_404(
-                    res,
-                    "Organization not found. Please register first."
-                );
-            } else {
-                const token = jwt.sign(
-                    {
-                        name: checkOrg.name,
-                        orgId: checkOrg._id,
-                    },
-                    process.env.JWT_SECRET_KEY
-                );
-                response_200(res, "Token generated", token);
-            }
-        }
-    } catch (err) {
-        console.log(err);
-        response_500(res, "Error occurred while logging in organization", err);
     }
 });
 
