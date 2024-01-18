@@ -66,8 +66,8 @@ router.get("/:userId", async (req, res) => {
     }
 });
 
-//updating the organization's details (logo, banner only possible)
-router.patch("/:userId", checkUser, filesUpload, async (req, res) => {
+//updating the user's details (profile only possible)
+router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
     const userId = req.params.userId;
     const file = req.files[0];
     const filename = file.originalname;
@@ -162,14 +162,6 @@ router.post("/join/:communityId", async (req, res) => {
     } catch (err) {
         console.log(err);
         response_500(res, "Error occurred while joining community", err);
-    }
-});
-
-router.get("/testMiddleware", checkUser, async (req, res) => {
-    try {
-        res.json("OK");
-    } catch (err) {
-        res.json("ERROR");
     }
 });
 
