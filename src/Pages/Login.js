@@ -3,7 +3,10 @@ import login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+    fetchSignInMethodsForEmail,
+    signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
@@ -12,6 +15,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [clicked, setClicked] = useState(false);
     const [status, setStatus] = useState("none"); // ["none", "failure"] , redirect upon success
+    const [message, setMessage] = useState("");
     const [user, loading, error] = useAuthState(auth);
 
     function emailSignIn(event) {
@@ -33,6 +37,9 @@ export default function Login() {
                         window.location.replace("/org/dashboard");
                     } else {
                         setStatus("failure");
+                        setMessage(
+                            "Error occurred while logging in. Please check your credentials/network."
+                        );
                         console.log("Error: Invalid role");
                         window.location.href = "/login";
                     }
@@ -42,6 +49,9 @@ export default function Login() {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 setStatus("failure");
+                setMessage(
+                    "Error occurred while logging in. Please check your credentials/network."
+                );
                 setClicked(false);
                 console.log(error);
             });
@@ -55,17 +65,30 @@ export default function Login() {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential =
-                    GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                console.log(user);
-                window.location.replace("/user/dashboard");
+                auth.currentUser.getIdTokenResult().then((tokenResult) => {
+                    setClicked(false);
+                    if (tokenResult.claims.role === "user") {
+                        window.location.replace("/user/dashboard");
+                    } else if (tokenResult.claims.role === "org") {
+                        window.location.replace("/org/dashboard");
+                    } else {
+                        setStatus("failure");
+                        setMessage(
+                            "Error occurred while logging in. Please check your credentials/network."
+                        );
+                        console.log("Error: Invalid role");
+                        window.location.href = "/login";
+                    }
+                });
                 // ...
             })
             .catch((error) => {
                 // Handle Errors here.
+                setClicked(false);
+                setStatus("failure");
+                setMessage(
+                    "Please register using email/password first using the sign-up form."
+                );
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(error);
@@ -138,9 +161,7 @@ export default function Login() {
                                         />
                                         {status === "failure" ? (
                                             <p class="text-sm text-red-500">
-                                                Error occurred while logging in.
-                                                Please check your
-                                                credentials/network.
+                                                {message}
                                             </p>
                                         ) : null}
                                     </div>

@@ -57,23 +57,48 @@ export const beforesignin = beforeUserSignedIn(async (event) => {
     try {
         const email = event.data.email;
         const checkUser = await User.findOne({ email });
-        if (checkUser) {
-            return {
-                displayName: checkUser.name,
-                customClaims: {
-                    role: "user",
-                    userId: checkUser._id,
-                },
-            };
-        } else {
+        if (event.additionalUserInfo.providerId === "google.com") {
             const checkOrg = await Organization.findOne({ email });
-            return {
-                displayName: checkOrg.name,
-                customClaims: {
-                    role: "org",
-                    orgId: checkOrg._id,
-                },
-            };
+            if (checkUser) {
+                return {
+                    displayName: checkUser.name,
+                    customClaims: {
+                        role: "user",
+                        userId: checkUser._id,
+                    },
+                };
+            } else if (checkOrg) {
+                return {
+                    displayName: checkUser.name,
+                    customClaims: {
+                        role: "org",
+                        orgId: checkUser._id,
+                    },
+                };
+            } else {
+                throw new Error(
+                    "Please register using email/password first on the sign-up page."
+                );
+            }
+        } else if (event.additionalUserInfo.providerId === "password") {
+            if (checkUser) {
+                return {
+                    displayName: checkUser.name,
+                    customClaims: {
+                        role: "user",
+                        userId: checkUser._id,
+                    },
+                };
+            } else {
+                const checkOrg = await Organization.findOne({ email });
+                return {
+                    displayName: checkOrg.name,
+                    customClaims: {
+                        role: "org",
+                        orgId: checkOrg._id,
+                    },
+                };
+            }
         }
     } catch (err) {
         console.log(err);
