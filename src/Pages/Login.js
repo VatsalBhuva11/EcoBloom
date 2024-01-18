@@ -3,10 +3,7 @@ import login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { useState } from "react";
-import {
-    fetchSignInMethodsForEmail,
-    signInWithEmailAndPassword,
-} from "firebase/auth";
+import { linkWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
@@ -62,9 +59,53 @@ export default function Login() {
         googleProvider.setCustomParameters({
             prompt: "select_account",
         });
+        // linkWithPopup(auth.currentUser, googleProvider)
+        //     .then((result) => {
+        //         // This gives you a Google Access Token. You can use it to access the Google API.
+        //         console.log("Link result: ", result);
+        //         auth.currentUser.getIdTokenResult().then((tokenResult) => {
+        //             setClicked(false);
+        //             if (tokenResult.claims.role === "user") {
+        //                 window.location.replace("/user/dashboard");
+        //             } else if (tokenResult.claims.role === "org") {
+        //                 window.location.replace("/org/dashboard");
+        //             } else {
+        //                 setStatus("failure");
+        //                 setMessage(
+        //                     "Error occurred while logging in. Please check your credentials/network."
+        //                 );
+        //                 console.log("Error: Invalid role");
+        //                 window.location.href = "/login";
+        //             }
+        //         });
+        //         // ...
+        //     })
+        //     .catch((error) => {
+        //         // Handle Errors here.
+        //         setClicked(false);
+        //         setStatus("failure");
+        //         setMessage(
+        //             "Please register using email/password first using the sign-up form."
+        //         );
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         console.log(error);
+        //         // The email of the user's account used.
+        //         const email = error.email;
+        //         // The AuthCredential type that was used.
+        //         const credential =
+        //             GoogleAuthProvider.credentialFromError(error);
+        //         // ...
+        //     });
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
+                // new form data with the email, name, and photo as google photo
+                // register user in the backend, no need to link with existing auth provider
+                // linkWithCredential option once user logged in through google
+                // linkWithGoogle option once user logged in through Creds
+                console.log(result);
+
                 auth.currentUser.getIdTokenResult().then((tokenResult) => {
                     setClicked(false);
                     if (tokenResult.claims.role === "user") {
@@ -243,7 +284,7 @@ export default function Login() {
                                             ></path>
                                         </svg>
                                     </div>
-                                    <span class="text-sm text-google-text-gray tracking-wider ">
+                                    <span class="text-sm text-google-text-gray">
                                         Sign in with Google
                                     </span>
                                 </button>

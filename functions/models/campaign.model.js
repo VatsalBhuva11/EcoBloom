@@ -19,6 +19,16 @@ const Campaign = new Schema({
             ref: "User",
         },
     ],
+    registeredUsersCount: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    verifiedUsersCount: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
     address: {
         type: String,
         required: true,

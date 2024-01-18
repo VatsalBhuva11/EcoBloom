@@ -44,3 +44,4 @@ const Organization = new Schema({
 });
 
 export default mongoose.model("organization", Organization);
+export { Organization };
