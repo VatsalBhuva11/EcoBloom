@@ -14,6 +14,7 @@ import Footer from "../Components/Footer";
 import UserDashboard from "./UserDashboard";
 import OrgSignup from "./OrgSignup";
 import Store from "./Store";
+import CommunityChat from "./CommunityChat";
 
 export default function Home() {
     return (
@@ -41,6 +42,7 @@ export default function Home() {
                     <Route path="/user/dashboard" element={<UserDashboard />} />
                     <Route path="/signup/org" element={<OrgSignup />} />
                     <Route path =  "/store" element={<Store/>}/>
+                    <Route path = "/chat" element={<CommunityChat/>}/>
                    </Routes>
             </BrowserRouter>
         </div>

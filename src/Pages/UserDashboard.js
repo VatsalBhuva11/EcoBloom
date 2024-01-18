@@ -18,6 +18,7 @@ import { getDownloadURL, ref } from "firebase/storage";
 import Logout from "./logout_pop.js"
 import EditPassword from "./EditPassword.js";
 import { TbMessages } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -117,12 +118,12 @@ const UserDashboard = () => {
                     </a>
                 </div>
                 <div className="flex justify-end items-center text-2xl sm:text-2xl md:text-3xl mr-1">
-                    <a className="mx-1 sm:mx-2 lg:mx-3 xl:mx-8 cursor-pointer hover:scale-110 duration-300">
+                    <Link to='/store' className="mx-1 sm:mx-2 lg:mx-3 xl:mx-8 cursor-pointer hover:scale-110 duration-300">
                         <MdOutlineLocalGroceryStore />
-                    </a>
-                    <a className="mx-1 sm:mx-3 lg:mx-5 xl:mx-8 cursor-pointer hover:scale-110 duration-300">
+                    </Link>
+                    <Link to='/chat' className="mx-1 sm:mx-3 lg:mx-5 xl:mx-8 cursor-pointer hover:scale-110 duration-300">
                         <TbMessages />
-                    </a>
+                    </Link>
                     <div className="flex mx-2 sm:mx-5 lg:mx-8 items-center">
                         <img
                             className="w-[60px] mx-4 rounded-full hover:scale-110 duration-300"
