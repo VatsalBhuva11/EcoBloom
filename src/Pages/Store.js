@@ -27,7 +27,7 @@ const Store = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-12 content-center mt-8 ml-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-12 content-center mt-8 ml-8 pb-6">
           <div class="bg-[#DFE4C5] rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col">
             <div>
               <img src={shirt} className="p-2" alt="zipper" />
