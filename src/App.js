@@ -11,7 +11,6 @@ export default function App() {
         <div>
             {/* <SignupInitial/> */}
             <Home />
-            {/* <Store/> */}
             {/* <CommunityChat/> */}
             {/* <UserDashboard/> */}
             {/* <SignIn></SignIn> */}

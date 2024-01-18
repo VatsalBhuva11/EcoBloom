@@ -1,11 +1,13 @@
-import React from 'react'
+import {React,useState} from 'react'
 import { FaArrowLeft } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import Create_Campaign_Card from './Create_Campaign_Card';
 
 const CreateCampaign = () => {
+  const [showMyModel, setShowMyModal]=useState(false);
+  const handleOnClose = () => setShowMyModal(false)
   return (
-    <div className='w-full h-screen p-8 sm:p-12 lg:p-20 bg-[#EEF0E5] flex flex-col justify-evenly gap-1 sm:gap-3'>
-      
+    <div className='w-screen h-screen p-8 sm:p-12 lg:p-20 bg-[#EEF0E5] flex flex-col justify-evenly gap-1 sm:gap-3'>
         <div className='flex items-center gap-5 text-[#0F1035]'>
           <a className='text-2xl sm:text-4xl lg:text-5xl mt-1 sm:mt-2 lg:mt-3 cursor-pointer hover:scale-110 duration-300'>
             <FaArrowLeft/>
@@ -89,14 +91,14 @@ const CreateCampaign = () => {
           </div>
         </div>
         <div className='flex gap-10'>
-          <button className='text-xl sm:text-2xl bg-[#0F1035] text-[#EEF0E5] w-40 h-12 rounded-lg hover:scale-105 duration-300'>
+          <button onClick={()=>setShowMyModal(true)} className='text-xl sm:text-2xl bg-[#0F1035] text-[#EEF0E5] w-40 h-12 rounded-lg'>
             CREATE
           </button>
-          <button className='text-xl sm:text-2xl bg-[#EEF0E5] text-[#0F1035] w-40 h-12 rounded-lg border-2 border-[#0F1035] hover:scale-105 duration-300'>
+          <button className='text-xl sm:text-2xl bg-[#EEF0E5] text-[#0F1035] w-40 h-12 rounded-lg border-2 border-[#0F1035]'>
             CANCEL
           </button>
         </div>
-      
+      <Create_Campaign_Card onClose={handleOnClose} visible={showMyModel}/>
     </div>
   )
 }
