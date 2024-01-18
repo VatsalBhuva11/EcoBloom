@@ -8,15 +8,13 @@ import {
 } from "../utils/responseCodes.js";
 import Community from "../models/community.model.js";
 import Campaign from "../models/campaign.model.js";
-import filesUpload from "../middlewares/upload.middleware.js";
 import { storage } from "../config/firebase.config.js";
 import { ref, uploadBytesResumable } from "firebase/storage";
-import checkOrg from "../middlewares/checkOrg.middleware.js";
 
 const router = express.Router();
 
 //for organization profile
-router.get("/:orgName", async (req, res) => {
+export const getOrgDetails = async (req, res) => {
     try {
         const orgName = req.params.orgName;
         const org = await Organization.findOne({ name: orgName });
@@ -35,10 +33,10 @@ router.get("/:orgName", async (req, res) => {
                 organization: org.id,
             });
             const upcomingCampaigns = campaigns.filter(
-                (campaign) => campaign.status === "upcoming"
+                (campaign) => campaign.status.toLowerCase() === "upcoming"
             );
             const completedCampaigns = campaigns.filter(
-                (campaign) => campaign.status === "completed"
+                (campaign) => campaign.status.toLowerCase() === "completed"
             );
 
             let data = {
@@ -61,10 +59,10 @@ router.get("/:orgName", async (req, res) => {
             err
         );
     }
-});
+};
 
 //updating the organization's details (logo, banner only possible)
-router.patch("/:orgName", checkOrg, filesUpload, async (req, res) => {
+export const updateOrgPics = async (req, res) => {
     const files = req.files; //logo, banner
     const extensions = files.map((file) => file.originalname.split(".").pop());
     const validate = extensions.filter(
@@ -121,7 +119,7 @@ router.patch("/:orgName", checkOrg, filesUpload, async (req, res) => {
                 response_500(res, "Error creating organization", err);
             });
     }
-});
+};
 
 async function uploadFile(email, file, extensions, paths) {
     const fileType = file.fieldname.toLowerCase().replace("optional", "");

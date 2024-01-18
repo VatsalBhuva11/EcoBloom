@@ -4,7 +4,7 @@ import {
     response_500,
 } from "../utils/responseCodes.js";
 import { auth } from "../config/firebase.config.js";
-export default async function checkUser(req, res, next) {
+export default async function checkOrg(req, res, next) {
     try {
         if (auth.currentUser) {
             auth.currentUser.getIdTokenResult().then((idTokenResult) => {
@@ -15,7 +15,7 @@ export default async function checkUser(req, res, next) {
                 }
             });
         } else {
-            response_400(res, "User not logged in");
+            response_400(res, "Org not logged in");
         }
     } catch (err) {
         console.log(err);
