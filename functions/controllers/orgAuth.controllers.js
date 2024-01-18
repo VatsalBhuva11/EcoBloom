@@ -12,7 +12,6 @@ import {
     response_500,
 } from "../utils/responseCodes.js";
 import Community from "../models/community.model.js";
-import filesUpload from "../middlewares/upload.middleware.js";
 
 dotenv.config();
 const router = express.Router();
@@ -84,6 +83,8 @@ router.post("/register", async (req, res) => {
                     );
                 }
 
+                //try syncrhonously
+
                 Promise.all(filesToUpload)
                     .then((values) => {
                         console.log(values);
@@ -100,9 +101,6 @@ router.post("/register", async (req, res) => {
                             organization: org.id,
                             orgName: org.name,
                         });
-                        console.log(
-                            "Successfully created new organization in DB!"
-                        );
                         response_200(
                             res,
                             "Successfully created new organization in DB",

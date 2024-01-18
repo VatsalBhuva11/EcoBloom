@@ -77,10 +77,6 @@ export const beforesignin = beforeUserSignedIn(async (event) => {
         }
     } catch (err) {
         console.log(err);
-        response_500(
-            "Error",
-            "Error occurred while logging in organization",
-            err
-        );
+        throw new Error(err);
     }
 });
