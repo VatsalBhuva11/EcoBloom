@@ -19,6 +19,7 @@ import Logout from "./logout_pop.js";
 import EditPassword from "./EditPassword.js";
 import { TbMessages } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -41,7 +42,10 @@ const UserDashboard = () => {
     const [user, loading, error] = useAuthState(auth);
     const [profile, setProfile] = useState(person);
     const [communities, setCommunities] = useState([]);
+    const [campaigns, setCampaigns] = useState([]);
     const [loader, setLoader] = useState(true);
+
+    moment().format("MMMM Do YYYY");
 
     useEffect(() => {
         if (auth.currentUser) {
@@ -73,7 +77,26 @@ const UserDashboard = () => {
                                 });
                         })
                         .catch((err) => {
-                            console.error("ERROR WHILE FETCHING: ", err);
+                            console.error(
+                                "ERROR WHILE FETCHING USER DATA: ",
+                                err
+                            );
+                            setName("ERROR");
+                        });
+                    fetch(
+                        `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
+                    )
+                        .then((campaignData) => {
+                            return campaignData.json();
+                        })
+                        .then((campaigns) => {
+                            setCampaigns(campaigns.data);
+                        })
+                        .catch((err) => {
+                            console.error(
+                                "ERROR WHILE CAMPAIGNS USER DATA: ",
+                                err
+                            );
                             setName("ERROR");
                         });
                 })
@@ -325,7 +348,55 @@ const UserDashboard = () => {
                             UPCOMING CAMPAIGNS
                         </p>
                         <div className="border-black border-[1px] flex flex-col gap-5 bg-[#E1E5CD] pt-1">
-                            <a href="">
+                            {campaigns ? (
+                                campaigns.map((campaign) => {
+                                    return (
+                                        <a href="">
+                                            <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
+                                                <div className="text-6xl ">
+                                                    <SlCalender />
+                                                </div>
+                                                <div className="flex flex-col">
+                                                    <p className="text-black text-[1.15rem] ">
+                                                        {
+                                                            campaign
+                                                                .organization
+                                                                .name
+                                                        }
+                                                    </p>
+                                                    <div className="flex justify-between items-baseline gap-3 ">
+                                                        <div>
+                                                            <div className="text-[0.9rem]">
+                                                                {moment(
+                                                                    campaign.startDate
+                                                                ).format(
+                                                                    "MMMM Do YYYY"
+                                                                )}
+                                                            </div>
+                                                            <div className="text-[0.7rem]">
+                                                                {
+                                                                    campaign.registeredUsersCount
+                                                                }{" "}
+                                                                Peoples joined
+                                                            </div>
+                                                        </div>
+                                                        <div className="flex justify-center items-center text-[20px] gap-1">
+                                                            Join now{" "}
+                                                            <div className="mt-1">
+                                                                <FaLongArrowAltRight />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    );
+                                })
+                            ) : (
+                                <div>No upcoming campaigns!</div>
+                            )}
+
+                            {/* <a href="">
                                 <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
                                     <div className="text-6xl ">
                                         <SlCalender />
@@ -436,7 +507,7 @@ const UserDashboard = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </a> */}
                         </div>
                         <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem] border-4 border-[#0f1035] 2xl:h-[3.20rem] w-56 2xl:w-64 2xl:my-5 hover:scale-105 duration-300">
                             View More{" "}

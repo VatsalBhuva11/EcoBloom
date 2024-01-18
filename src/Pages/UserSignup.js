@@ -127,7 +127,6 @@ export default function UserSignup() {
                                             id="tel"
                                             class="bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                                             placeholder="0000000000"
-                                            required=""
                                         />
                                     </div>
                                     <div>
@@ -162,7 +161,7 @@ export default function UserSignup() {
                                             id="confirmPassword"
                                             placeholder="••••••••"
                                             class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
-                                            required=""
+                                            required
                                             onChange={(e) =>
                                                 setConfirmPassword(
                                                     e.target.value

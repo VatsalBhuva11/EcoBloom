@@ -1392,6 +1392,22 @@ video {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
 }
 
+.fill-google-logo-blue{
+  fill: #4285f4;
+}
+
+.fill-google-logo-green{
+  fill: #34a853;
+}
+
+.fill-google-logo-red{
+  fill: #ea4335;
+}
+
+.fill-google-logo-yellow{
+  fill: #fbbc05;
+}
+
 .object-cover{
   object-fit: cover;
 }
@@ -1713,10 +1729,6 @@ video {
   letter-spacing: -0.025em;
 }
 
-.tracking-wider{
-  letter-spacing: 0.05em;
-}
-
 .text-\[\#010204\]{
   --tw-text-opacity: 1;
   color: rgb(1 2 4 / var(--tw-text-opacity));
@@ -1780,6 +1792,11 @@ video {
 .text-black{
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-google-text-gray{
+  --tw-text-opacity: 1;
+  color: rgb(60 64 67 / var(--tw-text-opacity));
 }
 
 .text-gray-100{

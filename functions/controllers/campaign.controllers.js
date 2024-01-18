@@ -1,6 +1,11 @@
 import { response_200, response_500 } from "../utils/responseCodes.js";
 import Campaign from "../models/campaign.model.js";
-import Organization from "../models/organization.model.js";
+import Organization, {
+    Organization as OrganizationSchema,
+} from "../models/organization.model.js";
+import mongoose from "mongoose";
+
+mongoose.model("Organization", OrganizationSchema);
 
 export const createCampaign = async (req, res) => {
     try {
@@ -39,22 +44,18 @@ export const createCampaign = async (req, res) => {
 //get upcoming campaigns
 export const upcomingCampaigns = async (req, res) => {
     try {
-        const communities = await Campaign.find({
-            status: "upcoming",
-        }).populate("campaigns");
-        communities.sort((a, b) => {
+        const campaigns = await Campaign.find({
+            status: "UPCOMING",
+        }).populate("organization");
+        campaigns.sort((a, b) => {
             return a.startDate - b.startDate;
         });
-        response_200(
-            res,
-            "Successfully fetched upcoming communities",
-            communities
-        );
+        response_200(res, "Successfully fetched upcoming campaigns", campaigns);
     } catch (err) {
         console.log(err);
         response_500(
             res,
-            "Error occurred while fetching upcoming communities",
+            "Error occurred while fetching upcoming campaigns",
             err
         );
     }
