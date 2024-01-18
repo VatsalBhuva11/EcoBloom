@@ -165,4 +165,12 @@ router.post("/join/:communityId", async (req, res) => {
     }
 });
 
+router.get("/testMiddleware", checkUser, async (req, res) => {
+    try {
+        res.json("OK");
+    } catch (err) {
+        res.json("ERROR");
+    }
+});
+
 export default router;

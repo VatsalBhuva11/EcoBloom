@@ -22,95 +22,24 @@ export default function Login() {
             return tokenResult.claims.role;
         });
 
-        if (role === "user") {
-            fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/login`, {
-                method: "POST",
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            })
-                .then((response) => {
-                    if (!response.ok) {
-                        setClicked(false);
-                        setStatus("failure");
-                        throw new Error(response.statusText);
-                    }
-                    return response.json();
-                })
-                .then((token) =>
-                    signInWithEmailAndPassword(auth, email, password)
-                        .then((userCredential) => {
-                            // Signed in
-                            const user = userCredential.user;
-                            localStorage.setItem("accountData", token.data);
-                            auth.currentUser
-                                .getIdTokenResult()
-                                .then((tokenResult) => {
-                                    console.log(tokenResult.claims);
-                                    window.location.href = "/user/dashboard";
-                                });
-                        })
-                        .catch((error) => {
-                            const errorCode = error.code;
-                            const errorMessage = error.message;
-                            setStatus("failure");
-                            console.log(error);
-                        })
-                )
-                .catch((err) => {
-                    setClicked(false);
-                    setStatus("failure");
-                    console.error(err);
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log(user);
+                setClicked(false);
+                auth.currentUser.getIdTokenResult().then((tokenResult) => {
+                    console.log(tokenResult.claims);
+                    window.location.href = "/user/dashboard";
                 });
-        } else {
-            fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/org/login`, {
-                method: "POST",
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
             })
-                .then((response) => {
-                    if (!response.ok) {
-                        setClicked(false);
-                        setStatus("failure");
-                        throw new Error(response.statusText);
-                    }
-                    return response.json();
-                })
-                .then((token) =>
-                    signInWithEmailAndPassword(auth, email, password)
-                        .then((userCredential) => {
-                            // Signed in
-                            const user = userCredential.user;
-                            localStorage.setItem("accountData", token.data);
-                            auth.currentUser
-                                .getIdTokenResult()
-                                .then((tokenResult) => {
-                                    console.log(tokenResult.claims);
-                                    window.location.href = "/org/dashboard";
-                                });
-                        })
-                        .catch((error) => {
-                            const errorCode = error.code;
-                            const errorMessage = error.message;
-                            setStatus("failure");
-                            console.log(error);
-                        })
-                )
-                .catch((err) => {
-                    setClicked(false);
-                    setStatus("failure");
-                    console.error(err);
-                });
-        }
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setStatus("failure");
+                setClicked(false);
+                console.log(error);
+            });
     }
 
     return (
