@@ -7,9 +7,9 @@ import Chatbar from '../Components/Chatbar'
 export default function CommunityChat() {
     return (
         <div className='flex justify-between'>
-            <div className="w-[25%]"><ChatLeftBar/></div>
-            <div className='w-[50%]'><Chatbar/></div>
-            <div className="w-[25%]"><ChatRightBar/></div>         
+            <div className="w-[20%]"><ChatLeftBar/></div>
+            <div className='w-[60%]'><Chatbar/></div>
+            <div className="w-[20%]"><ChatRightBar/></div>         
          
         </div>
     )
