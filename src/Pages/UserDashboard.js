@@ -15,7 +15,9 @@ import { jwtDecode } from "jwt-decode";
 import HashLoader from "react-spinners/HashLoader";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
-import Logout from "./logout_pop.js";
+import Logout from "./logout_pop.js"
+import EditPassword from "./EditPassword.js";
+import { TbMessages } from "react-icons/tb";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -28,8 +30,11 @@ const UserDashboard = () => {
     const handleNav = () => {
         setNav(!nav);
     };
-    const [showMyModel, setShowMyModal] = useState(false);
-    const handleOnClose = () => setShowMyModal(false);
+    const [showMyModel, setShowMyModal]=useState(false);
+    const handleOnClose = () => setShowMyModal(false)
+
+    const [showMyModel1, setShowMyModal1]=useState(false);
+    const handleOnClose1 = () => setShowMyModal1(false)
 
     const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
@@ -116,7 +121,7 @@ const UserDashboard = () => {
                         <MdOutlineLocalGroceryStore />
                     </a>
                     <a className="mx-1 sm:mx-3 lg:mx-5 xl:mx-8 cursor-pointer hover:scale-110 duration-300">
-                        <FaRegBell />
+                        <TbMessages />
                     </a>
                     <div className="flex mx-2 sm:mx-5 lg:mx-8 items-center">
                         <img
@@ -143,11 +148,11 @@ const UserDashboard = () => {
                 <div
                     className={
                         !nav1
-                            ? " flex flex-col cursor-pointer text-white text-2xl absolute right-10 top-[5.25rem] sm:w-[25%] border-r border-r-gray-900 bg-[#0f1035] ease-up-down duration-0"
+                            ? " flex flex-col cursor-pointer text-white text-2xl absolute right-10 top-[4.3rem] sm:top-[5.25rem] sm:w-[25%] border-r border-r-gray-900 bg-[#0f1035] ease-up-down duration-0"
                             : "ease-up-down duration-0 fixed left-[-200%]"
                     }
                 >
-                    <a className="p-4 border-b border-gray-600 hover:scale-100 duration-300">
+                    <a onClick={()=>setShowMyModal1(true)} className="p-4 border-b border-gray-600 hover:scale-100 duration-300">
                         Edit Password
                     </a>
                     <a className="p-4 border-b border-gray-600 hover:scale-100 duration-300">
@@ -434,7 +439,7 @@ const UserDashboard = () => {
             <div
                 className={
                     nav
-                        ? "absolute left-0 top-[5.25rem] flex flex-col h-[600px] border-r border-r-gray-900 ease-in-out duration-500 bg-[#0f1035]"
+                        ? "absolute left-0 top-[4.3rem] sm:top-[5.25rem] flex flex-col h-[600px] border-r border-r-gray-900 ease-in-out duration-500 bg-[#0f1035]"
                         : "fixed left-[-200%]"
                 }
             >
@@ -542,6 +547,7 @@ const UserDashboard = () => {
                 </div>
             </div>
             <Logout onClose={handleOnClose} visible={showMyModel} />
+            <EditPassword onClose={handleOnClose1} visible={showMyModel1}/>
             <button
                 onClick={() => {
                     console.log("Auth.currentUser: ", auth.currentUser);

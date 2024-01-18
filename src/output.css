@@ -619,8 +619,8 @@ video {
   top: 0px;
 }
 
-.top-\[5\.25rem\]{
-  top: 5.25rem;
+.top-\[4\.3rem\]{
+  top: 4.3rem;
 }
 
 .col-span-2{
@@ -934,6 +934,10 @@ video {
 
 .w-56{
   width: 14rem;
+}
+
+.w-96{
+  width: 24rem;
 }
 
 .w-\[100\%\]{
@@ -1379,6 +1383,10 @@ video {
 
 .p-6{
   padding: 1.5rem;
+}
+
+.p-7{
+  padding: 1.75rem;
 }
 
 .p-8{
@@ -2008,6 +2016,10 @@ video {
 }
 
 @media (min-width: 640px){
+  .sm\:top-\[5\.25rem\]{
+    top: 5.25rem;
+  }
+
   .sm\:m-7{
     margin: 1.75rem;
   }
