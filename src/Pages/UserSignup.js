@@ -208,7 +208,7 @@ export default function UserSignup() {
                                     )}
                                     {status === "success" ? (
                                         <a class="text-md text-green-500 font-bold">
-                                            Successfully registered user!{" "}
+                                            ✅ Successfully registered user!{" "}
                                             <a href="/login" class="underline">
                                                 Please login to continue.
                                             </a>
