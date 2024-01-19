@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useState } from "react";
+import Login_Card from "./Create_Account_Card.js";
 
 export default function UserSignup() {
     const [email, setEmail] = useState("");
@@ -40,6 +41,7 @@ export default function UserSignup() {
                             // Signed Up
                             setStatus("success");
                             setSignUpClicked(false);
+                            setShowMyModal(true)
                         })
                         .catch((error) => {
                             const errorCode = error.code;
@@ -57,7 +59,8 @@ export default function UserSignup() {
                 console.error("Error:", error);
             });
     }
-
+    const [showMyModel, setShowMyModal]=useState(false);
+    const handleOnClose = () => setShowMyModal(false)
     return (
         <div className="h-screen">
             <div className=" bg-[#EEF0E5]">
@@ -204,12 +207,12 @@ export default function UserSignup() {
                                         </button>
                                     )}
                                     {status === "success" ? (
-                                        <p class="text-md text-green-500 font-bold">
+                                        <a class="text-md text-green-500 font-bold">
                                             Successfully registered user!{" "}
                                             <a href="/login" class="underline">
                                                 Please login to continue.
                                             </a>
-                                        </p>
+                                        </a>
                                     ) : status === "failure" ? (
                                         <p class="text-md text-red-500">
                                             Error occurred while registering
@@ -259,6 +262,7 @@ export default function UserSignup() {
             >
                 Check claims
             </button>
+            <Login_Card onClose={handleOnClose} visible={showMyModel}/>
         </div>
     );
 }

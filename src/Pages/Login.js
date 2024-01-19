@@ -5,6 +5,7 @@ import { auth } from "../firebase.js";
 import { useState } from "react";
 import { linkWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Login_Card from "./Create_Account_Card.js";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 export default function Login() {
@@ -345,6 +346,7 @@ export default function Login() {
                     </div>
                 </div>
             </div>
+ 
         </div>
     );
 }
