@@ -54,7 +54,7 @@ const Orgprofile = () => {
                   The Technical Club Information Technology, Allahabad
                 </p>
                 <p className="text-[14px] sm:text-lg md:text-xl pt-1 sm:pt-1">
-                  Allahabad, Uttar Pradesh 2K Members
+                  Allahabad, Uttar Pradesh 3K Members
                 </p>
                 <div className="flex pt-3 md:pt-6  gap-3 sm:gap-4 md:gap-6 ">
                   <button className="border-solid border-2 border-[#0f1035] hover:scale-105 duration-300 bg-transparent  flex text-[#0f1035] rounded-3xl py-1 px-3 sm:py-1.5 sm:px-4 text-md sm:text-lg md:text-xl sm:gap-1 md:gap-2 font-semibold ">
