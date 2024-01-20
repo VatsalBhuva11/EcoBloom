@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FaRegBell } from "react-icons/fa";
 import { TiArrowSortedUp } from "react-icons/ti";
 import { TiArrowSortedDown } from "react-icons/ti";
 import person from "../assets/images/person.png";
@@ -7,11 +6,10 @@ import { PiHandCoinsBold } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa6";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
-import map from "../assets/images/map.png";
+// import map from "../assets/images/map.png";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
-import { jwtDecode } from "jwt-decode";
 import HashLoader from "react-spinners/HashLoader";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
@@ -20,7 +18,9 @@ import EditPassword from "./EditPassword.js";
 import { TbMessages } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import Maps_DashBoard from "../Components/Maps_Dashboard.js";
+import { useContext } from "react";
+import { ProfileContext } from "../Components/ProfileContextProvider.js";
+// import Maps_DashBoard from "../Components/Maps_Dashboard.js";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -39,11 +39,12 @@ const UserDashboard = () => {
     const [showMyModel1, setShowMyModal1] = useState(false);
     const handleOnClose1 = () => setShowMyModal1(false);
 
-    const [name, setName] = useState("");
+    // const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
-    const [profile, setProfile] = useState(person);
+    // const [profile, setProfile] = useState(person);
     const [communities, setCommunities] = useState([]);
     const [campaigns, setCampaigns] = useState([]);
+    const [profile, setProfile] = useContext(ProfileContext);
     const [loader, setLoader] = useState(true);
 
     moment().format("MMMM Do YYYY");
@@ -81,8 +82,18 @@ const UserDashboard = () => {
                             );
                             getDownloadURL(storageRef)
                                 .then(function (url) {
-                                    setProfile(url);
-                                    setName(data[0].data.name);
+                                    setProfile({
+                                        url,
+                                        name: data[0].data.name,
+                                    });
+                                    localStorage.setItem(
+                                        "profile",
+                                        JSON.stringify({
+                                            profileUrl: url,
+                                            profileName: data[0].data.name,
+                                        })
+                                    );
+                                    // setName(data[0].data.name);
                                     setCommunities(data[0].data.communities);
                                     setLoader(false);
                                     setCampaigns(data[1].data);
@@ -96,7 +107,6 @@ const UserDashboard = () => {
                                 "ERROR WHILE FETCHING USER DATA: ",
                                 err
                             );
-                            setName("ERROR");
                         });
                     // fetch(
                     //     `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
@@ -161,7 +171,7 @@ const UserDashboard = () => {
     }
 
     return (
-        <div className=" flex flex-col w-full">
+        <div className="flex flex-col w-full h-screen">
             <div className="w-full bg-[#0f1035] text-white flex justify-between ">
                 <div className="flex items-center">
                     <div
@@ -200,10 +210,12 @@ const UserDashboard = () => {
                     <div className="flex mx-2 sm:mx-5 lg:mx-8 items-center">
                         <img
                             className="w-[60px] mx-4 rounded-full hover:scale-110 duration-300"
-                            src={profile}
+                            src={profile.url}
                             alt=""
                         />
-                        <div className="text-3xl hidden sm:flex">{name}</div>
+                        <div className="text-3xl hidden sm:flex">
+                            {profile.name}
+                        </div>
                         <a className="ml-2 mr-5 cursor-pointer text-3xl">
                             {" "}
                             <div onClick={handleNav1} className="block">
@@ -251,14 +263,15 @@ const UserDashboard = () => {
                 <div className="hidden xl:flex bg-[#0f1035] w-[25%] flex-col justify-around gap-0 items-center pb-0 border-t border-[#eef0e5]">
                     <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[15px] 2xl:text-[19px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.2rem] w-56 2xl:w-64 hover:scale-105 duration-300 mt-3">
                         {" "}
-                        <FaPlus /> Join Community
+                        <FaPlus />
+                        <Link to="/user/join">Join Community</Link>
                     </button>
                     <p className="text-[#eef0e5] text-2xl 2xl:text-2xl font-bold my-1 mt-1">
                         Joined Communities
                     </p>
-                    <div className="flex flex-col gap-2 2xl:gap-5">
-                        {communities ? (
-                            communities.map((community, key) => (
+                    <div className="flex flex-col gap-2 2xl:gap-5 overflow-x-hidden overflow-y-hidden w-full px-3">
+                        {communities.length > 0 ? (
+                            communities.slice(0, 6).map((community, key) => (
                                 <a key={key} href="">
                                     <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
                                         <img
@@ -278,7 +291,11 @@ const UserDashboard = () => {
                                 </a>
                             ))
                         ) : (
-                            <div>No community joined!</div>
+                            <div className="flex justify-center items-center">
+                                <p className="text-white">
+                                    No community joined yet
+                                </p>
+                            </div>
                         )}
                         {/* <a href="">
                             <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
@@ -377,18 +394,17 @@ const UserDashboard = () => {
                     className="w-full 2xl:w-[75%] bg-[#eef0e5] flex flex-col lg:flex-row lg:justify-around  
              justify-center items-center gap-10"
                 >
-                    <div>
-                        
+                    {/* <div>
                         <a href="">
                             <Maps_DashBoard/>
                         </a>
-                    </div>
+                    </div> */}
                     <div className="flex flex-col items-center gap-5 mr-6 py-8 xl:py-6">
                         <p className="text-[25px] font-bold text-[#0F1035] ">
                             UPCOMING CAMPAIGNS
                         </p>
                         <div className="border-black border-[1px] flex flex-col gap-5 bg-[#E1E5CD] pt-1">
-                            {campaigns ? (
+                            {campaigns.length > 0 ? (
                                 campaigns.map((campaign) => {
                                     return (
                                         <a href="">
@@ -433,7 +449,11 @@ const UserDashboard = () => {
                                     );
                                 })
                             ) : (
-                                <div>No upcoming campaigns!</div>
+                                <div className="flex justify-center items-center w-fit p-20 rounded-lg">
+                                    <p className="text-black">
+                                        No campaigns joined yet
+                                    </p>
+                                </div>
                             )}
 
                             {/* <a href="">
@@ -670,17 +690,6 @@ const UserDashboard = () => {
             </div>
             <Logout onClose={handleOnClose} visible={showMyModel} />
             <EditPassword onClose={handleOnClose1} visible={showMyModel1} />
-            <button
-                onClick={() => {
-                    console.log("Auth.currentUser: ", auth.currentUser);
-                    auth.currentUser.getIdTokenResult().then((tokenResult) => {
-                        console.log(tokenResult.claims);
-                        // alert(tokenResult.claims);
-                    });
-                }}
-            >
-                Check claims
-            </button>
         </div>
     );
 };

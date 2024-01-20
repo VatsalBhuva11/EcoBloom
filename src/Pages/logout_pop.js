@@ -37,6 +37,7 @@ const Logout = ({ visible, onClose }) => {
                     <button
                         onClick={() => {
                             signOut(auth);
+                            localStorage.removeItem("profile");
                             document.querySelector("#container").click();
                         }}
                         className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"

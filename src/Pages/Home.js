@@ -14,12 +14,14 @@ import CreateCampaigns from "../Components/CreateCampaigns";
 import Footer from "../Components/Footer";
 import UserDashboard from "./UserDashboard";
 import OrgSignup from "./OrgSignup";
+import Communities from "./Communities";
 import Store from "./Store";
 import CommunityChat from "./CommunityChat";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { auth } from "../firebase.js";
 import Forget_Password from "./Forget_Password.js";
+import { ProfileContextProvider } from "../Components/ProfileContextProvider.js";
 
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
@@ -32,34 +34,61 @@ export default function Home() {
     }
     return (
         <div>
-            <BrowserRouter>
-                <Routes>
-                    <Route
-                        exact
-                        path="/"
-                        element={
-                            <>
-                                <Navbar />
-                                {/* <Hero /> */}
-                                <Parallax />
-                                <About />
-                                <PastCampaigns />
-                                <JoinUs />
-                                <CreateCampaigns />
-                                <Footer />
-                            </>
-                        }
-                    />
-                    <Route exact path="/login" element={<Login />} />
-                    <Route exact path="/signup" element={<SignupInitial />} />
-                    <Route exact path="/signup/user" element={<UserSignup />} />
-                    <Route exact path="/user/dashboard" element={<UserDashboard />} />
-                    <Route exact path="/signup/org" element={<OrgSignup />} />
-                    <Route exact path="/store" element={<Store />} />
-                    <Route exact path="/chat" element={<CommunityChat />} />
-                    <Route exact path='/login/forgetpassword' element={<Forget_Password/>}/>
-                </Routes>
-            </BrowserRouter>
+            <ProfileContextProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route
+                            exact
+                            path="/"
+                            element={
+                                <>
+                                    <Navbar />
+                                    {/* <Hero /> */}
+                                    <Parallax />
+                                    <About />
+                                    <PastCampaigns />
+                                    <JoinUs />
+                                    <CreateCampaigns />
+                                    <Footer />
+                                </>
+                            }
+                        />
+                        <Route exact path="/login" element={<Login />} />
+                        <Route
+                            exact
+                            path="/signup"
+                            element={<SignupInitial />}
+                        />
+                        <Route
+                            exact
+                            path="/signup/user"
+                            element={<UserSignup />}
+                        />
+                        <Route
+                            exact
+                            path="/user/dashboard"
+                            element={<UserDashboard />}
+                        />
+                        <Route
+                            exact
+                            path="/user/join"
+                            element={<Communities />}
+                        />
+                        <Route
+                            exact
+                            path="/signup/org"
+                            element={<OrgSignup />}
+                        />
+                        <Route exact path="/store" element={<Store />} />
+                        <Route exact path="/chat" element={<CommunityChat />} />
+                        <Route
+                            exact
+                            path="/login/forgetpassword"
+                            element={<Forget_Password />}
+                        />
+                    </Routes>
+                </BrowserRouter>
+            </ProfileContextProvider>
         </div>
     );
 }

@@ -114,7 +114,8 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
 router.post("/join/:communityId", async (req, res) => {
     try {
         const communityId = req.params.communityId;
-        const userId = req.user.userId;
+        // const userId = req.user.userId;
+        const userId = "65aa49a5ba138af7c0f3f6cc";
 
         const community = await Community.findById(communityId);
         const user = await User.findById(userId);

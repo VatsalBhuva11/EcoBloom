@@ -228,7 +228,7 @@ export default function Login() {
                                             </div>
                                         </div>
                                         <Link
-                                            to='/login/forgetpassword'
+                                            to="/login/forgetpassword"
                                             class="text-sm font-medium text-primary-600 hover:underline"
                                         >
                                             Forgot password?
@@ -324,7 +324,7 @@ export default function Login() {
                                     </Link>
                                 </p>
                             </div>
-                            <div className="flex justify-between my-2">
+                            <div className="flex justify-around my-2">
                                 <div className=" cursor-pointer hover:underline">
                                     Terms&Conditions
                                 </div>
@@ -346,7 +346,6 @@ export default function Login() {
                     </div>
                 </div>
             </div>
- 
         </div>
     );
 }
