@@ -4,14 +4,14 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default function About() {
     return (
-        <div className="w-full h-screen bg-gradient-to-b from-[#003329] to-[#EEF0E5] justify-between pt-12">
+        <div className="w-full h-screen bg-[url('./assets/images/underground.jpg')] bg-cover justify-between pt-12">
             <div className="max-w-[1240px] mx-auto justify-center items-center">
                 <h1 className="py-3 text-[#EEF0E5] text-4xl md:text-6xl text-center font-bold">
                     ABOUT US
                 </h1>
                 <div className="grid md:grid-cols-2 px-2 py-12">
                     <div>
-                        <p className="text-xl md:text-2xl  md:mt-12 text-[#0F1035] font-medium text-left">
+                        <p className="text-xl md:text-2xl  md:mt-12 text-[#f5d2a8] font-medium text-left">
                             Step into the world of EcoBloom, where we're not
                             just a platform. It doesn't matter if you're a
                             grassroots initiative or an established entity;

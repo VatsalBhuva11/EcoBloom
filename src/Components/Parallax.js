@@ -9,41 +9,41 @@ import plant from "../assets/images/plant.png";
 import sky from "../assets/images/sky.jpg";
 export default function Parallax() {
     return (
-        <div className="overflow-x-hidden z-0 overflow-y-hidden w-full">
+        <div className="overflow-x-hidden z-0 overflow-y-hidden w-full bg-[#003329]">
             <section className="relative flex justify-center items-center h-screen">
                 <img
                     src={sky}
-                    className="absolute bottom-50 left-0 w-full pointer-events-none "
+                    className="absolute bottom-50 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxSky"
                 ></img>
                 <img
                     src={hill1}
-                    className="absolute top-0 left-0 w-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill1"
                 ></img>
                 <img
                     src={hill2}
-                    className="absolute top-0 left-0 w-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill2"
                 ></img>
                 <img
                     src={hill3}
-                    className="absolute top-0 left-0 w-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill3"
                 ></img>
                 <img
                     src={hill4}
-                    className="absolute top-0 left-0 w-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill4"
                 ></img>
                 <img
                     src={hill5}
-                    className="absolute top-0 left-0 w-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill5"
                 ></img>
                 <img
                     src={tree}
-                    className="absolute top-0 left-0 w-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxTree"
                 ></img>
                 <h2
@@ -54,12 +54,12 @@ export default function Parallax() {
                 </h2>
                 <img
                     src={leaf}
-                    className="absolute top-0 left-0 w-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxLeaf"
                 ></img>
                 <img
                     src={plant}
-                    className="absolute top-0 left-0 w-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxPlant"
                 ></img>
             </section>

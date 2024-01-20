@@ -28,8 +28,8 @@ const Navbar = () => {
     }, [user, loading]);
 
     return (
-        <div className="flex justify-center">
-            <div className="m-15 top-3 rounded-lg fixed backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#bfbebe] border-t border-b border-[#b4b4b444] sm:w-full lg:w-11/12">
+        <div className="flex justify-center md:w-full">
+            <div className="m-15 top-3 rounded-lg fixed backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#bfbebe] border-t border-b border-[#b4b4b444] sm:w- lg:w-11/12">
                 <div className="bg-transparent flex justify-between text-white  w-full  mx-auto items-center h-20">
                     <img className="h-28 mt-6" src={logo} alt="" />
 
