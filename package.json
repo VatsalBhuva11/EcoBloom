@@ -18,6 +18,7 @@
         "react-scripts": "5.0.1",
         "react-spinners": "^0.13.8",
         "simple-parallax-js": "^5.6.2",
+        "tailwind-scrollbar-hide": "^1.1.7",
         "web-vitals": "^2.1.4"
     },
     "scripts": {

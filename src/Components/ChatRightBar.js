@@ -5,9 +5,9 @@ import deleteicon from "../assets/images/delete.png";
 
 export default function ChatRightBar() {
     return (
-        <div className='h-screen'>
+        <div className='h-screen fixed'>
             <div className='flex'>
-                <div className=' hidden xl:flex  bg-[#0f1035] w-[100%] flex-col h-screen pb-2 border-[#eef0e5]'>
+                <div className='lg:flex  bg-[#0f1035] w-[100%] flex-col h-screen pb-2 border-[#eef0e5]'>
                     {/* <div className="flex justify-between items-center mt-5 mb-5 p-[1.5rem] border-b-2 border-b-gray-300">
                         <div className=' text-[25px] font-inter text-gray-300'>Group Info</div>
                         <img className='w-[18px] h-[22px] 2xl:w-[24px] 2xl:h-[32px] cursor-pointer hover:scale-105 duration-300 rounded-full ' src={arrow} alt="" />
@@ -40,7 +40,7 @@ export default function ChatRightBar() {
           </div>
 
           <div className="mt-3">
-            <div className="heaidn flex items-center">
+            <div className=" flex items-center">
               <img
                 className="w-[30px] h-[30px] 2xl:w-[50px] 2xl:h-[50px] cursor-pointer rounded-full hover:scale-105 duration-300"
                 src={member}
@@ -50,7 +50,7 @@ export default function ChatRightBar() {
                 Members
               </div>
             </div>
-            <div className="flex flex-col gap-3 2xl:gap-5 p-4">
+            <div className="flex  h-[65%] overflow-scroll  scrollbar-hide flex-col gap-3 2xl:gap-5 p-4">
               <a href="">
                 <div className=" flex items-center mx-1 mt-1">
                   <img
@@ -97,7 +97,60 @@ export default function ChatRightBar() {
                     src={person}
                     alt=""
                   />
+                   <div className="member ml-2 text-[15px] font-inter text-gray-300">
+                    John Doe
+                  </div>
+                </div>
+              </a>
+              <a href="">
+                <div className=" flex items-center mx-1 mt-1">
+                  <img
+                    className="w-[25px] h-[25px] 2xl:w-[50px] 2xl:h-[50px] cursor-pointer rounded-full hover:scale-105 duration-300  "
+                    src={person}
+                    alt=""
+                  />
+                   <div className="member ml-2 text-[15px] font-inter text-gray-300">
+                    John Doe
+                  </div>
+                </div>
+              </a>
+              <a href="">
+                <div className=" flex items-center mx-1 mt-1">
+                  <img
+                    className="w-[25px] h-[25px] 2xl:w-[50px] 2xl:h-[50px] cursor-pointer rounded-full hover:scale-105 duration-300  "
+                    src={person}
+                    alt=""
+                  />
 
+                  
+                  <div className="member ml-2 text-[15px] font-inter text-gray-300">
+                    John Doe
+                  </div>
+                </div>
+              </a>
+              <a href="">
+                <div className=" flex items-center mx-1 mt-1">
+                  <img
+                    className="w-[25px] h-[25px] 2xl:w-[50px] 2xl:h-[50px] cursor-pointer rounded-full hover:scale-105 duration-300  "
+                    src={person}
+                    alt=""
+                  />
+
+                  
+                  <div className="member ml-2 text-[15px] font-inter text-gray-300">
+                    John Doe
+                  </div>
+                </div>
+              </a>
+              <a href="">
+                <div className=" flex items-center mx-1 mt-1">
+                  <img
+                    className="w-[25px] h-[25px] 2xl:w-[50px] 2xl:h-[50px] cursor-pointer rounded-full hover:scale-105 duration-300  "
+                    src={person}
+                    alt=""
+                  />
+
+                  
                   <div className="member ml-2 text-[15px] font-inter text-gray-300">
                     John Doe
                   </div>
@@ -105,10 +158,9 @@ export default function ChatRightBar() {
               </a>
             </div>
             <div className=" text-end text-gray-300 text-[12px] border-b-2 border-b-gray-300 hover:undeline cursor-pointer font-inter">
-              View all &rarr;
             </div>
 
-            <div className="mt-10 cursor-pointer flex justify-center items-center  ">
+            <div className="mt-5 cursor-pointer flex justify-center items-center  ">
               <img
                 className="w-[25px] h-[25px] 2xl:w-[50px] 2xl:h-[50px] cursor-pointer rounded-full"
                 src={deleteicon}
