@@ -19,6 +19,7 @@ import CommunityChat from "./CommunityChat";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { auth } from "../firebase.js";
+import Forget_Password from "./Forget_Password.js";
 
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
@@ -56,6 +57,7 @@ export default function Home() {
                     <Route path="/signup/org" element={<OrgSignup />} />
                     <Route path="/store" element={<Store />} />
                     <Route path="/chat" element={<CommunityChat />} />
+                    <Route path='/forgetpassword' element={<Forget_Password/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

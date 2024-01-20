@@ -227,12 +227,12 @@ export default function Login() {
                                                 </label>
                                             </div>
                                         </div>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            to='/forgetpassword'
                                             class="text-sm font-medium text-primary-600 hover:underline"
                                         >
                                             Forgot password?
-                                        </a>
+                                        </Link>
                                     </div>
 
                                     {!clicked ? (

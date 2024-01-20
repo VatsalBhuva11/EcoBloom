@@ -1,5 +1,6 @@
 import React from 'react'
 import tick from '../assets/images/tick.png'
+import { Link } from 'react-router-dom';
 
 const Login_Card = ({visible,onClose}) => {
   const handleOnClose = (e) => {
@@ -22,7 +23,7 @@ const Login_Card = ({visible,onClose}) => {
         </div>
         <div className='flex justify-center'>Successfully</div>
         <div className='flex justify-around mt-7 mb-5'>
-        <button className='text-lg bg-[#0F1035] text-[#EEF0E5] w-40 h-8 rounded-lg'>Login</button>
+        <Link to='/login'><button className='text-lg bg-[#0F1035] text-[#EEF0E5] w-40 h-8 rounded-lg'>Login</button></Link>
         </div>
       </div>
     </div>
