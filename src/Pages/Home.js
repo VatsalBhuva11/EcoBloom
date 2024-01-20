@@ -2,6 +2,7 @@ import React from "react";
 import About from "../Components/About";
 import Hero from "../Components/Hero";
 import Navbar from "../Components/Navbar";
+import Parallax from "../Components/Parallax";
 import UserSignup from "./UserSignup";
 import PastCampaigns from "../Components/PastCampaigns";
 import Login from "./Login";
@@ -39,6 +40,7 @@ export default function Home() {
                             <>
                                 <Navbar />
                                 {/* <Hero /> */}
+                                <Parallax />
                                 <About />
                                 <PastCampaigns />
                                 <JoinUs />

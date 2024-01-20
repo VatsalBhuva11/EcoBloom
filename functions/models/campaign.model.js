@@ -55,7 +55,6 @@ const Campaign = new Schema({
     },
     endDate: {
         type: Date,
-        required: true,
         default: null,
     },
     status: {

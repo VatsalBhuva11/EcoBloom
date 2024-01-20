@@ -10,7 +10,7 @@ mongoose.model("Organization", OrganizationSchema);
 export const createCampaign = async (req, res) => {
     try {
         // const org = req.org.orgId;
-        const org = "65a999322edc063a30d6f72f";
+        const org = "65aa10dd4924e25c4a870371";
         const { address, city, country, latitude, longitude, startDate, type } =
             req.body;
         if (

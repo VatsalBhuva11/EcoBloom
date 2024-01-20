@@ -55,22 +55,36 @@ const UserDashboard = () => {
                     return tokenResult.claims.userId;
                 })
                 .then((userId) => {
-                    fetch(
-                        `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
-                    )
-                        .then((userData) => userData.json())
-                        .then((userData) => {
+                    Promise.all([
+                        fetch(
+                            `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
+                        ),
+                        fetch(
+                            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
+                        ),
+                    ])
+                        .then((responses) => {
+                            // responses[0] corresponds to the result of the first fetch
+                            // responses[1] corresponds to the result of the second fetch
+                            return Promise.all(
+                                responses.map((response) => response.json())
+                            );
+                        })
+                        .then((data) => {
+                            // data[0] contains the parsed JSON from the first response
+                            // data[1] contains the parsed JSON from the second response
+                            console.log(data);
                             const storageRef = ref(
                                 storage,
-                                userData.data.photoPathFirestore
+                                data[0].data.photoPathFirestore
                             );
-                            console.log(userData.data);
                             getDownloadURL(storageRef)
                                 .then(function (url) {
                                     setProfile(url);
-                                    setName(userData.data.name);
-                                    setCommunities(userData.data.communities);
+                                    setName(data[0].data.name);
+                                    setCommunities(data[0].data.communities);
                                     setLoader(false);
+                                    setCampaigns(data[1].data);
                                 })
                                 .catch(function (error) {
                                     console.error(error);
@@ -83,22 +97,50 @@ const UserDashboard = () => {
                             );
                             setName("ERROR");
                         });
-                    fetch(
-                        `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
-                    )
-                        .then((campaignData) => {
-                            return campaignData.json();
-                        })
-                        .then((campaigns) => {
-                            setCampaigns(campaigns.data);
-                        })
-                        .catch((err) => {
-                            console.error(
-                                "ERROR WHILE CAMPAIGNS USER DATA: ",
-                                err
-                            );
-                            setName("ERROR");
-                        });
+                    // fetch(
+                    //     `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
+                    // )
+                    //     .then((userData) => userData.json())
+                    //     .then((userData) => {
+                    //         const storageRef = ref(
+                    //             storage,
+                    //             userData.data.photoPathFirestore
+                    //         );
+                    //         console.log(userData.data);
+                    //         getDownloadURL(storageRef)
+                    //             .then(function (url) {
+                    //                 setProfile(url);
+                    //                 setName(userData.data.name);
+                    //                 setCommunities(userData.data.communities);
+                    //                 setLoader(false);
+                    //             })
+                    //             .catch(function (error) {
+                    //                 console.error(error);
+                    //             });
+                    //     })
+                    //     .catch((err) => {
+                    //         console.error(
+                    //             "ERROR WHILE FETCHING USER DATA: ",
+                    //             err
+                    //         );
+                    //         setName("ERROR");
+                    //     });
+                    // fetch(
+                    //     `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
+                    // )
+                    //     .then((campaignData) => {
+                    //         return campaignData.json();
+                    //     })
+                    //     .then((campaigns) => {
+                    //         setCampaigns(campaigns.data);
+                    //     })
+                    //     .catch((err) => {
+                    //         console.error(
+                    //             "ERROR WHILE CAMPAIGNS USER DATA: ",
+                    //             err
+                    //         );
+                    //         setName("ERROR");
+                    //     });
                 })
                 .catch((err) => {
                     console.error("ERROR IN auth.currentUser: ", err);
