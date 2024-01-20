@@ -50,14 +50,14 @@ export default function Home() {
                             </>
                         }
                     />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<SignupInitial />} />
-                    <Route path="/signup/user" element={<UserSignup />} />
-                    <Route path="/user/dashboard" element={<UserDashboard />} />
-                    <Route path="/signup/org" element={<OrgSignup />} />
-                    <Route path="/store" element={<Store />} />
-                    <Route path="/chat" element={<CommunityChat />} />
-                    <Route path='/forgetpassword' element={<Forget_Password/>}/>
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/signup" element={<SignupInitial />} />
+                    <Route exact path="/signup/user" element={<UserSignup />} />
+                    <Route exact path="/user/dashboard" element={<UserDashboard />} />
+                    <Route exact path="/signup/org" element={<OrgSignup />} />
+                    <Route exact path="/store" element={<Store />} />
+                    <Route exact path="/chat" element={<CommunityChat />} />
+                    <Route exact path='/login/forgetpassword' element={<Forget_Password/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

@@ -228,7 +228,7 @@ export default function Login() {
                                             </div>
                                         </div>
                                         <Link
-                                            to='/forgetpassword'
+                                            to='/login/forgetpassword'
                                             class="text-sm font-medium text-primary-600 hover:underline"
                                         >
                                             Forgot password?
