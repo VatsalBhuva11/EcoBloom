@@ -20,6 +20,7 @@ import EditPassword from "./EditPassword.js";
 import { TbMessages } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import Maps_DashBoard from "../Components/Maps_Dashboard.js";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -379,11 +380,7 @@ const UserDashboard = () => {
                     <div>
                         
                         <a href="">
-                            <img
-                                className="mt-10 w-[600px] 2xl:w-[700px]"
-                                src={map}
-                                alt=""
-                            />
+                            <Maps_DashBoard/>
                         </a>
                     </div>
                     <div className="flex flex-col items-center gap-5 mr-6 py-8 xl:py-6">
