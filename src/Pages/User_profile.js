@@ -19,8 +19,8 @@ const User_profile = () => {
   const [showMyModel3, setShowMyModal3]=useState(false);
   const handleOnClose3 = () => setShowMyModal3(false)
   return (
-    <div className=''>
-      <div class="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
+    <div className='absolute w-screen bg-[url("./assets/images/profile_bg.jpg")] bg-cover h-screen'>
+      <div class="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32 backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#ffffff]">
         <div class="flex justify-center">
                 <img src={face} alt="" class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"/>
         </div>
