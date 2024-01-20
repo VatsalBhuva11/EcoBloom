@@ -10,7 +10,7 @@ import bannerorg from "../assets/images/bannerorg.png";
 import logo from "../assets/images/logo.png";
 import { IoIosSend } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
-
+import { FaArrowRight } from "react-icons/fa";
 const Orgprofile = () => {
   return (
     <div className="flex">
@@ -48,7 +48,7 @@ const Orgprofile = () => {
               </div>
               <div className="flex flex-col pt-2 pl-2 md:pl-4 ">
                 <h1 className="text-[#0f1035] md:pt-4 font-bold text-xl sm:text-2xl md:text-4xl">
-                  GeekHaven, IIIT Allahabad
+                  GeekHaven, IIT Allahabad
                 </h1>
                 <p className="text-[14px] sm:text-lg md:text-2xl pt-1 sm:pt-3">
                   The Technical Club Information Technology, Allahabad

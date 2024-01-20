@@ -3,18 +3,20 @@ import React from "react";
 import Home from "./Pages/Home";
 import UserDashboard from "./Pages/UserDashboard";
 import CommunityChat from "./Pages/CommunityChat";
-import Store from './Pages/Store'
+import Store from "./Pages/Store";
+import Orgprofile from "./Pages/Orgprofile";
 // import SignupInitial from './Pages/SignupInitial';
 
 export default function App() {
-    return (
-        <div>
-            {/* <SignupInitial/> */}
-            <Home />
-            {/* <CommunityChat/> */}
-            {/* <UserDashboard/> */}
-            {/* <SignIn></SignIn> */}
-            {/* <OrganizationAuth></OrganizationAuth> */}
-        </div>
-    );
+  return (
+    <div>
+      {/* <SignupInitial/> */}
+      {/* <Home /> */}
+      <Orgprofile />
+      {/* <CommunityChat/> */}
+      {/* <UserDashboard/> */}
+      {/* <SignIn></SignIn> */}
+      {/* <OrganizationAuth></OrganizationAuth> */}
+    </div>
+  );
 }
