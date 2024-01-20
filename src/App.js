@@ -8,15 +8,15 @@ import Orgdashboard from "./Pages/Orgdashboard";
 // import SignupInitial from './Pages/SignupInitial';
 
 export default function App() {
-  return (
-    <div>
-      {/* <SignupInitial/> */}
-      {/* <Home /> */}
-      <Orgdashboard />
-      {/* <CommunityChat/> */}
-      {/* <UserDashboard/> */}
-      {/* <SignIn></SignIn> */}
-      {/* <OrganizationAuth></OrganizationAuth> */}
-    </div>
-  );
+    return (
+        <div>
+            {/* <SignupInitial/> */}
+            <Home />
+            {/* <Orgdashboard /> */}
+            {/* <CommunityChat/> */}
+            {/* <UserDashboard/> */}
+            {/* <SignIn></SignIn> */}
+            {/* <OrganizationAuth></OrganizationAuth> */}
+        </div>
+    );
 }
