@@ -9,7 +9,7 @@ import plant from "../assets/images/plant.png";
 import sky from "../assets/images/sky.jpg";
 export default function Parallax() {
     return (
-        <div className="overflow-x-hidden z-0 overflow-y-hidden">
+        <div className="overflow-x-hidden z-0 overflow-y-hidden w-full">
             <section className="relative flex justify-center items-center h-screen">
                 <img
                     src={sky}
