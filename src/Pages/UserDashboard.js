@@ -208,11 +208,13 @@ const UserDashboard = () => {
                         <TbMessages />
                     </Link>
                     <div className="flex mx-2 sm:mx-5 lg:mx-8 items-center">
-                        <img
-                            className="w-[60px] mx-4 rounded-full hover:scale-110 duration-300"
-                            src={profile.url}
-                            alt=""
-                        />
+                        <Link to="/user/profile">
+                            <img
+                                className="w-[60px] mx-4 rounded-full hover:scale-110 cursor-pointer duration-300"
+                                src={profile.url}
+                                alt=""
+                            />
+                        </Link>
                         <div className="text-3xl hidden sm:flex">
                             {profile.name}
                         </div>
@@ -451,7 +453,7 @@ const UserDashboard = () => {
                             ) : (
                                 <div className="flex justify-center items-center w-fit p-20 rounded-lg">
                                     <p className="text-black">
-                                        No campaigns joined yet
+                                        No upcoming campaigns!
                                     </p>
                                 </div>
                             )}

@@ -4,6 +4,7 @@ import banner from "../assets/images/banner1.jpg";
 import logo_commu from "../assets/images/logo_commu.jpg";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Communities = () => {
     const [profile, setProfile] = useContext(ProfileContext);
@@ -19,11 +20,13 @@ const Communities = () => {
                     COMMUNITIES TO EXPLORE
                 </p>
                 <div className="flex items-center mr-4 gap-3">
-                    <img
-                        className="w-9 md:w-12 lg:w-14 rounded-full"
-                        src={profile.url}
-                        alt=""
-                    />
+                    <Link to="/user/profile">
+                        <img
+                            className="w-9 md:w-12 lg:w-14 rounded-full"
+                            src={profile.url}
+                            alt=""
+                        />
+                    </Link>
                     <p className="hidden sm:flex text-xl font-medium">
                         {profile.name}
                     </p>

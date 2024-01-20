@@ -16,11 +16,12 @@ import UserDashboard from "./UserDashboard";
 import OrgSignup from "./OrgSignup";
 import Communities from "./Communities";
 import Store from "./Store";
+import UserProfile from "./UserProfile";
 import CommunityChat from "./CommunityChat";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { auth } from "../firebase.js";
-import Forget_Password from "./Forget_Password.js";
+import ForgetPassword from "./ForgetPassword.js";
 import { ProfileContextProvider } from "../Components/ProfileContextProvider.js";
 
 export default function Home() {
@@ -76,6 +77,11 @@ export default function Home() {
                         />
                         <Route
                             exact
+                            path="/user/profile"
+                            element={<UserProfile />}
+                        />
+                        <Route
+                            exact
                             path="/signup/org"
                             element={<OrgSignup />}
                         />
@@ -84,7 +90,7 @@ export default function Home() {
                         <Route
                             exact
                             path="/login/forgetpassword"
-                            element={<Forget_Password />}
+                            element={<ForgetPassword />}
                         />
                     </Routes>
                 </BrowserRouter>
