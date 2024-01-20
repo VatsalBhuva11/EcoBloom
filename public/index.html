@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="description" content="Web site created using create-react-app" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -25,9 +20,10 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>EcoBloom</title>
-    <link rel="icon" type="image/x-icon" href="../src/assets/images/favicon.ico">
-  </head>
-  <body>
+    <link rel="icon" href="../src/assets/images/favicon.ico">
+</head>
+
+<body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -40,5 +36,29 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+<script>
+    if (window.location.href === "http://localhost:3000/") {
+        window.addEventListener('scroll', () => {
+            let textElem = document.getElementById("parallaxText");
+            let leafElem = document.getElementById("parallaxLeaf");
+            let skyElem = document.getElementById("parallaxSky");
+            let hill1Elem = document.getElementById("parallaxHill1");
+            let hill2Elem = document.getElementById("parallaxHill2");
+            let hill4Elem = document.getElementById("parallaxHill4");
+            let hill5Elem = document.getElementById("parallaxHill5");
+            let value = window.scrollY;
+            textElem.style.marginTop = value * -0.8 + "px";
+            leafElem.style.top = value * -1.5 + "px";
+            leafElem.style.left = value * 1.5 + "px";
+            hill5Elem.style.left = value * 1.5 + "px";
+            hill4Elem.style.left = value * -1.5 + "px";
+            hill4Elem.style.top = value * -0.1 + "px";
+            hill1Elem.style.top = value * -0.4 + "px";
+            hill2Elem.style.top = value * -0.1 + "px";
+            skyElem.style.top = -50 + value * -1.5 + "px";
+        })
+    }
+</script>
+
 </html>
