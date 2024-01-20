@@ -7,11 +7,12 @@ import p5 from "../assets/images/p5.png";
 import p6 from "../assets/images/p6.png";
 import logo from "../assets/images/logo.png";
 import org_logo from "../assets/images/org_logo.png";
+import bannerorg from "../assets/images/bannerorg.png";
 import { IoIosSend } from "react-icons/io";
 import { HiPencil } from "react-icons/hi2";
 import { FaPlus } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-import bannerorg from "../assets/images/bannerorg.png";
+
 const Orgdashboard = () => {
   return (
     <div className="flex">
