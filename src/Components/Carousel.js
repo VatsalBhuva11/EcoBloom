@@ -8,11 +8,17 @@ import p3 from "../assets/images/p3.png";
 export default function Carousel() {
     const settings = {
         // accessibility: true,
-        // dots: true,
+        // className: 'center',
+        // centerMode: true,
+        //  centerPadding: '20px',
+         dots: true,
+        //  fade:true,
         infinite: true,
-        speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
+    //     autoplay: true,
+    //   autoplaySpeed: 1000,
+    //   pauseOnHover: true,
         responsive: [
             {
                 breakpoint: 1024,
@@ -52,7 +58,7 @@ export default function Carousel() {
                 <div className="w-full">
                     <Slider {...settings} className="p-16">
                         {data.map((data) => (
-                            <div className="bg-white h-[70%] border-solid border-2 border-black shadow-xl flex flex-col justify-center items-center text-black rounded-xl gap-4">
+                            <div className="bg-transparent h-[70%] border-solid border-2 border-black shadow-xl flex flex-col justify-center items-center text-black rounded-xl gap-4">
                                 <div className="h-28 w-full rounded-t-xl justify-center text-center flex items-center">
                                     <img
                                         src={data.img}
@@ -84,46 +90,48 @@ export default function Carousel() {
 }
 
 const data = [
+    // {
+    //     name: "Sarah Thompson",
+    //     img: p1,
+    //     content:
+    //     "As an environmental activist, EcoBloom has revolutionized the way we organize and participate in campaigns. The platform's user-friendly interface and real-time progress tracking make it a game-changer. With EcoBloom, our collective efforts translate into visible impact.",
+    //     position: "Environmental Activist",
+
+
+    // },
     {
-        name: "John Doe",
-        img: p1,
-        content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis saepe aliquam, ",
-        position: "Manager",
-    },
-    {
-        name: "Jane Doe",
+        name: "Alex Rodriguez",
         img: p2,
         content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis saepe aliquam, ",
-        position: "Manager",
+        "EcoBloom has become an indispensable tool for community organizers like me. The organizational oversight dashboard allows us to manage campaigns efficiently, verify users, and regulate community interactions. It's a powerful platform for fostering environmental engagement at the grassroots level.",
+        position: "Community Organizer",
     },
     {
-        name: "Jack Doe",
+        name: "Emily Chen",
         img: p3,
         content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis saepe aliquam, ",
-        position: "Manager",
+        "Being a student, EcoBloom has made it easy for me to actively participate in environmental campaigns. The gamified point system adds a fun element, and I love seeing the real-time impact of my contributions. It's a fantastic way to make a difference while connecting with like-minded individuals.",
+        position: "Student and Eco-Enthusiast",
     },
     {
-        name: "John Doe",
+        name: "James Anderson",
         img: p1,
         content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis saepe aliquam, ",
-        position: "Manager",
+        "EcoBloom's technological integration is impressive. As a tech entrepreneur, I appreciate the seamless user experience and the platform's adaptability. The intuitive campaign creation interface aligns perfectly with the tech-savvy generation, making environmental participation accessible to all.",
+        position: "Tech Entrepreneur",
     },
     {
-        name: "Jane Doe",
+        name: "Dr. Maria Garcia",
         img: p2,
         content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis saepe aliquam, ",
-        position: "Manager",
+        "From a scientific perspective, EcoBloom stands out in its ability to measure and showcase the impact of campaigns. The real-time progress tracking and data analytics features provide valuable insights, making it an invaluable resource for researchers and environmental scientists.",
+        position: "Environmental Scientist",
     },
     {
-        name: "Jack Doe",
+        name: "Raj Patel",
         img: p3,
         content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis saepe aliquam, ",
-        position: "Manager",
+        "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiatives. The platform's community-building features and campaign rewards have not only helped the environment but also brought positive attention to my business.",
+        position: "Small Business Owner",
     },
 ];

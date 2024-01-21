@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { useContext } from "react";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
-// import Maps_DashBoard from "../Components/Maps_Dashboard.js";
+import Maps_DashBoard from "../Components/Maps_Dashboard.js";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -398,11 +398,11 @@ const UserDashboard = () => {
                     className="w-full 2xl:w-[75%] bg-[#eef0e5] flex flex-col lg:flex-row lg:justify-around  
              justify-center items-center gap-10"
                 >
-                    {/* <div>
+                    <div>
                         <a href="">
                             <Maps_DashBoard/>
                         </a>
-                    </div> */}
+                    </div>
                     <div className="flex flex-col items-center gap-5 mr-6 py-8 xl:py-6">
                         <p className="text-[25px] font-bold text-[#0F1035] ">
                             UPCOMING CAMPAIGNS
