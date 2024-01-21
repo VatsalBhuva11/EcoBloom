@@ -16,6 +16,8 @@ import { HashLoader } from "react-spinners";
 import { auth } from "../firebase.js";
 import ForgetPassword from "./ForgetPassword.js";
 import { ProfileContextProvider } from "../Components/ProfileContextProvider.js";
+import Orgdashboard from "./Orgdashboard.js";
+import Orgprofile from "./Orgprofile.js";
 
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
@@ -71,6 +73,18 @@ export default function Home() {
                             path="/signup/org"
                             element={<OrgSignup />}
                         />
+
+                        <Route
+                            exact
+                            path="/org/dashboard"
+                            element={<Orgdashboard />}
+                        />
+                        <Route
+                            exact
+                            path="/org/profile"
+                            element={<Orgprofile />}
+                        />
+
                         <Route exact path="/store" element={<Store />} />
                         <Route exact path="/chat" element={<CommunityChat />} />
                         <Route

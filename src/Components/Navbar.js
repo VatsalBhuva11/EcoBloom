@@ -4,14 +4,12 @@ import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase.js";
-import Logout from "../Pages/logout_pop.js";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
     const [nav, setNav] = useState(true);
     const [role, setRole] = useState("");
     const [user, loading, error] = useAuthState(auth);
-    const [showMyModel, setShowMyModal] = useState(false);
-    const handleOnClose = () => setShowMyModal(false);
 
     const handleNav = () => {
         setNav(!nav);
@@ -69,7 +67,10 @@ const Navbar = () => {
                         </Link>
                         {role === "user" || role === "org" ? (
                             <button
-                                onClick={() => setShowMyModal(true)}
+                                onClick={() => {
+                                    signOut(auth);
+                                    localStorage.removeItem("profile");
+                                }}
                                 className="lg:text-[17px] md:text-[14px] font-bold lg:ml-4 md:ml-2 border border-white px-6 py-2 mb-0 rounded-lg lg:mr-12 md:mr-6 bg-red-500"
                             >
                                 Logout
@@ -123,7 +124,10 @@ const Navbar = () => {
                             </Link>
                             {role === "user" || role === "org" ? (
                                 <button
-                                    onClick={() => setShowMyModal(true)}
+                                    onClick={() => {
+                                        signOut(auth);
+                                        localStorage.removeItem("profile");
+                                    }}
                                     className="p-4 border-b border-gray-100 bg-red-500"
                                 >
                                     Logout
@@ -136,7 +140,6 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-                <Logout onClose={handleOnClose} visible={showMyModel} />
             </div>
         </div>
     );

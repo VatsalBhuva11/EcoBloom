@@ -156,6 +156,8 @@ const UserDashboard = () => {
                 .catch((err) => {
                     console.error("ERROR IN auth.currentUser: ", err);
                 });
+        } else {
+            window.location.replace("/login");
         }
     }, [user]);
 
