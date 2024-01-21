@@ -36,13 +36,13 @@ const Navbar = () => {
                     <ul className="hidden md:flex md:items-center">
                         <a
                             className="text-black font-bold lg:text-[23px] md:text-[20px] lg:mx-6 md:mx-3"
-                            href=""
+                            href="#home"
                         >
                             Home
                         </a>
                         <a
                             className="text-black font-bold lg:text-[23px] md:text-[20px] lg:mx-6 md:mx-3"
-                            href=""
+                            href="#about"
                         >
                             About
                         </a>

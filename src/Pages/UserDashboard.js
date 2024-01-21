@@ -167,7 +167,7 @@ const UserDashboard = () => {
         );
     }
     if (!loading && !user) {
-        window.location.href = "/login";
+        window.location.replace("/login");
     }
 
     return (

@@ -36,29 +36,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
 </body>
-<script>
-    if (window.location.href === "http://localhost:3000/") {
-        window.addEventListener('scroll', () => {
-            let textElem = document.getElementById("parallaxText");
-            let leafElem = document.getElementById("parallaxLeaf");
-            let skyElem = document.getElementById("parallaxSky");
-            let hill1Elem = document.getElementById("parallaxHill1");
-            let hill2Elem = document.getElementById("parallaxHill2");
-            let hill4Elem = document.getElementById("parallaxHill4");
-            let hill5Elem = document.getElementById("parallaxHill5");
-            let value = window.scrollY;
-            textElem.style.marginTop = value * -1 + "px";
-            leafElem.style.top = value * -1.5 + "px";
-            leafElem.style.left = value * 1.5 + "px";
-            hill5Elem.style.left = value * 1.5 + "px";
-            hill4Elem.style.left = value * -1.5 + "px";
-            hill4Elem.style.top = value * -0.1 + "px";
-            hill1Elem.style.top = value * -0.4 + "px";
-            hill2Elem.style.top = value * -0.1 + "px";
-            skyElem.style.top = -50 + value * -1.5 + "px";
-        })
-    }
-</script>
 
 </html>

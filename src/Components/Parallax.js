@@ -7,15 +7,46 @@ import tree from "../assets/images/tree.png";
 import leaf from "../assets/images/leaf.png";
 import plant from "../assets/images/plant.png";
 import sky from "../assets/images/sky.jpg";
+import { useEffect } from "react";
 export default function Parallax() {
+    const scrollUpdate = () => {
+        let textElem = document.getElementById("parallaxText");
+        let leafElem = document.getElementById("parallaxLeaf");
+        let skyElem = document.getElementById("parallaxSky");
+        let hill1Elem = document.getElementById("parallaxHill1");
+        let hill2Elem = document.getElementById("parallaxHill2");
+        let hill4Elem = document.getElementById("parallaxHill4");
+        let hill5Elem = document.getElementById("parallaxHill5");
+        let value = window.scrollY;
+        textElem.style.marginTop = value * -1 + "px";
+        leafElem.style.top = value * -1.5 + "px";
+        leafElem.style.left = value * 1.5 + "px";
+        hill5Elem.style.left = value * 1.5 + "px";
+        hill4Elem.style.left = value * -1.5 + "px";
+        hill4Elem.style.top = value * -0.1 + "px";
+        hill1Elem.style.top = value * -0.4 + "px";
+        hill2Elem.style.top = value * -0.1 + "px";
+        skyElem.style.top = -50 + value * -1.5 + "px";
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", scrollUpdate);
+        return () => {
+            window.removeEventListener("scroll", scrollUpdate);
+        };
+    });
     return (
-        <div className="overflow-x-hidden z-0 overflow-y-hidden w-full bg-[#003329]">
+        <div
+            id="home"
+            className="overflow-x-hidden z-0 overflow-y-hidden w-full bg-[#003329]"
+        >
             <section className="relative flex justify-center items-center h-screen">
                 <img
                     src={sky}
                     className="absolute bottom-50 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxSky"
                 ></img>
+
                 <img
                     src={hill1}
                     className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"

@@ -4,7 +4,10 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default function About() {
     return (
-        <div className="w-full h-screen bg-[url('./assets/images/underground.jpg')] bg-cover justify-between pt-12">
+        <div
+            id="about"
+            className="w-full h-screen bg-[url('./assets/images/underground.jpg')] bg-cover justify-between pt-12"
+        >
             <div className="max-w-[1240px] mx-auto justify-center items-center">
                 <h1 className="py-3 text-[#EEF0E5] text-4xl md:text-6xl text-center font-bold">
                     ABOUT US
