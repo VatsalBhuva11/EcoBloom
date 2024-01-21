@@ -2,6 +2,7 @@ import {React,useState} from 'react'
 import { FaArrowLeft } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import Create_Campaign_Card from './Create_Campaign_Card';
+import { Link } from 'react-router-dom';
 
 const CreateCampaign = () => {
   const [showMyModel, setShowMyModal]=useState(false);
@@ -9,9 +10,9 @@ const CreateCampaign = () => {
   return (
     <div className='w-screen h-screen p-8 sm:p-12 lg:p-20 bg-[#EEF0E5] flex flex-col justify-evenly gap-1 sm:gap-3'>
         <div className='flex items-center gap-5 text-[#0F1035]'>
-          <a className='text-2xl sm:text-4xl lg:text-5xl mt-1 sm:mt-2 lg:mt-3 cursor-pointer hover:scale-110 duration-300'>
+          <Link to='/org/dashboard' className='text-2xl sm:text-4xl lg:text-5xl mt-1 sm:mt-2 lg:mt-3 cursor-pointer hover:scale-110 duration-300'>
             <FaArrowLeft/>
-          </a>
+          </Link>
           <div className='text-3xl sm:text-5xl lg:text-6xl font-bold'>
             CREATE CAMPAIGN
           </div>

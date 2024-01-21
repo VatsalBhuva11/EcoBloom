@@ -12,6 +12,7 @@ import { IoIosSend } from "react-icons/io";
 import { HiPencil } from "react-icons/hi2";
 import { FaPlus } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Orgdashboard = () => {
   return (
@@ -20,7 +21,7 @@ const Orgdashboard = () => {
         {/* navbar */}
         <div className="w-full bg-[#0f1035] text-gray-200 flex shadow-2xl ">
           <div className="flex items-center ">
-            <img className="h-12 md:h-16 mt-2" src={logo} alt="" />
+            <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 mt-2" src={logo} alt="" /></Link>
             <h1 className="text-sm sm:text-xl md:text-2xl  ">
               ORGANISATION DASHBOARD
             </h1>
@@ -56,10 +57,12 @@ const Orgdashboard = () => {
                   Allahabad, Uttar Pradesh 2K Members
                 </p>
                 <div className="flex pt-3 md:pt-6  gap-3 sm:gap-4 md:gap-6 ">
+                  <Link to='/chat'>
                   <button className="border-solid border-2 border-[#0f1035] hover:scale-105 duration-300 bg-transparent  flex text-[#0f1035] rounded-3xl py-1 px-3 sm:py-1.5 sm:px-4 text-md sm:text-lg md:text-xl sm:gap-1 md:gap-2 font-semibold ">
                     <IoIosSend className="sm:flex hidden" size={30} /> Community
                     Chat
                   </button>
+                  </Link>
                   <button className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold">
                     <HiPencil className="pt-1 sm:flex hidden" size={25} /> Edit
                     Profile
@@ -127,10 +130,12 @@ const Orgdashboard = () => {
             </form>
           </div>
           <div className="justify-center items-center md:ml-4 lg:ml-14">
+            <Link to='/createcampaign'>
             <button className=" flex justify-center items-center gap-2 bg-[#eef0e5] text-[#0f1035] md:text-[16px] lg:text-[18px] 2xl:text-[20px] font-bold rounded-lg  md:h-[2.2rem] lg:h-[2.4rem]  2xl:h-[2.8rem] md:w-48 lg:w-52 2xl:w-64 hover:scale-105 duration-300 mt-10">
               <FaPlus />
               Create Campaign
             </button>
+            </Link>
             <p className="text-[#eef0e5] text-2xl 2xl:text-2xl md:mt-4 md:ml-3 lg:mt-6 lg:ml-5 font-semibold">
               Past Campaigns
             </p>
