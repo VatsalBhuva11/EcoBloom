@@ -71,14 +71,16 @@ const Communities = () => {
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
+                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56 overflow-hidden">
+                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <img
+                            className="rounded-xl bg-cover"
+                            src={banner}
+                            alt=""
+                        />
+                    </div>
                     <div className="ml-24">
-                        <div className="text-xl font-medium">
+                        <div className="text-lg lg:text-xl font-medium">
                             GeekHaven, IIIT Allahabad
                         </div>
                         <div>
@@ -86,21 +88,30 @@ const Communities = () => {
                             Infromation Technology, Allahabad
                         </div>
                         <div className="text-xs">2K Members</div>
+                        <button className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1">
+                            See Profile{" "}
+                            <div className="text-md mt-[0.34rem]">
+                                {" "}
+                                <FaArrowRightLong />{" "}
+                            </div>
+                        </button>
                     </div>
                     <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
+                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
                         src={logo_commu}
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
+                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56 overflow-hidden">
+                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <img
+                            className="rounded-xl bg-cover"
+                            src={banner}
+                            alt=""
+                        />
+                    </div>
                     <div className="ml-24">
-                        <div className="text-xl font-medium">
+                        <div className="text-lg lg:text-xl font-medium">
                             GeekHaven, IIIT Allahabad
                         </div>
                         <div>
@@ -108,21 +119,30 @@ const Communities = () => {
                             Infromation Technology, Allahabad
                         </div>
                         <div className="text-xs">2K Members</div>
+                        <button className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1">
+                            See Profile{" "}
+                            <div className="text-md mt-[0.34rem]">
+                                {" "}
+                                <FaArrowRightLong />{" "}
+                            </div>
+                        </button>
                     </div>
                     <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
+                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
                         src={logo_commu}
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
+                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56 overflow-hidden">
+                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <img
+                            className="rounded-xl bg-cover"
+                            src={banner}
+                            alt=""
+                        />
+                    </div>
                     <div className="ml-24">
-                        <div className="text-xl font-medium">
+                        <div className="text-lg lg:text-xl font-medium">
                             GeekHaven, IIIT Allahabad
                         </div>
                         <div>
@@ -130,21 +150,30 @@ const Communities = () => {
                             Infromation Technology, Allahabad
                         </div>
                         <div className="text-xs">2K Members</div>
+                        <button className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1">
+                            See Profile{" "}
+                            <div className="text-md mt-[0.34rem]">
+                                {" "}
+                                <FaArrowRightLong />{" "}
+                            </div>
+                        </button>
                     </div>
                     <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
+                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
                         src={logo_commu}
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
+                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56 overflow-hidden">
+                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <img
+                            className="rounded-xl bg-cover"
+                            src={banner}
+                            alt=""
+                        />
+                    </div>
                     <div className="ml-24">
-                        <div className="text-xl font-medium">
+                        <div className="text-lg lg:text-xl font-medium">
                             GeekHaven, IIIT Allahabad
                         </div>
                         <div>
@@ -152,21 +181,30 @@ const Communities = () => {
                             Infromation Technology, Allahabad
                         </div>
                         <div className="text-xs">2K Members</div>
+                        <button className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1">
+                            See Profile{" "}
+                            <div className="text-md mt-[0.34rem]">
+                                {" "}
+                                <FaArrowRightLong />{" "}
+                            </div>
+                        </button>
                     </div>
                     <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
+                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
                         src={logo_commu}
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
+                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56 overflow-hidden">
+                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <img
+                            className="rounded-xl bg-cover"
+                            src={banner}
+                            alt=""
+                        />
+                    </div>
                     <div className="ml-24">
-                        <div className="text-xl font-medium">
+                        <div className="text-lg lg:text-xl font-medium">
                             GeekHaven, IIIT Allahabad
                         </div>
                         <div>
@@ -174,21 +212,30 @@ const Communities = () => {
                             Infromation Technology, Allahabad
                         </div>
                         <div className="text-xs">2K Members</div>
+                        <button className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1">
+                            See Profile{" "}
+                            <div className="text-md mt-[0.34rem]">
+                                {" "}
+                                <FaArrowRightLong />{" "}
+                            </div>
+                        </button>
                     </div>
                     <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
+                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
                         src={logo_commu}
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
+                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56 overflow-hidden">
+                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <img
+                            className="rounded-xl bg-cover"
+                            src={banner}
+                            alt=""
+                        />
+                    </div>
                     <div className="ml-24">
-                        <div className="text-xl font-medium">
+                        <div className="text-lg lg:text-xl font-medium">
                             GeekHaven, IIIT Allahabad
                         </div>
                         <div>
@@ -196,21 +243,30 @@ const Communities = () => {
                             Infromation Technology, Allahabad
                         </div>
                         <div className="text-xs">2K Members</div>
+                        <button className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1">
+                            See Profile{" "}
+                            <div className="text-md mt-[0.34rem]">
+                                {" "}
+                                <FaArrowRightLong />{" "}
+                            </div>
+                        </button>
                     </div>
                     <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
+                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
                         src={logo_commu}
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
+                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56 overflow-hidden">
+                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <img
+                            className="rounded-xl bg-cover"
+                            src={banner}
+                            alt=""
+                        />
+                    </div>
                     <div className="ml-24">
-                        <div className="text-xl font-medium">
+                        <div className="text-lg lg:text-xl font-medium">
                             GeekHaven, IIIT Allahabad
                         </div>
                         <div>
@@ -218,21 +274,30 @@ const Communities = () => {
                             Infromation Technology, Allahabad
                         </div>
                         <div className="text-xs">2K Members</div>
+                        <button className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1">
+                            See Profile{" "}
+                            <div className="text-md mt-[0.34rem]">
+                                {" "}
+                                <FaArrowRightLong />{" "}
+                            </div>
+                        </button>
                     </div>
                     <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
+                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
                         src={logo_commu}
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
+                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56 overflow-hidden">
+                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <img
+                            className="rounded-xl bg-cover"
+                            src={banner}
+                            alt=""
+                        />
+                    </div>
                     <div className="ml-24">
-                        <div className="text-xl font-medium">
+                        <div className="text-lg lg:text-xl font-medium">
                             GeekHaven, IIIT Allahabad
                         </div>
                         <div>
@@ -240,35 +305,21 @@ const Communities = () => {
                             Infromation Technology, Allahabad
                         </div>
                         <div className="text-xs">2K Members</div>
+                        <button className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1">
+                            See Profile{" "}
+                            <div className="text-md mt-[0.34rem]">
+                                {" "}
+                                <FaArrowRightLong />{" "}
+                            </div>
+                        </button>
                     </div>
                     <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
+                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
                         src={logo_commu}
                         alt=""
                     />
                 </div>
-                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg pb-4 h-56">
-                    <img
-                        className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 rounded-xl"
-                        src={banner}
-                        alt=""
-                    />
-                    <div className="ml-24">
-                        <div className="text-xl font-medium">
-                            GeekHaven, IIIT Allahabad
-                        </div>
-                        <div>
-                            The Technical Club of Indian Institute of
-                            Infromation Technology, Allahabad
-                        </div>
-                        <div className="text-xs">2K Members</div>
-                    </div>
-                    <img
-                        className="w-16 h-16 relative bottom-[8.5rem] left-3"
-                        src={logo_commu}
-                        alt=""
-                    />
-                </div>
+                
             </div>
         </div>
     );

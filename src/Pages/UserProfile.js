@@ -37,7 +37,7 @@ const UserProfile = () => {
 
     return (
         <div className='absolute w-screen bg-[url("./assets/images/profile_bg.jpg")] bg-cover h-screen'>
-            <div class="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32 backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#ffffff]">
+            <div class="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
                 <div class="flex justify-center">
                     <img
                         src={face}
