@@ -88,7 +88,10 @@ export default function Footer() {
                         <FaInstagram className="cursor-pointer" size={30} />
                     </a>
                     <FaTwitterSquare size={30} />
-                    <FaGithubSquare size={30} />
+                    <a href='https://www.github.com/Vatsalbhuva11/Ecobloom' target='_blank'>
+                    <FaGithubSquare size={30}  className="cursor-pointer"/>
+                    </a>
+                    
                 </div>
             </div>
         </div>
