@@ -97,6 +97,7 @@ const UserDashboard = () => {
                                     setCommunities(data[0].data.communities);
                                     setLoader(false);
                                     setCampaigns(data[1].data);
+                                    console.log(data[1].data);
                                 })
                                 .catch(function (error) {
                                     console.error(error);
@@ -402,7 +403,7 @@ const UserDashboard = () => {
                 >
                     <div>
                         <a href="">
-                            <Maps_DashBoard/>
+                            <Maps_DashBoard />
                         </a>
                     </div>
                     <div className="flex flex-col items-center gap-5 mr-6 py-8 xl:py-6">
@@ -410,7 +411,7 @@ const UserDashboard = () => {
                             UPCOMING CAMPAIGNS
                         </p>
                         <div className="border-black border-[1px] flex flex-col gap-5 bg-[#E1E5CD] pt-1">
-                            {campaigns > 0 ? (
+                            {campaigns ? (
                                 campaigns.map((campaign) => {
                                     return (
                                         <a href="">
