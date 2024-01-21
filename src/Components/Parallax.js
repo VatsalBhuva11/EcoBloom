@@ -18,7 +18,7 @@ export default function Parallax() {
         let hill4Elem = document.getElementById("parallaxHill4");
         let hill5Elem = document.getElementById("parallaxHill5");
         let value = window.scrollY;
-        textElem.style.marginTop = value * -1 + "px";
+        textElem.style.marginTop = value * 2.5 + "px";
         leafElem.style.top = value * -1.5 + "px";
         leafElem.style.left = value * 1.5 + "px";
         hill5Elem.style.left = value * 1.5 + "px";
