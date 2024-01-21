@@ -272,7 +272,7 @@ const UserDashboard = () => {
                         Joined Communities
                     </p>
                     <div className="flex flex-col gap-2 2xl:gap-5 overflow-x-hidden overflow-y-hidden w-full px-3">
-                        {communities.length > 0 ? (
+                        {communities ? (
                             communities.slice(0, 6).map((community, key) => (
                                 <a key={key} href="">
                                     <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
@@ -406,7 +406,7 @@ const UserDashboard = () => {
                             UPCOMING CAMPAIGNS
                         </p>
                         <div className="border-black border-[1px] flex flex-col gap-5 bg-[#E1E5CD] pt-1">
-                            {campaigns.length > 0 ? (
+                            {campaigns > 0 ? (
                                 campaigns.map((campaign) => {
                                     return (
                                         <a href="">
