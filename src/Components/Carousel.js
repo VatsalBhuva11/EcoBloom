@@ -56,7 +56,7 @@ export default function Carousel() {
             </div>
             <div className="md:w-[85%] m-auto flex justify-center items-center">
                 <div className="w-full">
-                    <Slider {...settings} className="p-16">
+                    <Slider {...settings} className="flex justify-center p-16">
                         {data.map((data) => (
                             <div className="bg-transparent h-[70%] border-solid border-2 border-black shadow-xl flex flex-col justify-center items-center text-black rounded-xl gap-4">
                                 <div className="h-28 w-full rounded-t-xl justify-center text-center flex items-center">
@@ -99,13 +99,6 @@ const data = [
 
 
     // },
-    {
-        name: "Alex Rodriguez",
-        img: p2,
-        content:
-        "EcoBloom has become an indispensable tool for community organizers like me. The organizational oversight dashboard allows us to manage campaigns efficiently, verify users, and regulate community interactions. It's a powerful platform for fostering environmental engagement at the grassroots level.",
-        position: "Community Organizer",
-    },
     {
         name: "Emily Chen",
         img: p3,

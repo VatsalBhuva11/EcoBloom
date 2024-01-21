@@ -9,7 +9,7 @@ export default function About() {
             className="w-full h-screen bg-[url('./assets/images/underground.jpg')] bg-cover justify-between pt-12"
         >
             <div className="max-w-[1240px] mx-auto justify-center items-center">
-                <h1 className="py-3 text-[#EEF0E5] text-4xl md:text-6xl text-center font-bold">
+                <h1 className="py-3 text-[#EEF0E5] text-4xl md:text-6xl text-center font-bold mt-2">
                     ABOUT US
                 </h1>
                 <div className="grid md:grid-cols-2 px-2 py-12">
@@ -34,7 +34,7 @@ export default function About() {
                     <div>
                         <img
                             src={about}
-                            className="hidden md:block ml-32  h-[20rem]"
+                            className="hidden md:block ml-32 xl:h-[20rem]  h-[15rem]"
                             alt="ecobloom"
                         />
                     </div>
