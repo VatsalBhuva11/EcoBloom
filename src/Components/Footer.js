@@ -8,20 +8,20 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
-    return (
-        <div className="w-full bg-[#0F1035] text-gray-300 py-8 px-2 ">
-            <div className="max-w-[1240px] mx-auto  grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-600 py-8">
-                <div>
-                    <h6 className="font-medium uppercase text-gray-200 pt-2">
-                        Solutions
-                    </h6>
-                    <ul>
-                        <li className="py-2 text-sm">Analytics</li>
-                        <li className="py-2 text-sm">Marketing</li>
-                        <li className="py-2 text-sm">Commerce</li>
-                        <li className="py-2 text-sm">Insight</li>
-                    </ul>
-                </div>
+  return (
+    <div className="w-full  bg-[#0F1035] text-gray-300 py-8 px-2 ">
+      <div className="max-w-[1240px] mx-auto  grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-600 py-8">
+        <div>
+          <h6 className="font-medium uppercase text-gray-200 pt-2">
+            Solutions
+          </h6>
+          <ul>
+            <li className="py-2 text-sm">Analytics</li>
+            <li className="py-2 text-sm">Marketing</li>
+            <li className="py-2 text-sm">Commerce</li>
+            <li className="py-2 text-sm">Insight</li>
+          </ul>
+        </div>
 
                 <div>
                     <h6 className="font-medium text-gray-200 pt-2 uppercase">
