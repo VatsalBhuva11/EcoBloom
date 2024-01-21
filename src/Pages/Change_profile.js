@@ -24,7 +24,7 @@ const Change_profile = ({ visible, onClose }) => {
                     document.getElementById("emailSignUp")
                 );
                 const response = await fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.claims.userId}/profile`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.claims.userId}/profile?type=photo`,
                     {
                         method: "PATCH",
                         body: fileInput,

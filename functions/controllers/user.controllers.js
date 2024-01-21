@@ -17,7 +17,7 @@ import { storage } from "../config/firebase.config.js";
 
 import { ref, uploadBytesResumable } from "firebase/storage";
 // import checkOrg from "../middlewares/checkOrg.middleware.js";
-import checkUser from "../middlewares/checkOrg.middleware.js";
+// import checkUser from "../middlewares/checkOrg.middleware.js";
 import mongoose from "mongoose";
 
 const router = express.Router();
@@ -68,48 +68,75 @@ router.get("/:userId", async (req, res) => {
 
 //updating the user's details (profile only possible)
 router.patch("/:userId/profile", filesUpload, async (req, res) => {
-    const userId = req.params.userId;
-    const file = req.files[0];
-    const filename = file.originalname;
-    const extension = filename.split(".").pop();
-    //email variable, update record in DB
+    try {
+        const type = req.query.type;
 
-    if (extension !== "png" && extension !== "jpg" && extension !== "jpeg") {
-        response_400(
-            res,
-            "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
-        );
-    } else {
-        const pathToFile = `/user/vatsalbhuva11@gmail.com/profile.${extension}`;
-        // const pathToFile = `/user/${req.user.email}/profile.${extension}`;
-        const storageRef = ref(storage, pathToFile);
+        const userId = req.params.userId;
 
-        const metadata = {
-            contentType: file.mimetype,
-        };
-
-        const snapshot = await uploadBytesResumable(
-            storageRef,
-            file.buffer,
-            metadata
-        );
-        if (snapshot.state === "success") {
-            const user = await User.findByIdAndUpdate(
-                userId,
-                {
-                    photoPathFirestore: pathToFile,
-                },
-                {
-                    new: true,
-                }
-            );
-            console.log("Successfully updated user's profile in DB!");
-            response_200(res, "Successfully updated user in DB", {
-                photoPathFirestore: user.photoPathFirestore,
-            });
-        } else {
-            response_500(res, "Error occurred while uploading user file");
+        const checkUser = await User.findById(userId);
+        if (!checkUser) {
+            response_404(res, "User not found");
         }
+
+        const toUpdate = {
+            photoPathFirestore: checkUser.photoPathFirestore,
+            phone: checkUser.phone,
+        };
+        if (type === "photo") {
+            const file = req.files[0];
+            const filename = file.originalname;
+            const extension = filename.split(".").pop();
+            //email variable, update record in DB
+
+            if (
+                extension !== "png" &&
+                extension !== "jpg" &&
+                extension !== "jpeg"
+            ) {
+                response_400(
+                    res,
+                    "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
+                );
+            } else {
+                const pathToFile = `/user/vatsalbhuva11@gmail.com/profile.${extension}`;
+                // const pathToFile = `/user/${req.user.email}/profile.${extension}`;
+                const storageRef = ref(storage, pathToFile);
+
+                const metadata = {
+                    contentType: file.mimetype,
+                };
+
+                const snapshot = await uploadBytesResumable(
+                    storageRef,
+                    file.buffer,
+                    metadata
+                );
+                if (snapshot.state === "success") {
+                    toUpdate.photoPathFirestore = pathToFile;
+                } else {
+                    response_500(
+                        res,
+                        "Error occurred while uploading user file"
+                    );
+                }
+            }
+        }
+        if (type === "phone") {
+            const { phone } = req.body;
+            toUpdate.phone = phone;
+        }
+
+        const user = await User.findByIdAndUpdate(userId, toUpdate, {
+            new: true,
+        });
+        console.log("Successfully updated user's profile in DB!");
+        response_200(res, "Successfully updated user in DB", {
+            photoPathFirestore: user.photoPathFirestore,
+            phone: user.phone,
+        });
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while updating user details", err);
     }
 });
 
