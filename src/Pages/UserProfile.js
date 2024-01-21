@@ -1,4 +1,4 @@
-import { React, useState , useContext} from "react";
+import { React, useState, useContext } from "react";
 import face from "../assets/images/face.jpg";
 import logo from "../assets/images/logo.png";
 import EditPassword from "./EditPassword";
@@ -10,7 +10,6 @@ import { auth } from "../firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
-
 
 const UserProfile = () => {
     const [showMyModel, setShowMyModal] = useState(false);

@@ -67,7 +67,7 @@ router.get("/:userId", async (req, res) => {
 });
 
 //updating the user's details (profile only possible)
-router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
+router.patch("/:userId/profile", filesUpload, async (req, res) => {
     const userId = req.params.userId;
     const file = req.files[0];
     const filename = file.originalname;
@@ -80,7 +80,8 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
             "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
         );
     } else {
-        const pathToFile = `/user/${req.user.email}/profile.${extension}`;
+        const pathToFile = `/user/vatsalbhuva11@gmail.com/profile.${extension}`;
+        // const pathToFile = `/user/${req.user.email}/profile.${extension}`;
         const storageRef = ref(storage, pathToFile);
 
         const metadata = {
@@ -103,7 +104,9 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
                 }
             );
             console.log("Successfully updated user's profile in DB!");
-            response_200(res, "Successfully updated user in DB", user);
+            response_200(res, "Successfully updated user in DB", {
+                photoPathFirestore: user.photoPathFirestore,
+            });
         } else {
             response_500(res, "Error occurred while uploading user file");
         }

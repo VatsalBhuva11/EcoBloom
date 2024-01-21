@@ -19,6 +19,7 @@ import { ProfileContextProvider } from "../Components/ProfileContextProvider.js"
 import Orgdashboard from "./Orgdashboard.js";
 import Orgprofile from "./Orgprofile.js";
 import CreateCampaign from "./CreateCampaign.js";
+import logo from "../assets/images/logo.png";
 
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
@@ -96,7 +97,7 @@ export default function Home() {
                         <Route
                             exact
                             path="/createcampaign"
-                            element={<CreateCampaign/>}
+                            element={<CreateCampaign />}
                         />
                     </Routes>
                 </BrowserRouter>
