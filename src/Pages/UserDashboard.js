@@ -21,6 +21,8 @@ import moment from "moment";
 import { useContext } from "react";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import Maps_DashBoard from "../Components/Maps_Dashboard.js";
+import logo from '../assets/images/logo.png'
+import { RxActivityLog } from "react-icons/rx";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -183,18 +185,18 @@ const UserDashboard = () => {
                     >
                         {nav ? <AiOutlineClose /> : <AiOutlineMenu />}
                     </div>
+                    <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 mt-2" src={logo} alt="" /></Link>
                     <div className="ml-5 xl:m-6 text-3xl font-bold hidden xl:flex">
                         USER DASHBOARD
                     </div>
-                    <a className="flex items-center sm:text-2xl md:text-3xl lg:text-3xl m-5 xl:m-8 sm:m-7 lg:m-6 gap-1 sm:gap-2 lg:gap-3 cursor-pointer hover:text-blue-400 ">
-                        <div className="hidden text-[1.23rem] md:text-3xl lg:text-3xl sm:flex">
-                            {" "}
-                            View Rewards{" "}
-                        </div>{" "}
-                        <div className="text-3xl">
-                            {" "}
-                            <PiHandCoinsBold />{" "}
+                    <a className="flex items-center sm:text-2xl md:text-3xl lg:text-3xl m-5 xl:m-8 sm:m-7 lg:m-6 gap-1 sm:gap-2 lg:gap-3 cursor-pointer ">
+                        <div className="hidden lg:flex lg:items-center  hover:text-blue-400 text-[1.23rem] md:text-3xl lg:text-xl sm:flex">
+                        <div className="text-2xl text-white mr-2">
+                            <RxActivityLog/>
                         </div>
+                        <div className="mb-2">Activity Log</div>
+                        </div>{" "}
+                        
                     </a>
                 </div>
                 <div className="flex justify-end items-center text-2xl sm:text-2xl md:text-3xl mr-1">
