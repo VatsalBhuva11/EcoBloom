@@ -7,13 +7,14 @@ import hoodie from "../assets/images/hoodie.png";
 import keychain from "../assets/images/keychain (2).png";
 import book from "../assets/images/book.png";
 import { SiDogecoin } from "react-icons/si";
+import { Link } from "react-router-dom";
 const Store = () => {
   return (
     <div className=" h-full bg-[#EEF0E5] ">
       <div>
         <div className="flex justify-between">
           <div className="flex">
-            <img className="h-24 mt-4" src={logo} alt="" />
+            <Link to='/'><img className="h-24 hover:scale-105 duration-300 mt-4" src={logo} alt="" /></Link>
             <h1 className="text-3xl md:text-4xl font-bold mt-9 text-[#0F1035]">
               REWARDS & PRIZES
             </h1>

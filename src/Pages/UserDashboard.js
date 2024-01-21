@@ -265,11 +265,13 @@ const UserDashboard = () => {
 
             <div className="flex h-full">
                 <div className="hidden xl:flex bg-[#0f1035] w-[25%] flex-col justify-around gap-0 items-center pb-0 border-t border-[#eef0e5]">
+                <Link to="/user/join">
                     <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[15px] 2xl:text-[19px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.2rem] w-56 2xl:w-64 hover:scale-105 duration-300 mt-3">
                         {" "}
                         <FaPlus />
-                        <Link to="/user/join">Join Community</Link>
+                        Join Community
                     </button>
+                    </Link>
                     <p className="text-[#eef0e5] text-2xl 2xl:text-2xl font-bold my-1 mt-1">
                         Joined Communities
                     </p>

@@ -11,11 +11,11 @@ const Communities = () => {
     return (
         <div className="h-screen w-full bg-[#eef0e5]">
             <div className="flex items-center justify-between ">
-                <img
-                    className="w-20 md:w-28 lg:w-32 ml-2 mt-1"
+                <Link to='/'><img
+                    className="w-20 md:w-28 lg:w-32 ml-2 mt-1 cursor-pointer hover:scale-105 duration-300"
                     src={logo_new}
                     alt=""
-                />
+                /></Link>
                 <p className="text-lg sm:text-2xl md:text-3xl font-bold">
                     COMMUNITIES TO EXPLORE
                 </p>
