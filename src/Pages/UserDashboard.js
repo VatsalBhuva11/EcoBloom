@@ -59,10 +59,10 @@ const UserDashboard = () => {
                 .then((userId) => {
                     Promise.all([
                         fetch(
-                            `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
+                            `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
                         ),
                         fetch(
-                            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
+                            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/upcoming`
                         ),
                     ])
                         .then((responses) => {
@@ -109,7 +109,7 @@ const UserDashboard = () => {
                             );
                         });
                     // fetch(
-                    //     `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
+                    //     `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
                     // )
                     //     .then((userData) => userData.json())
                     //     .then((userData) => {
@@ -137,7 +137,7 @@ const UserDashboard = () => {
                     //         setName("ERROR");
                     //     });
                     // fetch(
-                    //     `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
+                    //     `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/upcoming`
                     // )
                     //     .then((campaignData) => {
                     //         return campaignData.json();
