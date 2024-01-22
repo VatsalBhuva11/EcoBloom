@@ -17,7 +17,7 @@ import { storage } from "../config/firebase.config.js";
 
 import { ref, uploadBytesResumable } from "firebase/storage";
 // import checkOrg from "../middlewares/checkOrg.middleware.js";
-// import checkUser from "../middlewares/checkOrg.middleware.js";
+import checkUser from "../middlewares/checkUser.middleware.js";
 import mongoose from "mongoose";
 
 const router = express.Router();
@@ -67,7 +67,7 @@ router.get("/:userId", async (req, res) => {
 });
 
 //updating the user's details (profile only possible)
-router.patch("/:userId/profile", filesUpload, async (req, res) => {
+router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
     try {
         const type = req.query.type;
 
@@ -98,10 +98,9 @@ router.patch("/:userId/profile", filesUpload, async (req, res) => {
                     "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
                 );
             } else {
-                const pathToFile = `/user/vatsalbhuva11@gmail.com/profile.${extension}`;
-                // const pathToFile = `/user/${req.user.email}/profile.${extension}`;
+                // const pathToFile = `/user/vatsalbhuva11@gmail.com/profile.${extension}`;
+                const pathToFile = `/user/${req.user.email}/profile.${extension}`;
                 const storageRef = ref(storage, pathToFile);
-
                 const metadata = {
                     contentType: file.mimetype,
                 };
@@ -141,11 +140,11 @@ router.patch("/:userId/profile", filesUpload, async (req, res) => {
 });
 
 //join community
-router.post("/join/:communityId", async (req, res) => {
+router.post("/join/:communityId", checkUser, async (req, res) => {
     try {
         const communityId = req.params.communityId;
         // const userId = req.user.userId;
-        const userId = "65aa49a5ba138af7c0f3f6cc";
+        const userId = req.user.userId;
 
         const community = await Community.findById(communityId);
         const user = await User.findById(userId);

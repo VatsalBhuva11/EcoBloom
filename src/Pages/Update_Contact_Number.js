@@ -2,6 +2,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import { auth } from "../firebase.js";
+import { jwtDecode } from "jwt-decode";
 
 const Update_Contact_Number = ({ visible, onClose }) => {
     const handleOnClose = (e) => {
@@ -21,12 +22,17 @@ const Update_Contact_Number = ({ visible, onClose }) => {
         if (auth.currentUser) {
             const formData = new FormData();
             formData.append("phone", phone);
-            auth.currentUser.getIdTokenResult().then(async (idTokenResult) => {
+            auth.currentUser.getIdToken().then(async (idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+
                 const response = await fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.claims.userId}/profile?type=phone`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.userId}/profile?type=phone`,
                     {
                         method: "PATCH",
                         body: formData,
+                        headers: {
+                            authorization: `Bearer ${idToken}`,
+                        },
                     }
                 );
                 if (!response.ok) {

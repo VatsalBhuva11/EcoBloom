@@ -4,30 +4,35 @@ import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
 import { useContext, useState } from "react";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
+import { jwtDecode } from "jwt-decode";
 
 const Change_profile = ({ visible, onClose }) => {
-    const [user, loading, error] = useAuthState(auth);
-    const [profile, setProfile] = useContext(ProfileContext);
-    const [clicked, setClicked] = useState(false);
-
     const handleOnClose = (e) => {
         if (e.target.id === "container") onClose();
     };
+
+    const [user, loading, error] = useAuthState(auth);
+    const [profile, setProfile] = useContext(ProfileContext);
+    const [clicked, setClicked] = useState(false);
 
     if (!visible) return null;
 
     function updateLogo() {
         setClicked(true);
         if (auth.currentUser) {
-            auth.currentUser.getIdTokenResult().then(async (idTokenResult) => {
+            auth.currentUser.getIdToken().then(async (idToken) => {
+                const idTokenResult = jwtDecode(idToken);
                 const fileInput = new FormData(
                     document.getElementById("emailSignUp")
                 );
                 const response = await fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.claims.userId}/profile?type=photo`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.userId}/profile?type=photo`,
                     {
                         method: "PATCH",
                         body: fileInput,
+                        headers: {
+                            authorization: `Bearer ${idToken}`,
+                        },
                     }
                 );
                 const data = await response.json();
