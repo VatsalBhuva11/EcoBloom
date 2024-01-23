@@ -33,13 +33,8 @@ const Navbar = () => {
 
                     <ul className="hidden md:flex md:items-center">
                         <a
-<<<<<<< Updated upstream
                             className="text-white font-bold lg:text-[23px] md:text-[20px] lg:mx-6 md:mx-3"
                             href="#home"
-=======
-                            className="text-black font-bold lg:text-[23px] md:text-[20px] lg:mx-6 md:mx-3"
-                            href="/"
->>>>>>> Stashed changes
                         >
                             Home
                         </a>
@@ -58,7 +53,7 @@ const Navbar = () => {
                         <Link
                             to={
                                 role === "user"
-                                    ? "/user/dashboard"
+                                  ? "/user/dashboard"
                                     : role === "org"
                                     ? "/org/dashboard"
                                     : "/login"
