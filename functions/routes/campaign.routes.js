@@ -3,12 +3,11 @@ import {
     createCampaign,
     upcomingCampaigns,
 } from "../controllers/campaign.controllers.js";
-// import checkOrg from "../middlewares/checkOrg.middleware.js";
+import checkOrg from "../middlewares/checkOrg.middleware.js";
 
 const router = express.Router();
 
-// router.post("/create", checkOrg, createCampaign);
-router.post("/create", createCampaign);
+router.post("/create", checkOrg, createCampaign);
 
 router.get("/upcoming", upcomingCampaigns);
 

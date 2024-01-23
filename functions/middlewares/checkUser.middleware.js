@@ -1,24 +1,32 @@
 import {
-    response_400,
     response_401,
+    response_403,
     response_500,
 } from "../utils/responseCodes.js";
-import { auth } from "../config/firebase.config.js";
+
+import { auth } from "../config/firebaseAdmin.config.js";
 export default async function checkUser(req, res, next) {
     try {
-        if (auth.currentUser) {
-            auth.currentUser.getIdTokenResult().then((idTokenResult) => {
-                if (idTokenResult.claims.role === "user") {
+        let token = req.headers["authorization"];
+        token = token.split(" ")[1];
+
+        auth.verifyIdToken(token)
+            .then((decodedToken) => {
+                if (decodedToken.role === "user") {
+                    req.user = {
+                        userId: decodedToken.userId,
+                        name: decodedToken.name,
+                        email: decodedToken.email,
+                    };
                     next();
                 } else {
-                    response_401(res, "Unauthorized");
+                    response_403(res, "Forbidden");
                 }
+            })
+            .catch((error) => {
+                response_401(res, "Login first as a user.");
             });
-        } else {
-            response_400(res, "User not logged in");
-        }
     } catch (err) {
-        console.log(err);
-        response_500(res, "Error occurred while verifying org status");
+        response_500(res, "Error occurred while verifying user", err);
     }
 }

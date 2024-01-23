@@ -2,6 +2,8 @@ import React from "react";
 import arrow from "../assets/images/arrow.png";
 import message from "../assets/images/message.png";
 import person from "../assets/images/person.png";
+import logo from '../assets/images/logo.png'
+import { Link } from "react-router-dom";
 
 export default function ChatLeftBar() {
   return (
@@ -18,7 +20,7 @@ export default function ChatLeftBar() {
                     <div className="message  flex flex-col mt-3">
                         <div className="firstbar">
                         <div className="flex items-center justify-between mb-3">
-                            <div className="text-[2.05rem] text-gray-300 font-inter">Messages</div>
+                        <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 mt-2" src={logo} alt="" /></Link>
                             <img className='w-[50px] h-[50px] xl:w-[60px] xl:h-[60px] rounded-full' src={message} alt="" />
                         </div>
                         <div className="search">

@@ -7,6 +7,7 @@ import { linkWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Login_Card from "./Create_Account_Card.js";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import Terms_Conditions from './Terms_Conditions.js'
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -15,6 +16,8 @@ export default function Login() {
     const [status, setStatus] = useState("none"); // ["none", "failure"] , redirect upon success
     const [message, setMessage] = useState("");
     const [user, loading, error] = useAuthState(auth);
+    const [showMyModel, setShowMyModal] = useState(false);
+    const handleOnClose = () => setShowMyModal(false);
 
     function emailSignIn(event) {
         event.preventDefault();
@@ -325,9 +328,12 @@ export default function Login() {
                                 </p>
                             </div>
                             <div className="flex justify-around my-2">
-                                <div className=" cursor-pointer hover:underline">
+                                <a
+                                     onClick={() => setShowMyModal(true)}
+                                     href="#" 
+                                ><div className=" cursor-pointer hover:underline">
                                     Terms&Conditions
-                                </div>
+                                </div></a>
                                 <div className=" cursor-pointer hover:underline ">
                                     Support
                                 </div>
@@ -346,6 +352,7 @@ export default function Login() {
                     </div>
                 </div>
             </div>
+            <Terms_Conditions onClose={handleOnClose} visible={showMyModel} />
         </div>
     );
 }

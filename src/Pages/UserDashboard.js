@@ -21,6 +21,8 @@ import moment from "moment";
 import { useContext } from "react";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import Maps_DashBoard from "../Components/Maps_Dashboard.js";
+import logo from '../assets/images/logo.png'
+import { RxActivityLog } from "react-icons/rx";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -97,6 +99,7 @@ const UserDashboard = () => {
                                     setCommunities(data[0].data.communities);
                                     setLoader(false);
                                     setCampaigns(data[1].data);
+                                    console.log(data[1].data);
                                 })
                                 .catch(function (error) {
                                     console.error(error);
@@ -182,18 +185,18 @@ const UserDashboard = () => {
                     >
                         {nav ? <AiOutlineClose /> : <AiOutlineMenu />}
                     </div>
+                    <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 mt-2" src={logo} alt="" /></Link>
                     <div className="ml-5 xl:m-6 text-3xl font-bold hidden xl:flex">
                         USER DASHBOARD
                     </div>
-                    <a className="flex items-center sm:text-2xl md:text-3xl lg:text-3xl m-5 xl:m-8 sm:m-7 lg:m-6 gap-1 sm:gap-2 lg:gap-3 cursor-pointer hover:text-blue-400 ">
-                        <div className="hidden text-[1.23rem] md:text-3xl lg:text-3xl sm:flex">
-                            {" "}
-                            View Rewards{" "}
-                        </div>{" "}
-                        <div className="text-3xl">
-                            {" "}
-                            <PiHandCoinsBold />{" "}
+                    <a className="flex items-center sm:text-2xl md:text-3xl lg:text-3xl m-5 xl:m-8 sm:m-7 lg:m-6 gap-1 sm:gap-2 lg:gap-3 cursor-pointer ">
+                        <div className="hidden lg:flex lg:items-center  hover:text-blue-400 text-[1.23rem] md:text-3xl lg:text-xl sm:flex">
+                        <div className="text-2xl text-white mr-2">
+                            <RxActivityLog/>
                         </div>
+                        <div className="mb-2">Activity Log</div>
+                        </div>{" "}
+                        
                     </a>
                 </div>
                 <div className="flex justify-end items-center text-2xl sm:text-2xl md:text-3xl mr-1">
@@ -402,7 +405,7 @@ const UserDashboard = () => {
                 >
                     <div>
                         <a href="">
-                            <Maps_DashBoard/>
+                            <Maps_DashBoard />
                         </a>
                     </div>
                     <div className="flex flex-col items-center gap-5 mr-6 py-8 xl:py-6">
@@ -410,7 +413,7 @@ const UserDashboard = () => {
                             UPCOMING CAMPAIGNS
                         </p>
                         <div className="border-black border-[1px] flex flex-col gap-5 bg-[#E1E5CD] pt-1">
-                            {campaigns > 0 ? (
+                            {campaigns ? (
                                 campaigns.map((campaign) => {
                                     return (
                                         <a href="">

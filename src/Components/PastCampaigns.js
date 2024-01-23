@@ -64,13 +64,16 @@ export default function PastCampaigns() {
                         </div>
                     </div>
                 </div>
+                <a  href="https://www.instagram.com/eco_bloom_/"
+                        target="_blank">
                 <button className="flex  mt-8 py-2 px-6 mb-10 text-center md:text-3xl text-white border bg-[#0F1035] hover:font-bold hover:bg-transparent hover:border-[#0F1035] hover:text-[#0F1035] rounded-md">
-                    See More{" "}
+                    See More
                     <FaArrowRight
                         className="hidden md:flex ml-4 mt-2 "
                         size={25}
                     />
                 </button>
+                </a>
             </div>
         </div>
     );

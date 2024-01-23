@@ -252,16 +252,7 @@ export default function UserSignup() {
                     </div>
                 </div>
             </div>
-            <button
-                onClick={() => {
-                    auth.currentUser.getIdTokenResult().then((tokenResult) => {
-                        console.log(tokenResult.claims);
-                        // alert(tokenResult.claims);
-                    });
-                }}
-            >
-                Check claims
-            </button>
+
             <Login_Card onClose={handleOnClose} visible={showMyModel} />
         </div>
     );

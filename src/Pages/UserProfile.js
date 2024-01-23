@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import face from "../assets/images/face.jpg";
 import logo from "../assets/images/logo.png";
 import EditPassword from "./EditPassword";
@@ -9,6 +9,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
+import { ProfileContext } from "../Components/ProfileContextProvider.js";
 
 const UserProfile = () => {
     const [showMyModel, setShowMyModal] = useState(false);
@@ -23,6 +24,7 @@ const UserProfile = () => {
     const [showMyModel3, setShowMyModal3] = useState(false);
     const handleOnClose3 = () => setShowMyModal3(false);
     const [user, loading, error] = useAuthState(auth);
+    const [profile, setProfile] = useContext(ProfileContext);
 
     if (loading) {
         return (
@@ -40,7 +42,7 @@ const UserProfile = () => {
             <div class="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
                 <div class="flex justify-center">
                     <img
-                        src={face}
+                        src={profile.url}
                         alt=""
                         class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
                     />
@@ -48,11 +50,11 @@ const UserProfile = () => {
 
                 <div class="mt-16">
                     <h1 class="font-bold text-center text-3xl text-gray-900">
-                        Rachel Green
+                        {profile.name}
                     </h1>
-                    <p class="text-center text-sm text-gray-400 font-medium">
+                    {/* <p class="text-center text-sm text-gray-400 font-medium">
                         New York
-                    </p>
+                    </p> */}
                     <p>
                         <span></span>
                     </p>

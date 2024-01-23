@@ -22,6 +22,10 @@ const User = new Schema({
         type: String,
         required: false,
     },
+    points: {
+        type: Number,
+        default: 0,
+    },
     registeredCampaigns: [
         {
             type: mongoose.Schema.Types.ObjectId,
