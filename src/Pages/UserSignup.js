@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useState } from "react";
 import Login_Card from "./Create_Account_Card.js";
+import Terms_Conditions from './Terms_Conditions.js'
 
 export default function UserSignup() {
     const [email, setEmail] = useState("");
@@ -60,7 +61,9 @@ export default function UserSignup() {
             });
     }
     const [showMyModel, setShowMyModal] = useState(false);
+    const [showMyModel1 , setShowMyModal1] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
+    const handleOnClose1 = () => setShowMyModal1(false);
     return (
         <div className="h-screen">
             <div className=" bg-[#EEF0E5]">
@@ -189,6 +192,12 @@ export default function UserSignup() {
                                             required
                                         />
                                     </div>
+                                    <div className="flex items-center gap-2">
+                                    <input type='checkbox' required name='agree' id='agree'/>
+                                    <label for='agree'>I agree to the <a  onClick={() => setShowMyModal1(true)}
+                                     href="#" className="hover:underline">terms and conditions<sup>*</sup></a></label>
+                                    </div>
+                                    
                                     {!signUpClicked ? (
                                         <button
                                             type="submit"
@@ -230,17 +239,20 @@ export default function UserSignup() {
                                     </p>
                                 </form>
                             </div>
-                            <div className="flex justify-around my-2">
-                                <div className=" cursor-pointer hover:underline">
+                            {/* <div className="flex justify-around my-2">
+                            <a
+                                     onClick={() => setShowMyModal1(true)}
+                                     href="#" 
+                                ><div className=" cursor-pointer hover:underline">
                                     Terms&Conditions
-                                </div>
+                                </div></a>
                                 <div className=" cursor-pointer hover:underline ">
                                     Support
                                 </div>
                                 <div className=" cursor-pointer hover:underline">
                                     Customer Care
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="image ">
@@ -254,6 +266,7 @@ export default function UserSignup() {
             </div>
 
             <Login_Card onClose={handleOnClose} visible={showMyModel} />
+            <Terms_Conditions onClose={handleOnClose1} visible={showMyModel1} />
         </div>
     );
 }
