@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import Organization from "./organization.model.js";
+
 const Schema = mongoose.Schema;
 
 const Campaign = new Schema({
@@ -6,6 +8,15 @@ const Campaign = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organization",
         required: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    goal: {
+        type: String,
+        required: true,
+        default: "Let's clean the world together!",
     },
     registeredUsers: [
         {
@@ -43,11 +54,11 @@ const Campaign = new Schema({
     },
     latitude: {
         type: Number,
-        required: true,
+        required: false,
     },
     longitude: {
         type: Number,
-        required: true,
+        required: false,
     },
     startDate: {
         type: Date,
@@ -63,21 +74,30 @@ const Campaign = new Schema({
         required: true,
         default: "UPCOMING",
     },
-    type: {
+    locationType: {
         type: String,
         enum: [
-            "LAKE",
-            "RIVER",
-            "SEA",
-            "OCEAN",
-            "BEACH",
-            "PARK",
-            "FOREST",
-            "MOUNTAIN",
-            "OTHER",
+            "Lake",
+            "River",
+            "Sea",
+            "Ocean",
+            "Beach",
+            "Park",
+            "Forest",
+            "Mountain",
+            "Other",
         ],
         required: true,
     },
+});
+
+//set default campaign name to the organization's name
+Campaign.pre("validate", async function (next) {
+    if (!this.name) {
+        const org = await Organization.findById(this.organization);
+        this.name = org.name;
+    }
+    next();
 });
 
 export default mongoose.model("campaign", Campaign);

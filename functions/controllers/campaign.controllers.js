@@ -10,19 +10,36 @@ mongoose.model("Organization", OrganizationSchema);
 export const createCampaign = async (req, res) => {
     try {
         // const org = req.org.orgId;
-        const org = "65aba920aa0bdd0670b2dc75";
-        const { address, city, country, latitude, longitude, startDate, type } =
-            req.body;
+        const org = req.org.orgId;
+        const {
+            name,
+            address,
+            city,
+            country,
+            startDate,
+            endDate,
+            goal,
+            locationType,
+        } = req.body;
+        // console.log(
+        //     "name: " + name,
+        //     "address: " + address,
+        //     "city: " + city,
+        //     "country: " + country,
+        //     "startDate: " + startDate,
+        //     "endDate: " + endDate,
+        //     "goal: " + goal,
+        //     "location: " + locationType
+        // );
         if (
             !address ||
             !city ||
             !country ||
-            !latitude ||
-            !longitude ||
             !startDate ||
-            !type
+            !endDate ||
+            !goal ||
+            !locationType
         ) {
-            console.log(req.body);
             return response_500(res, "Please enter all fields");
         } else {
             const campaign = await Campaign.create({
@@ -40,6 +57,8 @@ export const createCampaign = async (req, res) => {
         response_500(res, "Error occurred while creating campaign", err);
     }
 };
+
+//fix bug in createCampaign; unable to access req.body
 
 //get upcoming campaigns
 export const upcomingCampaigns = async (req, res) => {

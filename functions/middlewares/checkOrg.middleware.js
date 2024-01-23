@@ -9,7 +9,6 @@ export default async function checkOrg(req, res, next) {
     try {
         let token = req.headers["authorization"];
         token = token.split(" ")[1];
-
         auth.verifyIdToken(token)
             .then((decodedToken) => {
                 if (decodedToken.role === "org") {
