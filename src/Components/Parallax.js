@@ -38,48 +38,48 @@ export default function Parallax() {
     return (
         <div
             id="home"
-            className="overflow-x-hidden z-0 overflow-y-hidden w-full bg-[#003329]"
+            className="overflow-x-hidden z-0 h-screen overflow-y-hidden w-full bg-white"
         >
             <section className="relative flex justify-center items-center h-screen">
                 <img
                     src={sky}
-                    className="absolute bottom-50 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
+                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxSky"
                 ></img>
 
                 <img
                     src={hill1}
-                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
+                    className="absolute top-0 left-0 w-full h-screen pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill1"
                 ></img>
                 <img
                     src={hill2}
-                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
+                    className="absolute top-0 left-0 w-full h-screen pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill2"
                 ></img>
                 <img
                     src={hill3}
-                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
+                    className="absolute top-0 left-0 w-full h-screen pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill3"
                 ></img>
                 <img
                     src={hill4}
-                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
+                    className="absolute top-0 left-0 w-full h-screen pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill4"
                 ></img>
                 <img
                     src={hill5}
-                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
+                    className="absolute top-0 left-0 w-full h-screen pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxHill5"
                 ></img>
                 <img
                     src={tree}
-                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
+                    className="absolute top-0 left-0 w-full h-screen pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxTree"
                 ></img>
                 <h2
                     id="parallaxText"
-                    className="font-bold drop-shadow-md font-serif absolute text-[5em] text-white"
+                    className="font-bold drop-shadow-md font-serif absolute text-[3rem] lg:text-[4em] xl:text-[5em] text-white"
                 >
                     EcoBloom
                 </h2>
@@ -90,7 +90,7 @@ export default function Parallax() {
                 ></img>
                 <img
                     src={plant}
-                    className="absolute top-0 left-0 w-full pointer-events-none md:bg-cover md:bg-center"
+                    className="absolute top-0 left-0 w-full h-screen pointer-events-none md:bg-cover md:bg-center"
                     id="parallaxPlant"
                 ></img>
             </section>

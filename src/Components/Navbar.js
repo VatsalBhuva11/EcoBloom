@@ -7,7 +7,7 @@ import { auth } from "../firebase.js";
 import { signOut } from "firebase/auth";
 
 const Navbar = () => {
-    const [nav, setNav] = useState(true);
+    const [nav, setNav] = useState(false);
     const [role, setRole] = useState("");
     const [user, loading, error] = useAuthState(auth);
 
@@ -26,9 +26,9 @@ const Navbar = () => {
     }, [user, loading]);
 
     return (
-        <div className="flex justify-center md:w-full">
-            <div className="m-15 top-3 rounded-lg fixed backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#151414] border-t border-b border-[#b4b4b444] sm:w- lg:w-11/12">
-                <div className="bg-transparent flex justify-between text-white  w-full  mx-auto items-center h-20">
+        <div className="flex justify-center">
+            <div className="m-15 top-3 rounded-lg fixed backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#151414] border-t border-b border-[#b4b4b444] w-11/12">
+                <div className="bg-transparent flex justify-between text-white  w-full  mx-auto items-center h-20 ">
                     <img className="h-28 mt-6" src={logo} alt="" />
 
                     <ul className="hidden md:flex md:items-center">
@@ -93,8 +93,8 @@ const Navbar = () => {
                     <div
                         className={
                             !nav
-                                ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#365468] ease-in-out duration-500 md:hidden"
-                                : "fixed left-[-100%] md:hidden"
+                                ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#0f1d25] ease-in-out duration-500 md:hidden"
+                                : "fixed left-[-200%] md:hidden"
                         }
                     >
                         <div className=" uppercase p-4 grid grid-cols-1 text-[18px]">
