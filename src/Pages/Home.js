@@ -11,6 +11,7 @@ import Store from "./Store";
 import UserProfile from "./UserProfile";
 import CommunityChat from "./CommunityChat";
 import HomePage from "./HomePage.js";
+import Video from "./Video.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { auth } from "../firebase.js";
@@ -86,6 +87,7 @@ export default function Home() {
                             path="/org/profile"
                             element={<Orgprofile />}
                         />
+                        <Route exact path="/video" element={<Video />} />
 
                         <Route exact path="/store" element={<Store />} />
                         <Route exact path="/chat" element={<CommunityChat />} />

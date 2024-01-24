@@ -99,7 +99,7 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
                 );
             } else {
                 // const pathToFile = `/user/vatsalbhuva11@gmail.com/profile.${extension}`;
-                const pathToFile = `/user/${req.user.email}/profile.${extension}`;
+                const pathToFile = `user/${req.user.email}/profile.${extension}`;
                 const storageRef = ref(storage, pathToFile);
                 const metadata = {
                     contentType: file.mimetype,

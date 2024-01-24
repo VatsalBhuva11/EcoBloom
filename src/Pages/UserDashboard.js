@@ -21,7 +21,7 @@ import moment from "moment";
 import { useContext } from "react";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import Maps_DashBoard from "../Components/Maps_Dashboard.js";
-import logo from '../assets/images/logo.png'
+import logo from "../assets/images/logo.png";
 import { RxActivityLog } from "react-icons/rx";
 
 const UserDashboard = () => {
@@ -61,10 +61,10 @@ const UserDashboard = () => {
                 .then((userId) => {
                     Promise.all([
                         fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
+                            `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
                         ),
                         fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/upcoming`
+                            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
                         ),
                     ])
                         .then((responses) => {
@@ -112,7 +112,7 @@ const UserDashboard = () => {
                             );
                         });
                     // fetch(
-                    //     `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
+                    //     `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
                     // )
                     //     .then((userData) => userData.json())
                     //     .then((userData) => {
@@ -140,7 +140,7 @@ const UserDashboard = () => {
                     //         setName("ERROR");
                     //     });
                     // fetch(
-                    //     `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/upcoming`
+                    //     `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
                     // )
                     //     .then((campaignData) => {
                     //         return campaignData.json();
@@ -185,18 +185,23 @@ const UserDashboard = () => {
                     >
                         {nav ? <AiOutlineClose /> : <AiOutlineMenu />}
                     </div>
-                    <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 mt-2" src={logo} alt="" /></Link>
+                    <Link to="/">
+                        <img
+                            className="h-12  hover:scale-105 duration-300 md:h-16 mt-2"
+                            src={logo}
+                            alt=""
+                        />
+                    </Link>
                     <div className="ml-5 xl:m-6 text-3xl font-bold hidden xl:flex">
                         USER DASHBOARD
                     </div>
                     <a className="flex items-center sm:text-2xl md:text-3xl lg:text-3xl m-5 xl:m-8 sm:m-7 lg:m-6 gap-1 sm:gap-2 lg:gap-3 cursor-pointer ">
                         <div className="hidden lg:flex lg:items-center  hover:text-blue-400 text-[1.23rem] md:text-3xl lg:text-xl sm:flex">
-                        <div className="text-2xl text-white mr-2">
-                            <RxActivityLog/>
-                        </div>
-                        <div className="mb-2">Activity Log</div>
+                            <div className="text-2xl text-white mr-2">
+                                <RxActivityLog />
+                            </div>
+                            <div className="mb-2">Activity Log</div>
                         </div>{" "}
-                        
                     </a>
                 </div>
                 <div className="flex justify-end items-center text-2xl sm:text-2xl md:text-3xl mr-1">
@@ -268,12 +273,12 @@ const UserDashboard = () => {
 
             <div className="flex h-full">
                 <div className="hidden xl:flex bg-[#0f1035] w-[25%] flex-col justify-around gap-0 items-center pb-0 border-t border-[#eef0e5]">
-                <Link to="/user/join">
-                    <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[15px] 2xl:text-[19px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.2rem] w-56 2xl:w-64 hover:scale-105 duration-300 mt-3">
-                        {" "}
-                        <FaPlus />
-                        Join Community
-                    </button>
+                    <Link to="/user/join">
+                        <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[15px] 2xl:text-[19px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.2rem] w-56 2xl:w-64 hover:scale-105 duration-300 mt-3">
+                            {" "}
+                            <FaPlus />
+                            Join Community
+                        </button>
                     </Link>
                     <p className="text-[#eef0e5] text-2xl 2xl:text-2xl font-bold my-1 mt-1">
                         Joined Communities

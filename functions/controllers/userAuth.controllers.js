@@ -72,7 +72,7 @@ router.post("/register", async (req, res) => {
                         "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
                     );
                 } else {
-                    const pathToFile = `/user/${email}/profile.${extension}`;
+                    const pathToFile = `user/${email}/profile.${extension}`;
                     const storageRef = ref(storage, pathToFile);
 
                     const metadata = {
