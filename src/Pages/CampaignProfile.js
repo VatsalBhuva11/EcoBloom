@@ -105,7 +105,7 @@ const CampaignProfile = () => {
         </div>
       </div>
       {/* glass 1 ends */}
-      <div>
+      <div className="overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat bg-[url('./assests/Campbg.png')] pb-6  md:pb-12">
         <div className="flex ml-4 md:ml-10 lg:ml-10 font-bold text-xl sm:text-2xl md:text-3xl text-[#CD8521] mt-4">
           <h1>Participate and Earn :</h1>
           <p className="pl-2 lg:ml-4 md:ml-2 flex font-bold  text-[#FA9A0F]">
