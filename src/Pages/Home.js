@@ -21,6 +21,7 @@ import Orgdashboard from "./Orgdashboard.js";
 import Orgprofile from "./Orgprofile.js";
 import CreateCampaign from "./CreateCampaign.js";
 import logo from "../assets/images/logo.png";
+import CampaignProfile from "./CampaignProfile.js";
 
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
@@ -100,6 +101,11 @@ export default function Home() {
                             exact
                             path="/createcampaign"
                             element={<CreateCampaign />}
+                        />
+                        <Route
+                            exact
+                            path="/campaign/profile"
+                            element={<CampaignProfile />}
                         />
                     </Routes>
                 </BrowserRouter>

@@ -20,7 +20,7 @@ export default function PastCampaigns() {
                             <div class="w-1/2 p-1 md:p-2">
                                 <img
                                     alt="gallery"
-                                    class="block h-full w-full rounded-lg object-cover object-center"
+                                    class="block h-full w-full rounded-lg object-cover  object-center"
                                     src={p1}
                                 />
                             </div>
@@ -34,7 +34,7 @@ export default function PastCampaigns() {
                             <div class="w-full p-1 md:p-2">
                                 <img
                                     alt="gallery"
-                                    class="block h-full w-full rounded-lg object-cover object-center"
+                                    class="block h-full w-full rounded-lg object-cover  object-center"
                                     src={p3}
                                 />
                             </div>
@@ -43,21 +43,21 @@ export default function PastCampaigns() {
                             <div class="w-full p-1 md:p-2">
                                 <img
                                     alt="gallery"
-                                    class="block h-full w-full rounded-lg object-cover object-center"
+                                    class="block h-full w-full rounded-lg object-cover  object-center"
                                     src={p4}
                                 />
                             </div>
                             <div class="w-1/2 p-1 md:p-2">
                                 <img
                                     alt="gallery"
-                                    class="block h-full w-full rounded-lg object-cover object-center"
+                                    class="block h-full w-full rounded-lg object-cover  object-center"
                                     src={p5}
                                 />
                             </div>
                             <div class="w-1/2 p-1 md:p-2">
                                 <img
                                     alt="gallery"
-                                    class="block h-full w-full rounded-lg object-cover object-center"
+                                    class="block h-full w-full rounded-lg object-cover  object-center"
                                     src={p6}
                                 />
                             </div>

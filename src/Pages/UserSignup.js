@@ -7,6 +7,7 @@ import { useState } from "react";
 import Login_Card from "./Create_Account_Card.js";
 import Terms_Conditions from './Terms_Conditions.js'
 import logo from '../assets/images/logo.png'
+import { FaInfoCircle } from "react-icons/fa";
 
 export default function UserSignup() {
     const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ export default function UserSignup() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [signUpClicked, setSignUpClicked] = useState(false);
     const [status, setStatus] = useState("none");
+    const [isOpen, setIsOpen] = useState(false);
 
     function emailSignUp(event) {
         setSignUpClicked(true);
@@ -182,7 +184,23 @@ export default function UserSignup() {
                                             class="block mb-2 text-sm font-medium text-[#0f1035]"
                                             for="file_input"
                                         >
-                                            Upload Photo<sup>*</sup>
+                                            <div className="flex items-center">
+                                                <div className="mr-1">Upload Photo<sup>*</sup></div>
+                                                <div className="flex">
+                                                <button onClick={() => setIsOpen((isOpen) => !isOpen)}><div className="text-lg cursor-pointer "><FaInfoCircle/></div></button>
+                                                {isOpen && 
+                                                <div className="flex flex-col  bg-white  p-2 rounded-lg border-black">
+                                                    <div className=" text-[10px]">&rarr; upload a clear picture of your face with size less than 2mb</div>
+                                                    <div className="text-[10px]">&rarr; size of the image should be between 48<sup>*</sup>48 pixels and 4096<sup>*</sup>4096 pixels</div>
+                                                    <div className="text-[10px]">&rarr; Format of the image should be either JPG, JPEg or PNG</div>
+                                                    <div className="text-[10px]">&rarr; It would be preferred to upload a clear photo where face is clearly visible</div>
+                                                    </div>} 
+
+                                                </div>
+                                                
+
+                                            </div>
+                                            
                                         </label>
                                         <input
                                             class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
@@ -197,7 +215,7 @@ export default function UserSignup() {
                                     <div className="flex items-center gap-2">
                                     <input type='checkbox' required name='agree' id='agree'/>
                                     <label for='agree'>I agree to the <a  onClick={() => setShowMyModal1(true)}
-                                     href="#" className="hover:underline">terms and conditions<sup>*-</sup></a></label>
+                                     href="#" className="hover:underline">terms and conditions<sup>*</sup></a></label>
                                     </div>
                                     
                                     {!signUpClicked ? (
@@ -231,7 +249,7 @@ export default function UserSignup() {
                                         </p>
                                     ) : null}
                                     <p class="text-sm  text-black">
-                                        Already have an account?{" "}
+                                        Already have an account?
                                         <Link
                                             to="/login"
                                             class="font-bold text-primary-600 hover:underline "
