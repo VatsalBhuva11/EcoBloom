@@ -50,7 +50,7 @@ export default function ChatLeftBar() {
                         </div>
                         </div>
                     </div>
-                    <div className='mt-5 h-[70%] overflow-scroll scrollbar-hide'>
+                    <div className='mt-5 h-[70%] overflow-scroll overflow-x-hidden scrollbar-hide'>
                     <div className='text-[1.5rem] text-gray-300 font-inter '>All messages</div>
                     <div className='flex flex-col gap-4 xl:gap-5 mt-5 ' >
                         <a href="">

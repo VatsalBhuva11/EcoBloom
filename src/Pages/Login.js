@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Login_Card from "./Create_Account_Card.js";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Terms_Conditions from './Terms_Conditions.js'
+import logo from '../assets/images/logo.png'
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -148,9 +149,11 @@ export default function Login() {
 
     return (
         <div className="h-screen">
-            <div className=" bg-[#EEF0E5] h-screen">
+            
+            <div className=" bg-[#EEF0E5] h-screen flex">
+            <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 " src={logo} alt="" /></Link>
                 <div className=" flex justify-between items-center">
-                    <div class="flex flex-col items-center px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
+                    <div class="flex flex-col  px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
                         <div class="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
                             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                                 <div className="content">

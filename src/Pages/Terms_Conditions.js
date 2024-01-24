@@ -10,10 +10,10 @@ const Update_Contact_Number = ({ visible, onClose }) => {
   return (
     <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center ">
       
-      <div className="bg-[#CDE1C9] p-7 rounded-lg w-[40rem] flex flex-col items-center  mt-7 gap-3 h-[30rem]">
+      <div className="bg-[#CDE1C9] p-7 rounded-lg w-[60%] h-[20rem] lg:w-[40rem] flex flex-col items-center  mt-7 gap-3 lg:h-[30rem]">
       <div className=" text-center text-lg">Terms & Conditions</div>
       
-      <div className="flex flex-col h-[25rem] w-[36rem] rounded-lg p-4 bg-slate-100 overflow-scroll overflow-x-hidden">
+      <div className="flex flex-col lg:h-[25rem] lg:w-[36rem] rounded-lg p-4 bg-slate-100 overflow-scroll overflow-x-hidden">
       
 
 <p>Welcome to EcoBloom-GDSC-challenge!</p>

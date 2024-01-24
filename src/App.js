@@ -5,18 +5,21 @@ import UserDashboard from "./Pages/UserDashboard";
 import CommunityChat from "./Pages/CommunityChat";
 import Store from "./Pages/Store";
 import Orgprofile from "./Pages/Orgprofile";
+import CreateCampaign from "./Pages/CreateCampaign";
 // import SignupInitial from './Pages/SignupInitial';
 
 export default function App() {
-  return (
-    <div>
-      {/* <SignupInitial/> */}
-      {/* <Home /> */}
-      {/* <Orgprofile /> */}
-      {/* <CommunityChat/> */}
-      {/* <UserDashboard/> */}
-      {/* <SignIn></SignIn> */}
-      {/* <OrganizationAuth></OrganizationAuth> */}
-    </div>
-  );
+    return (
+        <div>
+            {/* <SignupInitial/> */}
+            <Home />
+            {/* <Orgprofile /> */}
+            {/* <CommunityChat/> */}
+            {/* <UserDashboard/> */}
+            {/* <SignIn></SignIn> */}
+            {/* <OrganizationAuth></OrganizationAuth> */}
+            {/* <CreateCampai
+            gn/> */}
+        </div>
+    );
 }

@@ -22,7 +22,7 @@ export default function ChatBubbleArrival() {
                </svg>
             </button>
             {isOpen && 
-               <div id="dropdownDots" class="z-10  bg-[#c8d0d6] divide-y divide-gray-100 rounded-lg shadow w-40">
+               <div id="dropdownDots" class="z-10 bg-[#c8d0d6] divide-y divide-gray-100 rounded-lg shadow w-40">
                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMenuIconButton">
                   <li>
                      <a href="#" class="block px-4 py-2 hover:bg-gray-400 rounded-2xl">Reply</a>
