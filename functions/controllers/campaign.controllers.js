@@ -104,6 +104,7 @@ export const verifyUser = async (req, res) => {
         const blob = new Blob([file.buffer], { type: file.mimeType });
         // Get a v4 signed URL for reading the file
         const imageUrl = `https://storage.googleapis.com/ecobloom-gdsc-challenge.appspot.com/${user.photoPathFirestore}`;
+        console.log("IMAGEURL: ", imageUrl);
         const imageResponse = await axios.get(imageUrl, {
             responseType: "arraybuffer",
         });
@@ -125,7 +126,7 @@ export const verifyUser = async (req, res) => {
         console.log("BLOB: ", blob);
         console.log("IMAGERESPONSE BLOB: ", blob2);
         formdata.append("image_file1", blob, "me.jpg");
-        formdata.append("image_file2", blob2, "profile.jpg");
+        formdata.append("image_file2", blob2, "me2.jpg");
         formdata.append("api_key", "2_aNnUX2IvYGLSmrE5-eYMHxtdJQqoaX");
         formdata.append("api_secret", "zqyJvxsnPrhNIoJ3uXBSoZ-T493qtD0E");
 
@@ -141,7 +142,6 @@ export const verifyUser = async (req, res) => {
         )
             .then((response) => response.json())
             .then((result) => {
-                console.log(result);
                 response_200(res, "Success", result);
             })
             .catch((error) => console.log("error", error));
