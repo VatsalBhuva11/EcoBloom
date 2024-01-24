@@ -18,8 +18,7 @@ export default function App() {
             {/* <UserDashboard/> */}
             {/* <SignIn></SignIn> */}
             {/* <OrganizationAuth></OrganizationAuth> */}
-            {/* <CreateCampai
-            gn/> */}
+            {/* <CreateCampaign/> */}
         </div>
     );
 }
