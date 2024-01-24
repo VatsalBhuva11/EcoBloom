@@ -87,7 +87,7 @@ const CampaignProfile = () => {
               </div>
             </div>
 
-            <div className="flex text-[#686968] hidden md:flex">
+            <div className="text-[#686968] hidden md:flex">
               <FaRegClock size={40} className="md:mr-4 mr-2" />
               <div className="text-md md:text-xl lg:text-[25px]">
                 <p className="font-bold">Registration Deadline</p>
@@ -105,7 +105,7 @@ const CampaignProfile = () => {
         </div>
       </div>
       {/* glass 1 ends */}
-      <div>
+      <div className="overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat bg-[url('./assests/Campbg.png')] pb-6  md:pb-12">
         <div className="flex ml-4 md:ml-10 lg:ml-10 font-bold text-xl sm:text-2xl md:text-3xl text-[#CD8521] mt-4">
           <h1>Participate and Earn :</h1>
           <p className="pl-2 lg:ml-4 md:ml-2 flex font-bold  text-[#FA9A0F]">
@@ -114,7 +114,7 @@ const CampaignProfile = () => {
         </div>
         {/* points */}
         <div className="mt-8 md:mt-12 mr-8 ml-8 pb-4 rounded-lg backdrop-filter text-[#686968] backdrop-blur-lg z-30 bg-opacity-30 bg-[#bebaba] border-t border-b border-[#8c858544] shadow-md ">
-          <div className="ml-5 md:ml-10 w-fit  bg-transparent flex-col w-full  items-center  ">
+          <div className="ml-5 md:ml-10 w-fit  bg-transparent flex-col  items-center  ">
             <h1 className="mt-4 font-bold text-xl w-full sm:text-2xl md:text-3xl flex text-[#686968]">
               Our Goal
             </h1>
@@ -130,7 +130,7 @@ const CampaignProfile = () => {
         </div>
         {/* goals */}
         <div className="mt-4 md:mt-8 mr-8 ml-8 pb-4 rounded-lg backdrop-filter text-[#686968] backdrop-blur-lg z-30 bg-opacity-30 bg-[#bebaba] border-t border-b border-[#8c858544] shadow-md ">
-          <div className="ml-5 md:ml-10 w-fit  bg-transparent flex-col w-full  items-center  ">
+          <div className="ml-5 md:ml-10 w-fit  bg-transparent flex-col   items-center  ">
             <h1 className="mt-4 font-bold text-xl w-full sm:text-2xl md:text-3xl flex text-[#686968]">
               Guidlines
             </h1>
