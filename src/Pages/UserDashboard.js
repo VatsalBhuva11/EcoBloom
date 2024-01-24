@@ -176,7 +176,7 @@ const UserDashboard = () => {
     }
 
     return (
-        <div className="flex flex-col w-full h-screen">
+        <div className="flex flex-col w-full xl:h-screen">
             <div className="w-full bg-[#0f1035] text-white flex justify-between ">
                 <div className="flex items-center">
                     <div
@@ -196,11 +196,11 @@ const UserDashboard = () => {
                         USER DASHBOARD
                     </div>
                     <a className="flex items-center sm:text-2xl md:text-3xl lg:text-3xl m-5 xl:m-8 sm:m-7 lg:m-6 gap-1 sm:gap-2 lg:gap-3 cursor-pointer ">
-                        <div className="hidden lg:flex lg:items-center  hover:text-blue-400 text-[1.23rem] md:text-3xl lg:text-xl sm:flex">
+                        <div className="flex items-center  hover:text-blue-400 text-[1.23rem] md:text-3xl lg:text-xl sm:flex">
                             <div className="text-2xl text-white mr-2">
-                                <RxActivityLog />
+                                 <RxActivityLog/>
                             </div>
-                            <div className="mb-2">Activity Log</div>
+                             <div className="mb-2 hidden lg:flex mt-2">Activity Log</div>
                         </div>{" "}
                     </a>
                 </div>
@@ -220,12 +220,12 @@ const UserDashboard = () => {
                     <div className="flex mx-2 sm:mx-5 lg:mx-8 items-center">
                         <Link to="/user/profile">
                             <img
-                                className="w-[60px] mx-4 rounded-full hover:scale-110 cursor-pointer duration-300"
+                                className="w-[60px] h-[60px] mx-4 rounded-full hover:scale-110 cursor-pointer duration-300 my-1"
                                 src={profile.url}
                                 alt=""
                             />
                         </Link>
-                        <div className="text-3xl hidden sm:flex">
+                        <div className="text-3xl hidden md:flex">
                             {profile.name}
                         </div>
                         <a className="ml-2 mr-5 cursor-pointer text-3xl">
