@@ -6,6 +6,7 @@ import { auth } from "../firebase.js";
 import { useState } from "react";
 import Login_Card from "./Create_Account_Card.js";
 import Terms_Conditions from './Terms_Conditions.js'
+import logo from '../assets/images/logo.png'
 
 export default function UserSignup() {
     const [email, setEmail] = useState("");
@@ -66,9 +67,10 @@ export default function UserSignup() {
     const handleOnClose1 = () => setShowMyModal1(false);
     return (
         <div className="h-screen">
-            <div className=" bg-[#EEF0E5]">
+            <div className=" bg-[#EEF0E5] flex">
+            <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 " src={logo} alt="" /></Link>
                 <div className=" flex justify-between items-center">
-                    <div class="flex flex-col items-center px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
+                    <div class="flex flex-col px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
                         <div class="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
                             <div class="p-1 space-y-1 md:space-y-2 sm:p-3 px-4">
                                 <div className="content">
@@ -195,7 +197,7 @@ export default function UserSignup() {
                                     <div className="flex items-center gap-2">
                                     <input type='checkbox' required name='agree' id='agree'/>
                                     <label for='agree'>I agree to the <a  onClick={() => setShowMyModal1(true)}
-                                     href="#" className="hover:underline">terms and conditions<sup>*</sup></a></label>
+                                     href="#" className="hover:underline">terms and conditions<sup>*-</sup></a></label>
                                     </div>
                                     
                                     {!signUpClicked ? (

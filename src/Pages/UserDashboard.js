@@ -250,18 +250,9 @@ const UserDashboard = () => {
                             : "ease-up-down duration-0 fixed left-[-200%]"
                     }
                 >
-                    <a
-                        onClick={() => setShowMyModal1(true)}
-                        className="p-4 border-b border-gray-600 hover:scale-100 duration-300"
-                    >
-                        Edit Password
-                    </a>
-                    <a className="p-4 border-b border-gray-600 hover:scale-100 duration-300">
-                        Edit Photo
-                    </a>
-                    <a className="p-4 border-b border-gray-600 hover:scale-100 duration-300">
-                        Edit Name
-                    </a>
+                    <Link to='/user/profile'
+                        className="p-4 hover:scale-100 duration-300"
+                    >View Profile</Link>
                     <a
                         className="p-4 hover:scale-100 duration-300"
                         onClick={() => setShowMyModal(true)}
