@@ -20,6 +20,7 @@ import { ref, uploadBytesResumable } from "firebase/storage";
 import checkUser from "../middlewares/checkUser.middleware.js";
 import mongoose from "mongoose";
 import Jimp from "jimp";
+import { auth } from "../config/firebaseAdmin.config.js";
 
 const router = express.Router();
 
@@ -231,6 +232,48 @@ router.post("/join/:communityId", checkUser, async (req, res) => {
     } catch (err) {
         console.log(err);
         response_500(res, "Error occurred while joining community", err);
+    }
+});
+
+router.post("/linkPassword", checkUser, async (req, res) => {
+    try {
+        const { password, uid } = req.body;
+        const userId = req.user.userId;
+
+        const user = await User.findById(userId);
+        if (!user) {
+            response_404(res, "User not found");
+        } else {
+            auth.updateUser(uid, {
+                password: password,
+            })
+                .then((userRecord) => {
+                    console.log(userRecord);
+                    response_200(
+                        res,
+                        "Successfully linked with password",
+                        user
+                    );
+                })
+                .catch((error) => {
+                    console.log("error while linking: ", error);
+                    response_500(
+                        res,
+                        "Error occurred while linking with password",
+                        error
+                    );
+                });
+            // const credential = auth.GoogleAuthProvider.credential(
+            //     user.providerData[0].uid
+            // );
+            // await auth.updateUser(uid, {
+            //     password: password,
+            // });
+            // response_200(res, "Successfully linked with password", user);
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while linking with password", err);
     }
 });
 

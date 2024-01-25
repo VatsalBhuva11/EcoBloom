@@ -14,9 +14,9 @@ const EditPassword = ({ visible, onClose }) => {
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState(null);
 
-    const handleAccountLinking = () => {
+    const handleAccountLinking = async () => {
         //check how to link email/pass to google
         //reset password if already linked.
         setClicked(true);
@@ -26,41 +26,35 @@ const EditPassword = ({ visible, onClose }) => {
             setClicked(false);
             return;
         } else {
-            const prevUser = auth.currentUser;
-            const credential = EmailAuthProvider.credential(
-                auth.currentUser.email,
-                password
-            );
-            signInWithCredential(auth, credential)
-                .then(async (result) => {
-                    console.log("Sign In Success", result);
-                    const currentUser = result.user;
-
-                    const credential =
-                        OAuthProvider.credentialFromResult(result);
-                    return linkWithCredential(prevUser, credential)
-                        .then((linkResult) => {
-                            // Sign in with the newly linked credential
-                            const linkCredential =
-                                OAuthProvider.credentialFromResult(linkResult);
-                            return signInWithCredential(auth, linkCredential);
-                        })
-                        .then((signInResult) => {
-                            // Save the merged data to the new user
-                            console.log("Sign In Success again", signInResult);
-                            alert("LESGO");
-                        })
-                        .catch((error) => {
-                            // Some error occurred, you can inspect the code: error.code
-                            // Common errors could be invalid email and invalid or expired OTPs.
-                            console.log("Error", error);
-                            alert("Error");
-                        });
+            const user = auth.currentUser;
+            const token = await user.getIdToken();
+            fetch(`${process.env.REACT_APP_LOCAL_API_URL}/user/linkPassword`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    password: password,
+                    uid: user.uid,
+                }),
+            })
+                .then((res) => {
+                    if (res.status === 200) {
+                        alert("Successfully changed password");
+                        document.getElementById("container").click();
+                        setClicked(false);
+                    } else {
+                        alert("Error changing password");
+                        document.getElementById("container").click();
+                        setClicked(false);
+                    }
                 })
-                .catch((error) => {
-                    // If there are errors we want to undo the data merge/deletion
-                    console.log("Sign In Error", error);
-                    alert("Error in SignIn catch");
+                .catch((err) => {
+                    console.log(err);
+                    alert("Error changing password");
+                    document.getElementById("container").click();
+                    setClicked(false);
                 });
         }
     };
