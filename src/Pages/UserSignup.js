@@ -5,8 +5,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useState } from "react";
 import Login_Card from "./Create_Account_Card.js";
-import Terms_Conditions from './Terms_Conditions.js'
-import logo from '../assets/images/logo.png'
+import Terms_Conditions from "./Terms_Conditions.js";
+import logo from "../assets/images/logo.png";
 import { FaInfoCircle } from "react-icons/fa";
 
 export default function UserSignup() {
@@ -62,15 +62,25 @@ export default function UserSignup() {
                 setSignUpClicked(false);
                 console.error("Error:", error);
             });
+
+        /* 
+            
+             */
     }
     const [showMyModel, setShowMyModal] = useState(false);
-    const [showMyModel1 , setShowMyModal1] = useState(false);
+    const [showMyModel1, setShowMyModal1] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
     const handleOnClose1 = () => setShowMyModal1(false);
     return (
         <div className="h-screen">
             <div className=" bg-[#EEF0E5] flex">
-            <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 " src={logo} alt="" /></Link>
+                <Link to="/">
+                    <img
+                        className="h-12  hover:scale-105 duration-300 md:h-16 "
+                        src={logo}
+                        alt=""
+                    />
+                </Link>
                 <div className=" flex justify-between items-center">
                     <div class="flex flex-col px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
                         <div class="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
@@ -185,22 +195,58 @@ export default function UserSignup() {
                                             for="file_input"
                                         >
                                             <div className="flex items-center">
-                                                <div className="mr-1">Upload Photo<sup>*</sup></div>
-                                                <div className="flex">
-                                                <button onClick={() => setIsOpen((isOpen) => !isOpen)}><div className="text-lg cursor-pointer "><FaInfoCircle/></div></button>
-                                                {isOpen && 
-                                                <div className="flex flex-col  bg-white  p-2 rounded-lg border-black">
-                                                    <div className=" text-[10px]">&rarr; upload a clear picture of your face with size less than 2mb</div>
-                                                    <div className="text-[10px]">&rarr; size of the image should be between 48<sup>*</sup>48 pixels and 4096<sup>*</sup>4096 pixels</div>
-                                                    <div className="text-[10px]">&rarr; Format of the image should be either JPG, JPEg or PNG</div>
-                                                    <div className="text-[10px]">&rarr; It would be preferred to upload a clear photo where face is clearly visible</div>
-                                                    </div>} 
-
+                                                <div className="mr-1">
+                                                    Upload Photo<sup>*</sup>
                                                 </div>
-                                                
-
+                                                <div className="flex">
+                                                    <button
+                                                        onClick={() =>
+                                                            setIsOpen(
+                                                                (isOpen) =>
+                                                                    !isOpen
+                                                            )
+                                                        }
+                                                    >
+                                                        <div className="text-lg cursor-pointer ">
+                                                            <FaInfoCircle />
+                                                        </div>
+                                                    </button>
+                                                    {isOpen && (
+                                                        <div className="flex flex-col  bg-white  p-2 rounded-lg border-black">
+                                                            <div className=" text-[10px]">
+                                                                &rarr; upload a
+                                                                clear picture of
+                                                                your face with
+                                                                size less than
+                                                                2mb
+                                                            </div>
+                                                            <div className="text-[10px]">
+                                                                &rarr; size of
+                                                                the image should
+                                                                be between 48
+                                                                <sup>*</sup>48
+                                                                pixels and 4096
+                                                                <sup>*</sup>4096
+                                                                pixels
+                                                            </div>
+                                                            <div className="text-[10px]">
+                                                                &rarr; Format of
+                                                                the image should
+                                                                be either JPG,
+                                                                JPEg or PNG
+                                                            </div>
+                                                            <div className="text-[10px]">
+                                                                &rarr; It would
+                                                                be preferred to
+                                                                upload a clear
+                                                                photo where face
+                                                                is clearly
+                                                                visible
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
                                             </div>
-                                            
                                         </label>
                                         <input
                                             class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
@@ -213,11 +259,26 @@ export default function UserSignup() {
                                         />
                                     </div>
                                     <div className="flex items-center gap-2">
-                                    <input type='checkbox' required name='agree' id='agree'/>
-                                    <label for='agree'>I agree to the <a  onClick={() => setShowMyModal1(true)}
-                                     href="#" className="hover:underline">terms and conditions<sup>*</sup></a></label>
+                                        <input
+                                            type="checkbox"
+                                            required
+                                            name="agree"
+                                            id="agree"
+                                        />
+                                        <label for="agree">
+                                            I agree to the{" "}
+                                            <a
+                                                onClick={() =>
+                                                    setShowMyModal1(true)
+                                                }
+                                                href="#"
+                                                className="hover:underline"
+                                            >
+                                                terms and conditions<sup>*</sup>
+                                            </a>
+                                        </label>
                                     </div>
-                                    
+
                                     {!signUpClicked ? (
                                         <button
                                             type="submit"
