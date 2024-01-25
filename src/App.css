@@ -19,3 +19,22 @@
 html {
     scroll-behavior: smooth;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #e7e9de;
+    border-radius: 50px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #c6cca9;
+    border-radius: 50px;
+  }
+  
