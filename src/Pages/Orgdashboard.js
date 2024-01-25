@@ -10,24 +10,27 @@ import bannerorg from "../assets/images/bannerorg.png";
 import logo from "../assets/images/logo.png";
 import { IoIosSend } from "react-icons/io";
 import { HiPencil } from "react-icons/hi2";
-import { FaPlus } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { HashLoader } from "react-spinners";
 import { useState } from "react";
+import arrow from '../assets/images/arrow.png'
+import PastCampaignsCards from "../Components/PastCampaignsCards";
+import { FaArrowRightLong } from "react-icons/fa6"
 
 const Orgdashboard = () => {
   // const [loader, setLoader] = useState(true);
   const [user, loading, error] = useAuthState(auth);
-  const [status , setStatus] = useState("about");
-  const [ifBold1 , setIfBold1] = useState("bold");
-  const [ifBold2 , setIfBold2] = useState("normal");
-  const [ifBold3 , setIfBold3] = useState("normal");
+  const [status, setStatus] = useState("about");
+  const [ifBold1, setIfBold1] = useState("bold");
+  const [ifBold2, setIfBold2] = useState("normal");
+  const [ifBold3, setIfBold3] = useState("normal");
 
-  
-  const handleABoutChange = ()=>{
+
+  const handleABoutChange = () => {
     setIfBold1("bold");
     setIfBold2("normal")
     setIfBold3("normal")
@@ -35,7 +38,7 @@ const Orgdashboard = () => {
     setStatus("about")
   }
 
-  const handlePeopleChange = ()=>{
+  const handlePastChange = () => {
     setIfBold1("normal");
     setIfBold2("normal")
     setIfBold3("bold")
@@ -43,7 +46,7 @@ const Orgdashboard = () => {
     setStatus("people")
   }
 
-  const handlePostChange = ()=>{
+  const handlePostChange = () => {
     setIfBold1("normal");
     setIfBold2("bold")
     setIfBold3("normal")
@@ -66,7 +69,7 @@ const Orgdashboard = () => {
   }
   return (
     <div className="flex">
-      <div className=" flex flex-col w-full md:w-[75%]">
+      <div className=" flex flex-col w-full lg:w-[75%]">
         {/* navbar */}
         <div className="w-full bg-[#0f1035] text-gray-200 flex shadow-2xl ">
           <div className="flex items-center ">
@@ -127,9 +130,9 @@ const Orgdashboard = () => {
             </div>
             <div className="flex justify-between mt-2  ml-6  pr-2">
               <div className={`flex gap-6 sm:gap-10 md:gap-12 pb-2`}>
-                <button onClick={handleABoutChange} ><p  className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold1}`}  >ABOUT</p></button>
-                <button onClick={handlePostChange} ><p  className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold2}`}  >POSTS</p></button>
-                <button onClick={handlePeopleChange} ><p  className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold3}`}  >PEOPLE</p></button>
+                <button onClick={handleABoutChange} ><p className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold1}`}  >ABOUT</p></button>
+                <button onClick={handlePostChange} ><p className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold2}`}  >POSTS</p></button>
+                <button onClick={handlePastChange} ><p className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold3}`}  >PAST CAMPAIGNS</p></button>
               </div>
               <div>
                 <button className="bg-[#0f1035] mb-2 flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:px-3  text-md sm:text-lg md:text-lg gap-2 font-semibold">
@@ -139,45 +142,51 @@ const Orgdashboard = () => {
             </div>
           </div>
           {status === "about" ? (
-                                      <div>
-                                        <div className="text-center lg:text-2xl text-lg font-semibold mt-5">ABOUT US</div>
-                                        <div className="mt-4 lg:text-lg text-sm font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aspernatur ex neque aliquid quis? Officiis deleniti necessitatibus vitae, earum magni voluptates dolores vel corrupti assumenda nemo qui iusto nobis. Corporis eius maiores consequuntur obcaecati iste a ullam aut, doloremque porro? Veniam cum laudantium excepturi, voluptatem voluptatibus dolorem rerum voluptatum laborum vero sunt libero, vitae hic, nihil a suscipit nisi. Accusamus rem placeat earum libero ullam suscipit a officiis ut sint. Et ab neque, id quis laudantium similique! Vel, sit. Iste, at quos necessitatibus a molestias neque laudantium facere veritatis corporis ea ipsum porro quod molestiae aliquam quae atque hic est.</div>
+            <div>
+              <div className="text-center lg:text-2xl text-lg font-semibold mt-5">ABOUT US</div>
+              <div className="mt-4 lg:text-lg text-sm ml-2 font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aspernatur ex neque aliquid quis? Officiis deleniti necessitatibus vitae, earum magni voluptates dolores vel corrupti assumenda nemo qui iusto nobis. Corporis eius maiores consequuntur obcaecati iste a ullam aut, doloremque porro? Veniam cum laudantium excepturi, voluptatem voluptatibus dolorem rerum voluptatum laborum vero sunt libero, vitae hic, nihil a suscipit nisi. Accusamus rem placeat earum libero ullam suscipit a officiis ut sint. Et ab neque, id quis laudantium similique! Vel, sit.</div>
 
-                                      </div>
-                                    ) : status === "post" ? (
-                                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
-                                      <div>
-                                        <img className="h-auto max-w-full" src={p4} alt="" />
-                                      </div>
-                                      <div>
-                                        <img className="h-auto max-w-full" src={p5} alt="" />
-                                      </div>
-                                      <div>
-                                        <img className="h-auto max-w-full" src={p6} alt="" />
-                                      </div>
-                                      <div>
-                                        <img className="h-auto max-w-full" src={p1} alt="" />
-                                      </div>
-                                      <div>
-                                        <img className="h-auto max-w-full" src={p2} alt="" />
-                                      </div>
-                                      <div>
-                                        <img className="h-auto max-w-full" src={p3} alt="" />
-                                      </div>
-                                    </div>
-                                    ) : (
-                                      <div>people</div>
-                                    )}
+            </div>
+          ) : status === "post" ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
+              <div>
+                <img className="h-auto max-w-full" src={p4} alt="" />
+              </div>
+              <div>
+                <img className="h-auto max-w-full" src={p5} alt="" />
+              </div>
+              <div>
+                <img className="h-auto max-w-full" src={p6} alt="" />
+              </div>
+              <div>
+                <img className="h-auto max-w-full" src={p1} alt="" />
+              </div>
+              <div>
+                <img className="h-auto max-w-full" src={p2} alt="" />
+              </div>
+              <div>
+                <img className="h-auto max-w-full" src={p3} alt="" />
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-5 p-8">
+              <PastCampaignsCards/>
+              <PastCampaignsCards/>
+              <PastCampaignsCards/>
+              <PastCampaignsCards/>
+              <PastCampaignsCards/>
+            </div>
+          )}
 
-          
+
         </div>
       </div>
       {/* user profile ends */}
-      <div className="hidden md:flex md:flex-col md:w-[25%]">
+      <div className="hidden lg:flex lg:flex-col lg:w-[25%]">
         <div className="w-full h-screen fixed bg-[#0f1035] text-gray-200 shadow-3xl ">
           {/* search bar */}
 
-          <div className="search w-[98%]  md:ml-4 lg:ml-8 mt-12">
+          <div className="search w-[98%]  md:ml-4 lg:ml-8 mt-14">
             <form>
               <div class="flex">
                 <input
@@ -200,10 +209,67 @@ const Orgdashboard = () => {
                 Create Campaign
               </button>
             </Link>
-            <p className="text-[#eef0e5] text-2xl 2xl:text-2xl md:mt-4 md:ml-3 lg:mt-6 lg:ml-5 font-semibold">
-              Past Campaigns
-            </p>
           </div>
+          <div className="">
+            <div className="flex items-center cursor-pointer ml-2">
+              <div className="text-[#eef0e5] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
+                Ongoing Campaign
+              </div>
+              <img className='w-[15px] h-[25px] xl:w-[20px] xl:h-[30px] lg:mt-8 lg:ml-5 mt-5 ml-4 rounded-full' src={arrow} alt="altt" />
+            </div>
+            <div className='flex flex-col gap-4 xl:gap-5 mt-5' >
+              <a href="">
+                <div className='flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 '>
+                  <div className="font-bold">24 AUG'23</div>
+                  <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Environment Helpers</p>
+                    <p className='text-[#eef0e5] text-[0.75rem]'>345 people attended</p></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div className="mt-10 h-[50%] ">
+            <div className="flex items-center cursor-pointer ml-2">
+              <div className="text-[#eef0e5] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
+                Upcoming Campaigns
+              </div>
+              <img className='w-[15px] h-[25px] xl:w-[20px] xl:h-[30px] lg:mt-8 lg:ml-5 mt-5 ml-4 rounded-full' src={arrow} alt="altt" />
+            </div>
+            <div className='flex flex-col gap-4 xl:gap-5 mt-5 ' >
+              <a href="">
+                <div className='flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 '>
+                  <div className="font-bold">24 AUG'23</div>
+                  <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Environment Helpers</p>
+                    <p className='text-[#eef0e5] text-[0.75rem]'>345 people attended</p></div>
+                </div>
+              </a>
+              <a href="">
+                <div className='flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 '>
+                  <div className="font-bold">24 AUG'23</div>
+                  <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Environment Helpers</p>
+                    <p className='text-[#eef0e5] text-[0.75rem]'>345 people attended</p></div>
+                </div>
+              </a>
+              <a href="">
+                <div className='flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 '>
+                  <div className="font-bold">24 AUG'23</div>
+                  <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Environment Helpers</p>
+                    <p className='text-[#eef0e5] text-[0.75rem]'>345 people attended</p></div>
+                </div>
+              </a>
+            </div>
+            <div className="flex p-4 ml-1">
+                <button className=" font-bold flex items-center p-2 rounded-lg border-2 border-b-gray-300"> 
+                View All 
+                <div className="ml-2">
+                  <FaArrowRightLong/>
+                  </div> 
+                  </button>
+              </div>
+
+          </div>
+
+
+
         </div>
       </div>
     </div>
