@@ -5,6 +5,32 @@ import p1 from "../assets/images/p1.png";
 import p2 from "../assets/images/p2.png";
 import p3 from "../assets/images/p3.png";
 
+function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "red" }}
+        onClick={onClick}
+      />
+    );
+  }
+  
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, 
+            display: "block", 
+            background: "black",
+
+         }}
+        onClick={onClick}
+      />
+    );
+  }
+
 export default function Carousel() {
     const settings = {
         // accessibility: true,
@@ -16,6 +42,8 @@ export default function Carousel() {
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
     //     autoplay: true,
     //   autoplaySpeed: 1000,
     //   pauseOnHover: true,

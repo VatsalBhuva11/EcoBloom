@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 import { LuTrophy } from "react-icons/lu";
 import { FaLocationDot } from "react-icons/fa6";
 import { SlCalender } from "react-icons/sl";
@@ -10,19 +11,27 @@ import logo from "../assets/images/logo.png";
 import face from "../assets/images/face.jpg";
 import bannerorg from "../assets/images/bannerorg.png";
 import org_logo from "../assets/images/org_logo.png";
+import { ProfileContext } from "../Components/ProfileContextProvider";
+import { Link } from "react-router-dom";
+
+
+
 const CampaignProfile = () => {
-  return;
+
+   const [profile,setProfile] = useContext(ProfileContext);
+
+  return(
   <div className="flex flex-col w-full h-full bg-[#EEF0E5] ">
     {/* navbar */}
     <div className="justify-between fex w-full bg-[#0f1035] text-gray-200 flex shadow-2xl h-[10%]">
-      <img className="h-12 md:h-16 mt-2" src={logo} alt="" />
+      <Link to='/'><img className="h-12  hover:scale-105 cursor-pointer duration-300 md:h-16 mt-2" src={logo} alt="" /></Link>
       <div className="flex mx-2 sm:mx-5 lg:mx-8 items-center pr-4">
-        <img
+        <Link to='/user/profile'><img
           className="mx-4 rounded-full w-[30px] md:w-[45px] hover:scale-110 cursor-pointer duration-300"
-          src={face}
+          src={profile.url}
           alt=""
-        />
-        <div className="md:text-xl text-md">Hizrian</div>
+        /></Link>
+        <div className="md:text-xl text-md">{profile.name}</div>
       </div>
     </div>
     {/* navbar */}
@@ -87,7 +96,7 @@ const CampaignProfile = () => {
               </div>
             </div>
 
-            <div className="text-[#686968] hidden md:flex">
+            <div className=" text-[#686968] hidden md:flex">
               <FaRegClock size={40} className="md:mr-4 mr-2" />
               <div className="text-md md:text-xl lg:text-[25px]">
                 <p className="font-bold">Registration Deadline</p>
@@ -114,7 +123,7 @@ const CampaignProfile = () => {
         </div>
         {/* points */}
         <div className="mt-8 md:mt-12 mr-8 ml-8 pb-4 rounded-lg backdrop-filter text-[#686968] backdrop-blur-lg z-30 bg-opacity-30 bg-[#bebaba] border-t border-b border-[#8c858544] shadow-md ">
-          <div className="ml-5 md:ml-10 w-fit  bg-transparent flex-col  items-center  ">
+          <div className="ml-5 md:ml-10 w-fit  bg-transparent flex-col   items-center  ">
             <h1 className="mt-4 font-bold text-xl w-full sm:text-2xl md:text-3xl flex text-[#686968]">
               Our Goal
             </h1>
@@ -143,7 +152,7 @@ const CampaignProfile = () => {
                 No verbal communication during drawing sessions in Pictionary.
               </li>
               <li>
-                In case of any disputes or issues, the organizing committee’s
+                In case of any disputes or issues, the organizing committee<sup>'</sup>s
                 decision will be considered final.
               </li>
             </ul>
@@ -151,7 +160,8 @@ const CampaignProfile = () => {
         </div>
       </div>
     </div>
-  </div>;
+  </div>
+  )
 };
 
 export default CampaignProfile;

@@ -20,8 +20,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 connectDB();
 //https://ecobloom-rsxx5czyua-uc.a.run.app
@@ -44,6 +44,7 @@ export const beforecreated = beforeUserCreated(async (event) => {
     try {
         const email = event.data.email;
         const checkUser = await User.findOne({ email: event.data.email });
+        // console.log("EVENT: ", event);
         if (event.additionalUserInfo.providerId === "google.com") {
             const checkOrg = await Organization.findOne({ email });
             if (checkUser) {
@@ -71,7 +72,7 @@ export const beforecreated = beforeUserCreated(async (event) => {
                 const response = await fetch(photoURL);
                 const buffer = await response.arrayBuffer();
                 console.log("BUFFER: ", buffer);
-                const storagePath = `/user/${email}/profile.jpg`;
+                const storagePath = `user/${email}/profile.jpeg`;
                 const storageRef = ref(storage, storagePath);
                 const metadata = {
                     contentType: "image/jpeg",
@@ -119,6 +120,7 @@ export const beforecreated = beforeUserCreated(async (event) => {
 });
 
 export const beforesignin = beforeUserSignedIn(async (event) => {
+    // console.log("In sign in: ", event);
     try {
         const email = event.data.email;
         const checkUser = await User.findOne({ email });

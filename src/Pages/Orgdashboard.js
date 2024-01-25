@@ -13,14 +13,45 @@ import { HiPencil } from "react-icons/hi2";
 import { FaPlus } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { HashLoader } from "react-spinners";
+import { useState } from "react";
 
 const Orgdashboard = () => {
   // const [loader, setLoader] = useState(true);
   const [user, loading, error] = useAuthState(auth);
+  const [status , setStatus] = useState("about");
+  const [ifBold1 , setIfBold1] = useState("bold");
+  const [ifBold2 , setIfBold2] = useState("normal");
+  const [ifBold3 , setIfBold3] = useState("normal");
+
+  
+  const handleABoutChange = ()=>{
+    setIfBold1("bold");
+    setIfBold2("normal")
+    setIfBold3("normal")
+    //console.log("about")
+    setStatus("about")
+  }
+
+  const handlePeopleChange = ()=>{
+    setIfBold1("normal");
+    setIfBold2("normal")
+    setIfBold3("bold")
+    //console.log("people")
+    setStatus("people")
+  }
+
+  const handlePostChange = ()=>{
+    setIfBold1("normal");
+    setIfBold2("bold")
+    setIfBold3("normal")
+    console.log("post page")
+    setStatus("post")
+  }
+
+
 
   // if (loading || loader) {
   if (loading) {
@@ -95,12 +126,10 @@ const Orgdashboard = () => {
               </div>
             </div>
             <div className="flex justify-between mt-2  ml-6  pr-2">
-              <div className="flex gap-6 sm:gap-10 md:gap-12 pb-2">
-                <p className="text-md sm:text-lg md:text-xl ">ABOUT</p>
-                <p className="text-md sm:text-lg md:text-xl font-semibold">
-                  POSTS
-                </p>
-                <p className="text-md sm:text-lg md:text-xl">PEOPLE</p>
+              <div className={`flex gap-6 sm:gap-10 md:gap-12 pb-2`}>
+                <button onClick={handleABoutChange} ><p  className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold1}`}  >ABOUT</p></button>
+                <button onClick={handlePostChange} ><p  className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold2}`}  >POSTS</p></button>
+                <button onClick={handlePeopleChange} ><p  className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold3}`}  >PEOPLE</p></button>
               </div>
               <div>
                 <button className="bg-[#0f1035] mb-2 flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:px-3  text-md sm:text-lg md:text-lg gap-2 font-semibold">
@@ -109,27 +138,38 @@ const Orgdashboard = () => {
               </div>
             </div>
           </div>
+          {status === "about" ? (
+                                      <div>
+                                        <div className="text-center lg:text-2xl text-lg font-semibold mt-5">ABOUT US</div>
+                                        <div className="mt-4 lg:text-lg text-sm font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aspernatur ex neque aliquid quis? Officiis deleniti necessitatibus vitae, earum magni voluptates dolores vel corrupti assumenda nemo qui iusto nobis. Corporis eius maiores consequuntur obcaecati iste a ullam aut, doloremque porro? Veniam cum laudantium excepturi, voluptatem voluptatibus dolorem rerum voluptatum laborum vero sunt libero, vitae hic, nihil a suscipit nisi. Accusamus rem placeat earum libero ullam suscipit a officiis ut sint. Et ab neque, id quis laudantium similique! Vel, sit. Iste, at quos necessitatibus a molestias neque laudantium facere veritatis corporis ea ipsum porro quod molestiae aliquam quae atque hic est.</div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
-            <div>
-              <img className="h-auto max-w-full" src={p4} alt="" />
-            </div>
-            <div>
-              <img className="h-auto max-w-full" src={p5} alt="" />
-            </div>
-            <div>
-              <img className="h-auto max-w-full" src={p6} alt="" />
-            </div>
-            <div>
-              <img className="h-auto max-w-full" src={p1} alt="" />
-            </div>
-            <div>
-              <img className="h-auto max-w-full" src={p2} alt="" />
-            </div>
-            <div>
-              <img className="h-auto max-w-full" src={p3} alt="" />
-            </div>
-          </div>
+                                      </div>
+                                    ) : status === "post" ? (
+                                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
+                                      <div>
+                                        <img className="h-auto max-w-full" src={p4} alt="" />
+                                      </div>
+                                      <div>
+                                        <img className="h-auto max-w-full" src={p5} alt="" />
+                                      </div>
+                                      <div>
+                                        <img className="h-auto max-w-full" src={p6} alt="" />
+                                      </div>
+                                      <div>
+                                        <img className="h-auto max-w-full" src={p1} alt="" />
+                                      </div>
+                                      <div>
+                                        <img className="h-auto max-w-full" src={p2} alt="" />
+                                      </div>
+                                      <div>
+                                        <img className="h-auto max-w-full" src={p3} alt="" />
+                                      </div>
+                                    </div>
+                                    ) : (
+                                      <div>people</div>
+                                    )}
+
+          
         </div>
       </div>
       {/* user profile ends */}

@@ -8,11 +8,9 @@
     @apply font-inter;
 }
 
-.slick-prev:before,
-.slick-next:before {
-    @apply text-green-900;
-    /* padding: 20px; */
-}
+/* .slick-arrow.slick-prev{
+    @apply text-xl,
+} */
 
 .slick-slide > div {
     margin: 0 10px;
