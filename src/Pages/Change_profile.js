@@ -25,7 +25,7 @@ const Change_profile = ({ visible, onClose }) => {
                 const fileInput = new FormData(
                     document.getElementById("emailSignUp")
                 );
-                const response = await fetch(
+                fetch(
                     `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.userId}/profile?type=photo`,
                     {
                         method: "PATCH",
@@ -34,48 +34,62 @@ const Change_profile = ({ visible, onClose }) => {
                             authorization: `Bearer ${idToken}`,
                         },
                     }
-                );
-                const data = await response.json();
-                console.log("DATA: ", data);
-                if (data.status === "OK") {
-                    console.log(data.data.photoPathFirestore);
-                    const storageRef = ref(
-                        storage,
-                        data.data.photoPathFirestore
-                    );
-                    getDownloadURL(storageRef)
-                        .then(function (url) {
-                            console.log("URL: ", url);
-                            setProfile({
-                                ...profile,
-                                url,
-                            });
-                            localStorage.setItem(
-                                "profile",
-                                JSON.stringify({
-                                    ...JSON.parse(
-                                        localStorage.getItem("profile")
-                                    ),
-                                    profileUrl: url,
-                                })
+                )
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log("DATA: ", data);
+                        if (data.status === "OK") {
+                            const storageRef = ref(
+                                storage,
+                                data.data.photoPathFirestore
                             );
-                            console.log(localStorage.getItem("profile"));
+                            getDownloadURL(storageRef)
+                                .then(function (url) {
+                                    console.log("URL in getDownload: ", url);
+                                    setProfile({
+                                        ...profile,
+                                        url,
+                                    });
+
+                                    localStorage.setItem(
+                                        "profile",
+                                        JSON.stringify({
+                                            ...JSON.parse(
+                                                localStorage.getItem("profile")
+                                            ),
+                                            profileUrl: url,
+                                        })
+                                    );
+                                    console.log(
+                                        localStorage.getItem("profile")
+                                    );
+                                    setClicked(false);
+                                    document
+                                        .getElementById("container")
+                                        .click();
+                                })
+                                .catch(function (error) {
+                                    setClicked(false);
+                                    document
+                                        .getElementById("container")
+                                        .click();
+                                    console.error(error);
+                                });
+                        } else {
                             setClicked(false);
                             document.getElementById("container").click();
-                        })
-                        .catch(function (error) {
-                            setClicked(false);
-                            document.getElementById("container").click();
-                            console.error(error);
-                        });
-                } else {
-                    setClicked(false);
-                    document.getElementById("container").click();
-                    alert(
-                        "Error occurred while changing photo with status != 200"
-                    );
-                    alert(data.message);
-                }
+                            alert(
+                                "Error occurred while changing photo with status != 200"
+                            );
+                            alert(data.message);
+                        }
+                    })
+                    .catch((err) => {
+                        setClicked(false);
+                        document.getElementById("container").click();
+                        alert("Error occurred while changing photo");
+                        console.log(err);
+                    });
             });
         } else {
             setClicked(false);

@@ -125,8 +125,24 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
                             jpegBuffer,
                             metadata
                         );
+                        console.log("Updated photo in storage");
                         if (snapshot.state === "success") {
                             toUpdate.photoPathFirestore = pathToFile;
+                            const user = await User.findByIdAndUpdate(
+                                userId,
+                                toUpdate,
+                                {
+                                    new: true,
+                                }
+                            );
+                            response_200(
+                                res,
+                                "Successfully updated user in DB",
+                                {
+                                    photoPathFirestore: user.photoPathFirestore,
+                                    phone: user.phone,
+                                }
+                            );
                         } else {
                             response_500(
                                 res,
@@ -143,19 +159,19 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
                     });
             }
         }
-        if (type === "phone") {
-            const { phone } = req.body;
-            toUpdate.phone = phone;
-        }
+        // if (type === "phone") {
+        //     const { phone } = req.body;
+        //     toUpdate.phone = phone;
+        // }
 
-        const user = await User.findByIdAndUpdate(userId, toUpdate, {
-            new: true,
-        });
-        console.log("Successfully updated user's profile in DB!");
-        response_200(res, "Successfully updated user in DB", {
-            photoPathFirestore: user.photoPathFirestore,
-            phone: user.phone,
-        });
+        // const user = await User.findByIdAndUpdate(userId, toUpdate, {
+        //     new: true,
+        // });
+        // console.log("Successfully updated user's profile in DB!");
+        // response_200(res, "Successfully updated user in DB", {
+        //     photoPathFirestore: user.photoPathFirestore,
+        //     phone: user.phone,
+        // });
     } catch (err) {
         console.log(err);
         response_500(res, "Error occurred while updating user details", err);
