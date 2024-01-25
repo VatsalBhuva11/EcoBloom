@@ -19,6 +19,7 @@ import { ref, uploadBytesResumable } from "firebase/storage";
 // import checkOrg from "../middlewares/checkOrg.middleware.js";
 import checkUser from "../middlewares/checkUser.middleware.js";
 import mongoose from "mongoose";
+import Jimp from "jimp";
 
 const router = express.Router();
 
@@ -78,6 +79,9 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
             response_404(res, "User not found");
         }
 
+        //no need of updating profile photo path, just update in storage
+        //constant filenames with extensions
+
         const toUpdate = {
             photoPathFirestore: checkUser.photoPathFirestore,
             phone: checkUser.phone,
@@ -99,25 +103,44 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
                 );
             } else {
                 // const pathToFile = `/user/vatsalbhuva11@gmail.com/profile.${extension}`;
-                const pathToFile = `user/${req.user.email}/profile.${extension}`;
-                const storageRef = ref(storage, pathToFile);
-                const metadata = {
-                    contentType: file.mimetype,
-                };
+                Jimp.read(file.buffer)
+                    .then((image) => {
+                        // Convert the image to JPEG with quality 100 (you can adjust the quality as needed)
+                        return image
+                            .quality(100)
+                            .getBufferAsync(Jimp.MIME_JPEG);
+                    })
+                    .then(async (jpegBuffer) => {
+                        console.log("Image converted successfully!");
+                        // Now you have the converted buffer (jpegBuffer) that you can use
 
-                const snapshot = await uploadBytesResumable(
-                    storageRef,
-                    file.buffer,
-                    metadata
-                );
-                if (snapshot.state === "success") {
-                    toUpdate.photoPathFirestore = pathToFile;
-                } else {
-                    response_500(
-                        res,
-                        "Error occurred while uploading user file"
-                    );
-                }
+                        const pathToFile = `user/${req.user.email}/profile.jpeg`;
+                        const storageRef = ref(storage, pathToFile);
+                        const metadata = {
+                            contentType: "image/jpeg",
+                        };
+
+                        const snapshot = await uploadBytesResumable(
+                            storageRef,
+                            jpegBuffer,
+                            metadata
+                        );
+                        if (snapshot.state === "success") {
+                            toUpdate.photoPathFirestore = pathToFile;
+                        } else {
+                            response_500(
+                                res,
+                                "Error occurred while uploading user file"
+                            );
+                        }
+                    })
+                    .catch((err) => {
+                        console.error("Error converting image:", err);
+                        response_500(
+                            res,
+                            "Error occurred while converting image type"
+                        );
+                    });
             }
         }
         if (type === "phone") {

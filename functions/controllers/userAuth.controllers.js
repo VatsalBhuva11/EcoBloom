@@ -10,6 +10,7 @@ import {
     response_400,
     response_500,
 } from "../utils/responseCodes.js";
+import Jimp from "jimp";
 
 dotenv.config();
 const router = express.Router();
@@ -17,7 +18,7 @@ const router = express.Router();
 // Create a new user
 router.post("/register", async (req, res) => {
     try {
-        const { name, email, phone, photoURL } = req.body;
+        const { name, email, phone } = req.body;
 
         //email variable, update record in DB
         if (!name || !email) {
@@ -25,84 +26,71 @@ router.post("/register", async (req, res) => {
                 "Following fields are mandatory: name, email, password, photo"
             );
         } else {
-            if (photoURL) {
-                const response = await fetch(photoURL);
-                const buffer = await response.buffer();
-                const storagePath = `/user/${email}/profile.jpg`;
-                const storageRef = ref(storage, storagePath);
-                const metadata = {
-                    contentType: "image/jpeg",
-                };
-                const snapshot = await uploadBytesResumable(
-                    storageRef,
-                    buffer,
-                    metadata
+            if (!req.files[0]) {
+                throw new Error(
+                    "Following fields are mandatory: name, email, password, photo"
                 );
-                if (snapshot.state === "success") {
-                    const user = await User.create({
-                        name,
-                        email,
-                        photoPathFirestore: storagePath,
-                        phone,
-                    });
-                    console.log("Successfully created new user in DB!");
-                    response_200(res, "Successfully created new user in DB");
-                } else {
-                    response_500(
-                        res,
-                        "Error occurred while uploading user file"
-                    );
-                }
+            }
+            const file = req.files[0];
+            const filename = file.originalname;
+            const extension = filename.split(".").pop();
+            if (
+                extension !== "png" &&
+                extension !== "jpg" &&
+                extension !== "jpeg"
+            ) {
+                response_400(
+                    res,
+                    "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
+                );
             } else {
-                if (!req.files[0]) {
-                    throw new Error(
-                        "Following fields are mandatory: name, email, password, photo"
-                    );
-                }
-                const file = req.files[0];
-                const filename = file.originalname;
-                const extension = filename.split(".").pop();
-                if (
-                    extension !== "png" &&
-                    extension !== "jpg" &&
-                    extension !== "jpeg"
-                ) {
-                    response_400(
-                        res,
-                        "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
-                    );
-                } else {
-                    const pathToFile = `user/${email}/profile.${extension}`;
-                    const storageRef = ref(storage, pathToFile);
+                // Resize image and get extension
+                Jimp.read(file.buffer)
+                    .then((image) => {
+                        // Convert the image to JPEG with quality 100 (you can adjust the quality as needed)
+                        return image
+                            .quality(100)
+                            .getBufferAsync(Jimp.MIME_JPEG);
+                    })
+                    .then(async (jpegBuffer) => {
+                        console.log("Image converted successfully!");
+                        // Now you have the converted buffer (jpegBuffer) that you can use
 
-                    const metadata = {
-                        contentType: file.mimetype,
-                    };
+                        const pathToFile = `user/${email}/profile.jpeg`;
+                        const storageRef = ref(storage, pathToFile);
 
-                    const snapshot = await uploadBytesResumable(
-                        storageRef,
-                        file.buffer,
-                        metadata
-                    );
-                    if (snapshot.state === "success") {
-                        const user = await User.create({
-                            name,
-                            email,
-                            photoPathFirestore: pathToFile,
-                            phone,
-                        });
-                        console.log("Successfully created new user in DB!");
-                        response_200(
-                            res,
-                            "Successfully created new user in DB"
+                        const metadata = {
+                            contentType: "image/jpeg",
+                        };
+
+                        const snapshot = await uploadBytesResumable(
+                            storageRef,
+                            jpegBuffer,
+                            metadata
                         );
-                    } else {
-                        response_500(
-                            res,
-                            "Error occurred while uploading user file"
-                        );
-                    }
-                }
+                        if (snapshot.state === "success") {
+                            const user = await User.create({
+                                name,
+                                email,
+                                photoPathFirestore: pathToFile,
+                                phone,
+                            });
+                            console.log("Successfully created new user in DB!");
+                            response_200(
+                                res,
+                                "Successfully created new user in DB"
+                            );
+                        } else {
+                            response_500(
+                                res,
+                                "Error occurred while uploading user file"
+                            );
+                        }
+                    })
+                    .catch((err) => {
+                        console.error("Error converting image:", err);
+                        response_500(res, "Error converting image");
+                    });
             }
         }
     } catch (err) {
