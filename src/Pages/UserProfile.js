@@ -10,6 +10,7 @@ import { auth } from "../firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
+import { GoogleAuthProvider, linkWithPopup } from "firebase/auth";
 
 const UserProfile = () => {
     const [showMyModel, setShowMyModal] = useState(false);
@@ -25,6 +26,30 @@ const UserProfile = () => {
     const handleOnClose3 = () => setShowMyModal3(false);
     const [user, loading, error] = useAuthState(auth);
     const [profile, setProfile] = useContext(ProfileContext);
+    const [googleLinked, setGoogleLinked] = useState(null);
+
+    function handleLinkWithGoogle() {
+        const provider = new GoogleAuthProvider();
+
+        // link only for same gmail account
+
+        linkWithPopup(auth.currentUser, provider)
+            .then((result) => {
+                // Accounts successfully linked.
+                const credential =
+                    GoogleAuthProvider.credentialFromResult(result);
+                setGoogleLinked(true);
+                const user = result.user;
+                console.log("Successfully linked with Google account!");
+                // ...
+            })
+            .catch((error) => {
+                setGoogleLinked(false);
+                console.log("Error linking with Google account!");
+                // Handle Errors here.
+                // ...
+            });
+    }
 
     if (loading) {
         return (
@@ -155,6 +180,14 @@ const UserProfile = () => {
                     </div>
                 </div>
             </div>
+            <button onClick={handleLinkWithGoogle}>Link With Google</button>
+            {googleLinked === null ? (
+                <div></div>
+            ) : googleLinked === true ? (
+                <div>Successfully logged in</div>
+            ) : (
+                <div>Failure while logging in</div>
+            )}
             <EditPassword onClose={handleOnClose} visible={showMyModel} />
             <Change_profile onClose={handleOnClose1} visible={showMyModel1} />
             <Update_Contact_Number
