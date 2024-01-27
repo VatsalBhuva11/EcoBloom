@@ -48,6 +48,15 @@ const UserDashboard = () => {
     const [campaigns, setCampaigns] = useState([]);
     const [profile, setProfile] = useContext(ProfileContext);
     const [loader, setLoader] = useState(true);
+    const [markers, setMarkers] = useState([
+        { lat: 37.7749, lng: -122.4194 }, // San Francisco
+        { lat: 34.0522, lng: -118.2437 }, // Los Angeles
+    ]);
+
+    const handleMarkerClick = (marker) => {
+        console.log("Marker clicked:", marker);
+        // Perform actions when a marker is clicked
+    };
 
     moment().format("MMMM Do YYYY");
 
@@ -198,9 +207,11 @@ const UserDashboard = () => {
                     <a className="flex items-center sm:text-2xl md:text-3xl lg:text-3xl m-5 xl:m-8 sm:m-7 lg:m-6 gap-1 sm:gap-2 lg:gap-3 cursor-pointer ">
                         <div className="flex items-center  hover:text-blue-400 text-[1.23rem] md:text-3xl lg:text-xl sm:flex">
                             <div className="text-2xl text-white mr-2">
-                                 <RxActivityLog/>
+                                <RxActivityLog />
                             </div>
-                             <div className="mb-2 hidden lg:flex mt-2">Activity Log</div>
+                            <div className="mb-2 hidden lg:flex mt-2">
+                                Activity Log
+                            </div>
                         </div>{" "}
                     </a>
                 </div>
@@ -250,9 +261,12 @@ const UserDashboard = () => {
                             : "ease-up-down duration-0 fixed left-[-200%]"
                     }
                 >
-                    <Link to='/user/profile'
+                    <Link
+                        to="/user/profile"
                         className="p-4 hover:scale-100 duration-300"
-                    >View Profile</Link>
+                    >
+                        View Profile
+                    </Link>
                     <a
                         className="p-4 hover:scale-100 duration-300"
                         onClick={() => setShowMyModal(true)}
@@ -400,16 +414,17 @@ const UserDashboard = () => {
              justify-center items-center gap-10"
                 >
                     <div>
-                        <a href="">
-                            <Maps_DashBoard />
-                        </a>
+                        <Maps_DashBoard
+                            markers={markers}
+                            onMarkerClick={handleMarkerClick}
+                        />
                     </div>
                     <div className="flex flex-col items-center gap-5 mr-6 py-8 xl:py-6">
                         <p className="text-[25px] font-bold text-[#0F1035] ">
                             UPCOMING CAMPAIGNS
                         </p>
                         <div className="border-black border-[1px] flex flex-col gap-5 bg-[#E1E5CD] pt-1">
-                            {campaigns ? (
+                            {campaigns?.length > 0 ? (
                                 campaigns.map((campaign) => {
                                     return (
                                         <a href="">
