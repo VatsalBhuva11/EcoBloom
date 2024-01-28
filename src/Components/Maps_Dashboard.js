@@ -6,17 +6,11 @@ import {
     InfoWindow,
 } from "@react-google-maps/api";
 
-const containerStyle = {
-    width: "600px",
-    height: "500px",
-};
-
-const center = {
-    lat: 25.4294,
-    lng: 81.7702,
-};
-
 export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
+    const containerStyle = {
+        width: "600px",
+        height: "500px",
+    };
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -27,14 +21,30 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         east: 180,
         west: -180,
     };
+    const initialCenter = {
+        lat: (continentsBoundingBox.north + continentsBoundingBox.south) / 2,
+        lng: (continentsBoundingBox.east + continentsBoundingBox.west) / 2,
+    };
+    const mapOptions = {
+        center: initialCenter, // Center of the world
+        zoom: 4, // Adjust the zoom level as needed for a zoomed-out view
+    };
 
     const [map, setMap] = React.useState(null);
 
     const onLoad = React.useCallback(function callback(map) {
         // This is just an example of getting and using the map instance!!! don't just blindly copy!
-        const bounds = new window.google.maps.LatLngBounds(center);
-        map.fitBounds(bounds);
-        map.setZoom(14);
+        const worldBounds = new window.google.maps.LatLngBounds(
+            new window.google.maps.LatLng(
+                continentsBoundingBox.south,
+                continentsBoundingBox.west
+            ),
+            new window.google.maps.LatLng(
+                continentsBoundingBox.north,
+                continentsBoundingBox.east
+            )
+        );
+        map.fitBounds(worldBounds);
 
         setMap(map);
     }, []);
@@ -64,18 +74,10 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         setMarkerPosition({ lat: latitude, lng: longitude });
     };
 
-    const initialCenter = {
-        lat: (continentsBoundingBox.north + continentsBoundingBox.south) / 2,
-        lng: (continentsBoundingBox.east + continentsBoundingBox.west) / 2,
-    };
-
-    const initialZoom = 1;
-
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
-            // center={initialCenter}
-            zoom={initialZoom}
+            options={mapOptions}
             onLoad={onLoad}
             onUnmount={onUnmount}
             onClick={handleMapClick}

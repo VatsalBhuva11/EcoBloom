@@ -651,6 +651,10 @@ video {
   z-index: 10;
 }
 
+.z-20{
+  z-index: 20;
+}
+
 .z-30{
   z-index: 30;
 }
@@ -1110,6 +1114,10 @@ video {
 
 .h-\[83\%\]{
   height: 83%;
+}
+
+.h-\[90\%\]{
+  height: 90%;
 }
 
 .h-auto{
@@ -1669,6 +1677,10 @@ video {
 .border-r-gray-900{
   --tw-border-opacity: 1;
   border-right-color: rgb(17 24 39 / var(--tw-border-opacity));
+}
+
+.bg-\[\#00000099\]{
+  background-color: #00000099;
 }
 
 .bg-\[\#0F1035\]{

@@ -25,6 +25,8 @@ export const createCampaign = async (req, res) => {
             endDate,
             goal,
             locationType,
+            latitude,
+            longitude,
         } = req.body;
         // console.log(
         //     "name: " + name,
@@ -44,6 +46,8 @@ export const createCampaign = async (req, res) => {
             !endDate ||
             !goal ||
             !locationType
+            // !latitude ||
+            // !longitude
         ) {
             return response_500(res, "Please enter all fields");
         } else {
