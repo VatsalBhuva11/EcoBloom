@@ -108,11 +108,22 @@ const UserDashboard = () => {
                                     setMarkers(
                                         data[1].data.map((campaign) => {
                                             return {
-                                                lat: campaign.latitude,
-                                                lng: campaign.longitude,
-                                                name: campaign.organization
-                                                    .name,
-                                                id: campaign._id,
+                                                campaignName: campaign.name,
+                                                organizationName:
+                                                    campaign.organization.name,
+                                                location: {
+                                                    lat: campaign.latitude,
+                                                    lng: campaign.longitude,
+                                                },
+                                                startDate: campaign.startDate,
+                                                endDate: campaign.endDate,
+                                                locationType:
+                                                    campaign.locationType,
+                                                address: campaign.address,
+                                                city: campaign.city,
+                                                country: campaign.country,
+                                                registeredUsers:
+                                                    campaign.registeredUsers,
                                             };
                                         })
                                     );
@@ -128,50 +139,6 @@ const UserDashboard = () => {
                                 err
                             );
                         });
-                    // fetch(
-                    //     `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
-                    // )
-                    //     .then((userData) => userData.json())
-                    //     .then((userData) => {
-                    //         const storageRef = ref(
-                    //             storage,
-                    //             userData.data.photoPathFirestore
-                    //         );
-                    //         console.log(userData.data);
-                    //         getDownloadURL(storageRef)
-                    //             .then(function (url) {
-                    //                 setProfile(url);
-                    //                 setName(userData.data.name);
-                    //                 setCommunities(userData.data.communities);
-                    //                 setLoader(false);
-                    //             })
-                    //             .catch(function (error) {
-                    //                 console.error(error);
-                    //             });
-                    //     })
-                    //     .catch((err) => {
-                    //         console.error(
-                    //             "ERROR WHILE FETCHING USER DATA: ",
-                    //             err
-                    //         );
-                    //         setName("ERROR");
-                    //     });
-                    // fetch(
-                    //     `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
-                    // )
-                    //     .then((campaignData) => {
-                    //         return campaignData.json();
-                    //     })
-                    //     .then((campaigns) => {
-                    //         setCampaigns(campaigns.data);
-                    //     })
-                    //     .catch((err) => {
-                    //         console.error(
-                    //             "ERROR WHILE CAMPAIGNS USER DATA: ",
-                    //             err
-                    //         );
-                    //         setName("ERROR");
-                    //     });
                 })
                 .catch((err) => {
                     console.error("ERROR IN auth.currentUser: ", err);
@@ -442,11 +409,11 @@ const UserDashboard = () => {
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <p className="text-black text-[1.15rem] ">
-                                                        {
-                                                            campaign
-                                                                .organization
-                                                                .name
-                                                        }
+                                                        {campaign.name
+                                                            ? campaign.name
+                                                            : campaign
+                                                                  .organization
+                                                                  .name}
                                                     </p>
                                                     <div className="flex justify-between items-baseline gap-3 ">
                                                         <div>

@@ -7,6 +7,7 @@ import {
 } from "@react-google-maps/api";
 
 export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
+    console.log(markers);
     const containerStyle = {
         width: "600px",
         height: "500px",
@@ -46,6 +47,7 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
     }, []);
 
     const [markerPosition, setMarkerPosition] = useState(null);
+    const [selectedMarker, setSelectedMarker] = useState(null);
 
     const handleMapClick = (event) => {
         // Extract latitude and longitude from the click event
@@ -60,6 +62,13 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         setMarkerPosition({ lat: latitude, lng: longitude });
     };
 
+    const handleMarkerHover = (marker) => {
+        setSelectedMarker(marker);
+    };
+    const handleInfoWindowClose = () => {
+        setSelectedMarker(null);
+    };
+
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
@@ -68,13 +77,25 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
             onClick={handleMapClick}
         >
             {/* Child components, such as markers, info windows, etc. */}
-            {markerPosition && <Marker position={markerPosition} />}
             {markers.map((marker, index) => (
                 <Marker
                     key={index}
-                    position={{ lat: marker.lat, lng: marker.lng }}
+                    position={marker.location}
                     onClick={() => onMarkerClick(marker)}
-                />
+                    onMouseOver={() => handleMarkerHover(marker)}
+                    onMouseOut={() => handleInfoWindowClose()}
+                >
+                    {selectedMarker && (
+                        <InfoWindow
+                            position={selectedMarker.position}
+                            onCloseClick={handleInfoWindowClose}
+                        >
+                            <div>
+                                <p>Hello</p>
+                            </div>
+                        </InfoWindow>
+                    )}
+                </Marker>
             ))}
 
             <>
