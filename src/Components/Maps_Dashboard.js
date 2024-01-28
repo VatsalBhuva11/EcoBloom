@@ -5,9 +5,11 @@ import {
     Marker,
     InfoWindow,
 } from "@react-google-maps/api";
+import moment from "moment";
 
 export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
     console.log(markers);
+
     const containerStyle = {
         width: "600px",
         height: "500px",
@@ -62,12 +64,18 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         setMarkerPosition({ lat: latitude, lng: longitude });
     };
 
-    const handleMarkerHover = (marker) => {
-        setSelectedMarker(marker);
+    const toggleInfoWindow = (marker) => {
+        if (selectedMarker) {
+            setSelectedMarker(null);
+        } else {
+            setSelectedMarker(marker);
+        }
     };
     const handleInfoWindowClose = () => {
         setSelectedMarker(null);
     };
+
+    const dateFormat = "DD-MM-YYYY, hh:mm:ss A";
 
     return isLoaded ? (
         <GoogleMap
@@ -81,22 +89,48 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
                 <Marker
                     key={index}
                     position={marker.location}
-                    onClick={() => onMarkerClick(marker)}
-                    onMouseOver={() => handleMarkerHover(marker)}
-                    onMouseOut={() => handleInfoWindowClose()}
-                >
-                    {selectedMarker && (
-                        <InfoWindow
-                            position={selectedMarker.position}
-                            onCloseClick={handleInfoWindowClose}
-                        >
-                            <div>
-                                <p>Hello</p>
-                            </div>
-                        </InfoWindow>
-                    )}
-                </Marker>
+                    onClick={() => {
+                        onMarkerClick(marker);
+                        toggleInfoWindow(marker);
+                    }}
+                    // onMouseOver={() => handleMarkerHover(marker)}
+                    onCloseClick={() => handleInfoWindowClose()}
+                ></Marker>
             ))}
+            {selectedMarker && (
+                <InfoWindow
+                    position={{
+                        lat: selectedMarker.location.lat + 2,
+                        lng: selectedMarker.location.lng,
+                    }}
+                    onCloseClick={handleInfoWindowClose}
+                >
+                    <div>
+                        <h2 className="text-center font-semibold">
+                            Campaign: {selectedMarker.campaignName}
+                        </h2>
+                        <p>Address: {selectedMarker.address}</p>
+                        <p>Country: {selectedMarker.country}</p>
+                        <p>City: {selectedMarker.city}</p>
+                        <p>Location Type: {selectedMarker.locationType}</p>
+                        <p>
+                            Start Time:{" "}
+                            {moment(selectedMarker.startDate).format(
+                                dateFormat
+                            )}
+                        </p>
+                        <p>
+                            End Time:{" "}
+                            {moment(selectedMarker.endDate).format(dateFormat)}
+                        </p>
+                        <p>
+                            Registered Users:{" "}
+                            {selectedMarker.registeredUsersCount}
+                        </p>
+                        <p>Organized by: {selectedMarker.organizationName}</p>
+                    </div>
+                </InfoWindow>
+            )}
 
             <>
                 <img

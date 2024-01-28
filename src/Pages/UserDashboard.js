@@ -122,8 +122,8 @@ const UserDashboard = () => {
                                                 address: campaign.address,
                                                 city: campaign.city,
                                                 country: campaign.country,
-                                                registeredUsers:
-                                                    campaign.registeredUsers,
+                                                registeredUsersCount:
+                                                    campaign.registeredUsersCount,
                                             };
                                         })
                                     );
