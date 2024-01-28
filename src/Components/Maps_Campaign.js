@@ -1,21 +1,25 @@
 import React, { useState } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-
-const containerStyle = {
-    width: "600px",
-    height: "500px",
-};
+import {
+    GoogleMap,
+    useLoadScript,
+    Marker,
+    InfoWindow,
+} from "@react-google-maps/api";
 
 export default function Maps_DashBoard({ zoom, onMarkerClick, onMapClick }) {
+    const containerStyle = {
+        width: "600px",
+        height: "500px",
+    };
     const { isLoaded } = useLoadScript({
         id: "google-map-script",
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     });
     const continentsBoundingBox = {
-        north: 85,
-        south: -85,
-        east: 180,
-        west: -180,
+        north: 60,
+        south: -60,
+        east: 140,
+        west: -140,
     };
 
     const [map, setMap] = React.useState(null);

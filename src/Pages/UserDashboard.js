@@ -48,10 +48,7 @@ const UserDashboard = () => {
     const [campaigns, setCampaigns] = useState([]);
     const [profile, setProfile] = useContext(ProfileContext);
     const [loader, setLoader] = useState(true);
-    const [markers, setMarkers] = useState([
-        { lat: 37.7749, lng: -122.4194 }, // San Francisco
-        { lat: 34.0522, lng: -118.2437 }, // Los Angeles
-    ]);
+    const [markers, setMarkers] = useState([]);
 
     const handleMarkerClick = (marker) => {
         console.log("Marker clicked:", marker);
@@ -108,6 +105,17 @@ const UserDashboard = () => {
                                     setCommunities(data[0].data.communities);
                                     setLoader(false);
                                     setCampaigns(data[1].data);
+                                    setMarkers(
+                                        data[1].data.map((campaign) => {
+                                            return {
+                                                lat: campaign.latitude,
+                                                lng: campaign.longitude,
+                                                name: campaign.organization
+                                                    .name,
+                                                id: campaign._id,
+                                            };
+                                        })
+                                    );
                                     console.log(data[1].data);
                                 })
                                 .catch(function (error) {

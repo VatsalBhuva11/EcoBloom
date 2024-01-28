@@ -16,18 +16,10 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     });
     const continentsBoundingBox = {
-        north: 85,
-        south: -85,
-        east: 180,
-        west: -180,
-    };
-    const initialCenter = {
-        lat: (continentsBoundingBox.north + continentsBoundingBox.south) / 2,
-        lng: (continentsBoundingBox.east + continentsBoundingBox.west) / 2,
-    };
-    const mapOptions = {
-        center: initialCenter, // Center of the world
-        zoom: 4, // Adjust the zoom level as needed for a zoomed-out view
+        north: 60,
+        south: -60,
+        east: 140,
+        west: -140,
     };
 
     const [map, setMap] = React.useState(null);
@@ -53,12 +45,6 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         setMap(null);
     }, []);
 
-    const [selectedMarker, setSelectedMarker] = useState(null);
-    const handleMarkerClick = (marker) => {
-        setSelectedMarker(marker);
-        onMarkerClick(marker);
-    };
-
     const [markerPosition, setMarkerPosition] = useState(null);
 
     const handleMapClick = (event) => {
@@ -77,7 +63,6 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
-            options={mapOptions}
             onLoad={onLoad}
             onUnmount={onUnmount}
             onClick={handleMapClick}
