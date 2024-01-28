@@ -1,5 +1,10 @@
-import React from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import React, { useState } from "react";
+import {
+    GoogleMap,
+    useJsApiLoader,
+    Marker,
+    InfoWindow,
+} from "@react-google-maps/api";
 
 const containerStyle = {
     width: "600px",
@@ -31,11 +36,31 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         setMap(null);
     }, []);
 
+    const [selectedMarker, setSelectedMarker] = useState(null);
+    const handleMarkerClick = (marker) => {
+        setSelectedMarker(marker);
+        onMarkerClick(marker);
+    };
+
+    const continentsBoundingBox = {
+        north: 85,
+        south: -85,
+        east: 180,
+        west: -180,
+    };
+
+    const initialCenter = {
+        lat: (continentsBoundingBox.north + continentsBoundingBox.south) / 2,
+        lng: (continentsBoundingBox.east + continentsBoundingBox.west) / 2,
+    };
+
+    const initialZoom = 1;
+
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
-            center={center}
-            zoom={10}
+            center={initialCenter}
+            zoom={initialZoom}
             onLoad={onLoad}
             onUnmount={onUnmount}
         >
@@ -47,6 +72,7 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
                     onClick={() => onMarkerClick(marker)}
                 />
             ))}
+
             <>
                 <img
                     className="mt-10 w-[600px] 2xl:w-[700px]"
