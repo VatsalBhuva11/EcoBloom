@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
     GoogleMap,
-    useJsApiLoader,
+    useLoadScript,
     Marker,
     InfoWindow,
 } from "@react-google-maps/api";
@@ -16,8 +16,8 @@ const center = {
     lng: 81.7702,
 };
 
-export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
-    const { isLoaded } = useJsApiLoader({
+export default function Maps_DashBoard({ zoom, onMarkerClick }) {
+    const { isLoaded } = useLoadScript({
         id: "google-map-script",
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     });
@@ -82,13 +82,6 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         >
             {/* Child components, such as markers, info windows, etc. */}
             {markerPosition && <Marker position={markerPosition} />}
-            {markers.map((marker, index) => (
-                <Marker
-                    key={index}
-                    position={{ lat: marker.lat, lng: marker.lng }}
-                    onClick={() => onMarkerClick(marker)}
-                />
-            ))}
 
             <>
                 <img

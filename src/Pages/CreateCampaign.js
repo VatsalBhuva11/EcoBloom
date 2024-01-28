@@ -4,11 +4,23 @@ import { FaLocationDot } from "react-icons/fa6";
 import Create_Campaign_Card from "./Create_Campaign_Card";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
+import Maps_Campaign from "../Components/Maps_Campaign.js";
 
 const CreateCampaign = () => {
     const [showMyModel, setShowMyModal] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [formData, setFormData] = useState({});
+    const [showMap, setShowMap] = useState(false);
+    const [markers, setMarkers] = useState([
+        { lat: 37.7749, lng: -122.4194 }, // San Francisco
+        { lat: 34.0522, lng: -118.2437 }, // Los Angeles
+    ]);
+
+    const handleMarkerClick = (marker) => {
+        console.log("Marker clicked:", marker);
+        // Perform actions when a marker is clicked
+    };
+
     const handleOnClose = () => setShowMyModal(false);
 
     function handleCreateCampaign(event) {
@@ -49,6 +61,10 @@ const CreateCampaign = () => {
             setClicked(false);
             alert("Login as an organization.");
         }
+    }
+
+    function showMapModal() {
+        setShowMap(!showMap);
     }
 
     return (
@@ -125,12 +141,38 @@ const CreateCampaign = () => {
                             />
                         </div>
                         <div className="flex text-[#862B2B] text-[1rem] sm:text-lg lg:text-xl font-bold items-center">
-                            <div>
+                            <div
+                                className="cursor-pointer"
+                                // onClick={showMapModal}
+
+                                // add onclick for showing popup here (nijval)
+                            >
                                 <FaLocationDot />
                             </div>
-                            <div className="text-[1.3rem]">
+                            <div
+                                className="text-[1.3rem] cursor-pointer"
+                                // onClick={showMapModal}
+
+                                //add onclick for showing popup here (nijval)
+                            >
                                 Mark Location On Map
                             </div>
+                            {/* {showMap && (
+                                <div className="absolute z-10 top-0 left-50 w-screen h-screen bg-[#00000099] flex justify-center items-center">
+                                    <div className="absolute z-20 w-[90%] h-[90%]">
+                                        <div>
+                                            <Maps_Campaign
+                                                onMarkerClick={
+                                                    handleMarkerClick
+                                                }
+                                                onClose={() => {
+                                                    setShowMap(false);
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            )} */}
                         </div>
                     </div>
                     <div className="hidden sm:flex flex-col w-[25%] gap-2 lg:gap-3">
