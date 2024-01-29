@@ -179,7 +179,7 @@ export default function UserSignup() {
                                             class="block mb-2 text-sm font-medium text-[#0f1035]"
                                             for="file_input"
                                         >
-                                            Upload Logo
+                                            Upload Logo<sup>*</sup>
                                         </label>
                                         <input
                                             class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
@@ -190,6 +190,7 @@ export default function UserSignup() {
                                             name="logo"
                                             type="file"
                                             accept="image/*"
+                                            required
                                         />
                                     </div>
                                     <div>
@@ -197,7 +198,7 @@ export default function UserSignup() {
                                             class="block mb-2 text-sm font-medium text-[#0f1035]"
                                             for="file_input"
                                         >
-                                            Upload Banner
+                                            Upload Banner<sup>*</sup>
                                         </label>
                                         <input
                                             class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
@@ -208,6 +209,7 @@ export default function UserSignup() {
                                             name="banner"
                                             type="file"
                                             accept="image/*"
+                                            required
                                         />
                                     </div>
                                     {!signUpClicked ? (

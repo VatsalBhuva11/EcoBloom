@@ -1705,10 +1705,6 @@ video {
   border-right-color: rgb(17 24 39 / var(--tw-border-opacity));
 }
 
-.bg-\[\#00000099\]{
-  background-color: #00000099;
-}
-
 .bg-\[\#0F1035\]{
   --tw-bg-opacity: 1;
   background-color: rgb(15 16 53 / var(--tw-bg-opacity));

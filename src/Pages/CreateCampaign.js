@@ -4,8 +4,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import Create_Campaign_Card from "./Create_Campaign_Card";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
-import Maps_Campaign from "../Components/Maps_Campaign.js";
-import Activity_log from "./Activity_log.js";
+
 import Maps_Card from "./Map_Card.js";
 
 const CreateCampaign = () => {
@@ -13,22 +12,11 @@ const CreateCampaign = () => {
     const [showMyModel1, setShowMyModal1] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [formData, setFormData] = useState({});
-    const [showMap, setShowMap] = useState(false);
 
     // const handleMarkerClick = (marker) => {
     //     console.log("Marker clicked:", marker);
     //     // Perform actions when a marker is clicked
     // };
-
-    const handleSetMarker = (marker) => {
-        console.log("Marker clicked:", marker);
-        // Perform actions when a marker is clicked
-        setFormData({
-            ...formData,
-            latitude: marker.lat,
-            longitude: marker.lng,
-        });
-    };
 
     const handleOnClose = () => setShowMyModal(false);
     const handleOnClose1 = () => setShowMyModal1(false);
@@ -73,10 +61,6 @@ const CreateCampaign = () => {
         }
     }
 
-    function showMapModal() {
-        setShowMap(!showMap);
-    }
-
     return (
         <div className="w-screen h-screen p-8 sm:p-12 lg:p-20 bg-[#EEF0E5] flex flex-col justify-evenly gap-1 sm:gap-3">
             <div className="flex items-center gap-5 text-[#0F1035]">
@@ -90,7 +74,11 @@ const CreateCampaign = () => {
                     CREATE CAMPAIGN
                 </div>
             </div>
-            <form id="createCampaign" className="flex flex-col sm:gap-2" action="#">
+            <form
+                id="createCampaign"
+                className="flex flex-col sm:gap-2"
+                action="#"
+            >
                 <div className="flex gap-5">
                     <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
                         <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
@@ -150,41 +138,19 @@ const CreateCampaign = () => {
                                 }}
                             />
                         </div>
-                        <a onClick={() => setShowMyModal1(true)} className="flex text-[#862B2B] text-[1rem] sm:text-lg lg:text-xl font-bold items-center ">
+                        <a className="flex text-[#862B2B] text-[1rem] sm:text-lg lg:text-xl font-bold items-center ">
                             <div
                                 className="cursor-pointer"
-                                onClick={showMapModal}
+                                onClick={() => setShowMyModal1(true)}
                             >
                                 <FaLocationDot />
                             </div>
                             <div
                                 className="text-[1.0rem] cursor-pointer"
-                                onClick={showMapModal}
+                                onClick={() => setShowMyModal1(true)}
                             >
                                 Mark Location On Map
                             </div>
-                            {showMap && (
-                                <div className="absolute top-0 left-0 w-screen h-screen bg-[#00000099] flex flex-col justify-center items-center">
-                                    <div
-                                        className="w-5 h-5 text-white"
-                                        onClick={() => {
-                                            setShowMap(false);
-                                        }}
-                                    >
-                                        X
-                                    </div>
-                                    <div className="w-[90%] h-[90%]">
-                                        <div>
-                                            <Maps_Campaign
-                                                onClose={() => {
-                                                    setShowMap(false);
-                                                }}
-                                                onMapClick={handleSetMarker}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
                         </a>
                     </div>
                     <div className="hidden sm:flex flex-col w-[25%] gap-1 lg:gap-1">
@@ -207,7 +173,7 @@ const CreateCampaign = () => {
                     </div>
                 </div>
 
-{/* New Start Date and End Date which will be flexed after width small */}
+                {/* New Start Date and End Date which will be flexed after width small */}
 
                 <div className="flex sm:hidden justify-between">
                     <div className="flex flex-col w-[40%] gap-1 lg:gap-1">
@@ -236,7 +202,7 @@ const CreateCampaign = () => {
                     </div>
                 </div>
 
-{/* New start date and End Date Ends */}
+                {/* New start date and End Date Ends */}
 
                 <div className="flex gap-5 mt-2">
                     <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
@@ -355,8 +321,12 @@ const CreateCampaign = () => {
                     onClose={handleOnClose}
                     visible={showMyModel}
                 />
-                <Maps_Card onClose={handleOnClose1}
-                    visible={showMyModel1}/>
+                <Maps_Card
+                    onClose={handleOnClose1}
+                    visible={showMyModel1}
+                    formData={formData}
+                    setFormData={setFormData}
+                />
             </form>
         </div>
     );
