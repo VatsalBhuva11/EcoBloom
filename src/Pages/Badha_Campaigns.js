@@ -287,7 +287,6 @@ const Badha_Campaigns = () => {
                             </button>
                 </div>
             </div>
-            
         </div>
       </div> 
     </div>

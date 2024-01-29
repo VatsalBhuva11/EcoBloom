@@ -2240,6 +2240,10 @@ video {
   font-size: 0.9rem;
 }
 
+.text-\[1\.0rem\]{
+  font-size: 1.0rem;
+}
+
 .text-\[1\.15rem\]{
   font-size: 1.15rem;
 }
@@ -2252,12 +2256,12 @@ video {
   font-size: 1.25rem;
 }
 
-.text-\[1\.35rem\]{
-  font-size: 1.35rem;
+.text-\[1\.30rem\]{
+  font-size: 1.30rem;
 }
 
-.text-\[1\.3rem\]{
-  font-size: 1.3rem;
+.text-\[1\.35rem\]{
+  font-size: 1.35rem;
 }
 
 .text-\[1\.5rem\]{
@@ -3102,6 +3106,10 @@ html {
 
   .sm\:text-\[1\.4rem\]{
     font-size: 1.4rem;
+  }
+
+  .sm\:text-\[1\.50rem\]{
+    font-size: 1.50rem;
   }
 
   .sm\:text-\[1\.6rem\]{

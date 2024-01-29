@@ -78,18 +78,18 @@ const CreateCampaign = () => {
             <div className="flex items-center gap-5 text-[#0F1035]">
                 <Link
                     to="/org/dashboard"
-                    className="text-2xl sm:text-4xl lg:text-5xl mt-1 sm:mt-2 lg:mt-3 cursor-pointer hover:scale-110 duration-300"
+                    className="text-xl sm:text-3xl lg:text-4xl mt-0 sm:mt-1 lg:mt-2 cursor-pointer hover:scale-110 duration-300"
                 >
                     <FaArrowLeft />
                 </Link>
-                <div className="text-3xl sm:text-5xl lg:text-6xl font-bold">
+                <div className="text-2xl sm:text-3xl lg:text-5xl font-bold">
                     CREATE CAMPAIGN
                 </div>
             </div>
-            <form id="createCampaign" action="#">
+            <form id="createCampaign" className="flex flex-col sm:gap-2" action="#">
                 <div className="flex gap-5">
-                    <div className="flex flex-col w-full sm:w-[74%] gap-2 lg:gap-3">
-                        <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                    <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                             Campaign Name*
                         </div>
                         <div>
@@ -107,8 +107,8 @@ const CreateCampaign = () => {
                             />
                         </div>
                     </div>
-                    <div className="hidden sm:flex flex-col w-[25%] gap-2 lg:gap-3">
-                        <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                    <div className="hidden sm:flex flex-col w-[25%] gap-1 lg:gap-1">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                             Start Date*
                         </div>
                         <div>
@@ -128,8 +128,8 @@ const CreateCampaign = () => {
                 </div>
 
                 <div className="flex gap-5">
-                    <div className="flex flex-col w-full sm:w-[74%] gap-2 lg:gap-3">
-                        <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                    <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                             Campaign Address*
                         </div>
                         <div>
@@ -154,7 +154,7 @@ const CreateCampaign = () => {
                                 <FaLocationDot />
                             </div>
                             <div
-                                className="text-[1.3rem] cursor-pointer"
+                                className="text-[1.0rem] cursor-pointer"
                                 onClick={showMapModal}
                             >
                                 Mark Location On Map
@@ -183,8 +183,8 @@ const CreateCampaign = () => {
                             )}
                         </div>
                     </div>
-                    <div className="hidden sm:flex flex-col w-[25%] gap-2 lg:gap-3">
-                        <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                    <div className="hidden sm:flex flex-col w-[25%] gap-1 lg:gap-1">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                             End Date*
                         </div>
                         <div>
@@ -203,9 +203,11 @@ const CreateCampaign = () => {
                     </div>
                 </div>
 
-                {/* <div className="flex sm:hidden justify-between">
-                    <div className="flex flex-col w-[40%] gap-2 lg:gap-3">
-                        <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+{/* New Start Date and End Date which will be flexed after width small */}
+
+                <div className="flex sm:hidden justify-between">
+                    <div className="flex flex-col w-[40%] gap-1 lg:gap-1">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                             Start Date*
                         </div>
                         <div>
@@ -216,8 +218,8 @@ const CreateCampaign = () => {
                             />
                         </div>
                     </div>
-                    <div className="flex flex-col w-[40%] gap-2 lg:gap-3">
-                        <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                    <div className="flex flex-col w-[40%] gap-1 lg:gap-1">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                             End Date*
                         </div>
                         <div>
@@ -228,10 +230,13 @@ const CreateCampaign = () => {
                             />
                         </div>
                     </div>
-                </div> */}
-                <div className="flex gap-5">
-                    <div className="flex flex-col w-full sm:w-[74%] gap-2 lg:gap-3">
-                        <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                </div>
+
+{/* New start date and End Date Ends */}
+
+                <div className="flex gap-5 mt-2">
+                    <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                             City*
                         </div>
                         <div>
@@ -249,8 +254,8 @@ const CreateCampaign = () => {
                             />
                         </div>
                     </div>
-                    <div className="hidden sm:flex flex-col w-[25%] gap-2 lg:gap-3">
-                        <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                    <div className="flex flex-col w-[25%] gap-1 lg:gap-1">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                             Location*
                         </div>
 
@@ -280,8 +285,8 @@ const CreateCampaign = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col w-full sm:w-[74%] gap-2 lg:gap-3">
-                    <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
+                    <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                         Country*
                     </div>
                     <div>
@@ -299,8 +304,8 @@ const CreateCampaign = () => {
                         />
                     </div>
                 </div>
-                <div className="flex flex-col w-full sm:w-[74%] gap-2 lg:gap-3">
-                    <div className="text-[1.35rem] sm:text-[1.6rem] lg:text-3xl font-bold text-[#333333]">
+                <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
+                    <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
                         Campaign Goal*
                     </div>
                     <div>
@@ -318,7 +323,7 @@ const CreateCampaign = () => {
                         />
                     </div>
                 </div>
-                <div className="flex gap-10">
+                <div className="flex gap-10 mt-3">
                     {!clicked ? (
                         <button
                             onClick={handleCreateCampaign}
