@@ -5,9 +5,12 @@ import Create_Campaign_Card from "./Create_Campaign_Card";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import Maps_Campaign from "../Components/Maps_Campaign.js";
+import Activity_log from "./Activity_log.js";
+import Maps_Card from "./Map_Card.js";
 
 const CreateCampaign = () => {
     const [showMyModel, setShowMyModal] = useState(false);
+    const [showMyModel1, setShowMyModal1] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [formData, setFormData] = useState({});
     const [showMap, setShowMap] = useState(false);
@@ -28,6 +31,7 @@ const CreateCampaign = () => {
     };
 
     const handleOnClose = () => setShowMyModal(false);
+    const handleOnClose1 = () => setShowMyModal1(false);
 
     function handleCreateCampaign(event) {
         event.preventDefault();
@@ -146,7 +150,7 @@ const CreateCampaign = () => {
                                 }}
                             />
                         </div>
-                        <div className="flex text-[#862B2B] text-[1rem] sm:text-lg lg:text-xl font-bold items-center">
+                        <a onClick={() => setShowMyModal1(true)} className="flex text-[#862B2B] text-[1rem] sm:text-lg lg:text-xl font-bold items-center ">
                             <div
                                 className="cursor-pointer"
                                 onClick={showMapModal}
@@ -181,7 +185,7 @@ const CreateCampaign = () => {
                                     </div>
                                 </div>
                             )}
-                        </div>
+                        </a>
                     </div>
                     <div className="hidden sm:flex flex-col w-[25%] gap-1 lg:gap-1">
                         <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
@@ -327,14 +331,14 @@ const CreateCampaign = () => {
                     {!clicked ? (
                         <button
                             onClick={handleCreateCampaign}
-                            className="text-xl sm:text-2xl bg-[#0F1035] text-[#EEF0E5] w-40 h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
+                            className="text-xl sm:text-2xl bg-[#0F1035] text-[#EEF0E5] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
                         >
                             CREATE
                         </button>
                     ) : (
                         <button
                             onClick={handleCreateCampaign}
-                            className="text-xl sm:text-2xl bg-[#0f1035e9] text-[#EEF0E5] w-40 h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
+                            className="text-xl sm:text-2xl bg-[#0f1035e9] text-[#EEF0E5] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
                             disabled
                         >
                             Creating...
@@ -342,7 +346,7 @@ const CreateCampaign = () => {
                     )}
 
                     <Link to="/org/dashboard">
-                        <button className="text-xl sm:text-2xl bg-[#EEF0E5] text-[#0F1035] w-40 h-12 rounded-lg border-2 border-[#0F1035] cursor-pointer hover:scale-110 duration-300">
+                        <button className="text-xl sm:text-2xl bg-[#EEF0E5] text-[#0F1035] px-2 sm:px-5 w-auto h-12 rounded-lg border-2 border-[#0F1035] cursor-pointer hover:scale-110 duration-300">
                             CANCEL
                         </button>
                     </Link>
@@ -351,6 +355,8 @@ const CreateCampaign = () => {
                     onClose={handleOnClose}
                     visible={showMyModel}
                 />
+                <Maps_Card onClose={handleOnClose1}
+                    visible={showMyModel1}/>
             </form>
         </div>
     );
