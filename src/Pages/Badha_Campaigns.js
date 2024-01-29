@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logo_new from "../assets/images/logo_new.png"
 import face from "../assets/images/face.jpg"
 import banner from "../assets/images/banner.png"
@@ -6,20 +6,26 @@ import logo_commu from "../assets/images/logo_commu.jpg"
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { SlCalender } from "react-icons/sl";
+import { Link } from 'react-router-dom'
+import { ProfileContext } from '../Components/ProfileContextProvider'
 
 const Badha_Campaigns = () => {
+
+
+    const [profile, setProfile] = useContext(ProfileContext)
+
   return (
     <div className='h-screen w-full bg-[#eef0e5]'>
       <div className='flex items-center justify-between '>
-        <img className='w-16 md:w-20 lg:w-24 ml-2 mt-1' src={logo_new} alt="" />
+        <Link to='/'><img className='w-16 md:w-20 lg:w-24  cursor-pointer ml-2 hover:scale-105 duration-300 mt-1' src={logo_new} alt="" /></Link>
         <div className='flex items-center mr-4 gap-3'>
-          <img className='w-9 md:w-12 lg:w-14 h-9 md:h-12 lg:h-14 rounded-full' src={face} alt="" />
-          <p className='hidden sm:flex text-xl font-medium'>Hizrain</p>
+          <Link to='/user/profile'><img className='w-9 md:w-12 lg:w-14 h-9 hover:scale-105 duration-300 md:h-12 lg:h-14 rounded-full' src={profile.url} alt="" /></Link>
+          <p className='hidden sm:flex text-xl font-medium'>{profile.name}</p>
         </div>
       </div> 
       <div className='flex flex-col mt-2 mx-5 gap-2'>
         <div className='font-bold text-2xl text-[#4D8E11]'>
-          Ongoing Campaign
+          Ongoing Campaigns
         </div>
         <div className='w-full flex flex-row overflow-scroll gap-24 overflow-y-hidden pb-2 pl-12'>
             <div className='w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex flex-col justify-between rounded-lg h-64 lg:pb-4'>
@@ -155,7 +161,7 @@ const Badha_Campaigns = () => {
       </div>
       <div className='flex flex-col mt-2 mx-5 gap-2'>
         <div className='font-bold text-2xl text-[#768469]'>
-          Upcoming Campaign
+          Upcoming Campaigns
         </div>
         <div className='w-full h-60 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-content-between overflow-scroll overflow-x-hidden gap-y-4 pl-12'>
             {/* div for upcming card */}

@@ -1,5 +1,4 @@
 import { React, useState, useContext } from "react";
-import face from "../assets/images/face.jpg";
 import logo from "../assets/images/logo.png";
 import EditPassword from "./EditPassword";
 import Change_profile from "./Change_profile";
@@ -11,6 +10,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import { GoogleAuthProvider, linkWithPopup } from "firebase/auth";
+import { IoArrowBackSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
     const [showMyModel, setShowMyModal] = useState(false);
@@ -65,6 +66,7 @@ const UserProfile = () => {
     return (
         <div className='absolute w-screen bg-[url("./assets/images/profile_bg.jpg")] bg-cover h-screen'>
             <div class="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
+                <Link to='/user/dashboard'><button className="text-2xl p-4 hover:scale-110 duration-300"><IoArrowBackSharp/></button></Link>
                 <div class="flex justify-center">
                     <img
                         src={profile.url}
@@ -73,7 +75,7 @@ const UserProfile = () => {
                     />
                 </div>
 
-                <div class="mt-16">
+                <div class="mt-3">
                     <h1 class="font-bold text-center text-3xl text-gray-900">
                         {profile.name}
                     </h1>
@@ -92,7 +94,7 @@ const UserProfile = () => {
                 <a href="" class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">Instagram</a>
                 <a href="" class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">Email</a>
             </div> */}
-                    <div className="flex justify-evenly my-5 text-[12px] sm:text-[15px]">
+                    <div className="flex justify-evenly my-6 text-[12px] sm:text-[15px]">
                         <div className="flex flex-col justify-center items-center bg-[#DFE4C5] rounded-lg px-5">
                             <div>35🪙</div>
                             <div>Earned</div>

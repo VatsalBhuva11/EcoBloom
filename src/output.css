@@ -740,6 +740,11 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.my-6{
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .-ml-1{
   margin-left: -0.25rem;
 }
@@ -1076,6 +1081,10 @@ video {
   height: 30px;
 }
 
+.h-\[350px\]{
+  height: 350px;
+}
+
 .h-\[40px\]{
   height: 40px;
 }
@@ -1250,6 +1259,10 @@ video {
 
 .w-\[30px\]{
   width: 30px;
+}
+
+.w-\[350px\]{
+  width: 350px;
 }
 
 .w-\[40\%\]{

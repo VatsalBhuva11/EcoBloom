@@ -21,6 +21,7 @@ import arrow from '../assets/images/arrow.png'
 import PastCampaignsCards from "../Components/PastCampaignsCards";
 import { FaArrowRightLong } from "react-icons/fa6"
 import Community_Joined_Card from "./Community_Joined_Card";
+import NewPost from "../Components/NewPost";
 
 const Orgdashboard = () => {
   // const [loader, setLoader] = useState(true);
@@ -29,6 +30,9 @@ const Orgdashboard = () => {
   const [ifBold1, setIfBold1] = useState("bold");
   const [ifBold2, setIfBold2] = useState("normal");
   const [ifBold3, setIfBold3] = useState("normal");
+  const [showMyModel, setShowMyModal] = useState(false);
+  const handleOnClose = () => setShowMyModal(false);
+
 
   const handleABoutChange = () => {
     setIfBold1("bold");
@@ -135,7 +139,7 @@ const Orgdashboard = () => {
                 <button onClick={handlePastChange} ><p className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold3}`}  >PAST CAMPAIGNS</p></button>
               </div>
               <div>
-                <button className="bg-[#0f1035] mb-2 flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:px-3  text-md sm:text-lg md:text-lg gap-2 font-semibold">
+                <button  onClick = {()=>setShowMyModal(true)} className="bg-[#0f1035] mb-2 flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:px-3  text-md sm:text-lg md:text-lg gap-2 font-semibold">
                   <FaPlus className=" mt-1" size={20} /> New Post
                 </button>
               </div>
@@ -272,6 +276,7 @@ const Orgdashboard = () => {
 
         </div>
       </div>
+      <NewPost onClose={handleOnClose} visible={showMyModel} />
     </div>
   );
 };
