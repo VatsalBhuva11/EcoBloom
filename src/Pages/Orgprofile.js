@@ -11,7 +11,6 @@ import bannerorg from "../assets/images/bannerorg.png";
 import logo from "../assets/images/logo.png";
 import { IoIosSend } from "react-icons/io";
 import { FaPlus , FaArrowRightLong} from "react-icons/fa6";
-import { FaSearch } from "react-icons/fa";
 import PastCampaignsCards from "../Components/PastCampaignsCards";
 import { Link } from "react-router-dom";
 import arrow from '../assets/images/arrow.png'
@@ -116,7 +115,7 @@ const Orgprofile = () => {
           {status === "about" ? (
             <div>
               <div className="text-center lg:text-2xl text-lg font-semibold mt-5">ABOUT US</div>
-              <div className="mt-4 lg:text-lg text-sm ml-2 font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aspernatur ex neque aliquid quis? Officiis deleniti necessitatibus vitae, earum magni voluptates dolores vel corrupti assumenda nemo qui iusto nobis. Corporis eius maiores consequuntur obcaecati iste a ullam aut, doloremque porro? Veniam cum laudantium excepturi, voluptatem voluptatibus dolorem rerum voluptatum laborum vero sunt libero, vitae hic, nihil a suscipit nisi. Accusamus rem placeat earum libero ullam suscipit a officiis ut sint. Et ab neque, id quis laudantium similique! Vel, sit.</div>
+              <div className="mt-4 lg:text-lg text-sm ml-2 font-medium p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aspernatur ex neque aliquid quis? Officiis deleniti necessitatibus vitae, earum magni voluptates dolores vel corrupti assumenda nemo qui iusto nobis. Corporis eius maiores consequuntur obcaecati iste a ullam aut, doloremque porro? Veniam cum laudantium excepturi, voluptatem voluptatibus dolorem rerum voluptatum laborum vero sunt libero, vitae hic, nihil a suscipit nisi. Accusamus rem placeat earum libero ullam suscipit a officiis ut sint. Et ab neque, id quis laudantium similique! Vel, sit.</div>
 
             </div>
           ) : status === "post" ? (

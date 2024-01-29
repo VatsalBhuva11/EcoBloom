@@ -6,6 +6,7 @@ import CommunityChat from "./Pages/CommunityChat";
 import Store from "./Pages/Store";
 import Orgprofile from "./Pages/Orgprofile";
 import CreateCampaign from "./Pages/CreateCampaign";
+import CropImage from "./Components/CropImage";
 // import SignupInitial from './Pages/SignupInitial';
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
         <div>
             {/* <SignupInitial/> */}
             <Home />
+            {/* <CropImage/> */}
             {/* <Orgprofile /> */}
             {/* <CommunityChat/> */}
             {/* <UserDashboard /> */}
