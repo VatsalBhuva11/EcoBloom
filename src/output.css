@@ -844,6 +844,10 @@ video {
   margin-right: 60px;
 }
 
+.mt-0{
+  margin-top: 0px;
+}
+
 .mt-1{
   margin-top: 0.25rem;
 }
@@ -1114,6 +1118,10 @@ video {
 
 .h-\[83\%\]{
   height: 83%;
+}
+
+.h-\[85\%\]{
+  height: 85%;
 }
 
 .h-\[90\%\]{
@@ -2026,6 +2034,11 @@ video {
   padding: 1.5rem;
 }
 
+.px-10{
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .px-2{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -2258,10 +2271,6 @@ video {
 
 .text-\[1\.30rem\]{
   font-size: 1.30rem;
-}
-
-.text-\[1\.35rem\]{
-  font-size: 1.35rem;
 }
 
 .text-\[1\.5rem\]{
@@ -2964,8 +2973,8 @@ html {
     margin-left: 1rem;
   }
 
-  .sm\:mt-2{
-    margin-top: 0.5rem;
+  .sm\:mt-1{
+    margin-top: 0.25rem;
   }
 
   .sm\:flex{
@@ -2974,6 +2983,10 @@ html {
 
   .sm\:hidden{
     display: none;
+  }
+
+  .sm\:h-10{
+    height: 2.5rem;
   }
 
   .sm\:h-24{
@@ -2990,6 +3003,10 @@ html {
 
   .sm\:h-\[50px\]{
     height: 50px;
+  }
+
+  .sm\:w-12{
+    width: 3rem;
   }
 
   .sm\:w-52{
@@ -3094,14 +3111,14 @@ html {
     line-height: 2rem;
   }
 
+  .sm\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .sm\:text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-
-  .sm\:text-5xl{
-    font-size: 3rem;
-    line-height: 1;
   }
 
   .sm\:text-\[1\.4rem\]{
@@ -3110,10 +3127,6 @@ html {
 
   .sm\:text-\[1\.50rem\]{
     font-size: 1.50rem;
-  }
-
-  .sm\:text-\[1\.6rem\]{
-    font-size: 1.6rem;
   }
 
   .sm\:text-\[15px\]{
@@ -3532,8 +3545,8 @@ html {
     margin-top: 0.25rem;
   }
 
-  .lg\:mt-3{
-    margin-top: 0.75rem;
+  .lg\:mt-2{
+    margin-top: 0.5rem;
   }
 
   .lg\:mt-6{
@@ -3644,6 +3657,10 @@ html {
     justify-content: space-around;
   }
 
+  .lg\:gap-1{
+    gap: 0.25rem;
+  }
+
   .lg\:gap-3{
     gap: 0.75rem;
   }
@@ -3707,6 +3724,10 @@ html {
     line-height: 1;
   }
 
+  .lg\:text-\[1\.6rem\]{
+    font-size: 1.6rem;
+  }
+
   .lg\:text-\[17px\]{
     font-size: 17px;
   }
@@ -3730,6 +3751,11 @@ html {
   .lg\:text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
   .lg\:text-xl{
@@ -3764,6 +3790,10 @@ html {
     display: none;
   }
 
+  .xl\:h-12{
+    height: 3rem;
+  }
+
   .xl\:h-\[20rem\]{
     height: 20rem;
   }
@@ -3790,6 +3820,10 @@ html {
 
   .xl\:h-screen{
     height: 100vh;
+  }
+
+  .xl\:w-16{
+    width: 4rem;
   }
 
   .xl\:w-3\/6{
@@ -4014,6 +4048,11 @@ html {
 
   .\32xl\:text-\[22px\]{
     font-size: 22px;
+  }
+
+  .\32xl\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .\32xl\:text-xl{
