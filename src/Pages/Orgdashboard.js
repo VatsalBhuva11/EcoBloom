@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import p1 from "../assets/images/p1.png";
 import p2 from "../assets/images/p2.png";
 import p3 from "../assets/images/p3.png";
@@ -15,7 +15,6 @@ import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
-import { useState, useEffect } from "react";
 import arrow from "../assets/images/arrow.png";
 import PastCampaignsCards from "../Components/PastCampaignsCards";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -24,6 +23,7 @@ import NewPost from "../Components/NewPost";
 import { jwtDecode } from "jwt-decode";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
+import { ProfileContext } from "../Components/ProfileContextProvider.js";
 
 const Orgdashboard = () => {
     // const [loader, setLoader] = useState(true);
@@ -39,6 +39,7 @@ const Orgdashboard = () => {
     const [loader, setLoader] = useState(true);
     const [logo, setLogo] = useState(null);
     const [banner, setBanner] = useState(null);
+    const [profile, setProfile] = useContext(ProfileContext);
 
     useEffect(() => {
         if (auth.currentUser) {
@@ -60,6 +61,19 @@ const Orgdashboard = () => {
                                 getDownloadURL(storageRef1),
                                 getDownloadURL(storageRef2),
                             ]);
+                            localStorage.setItem(
+                                "profile",
+                                JSON.stringify({
+                                    logo: data[0],
+                                    banner: data[1],
+                                    name: org.data.name,
+                                })
+                            );
+                            setProfile({
+                                logo: data[0],
+                                banner: data[1],
+                                name: org.data.name,
+                            });
 
                             setLogo(data[0]);
                             setBanner(data[1]);
