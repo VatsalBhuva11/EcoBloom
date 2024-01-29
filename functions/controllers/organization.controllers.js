@@ -13,44 +13,67 @@ import { ref, uploadBytesResumable } from "firebase/storage";
 
 const router = express.Router();
 
+//get all orgs
+
+export const getOrgs = async (req, res) => {
+    try {
+        const orgs = await Organization.find({});
+        const data = await Promise.all(
+            orgs.map(async (org) => {
+                const community = await Community.findOne({
+                    organization: org._id,
+                });
+                return {
+                    id: org._id,
+                    name: org.name,
+                    email: org.email,
+                    logo: org.logo,
+                    banner: org.banner,
+                    isVerified: org.isVerified,
+                    members: community.userCount,
+                };
+            })
+        );
+        response_200(res, "Successfully fetched organizations", data);
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while fetching organizations", err);
+    }
+};
+
 //for organization profile
+
 export const getOrgDetails = async (req, res) => {
     try {
-        const orgName = req.params.orgName;
-        const org = await Organization.findOne({ name: orgName });
+        const orgId = req.params.orgId;
+        const org = await Organization.findById(orgId);
 
-        if (!org || !org.isVerified) {
-            response_404(
-                res,
-                "The organization is not yet registered with us."
-            );
-        } else {
-            const { name, email, logo, banner, orgPosts } = org;
-            const communityData = await Community.findOne({
-                organization: org.id,
-            });
-            const campaigns = await Campaign.find({
-                organization: org.id,
-            });
-            const upcomingCampaigns = campaigns.filter(
-                (campaign) => campaign.status.toLowerCase() === "upcoming"
-            );
-            const completedCampaigns = campaigns.filter(
-                (campaign) => campaign.status.toLowerCase() === "completed"
-            );
+        const { name, email, logo, banner, orgPosts, community } = org;
+        const communityData = await Community.findOne({
+            organization: org.id,
+        });
+        const campaigns = await Campaign.find({
+            organization: org.id,
+        });
+        const upcomingCampaigns = campaigns.filter(
+            (campaign) => campaign.status.toLowerCase() === "upcoming"
+        );
+        const completedCampaigns = campaigns.filter(
+            (campaign) => campaign.status.toLowerCase() === "completed"
+        );
 
-            let data = {
-                name,
-                email,
-                logo,
-                banner,
-                orgPosts,
-                upcomingCampaigns,
-                completedCampaigns,
-                communityUsersCount: communityData.userCount,
-            };
-            response_200(res, "Successfully fetched organization data!", data);
-        }
+        let data = {
+            name,
+            email,
+            logo,
+            banner,
+            orgPosts,
+            upcomingCampaigns,
+            completedCampaigns,
+            communityUsersCount: communityData.userCount,
+            communityId: communityData._id,
+        };
+        response_200(res, "Successfully fetched organization data!", data);
     } catch (err) {
         console.log(err);
         response_500(

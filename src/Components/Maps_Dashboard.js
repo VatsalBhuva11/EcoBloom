@@ -48,20 +48,13 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
         setMap(null);
     }, []);
 
-    const [markerPosition, setMarkerPosition] = useState(null);
     const [selectedMarker, setSelectedMarker] = useState(null);
 
     const handleMapClick = (event) => {
         // Extract latitude and longitude from the click event
         console.log(event);
-        const { latLng } = event;
-        const latitude = latLng.lat();
-        const longitude = latLng.lng();
-        console.log("LAT: ", latitude);
-        console.log("LNG: ", longitude);
-
+        handleInfoWindowClose();
         // Set the marker position
-        setMarkerPosition({ lat: latitude, lng: longitude });
     };
 
     const toggleInfoWindow = (marker) => {

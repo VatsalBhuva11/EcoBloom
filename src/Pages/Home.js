@@ -22,7 +22,7 @@ import Orgprofile from "./Orgprofile.js";
 import CreateCampaign from "./CreateCampaign.js";
 import logo from "../assets/images/logo.png";
 import CampaignProfile from "./CampaignProfile.js";
-import Badha_Campaigns from './Badha_Campaigns.js'
+import Badha_Campaigns from "./Badha_Campaigns.js";
 import Activity_log from "./Activity_log.js";
 
 export default function Home() {
@@ -87,7 +87,7 @@ export default function Home() {
                         />
                         <Route
                             exact
-                            path="/org/profile"
+                            path="/org/profile/:orgId"
                             element={<Orgprofile />}
                         />
                         <Route exact path="/video" element={<Video />} />
@@ -109,17 +109,12 @@ export default function Home() {
                             path="/campaign/profile"
                             element={<CampaignProfile />}
                         />
-                        <Route
-                            exact
-                            path="/log"
-                            element={<Activity_log/>}
-                        />
+                        <Route exact path="/log" element={<Activity_log />} />
                         <Route
                             exact
                             path="/campaigns"
-                            element={<Badha_Campaigns/>}
+                            element={<Badha_Campaigns />}
                         />
-                        
                     </Routes>
                 </BrowserRouter>
             </ProfileContextProvider>
