@@ -68,12 +68,6 @@ const Campaign = new Schema({
         type: Date,
         default: null,
     },
-    status: {
-        type: String,
-        enum: ["UPCOMING", "COMPLETED"],
-        required: true,
-        default: "UPCOMING",
-    },
     locationType: {
         type: String,
         enum: [

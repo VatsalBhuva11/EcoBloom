@@ -56,10 +56,15 @@ export const getOrgDetails = async (req, res) => {
             organization: org.id,
         });
         const upcomingCampaigns = campaigns.filter(
-            (campaign) => campaign.status.toLowerCase() === "upcoming"
+            (campaign) => campaign.startDate >= Date.now()
+        );
+        const ongoingCampaigns = campaigns.filter(
+            (campaign) =>
+                campaign.startDate <= Date.now() &&
+                campaign.endDate >= Date.now()
         );
         const completedCampaigns = campaigns.filter(
-            (campaign) => campaign.status.toLowerCase() === "completed"
+            (campaign) => campaign.endDate <= Date.now()
         );
 
         let data = {
@@ -69,6 +74,7 @@ export const getOrgDetails = async (req, res) => {
             banner,
             orgPosts,
             upcomingCampaigns,
+            ongoingCampaigns,
             completedCampaigns,
             communityUsersCount: communityData.userCount,
             communityId: communityData._id,

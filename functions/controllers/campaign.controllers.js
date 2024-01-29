@@ -14,7 +14,6 @@ mongoose.model("Organization", OrganizationSchema);
 
 export const createCampaign = async (req, res) => {
     try {
-        // const org = req.org.orgId;
         const org = req.org.orgId;
         const {
             name,
@@ -28,16 +27,6 @@ export const createCampaign = async (req, res) => {
             latitude,
             longitude,
         } = req.body;
-        // console.log(
-        //     "name: " + name,
-        //     "address: " + address,
-        //     "city: " + city,
-        //     "country: " + country,
-        //     "startDate: " + startDate,
-        //     "endDate: " + endDate,
-        //     "goal: " + goal,
-        //     "location: " + locationType
-        // );
         if (
             !address ||
             !city ||
@@ -53,7 +42,6 @@ export const createCampaign = async (req, res) => {
         } else {
             const campaign = await Campaign.create({
                 ...req.body,
-                status: "UPCOMING",
                 organization: org,
             });
             const updateOrg = await Organization.findByIdAndUpdate(org, {
@@ -67,13 +55,10 @@ export const createCampaign = async (req, res) => {
     }
 };
 
-//fix bug in createCampaign; unable to access req.body
-
-//get upcoming campaigns
 export const upcomingCampaigns = async (req, res) => {
     try {
         const campaigns = await Campaign.find({
-            status: "UPCOMING",
+            startDate: { $gte: Date.now() },
         }).populate("organization");
         campaigns.sort((a, b) => {
             return a.startDate - b.startDate;
