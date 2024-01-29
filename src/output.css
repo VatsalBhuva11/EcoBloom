@@ -1133,10 +1133,6 @@ video {
   height: 85%;
 }
 
-.h-\[90\%\]{
-  height: 90%;
-}
-
 .h-auto{
   height: auto;
 }
@@ -2723,6 +2719,27 @@ html {
 ::-webkit-scrollbar-thumb {
   background: #c6cca9;
   border-radius: 50px;
+}
+
+.map-campaign-container {
+  height: 500px;
+  width: 100%;
+}
+
+.maps-campaign-outer {
+  height: 70%;
+}
+
+@media screen and (min-width: 1000px) {
+  .map-campaign-outer {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 685px) {
+  .maps-campaign-outer {
+    width: 70%;
+  }
 }
 
 .file\:rounded-lg::-webkit-file-upload-button{

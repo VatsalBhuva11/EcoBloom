@@ -37,3 +37,23 @@ html {
     background: #c6cca9;
     border-radius: 50px;
 }
+
+.map-campaign-container {
+    height: 500px;
+    width: 100%;
+}
+
+.maps-campaign-outer {
+    height: 70%;
+}
+
+@media screen and (min-width: 1000px) {
+    .map-campaign-outer {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 685px) {
+    .maps-campaign-outer {
+        width: 70%;
+    }
+}

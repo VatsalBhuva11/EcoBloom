@@ -8,8 +8,8 @@ import {
 
 export default function Maps_DashBoard({ zoom, onMarkerClick, onMapClick }) {
     const containerStyle = {
-        height: "500px",
-        width: "700px",
+        height: "100%",
+        width: "95%",
     };
     const { isLoaded } = useLoadScript({
         id: "google-map-script",
