@@ -351,7 +351,7 @@ const Orgdashboard = () => {
                             />
                         </div>
                         <div className="flex flex-col gap-4 xl:gap-5 mt-5">
-                            <a href="">
+                            <Link to="/org/ongoing">
                                 <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
                                     <div className="font-bold">24 AUG'23</div>
                                     <div className="flex flex-col">
@@ -363,7 +363,7 @@ const Orgdashboard = () => {
                                         </p>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="mt-10 h-[50%] ">

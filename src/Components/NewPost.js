@@ -57,6 +57,9 @@ const NewPost = ({ visible, onClose }) => {
                     />
                     <div className="flex justify-around mt-7 mb-5">
                         <button
+                             onClick={() => {
+                                document.getElementById("container").click();
+                            }}
                             className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                         >
                             Cancel

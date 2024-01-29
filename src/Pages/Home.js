@@ -24,6 +24,8 @@ import logo from "../assets/images/logo.png";
 import CampaignProfile from "./CampaignProfile.js";
 import Badha_Campaigns from "./Badha_Campaigns.js";
 import Activity_log from "./Activity_log.js";
+import OrgCampaignProfile from "./OrgCampaignProfile.js";
+import VerifyUsers from "../Components/VerifyUsers.js";
 
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
@@ -115,6 +117,17 @@ export default function Home() {
                             path="/campaigns"
                             element={<Badha_Campaigns />}
                         />
+                        <Route
+                            exact
+                            path="/org/ongoing"
+                            element={<OrgCampaignProfile/>}
+                        />
+                        <Route
+                            exact
+                            path="/org/verify"
+                            element={<VerifyUsers/>}
+                        />
+
                     </Routes>
                 </BrowserRouter>
             </ProfileContextProvider>
