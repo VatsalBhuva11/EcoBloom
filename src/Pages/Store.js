@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useContext } from "react";
 import logo from "../assets/images/logo.png";
 import shirt from "../assets/images/shirt.png";
 import bag from "../assets/images/bag.png";
@@ -8,13 +8,17 @@ import keychain from "../assets/images/keychain (2).png";
 import book from "../assets/images/book.png";
 import { SiDogecoin } from "react-icons/si";
 import { Link } from "react-router-dom";
+import Store_Error from "./Store_Error";
 const Store = () => {
-  return (
+    const [showMyModel, setShowMyModal] = useState(false);
+    const handleOnClose = () => setShowMyModal(false);
+   return (
     <div className=" h-full bg-[#EEF0E5] ">
       <div>
         <div className="flex justify-between">
           <div className="flex">
             <Link to='/'><img className="h-24 hover:scale-105 duration-300 mt-4" src={logo} alt="" /></Link>
+            
             <h1 className="text-3xl md:text-4xl font-bold mt-9 text-[#0F1035]">
               REWARDS & PRIZES
             </h1>
@@ -40,10 +44,10 @@ const Store = () => {
                 </h5>{" "}
               </div>
               <div className="px-4 py-2">
-                <button className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]">
-                  <p className="flex text-white text-sm md:text-xl px-2 py-1 ">
+                <button onClick={() => setShowMyModal(true)} className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]">
+                  <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                     1000 <SiDogecoin className="mt-1 ml-2 text-[#FFCC4D]" />
-                  </p>
+                  </a>
                 </button>
               </div>
             </div>
@@ -150,6 +154,7 @@ const Store = () => {
           </div>
         </div>
       </div>
+      <Store_Error onClose={handleOnClose} visible={showMyModel}/>
     </div>
   );
 };

@@ -3,7 +3,6 @@ import React from "react";
 import Home from "./Pages/Home";
 import UserDashboard from "./Pages/UserDashboard";
 import CommunityChat from "./Pages/CommunityChat";
-import Store from "./Pages/Store";
 import Orgprofile from "./Pages/Orgprofile";
 import CreateCampaign from "./Pages/CreateCampaign";
 import CropImage from "./Components/CropImage";

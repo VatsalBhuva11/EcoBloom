@@ -20,6 +20,7 @@ import { useState } from "react";
 import arrow from '../assets/images/arrow.png'
 import PastCampaignsCards from "../Components/PastCampaignsCards";
 import { FaArrowRightLong } from "react-icons/fa6"
+import Community_Joined_Card from "./Community_Joined_Card";
 
 const Orgdashboard = () => {
   // const [loader, setLoader] = useState(true);
@@ -28,7 +29,6 @@ const Orgdashboard = () => {
   const [ifBold1, setIfBold1] = useState("bold");
   const [ifBold2, setIfBold2] = useState("normal");
   const [ifBold3, setIfBold3] = useState("normal");
-
 
   const handleABoutChange = () => {
     setIfBold1("bold");

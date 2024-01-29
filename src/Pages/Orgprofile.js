@@ -14,10 +14,14 @@ import { FaPlus , FaArrowRightLong} from "react-icons/fa6";
 import PastCampaignsCards from "../Components/PastCampaignsCards";
 import { Link } from "react-router-dom";
 import arrow from '../assets/images/arrow.png'
+import Community_Joined_Card from "./Community_Joined_Card";
 
 const Orgprofile = () => {
 
-    const [status, setStatus] = useState("about");
+  const [showMyModel, setShowMyModal] = useState(false);
+  const handleOnClose = () => setShowMyModal(false);
+
+  const [status, setStatus] = useState("about");
   const [ifBold1, setIfBold1] = useState("bold");
   const [ifBold2, setIfBold2] = useState("normal");
   const [ifBold3, setIfBold3] = useState("normal");
@@ -98,7 +102,7 @@ const Orgprofile = () => {
                       Community Chat
                     </button>
                   </Link>
-                  <button className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold">
+                  <button onClick={() => setShowMyModal(true)} className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold">
                     <FaPlus className="pt-1 sm:flex hidden" size={28} /> Join Community
                   </button>
                 </div>
@@ -231,7 +235,8 @@ const Orgprofile = () => {
 
         </div>
       </div>
-        </div>
+      <Community_Joined_Card onClose={handleOnClose} visible={showMyModel}/>
+    </div>
     );
 };
 
