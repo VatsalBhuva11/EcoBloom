@@ -66,34 +66,52 @@ const Orgprofile = () => {
 
     useEffect(() => {
         if (auth.currentUser) {
-            fetch(`${process.env.REACT_APP_LOCAL_API_URL}/org/${params.orgId}`)
-                .then((response) => response.json())
-                .then(async (org) => {
-                    console.log(org);
-                    console.log(org);
-                    const storageRef1 = ref(storage, org.data.logo);
-                    const storageRef2 = ref(storage, org.data.banner);
+            auth.currentUser.getIdTokenResult().then(async (idTokenResult) => {
+                try {
                     const data = await Promise.all([
+                        await fetch(
+                            `${process.env.REACT_APP_LOCAL_API_URL}/community/${params.orgId}`
+                        ),
+                        await fetch(
+                            `${process.env.REACT_APP_LOCAL_API_URL}/org/${params.orgId}`
+                        ),
+                    ]);
+                    let community = await data[0].json();
+                    let org = await data[1].json();
+
+                    community = community.data;
+                    org = org.data;
+
+                    const checkJoined = community.joinedUsers.filter(
+                        (userId) => userId === idTokenResult.claims.userId
+                    );
+                    checkJoined.length > 0
+                        ? setJoinCommStatus(true)
+                        : setJoinCommStatus(false);
+
+                    const storageRef1 = ref(storage, org.logo);
+                    const storageRef2 = ref(storage, org.banner);
+                    const storageData = await Promise.all([
                         getDownloadURL(storageRef1),
                         getDownloadURL(storageRef2),
                     ]);
-
-                    setLogo(data[0]);
-                    setBanner(data[1]);
-                    setOrg(org.data);
+                    setLogo(storageData[0]);
+                    setBanner(storageData[1]);
+                    setOrg(org);
                     setLoader(false);
-                })
-                .catch((err) => {
+                } catch (err) {
                     console.log(err);
                     // alert("Unable to fetch organization data");
                     // window.location.replace("/user/dashboard");
-                });
+                }
+            });
         } else {
             window.location.replace("/login");
         }
     }, [loading]);
 
     const handleJoinCommunity = () => {
+        setClicked(true);
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
@@ -104,12 +122,31 @@ const Orgprofile = () => {
                     console.log("Please login as a user first.");
                 } else {
                     fetch(
-                        `${process.env.REACT_APP_LOCAL_API_URL}/community/join`,
+                        `${process.env.REACT_APP_LOCAL_API_URL}/community/join/${params.orgId}`,
                         {
+                            headers: {
+                                authorization: `Bearer ${idToken}`,
+                                "Content-Type": "application/json", //important
+                            },
                             method: "POST",
-                            authorization: `Bearer ${idToken}`,
                         }
-                    );
+                    )
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.status === "OK") {
+                                setJoinCommStatus(true);
+                                if (data.data.status !== "already registered") {
+                                    setShowMyModal(true);
+                                }
+                            }
+                        })
+                        .catch((err) => {
+                            setJoinCommStatus(false);
+                            console.log(err);
+                        })
+                        .finally(() => {
+                            setClicked(false);
+                        });
                 }
             });
         } else {
@@ -194,7 +231,7 @@ const Orgprofile = () => {
                                             }}
                                             className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
                                         >
-                                            View Community!
+                                            View Community
                                         </button>
                                     ) : !clicked ? (
                                         <button

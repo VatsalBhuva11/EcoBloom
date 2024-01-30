@@ -8,12 +8,29 @@ import {
 import Community from "../models/community.model.js";
 import User from "../models/user.model.js";
 
+export const getCommunity = async (req, res) => {
+    try {
+        const orgId = req.params.orgId;
+
+        const community = await Community.findOne({
+            organization: orgId,
+        });
+
+        response_200(res, "Successfully fetched community data", community);
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while getting community data", err);
+    }
+};
+
 export const joinCommunity = async (req, res) => {
     try {
-        const communityId = req.params.communityId;
+        const orgId = req.params.orgId;
         const userId = req.user.userId;
 
-        const community = await Community.findById(communityId);
+        const community = await Community.findOne({
+            organization: orgId,
+        });
         const user = await User.findById(userId);
 
         if (!community) {
@@ -22,14 +39,14 @@ export const joinCommunity = async (req, res) => {
             response_404(res, "User not found");
         } else {
             const isUserAlreadyRegistered =
-                community.joinedUsers.includes(userId);
+                community?.joinedUsers?.includes(userId);
             if (isUserAlreadyRegistered) {
                 response_200(res, "User is already registered", {
                     status: "already registered",
                 });
             } else {
                 const updatedCommunity = await Community.findByIdAndUpdate(
-                    communityId,
+                    community._id,
                     {
                         $push: {
                             joinedUsers: userId,
@@ -44,7 +61,7 @@ export const joinCommunity = async (req, res) => {
                     userId,
                     {
                         $push: {
-                            communities: communityId,
+                            communities: community._id,
                         },
                     },
                     {
