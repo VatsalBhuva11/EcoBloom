@@ -21,6 +21,7 @@ import { jwtDecode } from "jwt-decode";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
 import { useParams } from "react-router";
+import moment from "moment";
 
 const Orgprofile = () => {
     const params = useParams();
@@ -373,7 +374,7 @@ const Orgprofile = () => {
                     <div className="">
                         <div className="flex items-center cursor-pointer ml-2">
                             <div className="text-[#eef0e5] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
-                                Ongoing Campaign
+                                Ongoing Campaigns
                             </div>
                             <img
                                 className="w-[15px] h-[25px] xl:w-[20px] xl:h-[30px] lg:mt-8 lg:ml-5 mt-5 ml-4 rounded-full"
@@ -382,19 +383,38 @@ const Orgprofile = () => {
                             />
                         </div>
                         <div className="flex flex-col gap-4 xl:gap-5 mt-5">
-                            <a href="">
+                            {org?.ongoingCampaigns.length > 0 ? (
+                                org.ongoingCampaigns.map((campaign) => {
+                                    return (
+                                        <a href="">
+                                            <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
+                                                <div className="font-bold">
+                                                    {moment(
+                                                        campaign.endDate
+                                                    ).format("ll")}
+                                                </div>
+                                                <div className="flex flex-col">
+                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                        {campaign.name}
+                                                    </p>
+                                                    <p className="text-[#eef0e5] text-[0.75rem]">
+                                                        {
+                                                            campaign.verifiedUsersCount
+                                                        }{" "}
+                                                        people attended
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    );
+                                })
+                            ) : (
                                 <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
-                                    <div className="font-bold">24 AUG'23</div>
-                                    <div className="flex flex-col">
-                                        <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
-                                            Environment Helpers
-                                        </p>
-                                        <p className="text-[#eef0e5] text-[0.75rem]">
-                                            345 people attended
-                                        </p>
-                                    </div>
+                                    <p className="text-white text-md">
+                                        No ongoing campaigns.
+                                    </p>
                                 </div>
-                            </a>
+                            )}
                         </div>
                     </div>
                     <div className="mt-10 h-[50%] ">
@@ -409,58 +429,38 @@ const Orgprofile = () => {
                             />
                         </div>
                         <div className="flex flex-col gap-4 xl:gap-5 mt-5 ">
-                            <a href="">
+                            {org?.upcomingCampaigns.length > 0 ? (
+                                org.upcomingCampaigns.map((campaign) => {
+                                    return (
+                                        <a href="">
+                                            <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
+                                                <div className="font-bold">
+                                                    {moment(
+                                                        campaign.startDate
+                                                    ).format("ll")}
+                                                </div>
+                                                <div className="flex flex-col">
+                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                        {campaign.name}
+                                                    </p>
+                                                    <p className="text-[#eef0e5] text-[0.75rem]">
+                                                        {
+                                                            campaign.registeredUsersCount
+                                                        }{" "}
+                                                        people registerd
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    );
+                                })
+                            ) : (
                                 <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
-                                    <div className="font-bold">24 AUG'23</div>
-                                    <div className="flex flex-col">
-                                        <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
-                                            Environment Helpers
-                                        </p>
-                                        <p className="text-[#eef0e5] text-[0.75rem]">
-                                            345 people attended
-                                        </p>
-                                    </div>
+                                    <p className="text-white text-md">
+                                        No upcoming campaigns.
+                                    </p>
                                 </div>
-                            </a>
-                            <a href="">
-                                <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
-                                    <div className="font-bold">24 AUG'23</div>
-                                    <div className="flex flex-col">
-                                        <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
-                                            Environment Helpers
-                                        </p>
-                                        <p className="text-[#eef0e5] text-[0.75rem]">
-                                            345 people attended
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
-                                    <div className="font-bold">24 AUG'23</div>
-                                    <div className="flex flex-col">
-                                        <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
-                                            Environment Helpers
-                                        </p>
-                                        <p className="text-[#eef0e5] text-[0.75rem]">
-                                            345 people attended
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
-                                    <div className="font-bold">24 AUG'23</div>
-                                    <div className="flex flex-col">
-                                        <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
-                                            Environment Helpers
-                                        </p>
-                                        <p className="text-[#eef0e5] text-[0.75rem]">
-                                            345 people attended
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
+                            )}
                         </div>
                         <div className="flex p-8 ml-10">
                             <button className=" font-bold flex items-center p-2 rounded-lg border-2 border-b-gray-300">

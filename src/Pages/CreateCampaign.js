@@ -24,40 +24,45 @@ const CreateCampaign = () => {
     function handleCreateCampaign(event) {
         event.preventDefault();
         setClicked(true);
-        if (auth.currentUser) {
-            auth.currentUser.getIdToken().then((idToken) => {
-                try {
-                    fetch(
-                        `${process.env.REACT_APP_LOCAL_API_URL}/campaign/create`,
-                        {
-                            body: JSON.stringify(formData),
-                            headers: {
-                                authorization: `Bearer ${idToken}`,
-                                "Content-Type": "application/json",
-                            },
-                            method: "POST",
-                        }
-                    )
-                        .then((data) => data.json())
-                        .then((data) => {
-                            console.log(data);
-                            if (data.status === "OK") {
-                                setClicked(false);
-                                setShowMyModal(true);
-                            } else {
-                                setClicked(false);
-                                alert("Could not update in DB");
-                            }
-                        });
-                } catch (err) {
-                    setClicked(false);
-                    console.log(err);
-                    alert("Error in fetch API");
-                }
-            });
-        } else {
+        if (!formData.latitude || !formData.longitude) {
             setClicked(false);
-            alert("Login as an organization.");
+            alert("Please mark the location on map as well!");
+        } else {
+            if (auth.currentUser) {
+                auth.currentUser.getIdToken().then((idToken) => {
+                    try {
+                        fetch(
+                            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/create`,
+                            {
+                                body: JSON.stringify(formData),
+                                headers: {
+                                    authorization: `Bearer ${idToken}`,
+                                    "Content-Type": "application/json",
+                                },
+                                method: "POST",
+                            }
+                        )
+                            .then((data) => data.json())
+                            .then((data) => {
+                                console.log(data);
+                                if (data.status === "OK") {
+                                    setClicked(false);
+                                    setShowMyModal(true);
+                                } else {
+                                    setClicked(false);
+                                    alert("Could not update in DB");
+                                }
+                            });
+                    } catch (err) {
+                        setClicked(false);
+                        console.log(err);
+                        alert("Error in fetch API");
+                    }
+                });
+            } else {
+                setClicked(false);
+                alert("Login as an organization.");
+            }
         }
     }
 
@@ -109,9 +114,17 @@ const CreateCampaign = () => {
                                 type="datetime-local"
                                 name="startDate"
                                 onChange={(e) => {
+                                    console.log(e.target.value);
+                                    console.log(
+                                        new Date(e.target.value).toISOString()
+                                    );
                                     setFormData({
                                         ...formData,
-                                        startDate: e.target.value,
+                                        //the input date is taken to be in the user's local timezone.
+                                        //convert it to UTC format to uniformly compare dates on the server.
+                                        startDate: new Date(
+                                            e.target.value
+                                        ).toISOString(),
                                     });
                                 }}
                             />
@@ -165,7 +178,9 @@ const CreateCampaign = () => {
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
-                                        endDate: e.target.value,
+                                        endDate: new Date(
+                                            e.target.value
+                                        ).toISOString(),
                                     });
                                 }}
                             />

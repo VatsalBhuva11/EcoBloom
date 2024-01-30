@@ -61,11 +61,11 @@ const Campaign = new Schema({
         required: false,
     },
     startDate: {
-        type: Date,
+        type: String,
         required: true,
     },
     endDate: {
-        type: Date,
+        type: String,
         default: null,
     },
     locationType: {
@@ -75,6 +75,7 @@ const Campaign = new Schema({
             "River",
             "Sea",
             "Ocean",
+            "City",
             "Beach",
             "Park",
             "Forest",

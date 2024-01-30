@@ -10,6 +10,7 @@ import Community from "../models/community.model.js";
 import Campaign from "../models/campaign.model.js";
 import { storage } from "../config/firebase.config.js";
 import { ref, uploadBytesResumable } from "firebase/storage";
+import moment from "moment";
 
 const router = express.Router();
 
@@ -55,17 +56,26 @@ export const getOrgDetails = async (req, res) => {
         const campaigns = await Campaign.find({
             organization: org.id,
         });
-        const upcomingCampaigns = campaigns.filter(
-            (campaign) => campaign.startDate >= Date.now()
-        );
-        const ongoingCampaigns = campaigns.filter(
-            (campaign) =>
-                campaign.startDate <= Date.now() &&
-                campaign.endDate >= Date.now()
-        );
-        const completedCampaigns = campaigns.filter(
-            (campaign) => campaign.endDate <= Date.now()
-        );
+        const completedCampaigns = campaigns.filter((campaign) => {
+            const campaignEndDate = new Date(campaign.endDate);
+            const currTime = moment().toDate();
+            console.log(campaignEndDate);
+            console.log(currTime);
+            return campaignEndDate <= currTime;
+        });
+
+        const upcomingCampaigns = campaigns.filter((campaign) => {
+            const campaignStartDate = new Date(campaign.startDate);
+            const currTime = moment().toDate();
+            return campaignStartDate >= currTime;
+        });
+
+        const ongoingCampaigns = campaigns.filter((campaign) => {
+            const campaignStartDate = new Date(campaign.startDate);
+            const campaignEndDate = new Date(campaign.endDate);
+            const currTime = moment().toDate();
+            return campaignStartDate <= currTime && campaignEndDate >= currTime;
+        });
 
         let data = {
             name,
