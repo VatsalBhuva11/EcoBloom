@@ -655,6 +655,10 @@ video {
   z-index: 30;
 }
 
+.z-50{
+  z-index: 50;
+}
+
 .col-span-2{
   grid-column: span 2 / span 2;
 }
@@ -1616,6 +1620,11 @@ video {
   border-radius: 0.75rem;
 }
 
+.rounded-b-lg{
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
 .rounded-l{
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -1760,6 +1769,11 @@ video {
   border-right-color: rgb(17 24 39 / var(--tw-border-opacity));
 }
 
+.bg-\[\#030303\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 3 3 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#075426\]{
   --tw-bg-opacity: 1;
   background-color: rgb(7 84 38 / var(--tw-bg-opacity));
@@ -1781,11 +1795,6 @@ video {
 
 .bg-\[\#0f1035e9\]{
   background-color: #0f1035e9;
-}
-
-.bg-\[\#0f1d25\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 29 37 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#121340\]{
@@ -1977,6 +1986,10 @@ video {
 
 .bg-opacity-30{
   --tw-bg-opacity: 0.3;
+}
+
+.bg-opacity-50{
+  --tw-bg-opacity: 0.5;
 }
 
 .bg-\[url\(\"\.\/assets\/images\/profile_bg\.jpg\"\)\]{
@@ -2744,6 +2757,12 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.backdrop-blur-2xl{
+  --tw-backdrop-blur: blur(40px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
 .backdrop-blur-lg{
   --tw-backdrop-blur: blur(16px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
@@ -3354,9 +3373,14 @@ html {
     margin: -0.5rem;
   }
 
-  .md\:mx-3{
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+  .md\:mx-1{
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  .md\:mx-2{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 
   .md\:mb-3{
@@ -3393,6 +3417,10 @@ html {
 
   .md\:mr-2{
     margin-right: 0.5rem;
+  }
+
+  .md\:mr-3{
+    margin-right: 0.75rem;
   }
 
   .md\:mr-4{
