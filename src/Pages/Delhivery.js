@@ -1,16 +1,18 @@
 import React from "react";
 import logo from "../assets/images/logo.png";
 import hoodie from "../assets/images/hoodie.png";
+import { Link } from "react-router-dom";
 const Delhivery = () => {
   return (
     <div className=" h-screen ">
       <div className="flex bg-gray-200 shadow-xl">
-        <img
-          className="h-16 hover:scale-105 duration-300 mt-4 ml-4 sm:ml-8 md:ml-12"
-          src={logo}
-          alt=""
-        />
-
+        <Link to="/">
+          <img
+            className="h-16 hover:scale-105 duration-300 mt-4 ml-4 sm:ml-8 md:ml-12"
+            src={logo}
+            alt=""
+          />
+        </Link>
         <h1 className="text-2xl md:text-3xl font-bold mt-7 md:mt-6 text-[#444743]">
           CHECKOUT
         </h1>
@@ -25,12 +27,12 @@ const Delhivery = () => {
             </div>
 
             <div className="px-6 py-2 flex-felx-col">
-              +<span className="text-gray-700 font-semibold text-xl">Size</span>
+              <span className="text-gray-700 font-semibold text-xl">Size</span>
               <div class="flex space-x-2 mt-1">
                 <label class="text-center">
                   <input
                     type="radio"
-                    class="flex items-center justify-center w-6 h-6 "
+                    class="flex items-center justify-center w-6 h-6"
                     name="size"
                     value="xs"
                   />
@@ -78,7 +80,7 @@ const Delhivery = () => {
         </div>
         {/* 2nd section */}
         <div className="md:w-96 pt-8 md:ml-3 sm:mx-4 mx-12 ">
-          <div className="p-3 md:p-6 bg-gray-200 rounded-xl shadow-xl ">
+          <div className="p-3 md:px-6 md:py-3 bg-gray-200 rounded-xl shadow-xl ">
             <form method="POST" action="#" encType="multipart/form-data">
               <label className="block mb-1 md:mb-3">
                 <span className="text-gray-700 text-sm md:text-[16px]">
