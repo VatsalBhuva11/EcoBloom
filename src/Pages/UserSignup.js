@@ -198,21 +198,18 @@ export default function UserSignup() {
                                                 <div className="mr-1">
                                                     Upload Photo<sup>*</sup>
                                                 </div>
-                                                <div className="flex">
+                                                <div className="flex ">
                                                     <button
-                                                        onClick={() =>
-                                                            setIsOpen(
-                                                                (isOpen) =>
-                                                                    !isOpen
-                                                            )
-                                                        }
+                                                        onMouseOver={()=>setIsOpen(true)}
+                                                        onClick={()=>setIsOpen(!isOpen)}
+                                                        onMouseOut={()=>setIsOpen(false)}
                                                     >
                                                         <div className="text-lg cursor-pointer ">
                                                             <FaInfoCircle />
                                                         </div>
                                                     </button>
                                                     {isOpen && (
-                                                        <div className="flex flex-col  bg-white  p-2 rounded-lg border-black">
+                                                        <div className="flex flex-col absolute  md:left-[250px] md:bottom-[180px] bg-white  p-2 rounded-lg ml-4 border-black">
                                                             <div className=" text-[10px]">
                                                                 &rarr; upload a
                                                                 clear picture of

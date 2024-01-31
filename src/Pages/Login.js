@@ -148,12 +148,12 @@ export default function Login() {
     }
 
     return (
-        <div className="h-screen">
+        
             
-            <div className=" bg-[#EEF0E5] h-screen flex">
-            <Link to='/'><img className="h-12  hover:scale-105 duration-300 md:h-16 " src={logo} alt="" /></Link>
-                <div className=" flex justify-between items-center">
-                    <div class="flex flex-col  px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
+            <div className=" bg-[#EEF0E5] h-screen w-screen flex">
+            <Link to='/'><img className=" hiddenlg:h-12  lg:hover:scale-105 lg:duration-300 md:h-16 " src={logo} alt="" /></Link>
+                <div className=" flex md:justify-between h-screen w-screen justify-center items-center">
+                    <div class="flex flex-col  px-6 py-8 w-[50rem]  items-center justify-center md:h-screen lg:py-0 ">
                         <div class="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
                             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                                 <div className="content">
@@ -350,12 +350,13 @@ export default function Login() {
                         <img
                             src={login}
                             alt=".."
-                            className=" w-[50rem] h-auto"
+                            className="  hidden md:flex md:w-[50rem] md:h-auto"
                         />
                     </div>
                 </div>
+                <Terms_Conditions onClose={handleOnClose} visible={showMyModel} />
             </div>
-            <Terms_Conditions onClose={handleOnClose} visible={showMyModel} />
-        </div>
+            
+        
     );
 }

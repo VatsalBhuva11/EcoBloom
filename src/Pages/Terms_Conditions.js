@@ -134,12 +134,7 @@ const Update_Contact_Number = ({ visible, onClose }) => {
 
 <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
       </div>
-      {/* <div className="flex items-center gap-2">
-        <input type='checkbox' name='agree' id='agree'/>
-        <label for='agree'>I agree to the terms and conditions</label>
-      </div> */}
-      {/* <div className="flex gap-5 ">
-                    <button
+      <button
                         className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                         onClick={() => {
                             document.getElementById("container").click();
@@ -147,18 +142,6 @@ const Update_Contact_Number = ({ visible, onClose }) => {
                     >
                         Cancel
                     </button>
-                    <button
-                            className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"
-                            onClick={() => {
-                              document.getElementById("container").click();
-                            }}
-                        >
-                            Submit
-                        
-                        </button>
-                </div> */}
-
-
       </div>
     </div>
   )
