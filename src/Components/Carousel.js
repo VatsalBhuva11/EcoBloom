@@ -1,52 +1,22 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import p1 from "../assets/images/p1.png";
-import p2 from "../assets/images/p2.png";
-import p3 from "../assets/images/p3.png";
+import emilychen from '../assets/images/emilychen.jpeg'
+import james from '../assets/images/james.jpg'
+import maria from '../assets/images/maria.jpeg'
+import raj from '../assets/images/raj.jpeg'
 
-function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "red" }}
-        onClick={onClick}
-      />
-    );
-  }
-  
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, 
-            display: "block", 
-            background: "black",
-
-         }}
-        onClick={onClick}
-      />
-    );
-  }
 
 export default function Carousel() {
     const settings = {
-        // accessibility: true,
-        // className: 'center',
-        // centerMode: true,
-        //  centerPadding: '20px',
-         dots: true,
-        //  fade:true,
+        dots: true,
         infinite: true,
-        slidesToShow: 3,
+         slidesToShow: 3,
         slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
-    //     autoplay: true,
-    //   autoplaySpeed: 1000,
-    //   pauseOnHover: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true,
         responsive: [
             {
                 breakpoint: 1024,
@@ -63,6 +33,7 @@ export default function Carousel() {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    fade: true,
                     dots: false,
                 },
             },
@@ -86,7 +57,7 @@ export default function Carousel() {
                 <div className="w-full">
                     <Slider {...settings} className="flex justify-center p-16">
                         {data.map((data) => (
-                            <div className="bg-transparent h-[70%] border-solid border-2 border-black shadow-xl flex flex-col justify-center items-center text-black rounded-xl gap-4">
+                            <div className="bg-transparent h-[70%px] border-solid border-2 border-black shadow-xl flex flex-col justify-center items-center text-black rounded-xl gap-4">
                                 <div className="h-28 w-full rounded-t-xl justify-center text-center flex items-center">
                                     <img
                                         src={data.img}
@@ -104,7 +75,7 @@ export default function Carousel() {
                                 </div>
                                 <div className=" flex flex-col justify-center items-center gap-4 p-4">
                                     <p>{data.content}</p>
-                                    <button className="bg-indigo-500 text-white text-lg px-6 py-1 rounded-xl">
+                                    <button className=" bg-[#304D30] text-white text-lg px-6  py-1 rounded-xl">
                                         Read More!
                                     </button>
                                 </div>
@@ -129,30 +100,30 @@ const data = [
     // },
     {
         name: "Emily Chen",
-        img: p3,
+        img: emilychen,
         content:
-        "Being a student, EcoBloom has made it easy for me to actively participate in environmental campaigns. The gamified point system adds a fun element, and I love seeing the real-time impact of my contributions. It's a fantastic way to make a difference while connecting with like-minded individuals.",
+        "Being a student, EcoBloom has made it easy for me to actively participate in environmental campaigns. I feel proud to be a part of EcoBloom  ",
         position: "Student and Eco-Enthusiast",
     },
     {
         name: "James Anderson",
-        img: p1,
+        img: james,
         content:
-        "EcoBloom's technological integration is impressive. As a tech entrepreneur, I appreciate the seamless user experience and the platform's adaptability. The intuitive campaign creation interface aligns perfectly with the tech-savvy generation, making environmental participation accessible to all.",
+        "EcoBloom's technological integration is impressive. As a tech entrepreneur, I appreciate the seamless user experience and the platform's adaptability.",
         position: "Tech Entrepreneur",
     },
     {
         name: "Dr. Maria Garcia",
-        img: p2,
+        img: maria,
         content:
-        "From a scientific perspective, EcoBloom stands out in its ability to measure and showcase the impact of campaigns. The real-time progress tracking and data analytics features provide valuable insights, making it an invaluable resource for researchers and environmental scientists.",
+        "From a scientific perspective, EcoBloom stands out in its ability to measure and showcase the impact of campaigns.The awareness it creates is commendable.",
         position: "Environmental Scientist",
     },
     {
         name: "Raj Patel",
-        img: p3,
+        img: raj,
         content:
-        "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiatives. The platform's community-building features and campaign rewards have not only helped the environment but also brought positive attention to my business.",
+        "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiatives.",
         position: "Small Business Owner",
     },
 ];
