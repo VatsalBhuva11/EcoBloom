@@ -63,7 +63,7 @@ export default function Video() {
     };
 
     return (
-        <div>
+        <div className="">
             <Webcam
                 mirrored="true"
                 screenshotFormat="image/jpeg"

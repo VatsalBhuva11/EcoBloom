@@ -11,7 +11,7 @@ import Store from "./Store";
 import UserProfile from "./UserProfile";
 import CommunityChat from "./CommunityChat";
 import HomePage from "./HomePage.js";
-import Video from "./Video.js";
+import Video from "../Components/Video.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { auth } from "../firebase.js";
@@ -25,7 +25,7 @@ import CampaignProfile from "./CampaignProfile.js";
 import Badha_Campaigns from "./Badha_Campaigns.js";
 import Activity_log from "./Activity_log.js";
 import OrgCampaignProfile from "./OrgCampaignProfile.js";
-import VerifyUsers from "../Components/VerifyUsers.js";
+import VerifyUsers from "./VerifyUsers.js";
 import Delhivery from "./Delhivery.js";
 
 export default function Home() {

@@ -43,6 +43,7 @@ const Orgdashboard = () => {
     const [profile, setProfile] = useContext(ProfileContext);
 
     useEffect(() => {
+        //protect routes through role-checking from idTokenResult?
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
@@ -359,7 +360,13 @@ const Orgdashboard = () => {
                             {org?.ongoingCampaigns?.length > 0 ? (
                                 org.ongoingCampaigns.map((campaign) => {
                                     return (
-                                        <a href="">
+                                        <a
+                                            href={
+                                                "/campaign/" +
+                                                campaign._id +
+                                                "/verify"
+                                            }
+                                        >
                                             <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
                                                 <div className="font-bold">
                                                     {moment(
@@ -405,7 +412,13 @@ const Orgdashboard = () => {
                             {org?.upcomingCampaigns?.length > 0 ? (
                                 org.upcomingCampaigns.map((campaign) => {
                                     return (
-                                        <a href="">
+                                        <a
+                                            href={
+                                                "/campaign/" +
+                                                campaign._id +
+                                                "/verify"
+                                            }
+                                        >
                                             <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
                                                 <div className="font-bold">
                                                     {moment(

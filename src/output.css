@@ -1447,6 +1447,10 @@ video {
   align-items: baseline;
 }
 
+.justify-start{
+  justify-content: flex-start;
+}
+
 .justify-end{
   justify-content: flex-end;
 }
@@ -2110,10 +2114,6 @@ video {
 
 .fill-google-logo-yellow{
   fill: #fbbc05;
-}
-
-.object-contain{
-  object-fit: contain;
 }
 
 .object-cover{
