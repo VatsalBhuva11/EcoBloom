@@ -14,7 +14,7 @@ export default function About() {
         </h1>
         <div className="grid md:grid-cols-2 px-2 py-12">
           <div>
-            <p className="text-xl md:text-3xl tracking-wide  md:mt-12 text-[#f5d2a8] font-semibold text-left">
+            <p className="text-xl md:text-2xl pl-3 lg:text-3xl tracking-wide  md:mt-12 text-[#f5d2a8] font-semibold text-left">
               Welcome to EcoBloom, a thriving ecosystem where environmental
               enthusiasts, whether they're grassroots initiatives or established
               entities, come together to make a tangible difference in the
