@@ -2,18 +2,13 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const Post = new Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-    },
     organization: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organization",
     },
-    photos: [String],
+    photo: String,
     content: {
         type: String,
-        required: true,
     },
     likes: [
         {

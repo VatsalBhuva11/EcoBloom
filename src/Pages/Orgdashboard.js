@@ -356,7 +356,7 @@ const Orgdashboard = () => {
                                 
                             </Link> */}
                         <div className="flex flex-col gap-4 xl:gap-5 mt-5">
-                            {org?.ongoingCampaigns.length > 0 ? (
+                            {org?.ongoingCampaigns?.length > 0 ? (
                                 org.ongoingCampaigns.map((campaign) => {
                                     return (
                                         <a href="">
@@ -402,7 +402,7 @@ const Orgdashboard = () => {
                             />
                         </div>
                         <div className="flex flex-col gap-4 xl:gap-5 mt-5 ">
-                            {org?.upcomingCampaigns.length > 0 ? (
+                            {org?.upcomingCampaigns?.length > 0 ? (
                                 org.upcomingCampaigns.map((campaign) => {
                                     return (
                                         <a href="">

@@ -160,7 +160,7 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             class="block mb-2 text-sm font-medium text-[#0f1035]"
-                                            for="file_input"
+                                            for="document"
                                         >
                                             Upload Document<sup>*</sup>
                                         </label>
@@ -177,15 +177,13 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             class="block mb-2 text-sm font-medium text-[#0f1035]"
-                                            for="file_input"
+                                            for="logo"
                                         >
                                             Upload Logo<sup>*</sup>
                                         </label>
                                         <input
                                             class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
                                             aria-describedby="file_input_help"
-                                            // id="optionalLogo"
-                                            // name="optionalLogo"
                                             id="logo"
                                             name="logo"
                                             type="file"
@@ -196,15 +194,13 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             class="block mb-2 text-sm font-medium text-[#0f1035]"
-                                            for="file_input"
+                                            for="banner"
                                         >
                                             Upload Banner<sup>*</sup>
                                         </label>
                                         <input
                                             class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
                                             aria-describedby="file_input_help"
-                                            // id="optionalBanner"
-                                            // name="optionalBanner"
                                             id="banner"
                                             name="banner"
                                             type="file"

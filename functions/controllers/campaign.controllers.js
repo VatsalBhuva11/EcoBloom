@@ -67,7 +67,7 @@ export const upcomingCampaigns = async (req, res) => {
         response_200(
             res,
             "Successfully fetched upcoming campaigns",
-            campaigns.slice(0, 5)
+            campaigns.slice(0, 4)
         );
     } catch (err) {
         console.log(err);
