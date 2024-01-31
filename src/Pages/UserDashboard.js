@@ -102,6 +102,7 @@ const UserDashboard = () => {
                                         })
                                     );
                                     // setName(data[0].data.name);
+                                    console.log(data[0].data);
                                     setCommunities(data[0].data.communities);
                                     setLoader(false);
                                     setCampaigns(data[1].data);
@@ -267,8 +268,13 @@ const UserDashboard = () => {
                     </p>
                     <div className="flex flex-col gap-2 2xl:gap-5 overflow-x-hidden overflow-y-hidden w-full px-3">
                         {communities ? (
-                            communities.slice(0, 6).map((community, key) => (
-                                <a key={key} href="">
+                            communities.slice(0, 4).map((community, key) => (
+                                <a
+                                    key={key}
+                                    href={
+                                        "/org/profile/" + community.organization
+                                    }
+                                >
                                     <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
                                         <img
                                             className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
@@ -293,91 +299,6 @@ const UserDashboard = () => {
                                 </p>
                             </div>
                         )}
-                        {/* <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a> */}
                     </div>
                     <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.20rem] w-56 2xl:w-64 my-4 2xl:my-5 hover:scale-105 duration-300">
                         View More{" "}
@@ -452,121 +373,13 @@ const UserDashboard = () => {
                                     </p>
                                 </div>
                             )}
-
-                            {/* <a href="">
-                                <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
-                                    <div className="text-6xl ">
-                                        <SlCalender />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
-                                        </p>
-                                        <div className="flex justify-between items-baseline gap-3 ">
-                                            <div>
-                                                <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
-                                                </div>
-                                                <div className="text-[0.7rem]">
-                                                    210 Peoples joined
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-center items-center text-[20px] gap-1">
-                                                Join now{" "}
-                                                <div className="mt-1">
-                                                    <FaLongArrowAltRight />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
-                                    <div className="text-6xl ">
-                                        <SlCalender />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
-                                        </p>
-                                        <div className="flex justify-between items-baseline gap-3 ">
-                                            <div>
-                                                <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
-                                                </div>
-                                                <div className="text-[0.7rem]">
-                                                    210 Peoples joined
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-center items-center text-[20px] gap-1">
-                                                Join now{" "}
-                                                <div className="mt-1">
-                                                    <FaLongArrowAltRight />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
-                                    <div className="text-6xl ">
-                                        <SlCalender />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
-                                        </p>
-                                        <div className="flex justify-between items-baseline gap-3 ">
-                                            <div>
-                                                <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
-                                                </div>
-                                                <div className="text-[0.7rem]">
-                                                    210 Peoples joined
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-center items-center text-[20px] gap-1">
-                                                Join now{" "}
-                                                <div className="mt-1">
-                                                    <FaLongArrowAltRight />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
-                                    <div className="text-6xl ">
-                                        <SlCalender />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
-                                        </p>
-                                        <div className="flex justify-between items-baseline gap-3 ">
-                                            <div>
-                                                <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
-                                                </div>
-                                                <div className="text-[0.7rem]">
-                                                    210 Peoples joined
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-center items-center text-[20px] gap-1">
-                                                Join now{" "}
-                                                <div className="mt-1">
-                                                    <FaLongArrowAltRight />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a> */}
                         </div>
-                        <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem] border-4 border-[#0f1035] 2xl:h-[3.20rem] w-56 2xl:w-64 2xl:my-5 hover:scale-105 duration-300">
+                        <button
+                            onClick={() => {
+                                window.location.href = "/campaigns";
+                            }}
+                            className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem] border-4 border-[#0f1035] 2xl:h-[3.20rem] w-56 2xl:w-64 2xl:my-5 hover:scale-105 duration-300"
+                        >
                             View More{" "}
                             <div className="mt-[0.32rem] text-3xl">
                                 <FaLongArrowAltRight />

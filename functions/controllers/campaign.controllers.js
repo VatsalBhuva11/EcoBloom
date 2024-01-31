@@ -1,16 +1,34 @@
-import { response_200, response_500 } from "../utils/responseCodes.js";
+import {
+    response_200,
+    response_404,
+    response_500,
+} from "../utils/responseCodes.js";
 import Campaign from "../models/campaign.model.js";
 import Organization, {
     Organization as OrganizationSchema,
 } from "../models/organization.model.js";
 import User from "../models/user.model.js";
 import mongoose from "mongoose";
-// import { storage } from "../config/firebaseAdmin.config.js";
-// import { getDownloadURL } from "firebase-admin/storage";
-import { Storage } from "@google-cloud/storage";
 import axios from "axios";
 
 mongoose.model("Organization", OrganizationSchema);
+
+export const getCampaign = async (req, res) => {
+    try {
+        const campaignId = req.params.campaignId;
+        const campaign = await Campaign.findById(campaignId).populate(
+            "organization"
+        );
+        if (!campaign) {
+            response_404(res, "Campaign not found");
+        } else {
+            response_200(res, "Successfully fetched campaign", campaign);
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while fetching campaign", err);
+    }
+};
 
 export const createCampaign = async (req, res) => {
     try {
@@ -74,6 +92,42 @@ export const upcomingCampaigns = async (req, res) => {
         response_500(
             res,
             "Error occurred while fetching upcoming campaigns",
+            err
+        );
+    }
+};
+
+export const registerUser = async (req, res) => {
+    try {
+        const campaignId = req.params.campaignId;
+        const userId = req.user.userId;
+
+        const campaign = await Campaign.findById(campaignId);
+        if (!campaign) {
+            response_404(res, "Campaign not found");
+        } else {
+            const user = await User.findById(userId);
+            if (!user) {
+                response_404(res, "User not found");
+            } else {
+                const updateCampaign = await Campaign.findByIdAndUpdate(
+                    campaignId,
+                    {
+                        $push: { registeredUsers: userId },
+                        registeredUsersCount: campaign.registeredUsersCount + 1,
+                    }
+                );
+                const updateUser = await User.findByIdAndUpdate(userId, {
+                    $push: { registeredCampaigns: campaignId },
+                });
+                response_200(res, "Successfully registered for campaign");
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(
+            res,
+            "Error occurred while registering user for campaign",
             err
         );
     }

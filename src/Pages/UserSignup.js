@@ -40,6 +40,7 @@ export default function UserSignup() {
                     setSignUpClicked(false);
                     throw new Error("Invalid form input. Please check again.");
                 } else {
+                    // fix auth-function deadline error by maybe creating firebase user first.
                     createUserWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                             // Signed Up
