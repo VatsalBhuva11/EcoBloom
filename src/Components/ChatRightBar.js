@@ -34,7 +34,7 @@ export default function ChatRightBar() {
               consectetur laborum necessitatibus, maiores aliquid explicabo
               facere dolore illo optio qui quaerat saepe quo?
             </div>
-            <div className="text-[#3DBCCD] text-[10px] mt-5 border-b-2 border-b-gray-300 p-2">
+            <div className="text-[#3DBCCD] text-[10px] mt-3 border-b-2 border-b-gray-300 p-2">
               @dudca_team
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function ChatRightBar() {
             <div className=" text-end text-gray-300 text-[12px] border-b-2 border-b-gray-300 hover:undeline cursor-pointer font-inter">
             </div>
 
-            <div className="mt-5 cursor-pointer flex justify-center items-center  ">
+            <div className="mt-4 cursor-pointer flex justify-center items-center  ">
               <img
                 className="w-[25px] h-[25px] 2xl:w-[50px] 2xl:h-[50px] cursor-pointer rounded-full"
                 src={deleteicon}

@@ -50,49 +50,55 @@ export default function ChatLeftBar() {
                         </div>
                         </div>
                     </div>
-                    <div className='mt-5 h-[70%] overflow-scroll overflow-x-hidden scrollbar-hide'>
                     <div className='text-[1.5rem] text-gray-300 font-inter '>All messages</div>
+                    <div className='mt-5 h-[70%] overflow-scroll overflow-x-hidden scrollbar-hide'>
+                    
                     <div className='flex flex-col gap-4 xl:gap-5 mt-5 ' >
                         <a href="">
                             <div className='flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300'>
                                 <img className='w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full' src={person} alt="" />
                                 <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Greenpeace Organisation</p>
-                                    <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p></div>
+                                    {/* <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p>*/}</div> 
                             </div>
                         </a>
                         <a href="">
                             <div className='flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300'>
                                 <img className='w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full' src={person} alt="" />
                                 <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Greenpeace Organisation</p>
-                                    <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p></div>
+                                    {/* <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p> */}
+                                    </div>
                             </div>
                         </a>
                         <a href="">
                             <div className='flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300'>
                                 <img className='w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full' src={person} alt="" />
                                 <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Greenpeace Organisation</p>
-                                    <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p></div>
+                                    {/* <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p> */}
+                                    </div>
                             </div>
                         </a>
                         <a href="">
                             <div className='flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300'>
                                 <img className='w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full' src={person} alt="" />
                                 <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Greenpeace Organisation</p>
-                                    <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p></div>
+                                    {/* <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p> */}
+                                    </div>
                             </div>
                         </a>
                         <a href="">
                             <div className='flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300'>
                                 <img className='w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full' src={person} alt="" />
                                 <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Greenpeace Organisation</p>
-                                    <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p></div>
+                                    {/* <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p> */}
+                                    </div>
                             </div>
                         </a>
                         <a href="">
                             <div className='flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300'>
                                 <img className='w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full' src={person} alt="" />
                                 <div className='flex flex-col'><p className='text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0'>Greenpeace Organisation</p>
-                                    <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p></div>
+                                    {/* <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p> */}
+                                    </div>
                             </div>
                         </a>
                         
