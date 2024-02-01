@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Webcam from "react-webcam";
 import { auth, storage } from "../firebase.js";
 
-export default function Video() {
+export default function Video({ userId }) {
+    console.log(userId, " from Video");
     const [status, setStatus] = useState("");
 
     function DataURIToBlob(dataURI) {
@@ -23,36 +24,35 @@ export default function Video() {
     function handleUserVerify(getScreenshot) {
         const imageSrc = getScreenshot();
         const file = DataURIToBlob(imageSrc);
+        console.log("FILE: ", file);
         const formData = new FormData();
         formData.append("upload", file, "image.jpeg");
         if (auth.currentUser) {
-            auth.currentUser
-                .getIdTokenResult()
-                .then((tokenResult) => {
-                    return tokenResult.claims.userId;
-                })
-                .then((userId) => {
-                    fetch(
-                        `${process.env.REACT_APP_LOCAL_API_URL}/campaign/verifyUser?userId=${userId}`,
-                        {
-                            method: "POST",
-                            body: formData,
-                        }
-                    )
-                        .then((response) => response.json())
-                        .then((data) => {
-                            console.log("SUCCESS!");
-                            // console.log(data.data.confidence);
+            auth.currentUser.getIdTokenResult().then((idTokenResult) => {
+                fetch(
+                    `${process.env.REACT_APP_LOCAL_API_URL}/campaign/verifyUser?userId=${userId}`,
+                    {
+                        method: "POST",
+                        body: formData,
+                    }
+                )
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log("DATA: ", data);
+                        if (data.status === "OK") {
                             if (data.data.confidence >= 85) {
                                 setStatus("success");
                             } else {
                                 setStatus("failure");
                             }
-                        })
-                        .catch((err) => {
-                            console.error(err);
-                        });
-                });
+                        } else {
+                            setStatus("failure");
+                        }
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                    });
+            });
         }
     }
 

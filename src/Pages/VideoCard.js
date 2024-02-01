@@ -6,8 +6,6 @@ const VideoCard = ({ visible, onClose, userId }) => {
         if (e.target.id === "container") onClose();
     };
 
-    console.log(userId);
-
     if (!visible) return null;
 
     return (
@@ -22,7 +20,7 @@ const VideoCard = ({ visible, onClose, userId }) => {
                 </div>
                 <div className="flex map-campaign-container">
                     <div className="w-full flex justify-center items-center h-full">
-                        <Video />
+                        <Video userId={userId} />
                     </div>
                 </div>
                 <div className="flex justify-around w-full mt-4">
