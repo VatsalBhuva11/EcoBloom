@@ -150,47 +150,52 @@ export const verifyUser = async (req, res) => {
             user.photoPathFirestore
         )}?alt=media`;
         console.log("IMAGEURL: ", imageUrl);
-        const imageResponse = await axios.get(imageUrl, {
-            responseType: "arraybuffer",
-        });
-        // console.log("IMAGE RESPONSE: ", imageResponse);
-        const blob2 = new Blob([imageResponse.data], {
-            type: "image/jpeg",
-        });
+        // const imageResponse = await axios.get(imageUrl, {
+        //     responseType: "arraybuffer",
+        // });
 
-        // Convert the image data to base64
-        // const imageBuffer = Buffer.from(imageResponse.data, "binary");
-        // const base64Image = imageBuffer.toString("base64");
-
-        // Now 'base64Image' contains the base64 encoded image data
-        // console.log(imageResponse);
-
-        var formdata = new FormData();
-
-        // console.log("URL: ", url);
-        console.log("BLOB: ", blob);
-        console.log("IMAGERESPONSE BLOB: ", blob2);
-        formdata.append("image_file1", blob, "me.jpeg");
-        formdata.append("image_file2", blob2, "me2.jpeg");
-        formdata.append("api_key", "2_aNnUX2IvYGLSmrE5-eYMHxtdJQqoaX");
-        formdata.append("api_secret", "zqyJvxsnPrhNIoJ3uXBSoZ-T493qtD0E");
-
-        var requestOptions = {
-            method: "POST",
-            body: formdata,
-            redirect: "follow",
-        };
-
-        fetch(
-            "https://api-us.faceplusplus.com/facepp/v3/compare",
-            requestOptions
-        )
-            .then((response) => response.json())
-            .then((result) => {
-                console.log(result);
-                response_200(res, "Success", result);
+        fetch(imageUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(
+                        `Network response was not ok: ${response.status}`
+                    );
+                }
+                return response.arrayBuffer();
             })
-            .catch((error) => console.log("error", error));
+            .then((imageResponse) => {
+                const blob2 = new Blob([imageResponse], {
+                    type: "image/jpeg",
+                });
+
+                var formdata = new FormData();
+                formdata.append("image_file1", blob, "me.jpeg");
+                formdata.append("image_file2", blob2, "me2.jpeg");
+                formdata.append("api_key", process.env.FACE_API_KEY);
+                formdata.append("api_secret", process.env.FACE_API_SECRET);
+
+                var requestOptions = {
+                    method: "POST",
+                    body: formdata,
+                    redirect: "follow",
+                };
+
+                fetch(
+                    "https://api-us.faceplusplus.com/facepp/v3/compare",
+                    requestOptions
+                )
+                    .then((response) => response.json())
+                    .then((result) => {
+                        console.log(result);
+                        response_200(res, "Success", result);
+                    })
+                    .catch((error) => {
+                        console.log("error", error);
+                    });
+            })
+            .catch((error) => {
+                console.error("Error fetching image:", error);
+            });
     } catch (err) {
         console.log(err);
         response_500(res, "Error occurred while comparing images", err);
