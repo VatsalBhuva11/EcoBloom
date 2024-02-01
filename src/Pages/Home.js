@@ -27,6 +27,7 @@ import Activity_log from "./Activity_log.js";
 import OrgCampaignProfile from "./OrgCampaignProfile.js";
 import VerifyUsers from "./VerifyUsers.js";
 import Delhivery from "./Delhivery.js";
+import Edit_Profile_Org from "./Edit_Profile_Org.js";
 
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
@@ -76,6 +77,11 @@ export default function Home() {
                             exact
                             path="/user/profile"
                             element={<UserProfile />}
+                        />
+                        <Route
+                            exact
+                            path="/org/profile/:orgId/profile"
+                            element={<Edit_Profile_Org />}
                         />
                         <Route
                             exact

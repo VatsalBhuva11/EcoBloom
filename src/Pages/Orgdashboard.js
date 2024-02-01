@@ -193,10 +193,13 @@ const Orgdashboard = () => {
                       Community Chat
                     </button>
                   </Link>
-                  <button className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold">
-                    <HiPencil className="pt-1 sm:flex hidden" size={25} /> Edit
-                    Profile
-                  </button>
+                  <Link to="/org/profile/:orgId/profile">
+                    {" "}
+                    <button className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold">
+                      <HiPencil className="pt-1 sm:flex hidden" size={25} />{" "}
+                      Edit Profile
+                    </button>{" "}
+                  </Link>
                 </div>
               </div>
             </div>
