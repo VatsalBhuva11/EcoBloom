@@ -42,7 +42,7 @@ export default function Footer() {
                     <ul>
                         <li className="py-2 text-sm">About</li>
                         <li className="py-2 text-sm">Blog</li>
-                        <li className="py-2 text-sm">Jbs</li>
+                        <li className="py-2 text-sm">Jobs</li>
                         <li className="py-2 text-sm">Press</li>
                         <li className="py-2 text-sm">Career</li>
                     </ul>
@@ -55,7 +55,7 @@ export default function Footer() {
                     <ul>
                         <li className="py-2 text-sm">About</li>
                         <li className="py-2 text-sm">Blog</li>
-                        <li className="py-2 text-sm">Jbs</li>
+                        <li className="py-2 text-sm">Jobs</li>
                         <li className="py-2 text-sm">Press</li>
                         <li className="py-2 text-sm">Career</li>
                     </ul>

@@ -11,6 +11,8 @@ import Campaign from "../models/campaign.model.js";
 import { storage } from "../config/firebase.config.js";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import moment from "moment";
+import Jimp from "jimp";
+import Post from "../models/post.model.js";
 
 const router = express.Router();
 
@@ -59,8 +61,6 @@ export const getOrgDetails = async (req, res) => {
         const completedCampaigns = campaigns.filter((campaign) => {
             const campaignEndDate = new Date(campaign.endDate);
             const currTime = moment().toDate();
-            console.log(campaignEndDate);
-            console.log(currTime);
             return campaignEndDate <= currTime;
         });
 
@@ -157,6 +157,95 @@ export const updateOrgPics = async (req, res) => {
                 console.log(err);
                 response_500(res, "Error creating organization", err);
             });
+    }
+};
+
+export const createPost = async (req, res) => {
+    try {
+        const orgId = req.org.orgId;
+        const caption = req.body.caption;
+        const file = req.files[0];
+        const filename = file.originalname;
+        const extension = filename.split(".").pop();
+        if (
+            extension !== "png" &&
+            extension !== "jpg" &&
+            extension !== "jpeg"
+        ) {
+            response_400(
+                res,
+                "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
+            );
+        } else {
+            const org = await Organization.findById(orgId);
+            if (!org) {
+                response_404(res, "Organization not found");
+            } else {
+                Jimp.read(file.buffer)
+                    .then((image) => {
+                        // Convert the image to JPEG with quality 100 (you can adjust the quality as needed)
+                        return image
+                            .quality(100)
+                            .getBufferAsync(Jimp.MIME_JPEG);
+                    })
+                    .then(async (jpegBuffer) => {
+                        console.log("Image converted successfully!");
+                        // Now you have the converted buffer (jpegBuffer) that you can use
+
+                        const pathToFile = `org/${
+                            org.email
+                        }/posts/post_${Date.now()}.jpeg`;
+                        const storageRef = ref(storage, pathToFile);
+
+                        const metadata = {
+                            contentType: "image/jpeg",
+                        };
+
+                        const snapshot = await uploadBytesResumable(
+                            storageRef,
+                            jpegBuffer,
+                            metadata
+                        );
+                        if (snapshot.state === "success") {
+                            const post = await Post.create({
+                                organization: org._id,
+                                photo: pathToFile,
+                                content: caption,
+                                date: Date.now(),
+                            });
+                            const newOrg = await Organization.findByIdAndUpdate(
+                                orgId,
+                                {
+                                    $push: {
+                                        orgPosts: post._id,
+                                    },
+                                },
+                                {
+                                    new: true,
+                                }
+                            );
+                            console.log("Successfully created new post in DB!");
+                            response_200(
+                                res,
+                                "Successfully created new post in DB",
+                                post
+                            );
+                        } else {
+                            response_500(
+                                res,
+                                "Error occurred while creating post"
+                            );
+                        }
+                    })
+                    .catch((err) => {
+                        console.error("Error converting image:", err);
+                        response_500(res, "Error converting image");
+                    });
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while creating post", err);
     }
 };
 

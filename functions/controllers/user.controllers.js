@@ -44,8 +44,10 @@ router.get("/:userId", async (req, res) => {
             );
         } else {
             const {
+                id,
                 name,
                 email,
+                phone,
                 photoPathFirestore,
                 registeredCampaigns,
                 completedCampaigns,
@@ -53,8 +55,10 @@ router.get("/:userId", async (req, res) => {
             } = user;
 
             let data = {
+                id,
                 name,
                 email,
+                phone,
                 photoPathFirestore,
                 registeredCampaigns,
                 completedCampaigns,

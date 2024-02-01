@@ -502,7 +502,7 @@ const Orgdashboard = () => {
                 })
               ) : (
                 <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
-                  <p className="text-white text-md ml-6">
+                  <p className="text-white text-md ml-8">
                     No upcoming campaigns.
                   </p>
                 </div>

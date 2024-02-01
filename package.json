@@ -29,6 +29,7 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
+        "serve": "cd functions && npm run serve",
         "start": "npx tailwindcss -i ./src/App.css -o ./src/output.css && react-scripts start",
         "build": "cross-env CI=false react-scripts build",
         "test": "react-scripts test",

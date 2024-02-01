@@ -3,6 +3,7 @@ import {
     getOrgs,
     getOrgDetails,
     updateOrgPics,
+    createPost,
 } from "../controllers/organization.controllers.js";
 import filesUpload from "../middlewares/upload.middleware.js";
 import checkOrg from "../middlewares/checkOrg.middleware.js";
@@ -14,6 +15,8 @@ router.get("/", getOrgs);
 
 // specific org details
 router.get("/:orgId", getOrgDetails);
+
+router.post("/post", filesUpload, checkOrg, createPost);
 
 router.patch("/:orgName", checkOrg, filesUpload, updateOrgPics);
 // router.patch("/:orgName", filesUpload, updateOrgPics);
