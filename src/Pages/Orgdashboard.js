@@ -334,7 +334,7 @@ const Orgdashboard = () => {
               {org?.ongoingCampaigns.length > 0 ? (
                 org.ongoingCampaigns.map((campaign) => {
                   return (
-                    <a href="">
+                    <Link to={"/campaign/" + campaign._id + "/verify"}>
                       <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
                         <div className="font-bold">
                           {moment(campaign.endDate).format("ll")}
@@ -348,7 +348,7 @@ const Orgdashboard = () => {
                           </p>
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   );
                 })
               ) : (

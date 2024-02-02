@@ -65,7 +65,7 @@ const Edit_Profile_Org = () => {
   return (
     <div className='absolute w-screen bg-[url("./assets/images/profile_bg.jpg")] bg-cover h-screen'>
       <div class="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
-        <Link to="/user/dashboard">
+        <Link to="/org/dashboard">
           <button className="text-2xl p-4 hover:scale-110 duration-300">
             <IoArrowBackSharp />
           </button>
