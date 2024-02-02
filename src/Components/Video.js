@@ -70,13 +70,24 @@ export default function Video({ userId }) {
                 videoConstraints={videoConstraints}
             >
                 {({ getScreenshot }) => (
-                    <button
-                        onClick={() => {
-                            handleUserVerify(getScreenshot);
-                        }}
-                    >
-                        Capture photo
-                    </button>
+                    <div className="flex justify-around w-full mt-4">
+                        <button
+                            className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
+                            onClick={() => {
+                                document.querySelector("#container").click();
+                            }}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                            onClick={() => {
+                                handleUserVerify(getScreenshot);
+                            }}
+                        >
+                            Verify
+                        </button>
+                    </div>
                 )}
             </Webcam>
             {status === "success" ? (
