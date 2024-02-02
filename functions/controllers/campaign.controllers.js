@@ -143,17 +143,22 @@ export const verifyUser = async (req, res) => {
         // >    buffer: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 00 00 01 00 01 00 00 ff e2 01 d8 49 43 43 5f 50 52 4f 46 49 4c 45 00 01 01 00 00 01 c8 00 00 00 00 04 30 00 00 ... 28304 more bytes>,
         // >    size: 28354
         const userId = req.query.userId;
+        const campaignId = req.params.campaignId;
         const user = await User.findById(userId);
+        if (!user) {
+            response_404(res, "User not found");
+        }
+        const campaign = await Campaign.findById(campaignId);
+        if (!campaign) {
+            response_404(res, "Campaign not found");
+        }
+
         const blob = new Blob([file.buffer], { type: file.mimeType });
         // Get a v4 signed URL for reading the file
         const imageUrl = `https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/${encodeURIComponent(
             user.photoPathFirestore
         )}?alt=media`;
         console.log("IMAGEURL: ", imageUrl);
-        // const imageResponse = await axios.get(imageUrl, {
-        //     responseType: "arraybuffer",
-        // });
-
         fetch(imageUrl)
             .then((response) => {
                 if (!response.ok) {
@@ -186,8 +191,15 @@ export const verifyUser = async (req, res) => {
                 )
                     .then((response) => response.json())
                     .then((result) => {
-                        console.log(result);
-                        response_200(res, "Success", result);
+                        if (result.confidence >= 85) {
+                            campaign.verifiedUsers.push(userId);
+                            campaign.verifiedUsersCount =
+                                campaign.verifiedUsersCount + 1;
+                            campaign.save();
+                            response_200(res, "Success", result);
+                        } else {
+                            response_404(res, "User not verified");
+                        }
                     })
                     .catch((error) => {
                         console.log("error", error);

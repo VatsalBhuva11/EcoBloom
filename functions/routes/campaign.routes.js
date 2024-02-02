@@ -16,10 +16,8 @@ router.post("/create", checkOrg, createCampaign);
 
 router.get("/upcoming", upcomingCampaigns);
 
-router.post("/verifyUser", filesUpload, verifyUser);
-
-router.get("/:campaignId", getCampaign);
-
+router.post("/:campaignId/verifyUser", filesUpload, verifyUser);
 router.post("/:campaignId/register", checkUser, registerUser);
+router.get("/:campaignId", getCampaign);
 
 export default router;

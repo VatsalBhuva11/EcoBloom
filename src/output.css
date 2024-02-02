@@ -1838,6 +1838,11 @@ video {
   background-color: rgb(21 23 74 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#1d2068\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 32 104 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#208445\]{
   --tw-bg-opacity: 1;
   background-color: rgb(32 132 69 / var(--tw-bg-opacity));
@@ -1846,6 +1851,11 @@ video {
 .bg-\[\#20A090\]{
   --tw-bg-opacity: 1;
   background-color: rgb(32 160 144 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#2b8b23\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(43 139 35 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#304D30\]{
@@ -1928,6 +1938,11 @@ video {
   background-color: rgb(183 44 69 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#b83148\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(184 49 72 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#bebaba\]{
   --tw-bg-opacity: 1;
   background-color: rgb(190 186 186 / var(--tw-bg-opacity));
@@ -1981,6 +1996,11 @@ video {
 .bg-green-500{
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+.bg-lime-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(101 163 13 / var(--tw-bg-opacity));
 }
 
 .bg-red-500{
@@ -2729,11 +2749,6 @@ video {
 .text-green-800{
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity));
-}
-
-.text-lime-500{
-  --tw-text-opacity: 1;
-  color: rgb(132 204 22 / var(--tw-text-opacity));
 }
 
 .text-red-500{

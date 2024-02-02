@@ -64,7 +64,7 @@ export default function VerifyUsers() {
 
     function handleUserVerify(userId, userName) {
         console.log("from handleUserVerify: ", userId);
-        setClickedUserData({ userId, userName });
+        setClickedUserData({ userId, userName, campaignId: params.campaignId });
         setShowMyModal(true);
         // setShowVideo(!showVideo);
         // fetch(`${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}/verify/${userId}`,{
@@ -173,19 +173,32 @@ export default function VerifyUsers() {
                                         {user.phone ? user.phone : "-"}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="#">
-                                            <button
-                                                onClick={() => {
-                                                    handleUserVerify(
-                                                        user.id,
-                                                        user.name
-                                                    );
-                                                }}
-                                                className="p-4 bg-gradient-to-r from-[#353657] to-[#404162] text-white rounded-full text-xs scale-105 duration-300 "
-                                            >
-                                                Verify
-                                            </button>
-                                        </a>
+                                        {campaign.verifiedUsers.includes(
+                                            user.id
+                                        ) ? (
+                                            <a href="#">
+                                                <button
+                                                    disabled
+                                                    className="p-4 bg-lime-600 text-white rounded-full text-xs scale-105 duration-300 "
+                                                >
+                                                    Verified!
+                                                </button>
+                                            </a>
+                                        ) : (
+                                            <a href="#">
+                                                <button
+                                                    onClick={() => {
+                                                        handleUserVerify(
+                                                            user.id,
+                                                            user.name
+                                                        );
+                                                    }}
+                                                    className="p-4 bg-gradient-to-r from-[#353657] to-[#404162] text-white rounded-full text-xs scale-105 duration-300 "
+                                                >
+                                                    Verify
+                                                </button>
+                                            </a>
+                                        )}
                                     </td>
                                 </tr>
                             ))}
@@ -196,7 +209,7 @@ export default function VerifyUsers() {
             <VideoCard
                 visible={showMyModal}
                 onClose={handleOnClose}
-                userData={clickedUserData}
+                data={clickedUserData}
             />
         </div>
     );

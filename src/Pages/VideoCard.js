@@ -1,8 +1,8 @@
 import React from "react";
 import Video from "../Components/Video.js";
 
-const VideoCard = ({ visible, onClose, userData }) => {
-    const { userId, userName } = userData;
+const VideoCard = ({ visible, onClose, data }) => {
+    const { userId, userName, campaignId } = data;
     const handleOnClose = (e) => {
         if (e.target.id === "container") onClose();
     };
@@ -15,13 +15,13 @@ const VideoCard = ({ visible, onClose, userData }) => {
             onClick={handleOnClose}
             className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center h-full"
         >
-            <div className="maps-campaign-outer bg-[#CDE1C9] p-6 rounded flex flex-col items-center justify-center">
+            <div className="h-[56%] bg-[#CDE1C9] p-6 rounded flex flex-col items-center justify-center">
                 <div className="text-2xl font-semibold text-[#1C1C1C] flex justify-center mb-3">
                     Verify {userName}
                 </div>
                 <div className="flex map-campaign-container">
                     <div className="w-full flex justify-center items-center">
-                        <Video userId={userId} />
+                        <Video userId={userId} campaignId={campaignId} />
                     </div>
                 </div>
             </div>

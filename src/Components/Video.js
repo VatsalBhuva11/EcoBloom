@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Webcam from "react-webcam";
 import { auth, storage } from "../firebase.js";
 
-export default function Video({ userId }) {
+export default function Video({ userId, campaignId }) {
     console.log(userId, " from Video");
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState(null);
+    const [clicked, setClicked] = useState(null);
 
     function DataURIToBlob(dataURI) {
         const splitDataURI = dataURI.split(",");
@@ -22,6 +23,7 @@ export default function Video({ userId }) {
     }
 
     function handleUserVerify(getScreenshot) {
+        setClicked(true);
         const imageSrc = getScreenshot();
         const file = DataURIToBlob(imageSrc);
         console.log("FILE: ", file);
@@ -30,7 +32,7 @@ export default function Video({ userId }) {
         if (auth.currentUser) {
             auth.currentUser.getIdTokenResult().then((idTokenResult) => {
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/campaign/verifyUser?userId=${userId}`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${campaignId}/verifyUser?userId=${userId}`,
                     {
                         method: "POST",
                         body: formData,
@@ -42,15 +44,19 @@ export default function Video({ userId }) {
                         if (data.status === "OK") {
                             if (data.data.confidence >= 85) {
                                 setStatus("success");
+                                setClicked(false);
                             } else {
                                 setStatus("failure");
+                                setClicked(false);
                             }
                         } else {
                             setStatus("failure");
+                            setClicked(false);
                         }
                     })
                     .catch((err) => {
                         console.error(err);
+                        setClicked(false);
                     });
             });
         }
@@ -74,29 +80,47 @@ export default function Video({ userId }) {
                         <button
                             className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                             onClick={() => {
+                                setStatus("");
+                                setClicked(null);
                                 document.querySelector("#container").click();
                             }}
                         >
                             Cancel
                         </button>
-                        <button
-                            className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"
-                            onClick={() => {
-                                handleUserVerify(getScreenshot);
-                            }}
-                        >
-                            Verify
-                        </button>
+                        {clicked && status === null ? (
+                            <button
+                                className="text-lg bg-[#1d2068] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                                disabled
+                            >
+                                Verifying...
+                            </button>
+                        ) : !clicked && status === "success" ? (
+                            <button
+                                className="text-lg bg-[#2b8b23] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                                disabled
+                            >
+                                Verified!
+                            </button>
+                        ) : !clicked && status === "failure" ? (
+                            <button
+                                className="text-lg bg-[#b83148] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                                disabled
+                            >
+                                Error
+                            </button>
+                        ) : (
+                            <button
+                                className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                                onClick={() => {
+                                    handleUserVerify(getScreenshot);
+                                }}
+                            >
+                                Verify
+                            </button>
+                        )}
                     </div>
                 )}
             </Webcam>
-            {status === "success" ? (
-                <p className="text-lime-500">Successfully verified!</p>
-            ) : status === "failure" ? (
-                <p className="text-red-500">Failure while verifying</p>
-            ) : (
-                <p></p>
-            )}
         </div>
     );
 }
