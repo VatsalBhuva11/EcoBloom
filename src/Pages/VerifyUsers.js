@@ -13,8 +13,9 @@ export default function VerifyUsers() {
     const [user, loading, error] = useAuthState(auth);
     const [campaign, setCampaign] = useState({});
     const [users, setUsers] = useState([]);
-    const [clickedUserId, setClickedUserId] = useState("");
+    const [clickedUserData, setClickedUserData] = useState({});
     const [showMyModal, setShowMyModal] = useState(false);
+    const [loader, setLoader] = useState(false);
 
     const [showVideo, setShowVideo] = useState(false);
     const params = useParams();
@@ -23,6 +24,7 @@ export default function VerifyUsers() {
     const handleOnClose = () => setShowMyModal(false);
 
     useEffect(() => {
+        setLoader(true);
         if (auth.currentUser) {
             fetch(
                 `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}`
@@ -42,23 +44,27 @@ export default function VerifyUsers() {
                             })
                         );
                         setUsers(registeredUsers);
+                        setLoader(false);
                     } else {
                         console.log("Status not OK");
                         alert(data.message);
+                        setLoader(false);
                     }
                 })
                 .catch((err) => {
                     console.log(err);
                     alert("Could not fetch campaign info");
+                    setLoader(false);
                 });
         } else {
             alert("Please login as an organization"); //no protection for org-only route for now.
+            setLoader(false);
         }
     }, [loading]);
 
-    function handleUserVerify(userId) {
+    function handleUserVerify(userId, userName) {
         console.log("from handleUserVerify: ", userId);
-        setClickedUserId(userId);
+        setClickedUserData({ userId, userName });
         setShowMyModal(true);
         // setShowVideo(!showVideo);
         // fetch(`${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}/verify/${userId}`,{
@@ -77,7 +83,7 @@ export default function VerifyUsers() {
         // })
     }
 
-    if (loading) {
+    if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <HashLoader color="#36d7b7" size={100} />
@@ -170,7 +176,10 @@ export default function VerifyUsers() {
                                         <a href="#">
                                             <button
                                                 onClick={() => {
-                                                    handleUserVerify(user.id);
+                                                    handleUserVerify(
+                                                        user.id,
+                                                        user.name
+                                                    );
                                                 }}
                                                 className="p-4 bg-gradient-to-r from-[#353657] to-[#404162] text-white rounded-full text-xs scale-105 duration-300 "
                                             >
@@ -187,7 +196,7 @@ export default function VerifyUsers() {
             <VideoCard
                 visible={showMyModal}
                 onClose={handleOnClose}
-                userId={clickedUserId}
+                userData={clickedUserData}
             />
         </div>
     );

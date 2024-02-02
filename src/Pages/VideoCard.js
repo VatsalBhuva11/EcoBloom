@@ -1,7 +1,8 @@
 import React from "react";
 import Video from "../Components/Video.js";
 
-const VideoCard = ({ visible, onClose, userId }) => {
+const VideoCard = ({ visible, onClose, userData }) => {
+    const { userId, userName } = userData;
     const handleOnClose = (e) => {
         if (e.target.id === "container") onClose();
     };
@@ -16,10 +17,10 @@ const VideoCard = ({ visible, onClose, userId }) => {
         >
             <div className="maps-campaign-outer bg-[#CDE1C9] p-6 rounded flex flex-col items-center justify-center">
                 <div className="text-2xl font-semibold text-[#1C1C1C] flex justify-center mb-3">
-                    Verify User {userId}
+                    Verify {userName}
                 </div>
                 <div className="flex map-campaign-container">
-                    <div className="w-full flex justify-center items-center h-full">
+                    <div className="w-full flex justify-center items-center">
                         <Video userId={userId} />
                     </div>
                 </div>
