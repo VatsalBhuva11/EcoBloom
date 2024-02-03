@@ -313,7 +313,7 @@ const Orgdashboard = () => {
             </form>
           </div>
           <div className="justify-center items-center md:ml-4 lg:ml-14">
-            <Link to="/createcampaign">
+            <Link to="/campaign/create">
               <button className=" flex justify-center items-center gap-2 bg-[#eef0e5] text-[#0f1035] md:text-[16px] lg:text-[18px] 2xl:text-[20px] font-bold rounded-lg  md:h-[2.2rem] lg:h-[2.4rem]  2xl:h-[2.8rem] md:w-48 lg:w-52 2xl:w-64 hover:scale-105 duration-300 mt-10">
                 <FaPlus />
                 Create Campaign
