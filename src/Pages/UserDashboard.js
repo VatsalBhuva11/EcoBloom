@@ -58,6 +58,7 @@ const UserDashboard = () => {
     moment().format("MMMM Do YYYY");
 
     useEffect(() => {
+        console.log("CURRENT USER: ", auth.currentUser);
         if (auth.currentUser) {
             auth.currentUser
                 .getIdTokenResult()
@@ -173,7 +174,6 @@ const UserDashboard = () => {
                         .then((data) => {
                             // data[0] contains the parsed JSON from the first response
                             // data[1] contains the parsed JSON from the second response
-                            console.log(data);
                             const storageRef = ref(
                                 storage,
                                 data[0].data.photoPathFirestore
@@ -192,7 +192,6 @@ const UserDashboard = () => {
                                         })
                                     );
                                     // setName(data[0].data.name);
-                                    console.log(data[0].data);
                                     setCommunities(data[0].data.communities);
                                     setLoader(false);
                                     setCampaigns(data[1].data);
@@ -218,7 +217,6 @@ const UserDashboard = () => {
                                             };
                                         })
                                     );
-                                    console.log(data[1].data);
                                 })
                                 .catch(function (error) {
                                     console.error(error);
@@ -389,91 +387,6 @@ const UserDashboard = () => {
                                 </p>
                             </div>
                         )}
-                        {/* <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a> */}
                     </div>
                     <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.20rem] w-56 2xl:w-64 my-4 2xl:my-5 hover:scale-105 duration-300">
                         View More{" "}
@@ -500,7 +413,7 @@ const UserDashboard = () => {
                             {campaigns?.length > 0 ? (
                                 campaigns.map((campaign) => {
                                     return (
-                                        <a href="">
+                                        <a href={"/campaign/" + campaign._id}>
                                             <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
                                                 <div className="text-6xl ">
                                                     <SlCalender />

@@ -1,10 +1,4 @@
 import React, { useState } from "react";
-import {
-    EmailAuthProvider,
-    linkWithCredential,
-    OAuthProvider,
-    signInWithCredential,
-} from "firebase/auth";
 import { auth } from "../firebase";
 
 const EditPassword = ({ visible, onClose }) => {
@@ -41,8 +35,10 @@ const EditPassword = ({ visible, onClose }) => {
             })
                 .then((res) => {
                     if (res.status === 200) {
-                        alert("Successfully changed password");
-                        document.getElementById("container").click();
+                        alert(
+                            "Successfully changed password. Please login again."
+                        );
+                        auth.signOut();
                         setClicked(false);
                     } else {
                         alert("Error changing password");
