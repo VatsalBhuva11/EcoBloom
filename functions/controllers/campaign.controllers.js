@@ -9,7 +9,6 @@ import Organization, {
 } from "../models/organization.model.js";
 import User from "../models/user.model.js";
 import mongoose from "mongoose";
-import axios from "axios";
 
 mongoose.model("Organization", OrganizationSchema);
 
@@ -19,6 +18,7 @@ export const getCampaign = async (req, res) => {
         const campaign = await Campaign.findById(campaignId).populate(
             "organization"
         );
+        // console.log("checking campaigns: ", campaigns);
         if (!campaign) {
             response_404(res, "Campaign not found");
         } else {
@@ -34,7 +34,6 @@ export const createCampaign = async (req, res) => {
     try {
         const org = req.org.orgId;
         const {
-            name,
             address,
             city,
             country,
@@ -42,8 +41,6 @@ export const createCampaign = async (req, res) => {
             endDate,
             goal,
             locationType,
-            latitude,
-            longitude,
         } = req.body;
         if (
             !address ||

@@ -28,7 +28,6 @@ const router = express.Router();
 mongoose.model("Community", CommunitySchema);
 mongoose.model("Campaign", CampaignSchema);
 
-//for organization profile
 router.get("/:userId", async (req, res) => {
     try {
         const userId = req.params.userId;
@@ -52,6 +51,7 @@ router.get("/:userId", async (req, res) => {
                 registeredCampaigns,
                 completedCampaigns,
                 communities,
+                points,
             } = user;
 
             let data = {
@@ -63,6 +63,7 @@ router.get("/:userId", async (req, res) => {
                 registeredCampaigns,
                 completedCampaigns,
                 communities,
+                points,
             };
             response_200(res, "Successfully fetched user data!", data);
         }

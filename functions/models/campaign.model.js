@@ -68,6 +68,22 @@ const Campaign = new Schema({
         type: String,
         default: null,
     },
+    isCompleted: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    points: {
+        type: Number,
+        required: true,
+        default: 50,
+    },
+    guidelines: {
+        type: String,
+        required: true,
+        default:
+            "Respectful conduct towards all participants. In case of any disputes or issues, the organizing committee's decision will be considered final.",
+    },
     locationType: {
         type: String,
         enum: [

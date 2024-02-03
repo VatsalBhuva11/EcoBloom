@@ -1306,6 +1306,10 @@ video {
   width: 30px;
 }
 
+.w-\[40\%\]{
+  width: 40%;
+}
+
 .w-\[40rem\]{
   width: 40rem;
 }

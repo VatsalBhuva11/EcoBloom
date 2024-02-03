@@ -56,10 +56,10 @@ export default function Video({ userId, campaignId }) {
                                     document.getElementById("verifiedUsers");
                                 let remainingUsersCount =
                                     document.getElementById("remainingUsers");
-                                verifiedUsersCount.textContent = `${
+                                verifiedUsersCount.textContent = `&nbsp;${
                                     parseInt(verifiedUsersCount.textContent) + 1
                                 }`;
-                                remainingUsersCount.textContent = `${
+                                remainingUsersCount.textContent = `&nbsp;${
                                     parseInt(remainingUsersCount.textContent) -
                                     1
                                 }`;
