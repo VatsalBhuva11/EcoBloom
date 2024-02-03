@@ -25,6 +25,7 @@ import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import ViewPost from '../Components/ViewPost.js'
 import moment from "moment";
 
 const Orgdashboard = () => {
@@ -41,6 +42,9 @@ const Orgdashboard = () => {
   const [ifBold3, setIfBold3] = useState("normal");
   const [showMyModel, setShowMyModal] = useState(false);
   const handleOnClose = () => setShowMyModal(false);
+
+  const [showMyModel1, setShowMyModal1] = useState(false);
+  const handleOnClose1 = () => setShowMyModal1(false);
 
   const [org, setOrg] = useState({});
   const [loader, setLoader] = useState(true);
@@ -257,9 +261,9 @@ const Orgdashboard = () => {
             </div>
           ) : status === "post" ? (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
-              <div>
+              <button  className='hover:scale-105 duration-300' onClick={() => setShowMyModal1(true)}>
                 <img className="h-auto max-w-full" src={p4} alt="" />
-              </div>
+              </button>
               <div>
                 <img className="h-auto max-w-full" src={p5} alt="" />
               </div>
@@ -408,6 +412,8 @@ const Orgdashboard = () => {
         </div>
       </div>
       <NewPost onClose={handleOnClose} visible={showMyModel} />
+      <ViewPost onClose={handleOnClose1} visible={showMyModel1} image = {p4} />
+
       {/* hamburger */}
       <div
         className={

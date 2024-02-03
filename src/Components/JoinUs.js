@@ -17,7 +17,7 @@ export default function JoinUs() {
                     <h2 className=" z-2 text-[#0F1035] text-4xl md:text-6xl text-center font-bold">
                         JOIN US NOW
                     </h2>
-                    <button className=" flex  justify-center items-center  mt-32 py-2 px-6 text-center md:text-3xl mb-10 text-gray-100 border bg-[#0F1035] font-bold hover:bg-[#000000] hover:text-[#ffff] hover:shadow-lg hover:border-indigo-600 rounded-md">
+                    <button className=" flex  justify-center items-center git mt-32 py-2 px-6 text-center md:text-3xl mb-10 text-gray-100 border bg-[#0F1035] font-bold hover:bg-[#000000] hover:text-[#ffff] hover:shadow-lg hover:border-indigo-600 rounded-md">
                         {user ? (
                             <Link to="/user/join">
                                 <div className="flex justify-center items-center">
