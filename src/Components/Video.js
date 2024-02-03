@@ -43,6 +43,26 @@ export default function Video({ userId, campaignId }) {
                         console.log("DATA: ", data);
                         if (data.status === "OK") {
                             if (data.data.confidence >= 85) {
+                                let verifyButton = document.getElementById(
+                                    "verify" + userId
+                                );
+                                verifyButton.textContent = "Verified!";
+                                verifyButton.disabled = "true";
+                                verifyButton.classList.replace(
+                                    "bg-[#353657]",
+                                    "bg-lime-600"
+                                );
+                                let verifiedUsersCount =
+                                    document.getElementById("verifiedUsers");
+                                let remainingUsersCount =
+                                    document.getElementById("remainingUsers");
+                                verifiedUsersCount.textContent = `${
+                                    parseInt(verifiedUsersCount.textContent) + 1
+                                }`;
+                                remainingUsersCount.textContent = `${
+                                    parseInt(remainingUsersCount.textContent) -
+                                    1
+                                }`;
                                 setStatus("success");
                                 setClicked(false);
                             } else {

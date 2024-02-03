@@ -6,9 +6,12 @@ import { ProfileContext } from "../Components/ProfileContextProvider";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { HashLoader } from "react-spinners";
+import { useNavigate } from "react-router";
+
 import VideoCard from "./VideoCard.js";
 
 export default function VerifyUsers() {
+    const navigate = useNavigate();
     const [profile, setProfile] = useContext(ProfileContext);
     const [user, loading, error] = useAuthState(auth);
     const [campaign, setCampaign] = useState({});
@@ -97,16 +100,19 @@ export default function VerifyUsers() {
     return (
         <div className="bg-[#eef0e5] h-screen flex flex-col">
             <div className="flex items-center justify-between p-3">
-                <Link to="/org/ongoing">
-                    <div className=" hover:scale-100 duration-300 text-3xl p-2">
-                        <IoArrowBackSharp />
-                    </div>
-                </Link>
+                <button
+                    onClick={() => {
+                        navigate(-1);
+                    }}
+                    className=" hover:scale-100 duration-300 text-3xl p-2"
+                >
+                    <IoArrowBackSharp />
+                </button>
                 <p className="text-lg sm:text-2xl md:text-3xl font-bold">
                     Verify Users
                 </p>
                 <div className="flex items-center mr-4 gap-3">
-                    <Link to="/user/profile">
+                    <Link to="/org/edit/profile">
                         <img
                             className="w-9 md:w-12  cursor-pointer hover:scale-105 duration-300 lg:w-14 rounded-full h-9 md:h-12 lg:h-14"
                             src={profile.logo}
@@ -129,12 +135,20 @@ export default function VerifyUsers() {
                     </div>
                     <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-5">
                         <div className="flex justify-center items-center">
-                            Applications Accepted: {campaign.verifiedUsersCount}
+                            Applications Accepted:
+                            <span id="verifiedUsers">
+                                &nbsp;{campaign.verifiedUsersCount}
+                            </span>
                         </div>
                     </div>
                     <div className="w-full text-gray-100">
                         <div className="flex justify-center items-center">
-                            Applications Rejected: {rejectedUsersCount || 0}
+                            Applications Remaining:{" "}
+                            <span id="remainingUsers">
+                                &nbsp;
+                                {campaign.registeredUsersCount -
+                                    campaign.verifiedUsersCount}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -193,7 +207,8 @@ export default function VerifyUsers() {
                                                             user.name
                                                         );
                                                     }}
-                                                    className="p-4 bg-gradient-to-r from-[#353657] to-[#404162] text-white rounded-full text-xs scale-105 duration-300 "
+                                                    className="p-4 bg-[#353657] text-white rounded-full text-xs scale-105 duration-300 "
+                                                    id={"verify" + user.id}
                                                 >
                                                     Verify
                                                 </button>

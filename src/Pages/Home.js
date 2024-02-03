@@ -80,7 +80,7 @@ export default function Home() {
                         />
                         <Route
                             exact
-                            path="/org/profile/:orgId/profile"
+                            path="/org/edit/profile"
                             element={<Edit_Profile_Org />}
                         />
                         <Route
@@ -118,16 +118,16 @@ export default function Home() {
                             path="/campaign/:campaignId"
                             element={<CampaignProfile />}
                         />
+                        <Route
+                            exact
+                            path="/org/campaign/:campaignId"
+                            element={<OrgCampaignProfile />}
+                        />
                         <Route exact path="/log" element={<Activity_log />} />
                         <Route
                             exact
                             path="/campaigns"
                             element={<Badha_Campaigns />}
-                        />
-                        <Route
-                            exact
-                            path="/org/ongoing"
-                            element={<OrgCampaignProfile />}
                         />
                         <Route
                             exact
