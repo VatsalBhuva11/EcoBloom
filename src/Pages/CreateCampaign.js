@@ -283,7 +283,7 @@ const CreateCampaign = () => {
 
           <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
             <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
-              Country*
+              Campaign Goal*
             </div>
             <div>
               <input
@@ -302,7 +302,7 @@ const CreateCampaign = () => {
           </div>
           <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
             <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
-              Campaign Goal*
+              Guidelines*
             </div>
             <div>
               <input
