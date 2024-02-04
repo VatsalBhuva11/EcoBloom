@@ -8,12 +8,16 @@ import {
     beforeUserCreated,
     beforeUserSignedIn,
 } from "firebase-functions/v2/identity";
-import User from "./models/user.model.js";
+import User, { User as UserSchema } from "./models/user.model.js";
 import Organization from "./models/organization.model.js";
-import { response_500 } from "./utils/responseCodes.js";
+import Campaign from "./models/campaign.model.js";
 import { storage } from "./config/firebase.config.js";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import fetch from "node-fetch";
+import { onSchedule } from "firebase-functions/v2/scheduler";
+import mongoose from "mongoose";
+
+mongoose.model("User", UserSchema);
 
 dotenv.config();
 
@@ -148,3 +152,40 @@ export const beforesignin = beforeUserSignedIn(async (event) => {
         throw new Error(err);
     }
 });
+
+export const checkCompletedCampaigns = onSchedule(
+    "every 10 minutes",
+    async (event) => {
+        console.log("Event from scheduler: ", event);
+        try {
+            // Retrieve all campaigns from the database
+            const campaigns = await Campaign.find({
+                isCompleted: false,
+                endDate: {
+                    $lte: new Date().toISOString(),
+                },
+            }).populate("verifiedUsers");
+            console.log("campaigns to update: ", campaigns);
+
+            // Get the current date and time
+
+            // Iterate through campaigns and check if any have reached their end date
+            campaigns.forEach(async (campaign) => {
+                // If the current date is after the campaign's end date
+                // Update the campaign's status to "Completed"
+                campaign.isCompleted = true;
+                console.log("updated " + campaign.name);
+                if (campaign.verifiedUsersCount > 0) {
+                    campaign.verifiedUsers.forEach(async (user) => {
+                        user.points += campaign.points;
+                        user.completedCampaigns.push(campaign._id);
+                        await user.save();
+                    });
+                }
+                await campaign.save();
+            });
+        } catch (error) {
+            console.error("Error in scheduled task:", error);
+        }
+    }
+);

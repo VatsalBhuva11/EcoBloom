@@ -39,6 +39,7 @@ const Store = () => {
                 )
                     .then((res) => res.json())
                     .then((data) => {
+                        console.log(data);
                         if (data.status === "OK") {
                             setLoggedInUser(data.data);
                             // setLoader(false);
@@ -91,7 +92,7 @@ const Store = () => {
                         </p>
                         <p className="pl-2 flex text-2xl font-bold   text-[#FF7512]">
                             <SiDogecoin className=" mr-1 mt-1 text-[#FFCC4D]" />{" "}
-                            {loggedInUser.points}
+                            {Number(loggedInUser.points)}
                         </p>
                     </div>
                 </div>
@@ -100,7 +101,7 @@ const Store = () => {
                     <div className="flex justify-center items-center">
                         <div class="bg-[#DFE4C5] rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col justify-center">
                             <div>
-                                <img src={shirt} className="p-2" alt="zipper" />
+                                <img src={shirt} className="p-2" alt="tshirt" />
                             </div>
                             <div className="flex justify-between">
                                 <div>
@@ -109,12 +110,13 @@ const Store = () => {
                                     </h5>{" "}
                                 </div>
                                 <div className="px-4 py-2">
-                                    {loggedInUser.points >= 1000 ? (
+                                    {Number(Number(loggedInUser.points)) >=
+                                    1000 ? (
                                         <button
-                                            onClick={
-                                                (window.location.href =
-                                                    "/store/order?item=shirt")
-                                            }
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "/store/order?item=tshirt";
+                                            }}
                                             className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
@@ -152,16 +154,16 @@ const Store = () => {
                                     </h5>{" "}
                                 </div>
                                 <div className="px-4 py-2">
-                                    {loggedInUser.points >= 500 ? (
+                                    {Number(loggedInUser.points) >= 500 ? (
                                         <button
-                                            onClick={
-                                                (window.location.href =
-                                                    "/store/order?item=cap")
-                                            }
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "/store/order?item=cap";
+                                            }}
                                             className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
-                                                1000{" "}
+                                                500{" "}
                                                 <SiDogecoin className="mt-1 ml-2 text-[#FFCC4D]" />
                                             </a>
                                         </button>
@@ -195,12 +197,12 @@ const Store = () => {
                                     </h5>{" "}
                                 </div>
                                 <div className="px-4 py-2">
-                                    {loggedInUser.points >= 2000 ? (
+                                    {Number(loggedInUser.points) >= 2000 ? (
                                         <button
-                                            onClick={
-                                                (window.location.href =
-                                                    "/store/order?item=jutebag")
-                                            }
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "/store/order?item=jutebag";
+                                            }}
                                             className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
@@ -242,12 +244,12 @@ const Store = () => {
                                     </h5>{" "}
                                 </div>
                                 <div className="px-4 py-2">
-                                    {loggedInUser.points >= 4000 ? (
+                                    {Number(loggedInUser.points) >= 4000 ? (
                                         <button
-                                            onClick={
-                                                (window.location.href =
-                                                    "/store/order?item=hoodie")
-                                            }
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "/store/order?item=hoodie";
+                                            }}
                                             className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
@@ -285,12 +287,12 @@ const Store = () => {
                                     </h5>{" "}
                                 </div>
                                 <div className="px-4 py-2">
-                                    {loggedInUser.points >= 1500 ? (
+                                    {Number(loggedInUser.points) >= 1500 ? (
                                         <button
-                                            onClick={
-                                                (window.location.href =
-                                                    "/store/order?item=notebook")
-                                            }
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "/store/order?item=book";
+                                            }}
                                             className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
@@ -332,12 +334,12 @@ const Store = () => {
                                     </h5>{" "}
                                 </div>
                                 <div className="px-4 py-2">
-                                    {loggedInUser.points >= 400 ? (
+                                    {Number(loggedInUser.points) >= 400 ? (
                                         <button
-                                            onClick={
-                                                (window.location.href =
-                                                    "/store/order?item=keychain")
-                                            }
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "/store/order?item=keychain";
+                                            }}
                                             className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
