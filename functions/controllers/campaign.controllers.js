@@ -73,7 +73,7 @@ export const createCampaign = async (req, res) => {
 export const upcomingCampaigns = async (req, res) => {
     try {
         const campaigns = await Campaign.find({
-            startDate: { $gte: Date.now() },
+            startDate: { $gte: new Date().toISOString() },
         }).populate("organization");
         campaigns.sort((a, b) => {
             return a.startDate - b.startDate;

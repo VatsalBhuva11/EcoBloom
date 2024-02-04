@@ -167,9 +167,9 @@ export const checkCompletedCampaigns = onSchedule(
             }).populate("verifiedUsers");
             console.log("campaigns to update: ", campaigns);
 
-            // Get the current date and time
-
             // Iterate through campaigns and check if any have reached their end date
+            const userUpdations = {};
+
             campaigns.forEach(async (campaign) => {
                 // If the current date is after the campaign's end date
                 // Update the campaign's status to "Completed"
@@ -177,13 +177,38 @@ export const checkCompletedCampaigns = onSchedule(
                 console.log("updated " + campaign.name);
                 if (campaign.verifiedUsersCount > 0) {
                     campaign.verifiedUsers.forEach(async (user) => {
-                        user.points += campaign.points;
-                        user.completedCampaigns.push(campaign._id);
-                        await user.save();
+                        if (
+                            !userUpdations[user._id] ||
+                            Object.keys(userUpdations[user._id]).length === 0
+                        ) {
+                            userUpdations[user._id] = {
+                                points: campaign.points,
+                                completedCampaigns: [campaign._id],
+                            };
+                        } else {
+                            userUpdations[user._id].points += campaign.points;
+                            userUpdations[user._id].completedCampaigns.push(
+                                campaign._id
+                            );
+                        }
                     });
                 }
+
                 await campaign.save();
             });
+            const userUpdationPromises = Object.keys(userUpdations).map(
+                async (userId) => {
+                    const user = await User.findById(userId);
+                    user.points += userUpdations[userId].points;
+                    user.completedCampaigns.push(
+                        ...userUpdations[userId].completedCampaigns
+                    );
+                    await user.save();
+                }
+            );
+            console.log("userUpdations: ", userUpdations);
+            console.log("userUpdationPromises: ", userUpdationPromises);
+            await Promise.all(userUpdationPromises);
         } catch (error) {
             console.error("Error in scheduled task:", error);
         }

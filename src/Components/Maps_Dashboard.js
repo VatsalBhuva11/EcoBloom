@@ -8,8 +8,6 @@ import {
 import moment from "moment";
 
 export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
-    console.log(markers);
-
     const containerStyle = {
         width: "600px",
         height: "500px",
@@ -52,7 +50,6 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
 
     const handleMapClick = (event) => {
         // Extract latitude and longitude from the click event
-        console.log(event);
         handleInfoWindowClose();
         // Set the marker position
     };
