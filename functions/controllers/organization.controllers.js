@@ -12,9 +12,11 @@ import { storage } from "../config/firebase.config.js";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import moment from "moment";
 import Jimp from "jimp";
-import Post from "../models/post.model.js";
+import Post, { Post as PostSchema } from "../models/post.model.js";
+import mongoose from "mongoose";
 
 const router = express.Router();
+mongoose.model("Post", PostSchema);
 
 //get all orgs
 
@@ -49,7 +51,7 @@ export const getOrgs = async (req, res) => {
 export const getOrgDetails = async (req, res) => {
     try {
         const orgId = req.params.orgId;
-        const org = await Organization.findById(orgId);
+        const org = await Organization.findById(orgId).populate("orgPosts");
 
         const { name, email, logo, banner, orgPosts, community } = org;
         const communityData = await Community.findOne({

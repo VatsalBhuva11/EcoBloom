@@ -43,7 +43,10 @@ const Orgdashboard = () => {
     const [showMyModel, setShowMyModal] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
 
-    const [showMyModel1, setShowMyModal1] = useState(false);
+    const [showMyModel1, setShowMyModal1] = useState({
+        status: false,
+        post: {},
+    });
     const handleOnClose1 = () => setShowMyModal1(false);
 
     const [org, setOrg] = useState({});
@@ -51,6 +54,7 @@ const Orgdashboard = () => {
     const [logo, setLogo] = useState(null);
     const [banner, setBanner] = useState(null);
     const [profile, setProfile] = useContext(ProfileContext);
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         if (auth.currentUser) {
@@ -104,6 +108,20 @@ const Orgdashboard = () => {
             window.location.replace("/login");
         }
     }, [loading]);
+
+    useEffect(() => {
+        if (org?.orgPosts?.length > 0) {
+            (async () => {
+                const postsPromises = org.orgPosts.map(async (post) => {
+                    const storageRef = ref(storage, post.photo);
+                    const url = await getDownloadURL(storageRef);
+                    return { ...post, photo: url };
+                });
+                const posts = await Promise.all(postsPromises);
+                setPosts(posts);
+            })();
+        }
+    }, [org]);
 
     const handleABoutChange = () => {
         setIfBold1("bold");
@@ -276,61 +294,37 @@ const Orgdashboard = () => {
                             </div>
                         </div>
                     ) : status === "post" ? (
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
-                            <button
-                                className="hover:scale-105 duration-300"
-                                onClick={() => setShowMyModal1(true)}
-                            >
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p4}
-                                    alt=""
-                                />
-                            </button>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p5}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p6}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p1}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p2}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p3}
-                                    alt=""
-                                />
-                            </div>
+                        <div className="grid grid-cols-2 md:grid-cols-3 p-6 gap-3 place-items-center">
+                            {posts.map((post) => {
+                                return (
+                                    <div
+                                        onClick={() => {
+                                            setShowMyModal1({
+                                                status: true,
+                                                post: post,
+                                            });
+                                        }}
+                                        className="cursor-pointer flex items-center justify-center"
+                                    >
+                                        <img
+                                            className="h-full w-full"
+                                            src={post.photo}
+                                            alt=""
+                                        />
+                                    </div>
+                                );
+                            })}
                         </div>
                     ) : (
-                        <div className="grid grid-cols-2 gap-5 p-8">
+                        <div className="grid grid-cols-2 gap-5 p-8 place-items-center">
                             {org?.completedCampaigns?.length > 0
                                 ? org.completedCampaigns.map((campaign) => {
                                       return (
-                                          <PastCampaignsCards
-                                              campaign={campaign}
-                                          />
+                                          <div className="flex items-center justify-center">
+                                              <PastCampaignsCards
+                                                  campaign={campaign}
+                                              />
+                                          </div>
                                       );
                                   })
                                 : "No campaigns organised yet"}
@@ -481,8 +475,8 @@ const Orgdashboard = () => {
             <NewPost onClose={handleOnClose} visible={showMyModel} />
             <ViewPost
                 onClose={handleOnClose1}
-                visible={showMyModel1}
-                image={p4}
+                visible={showMyModel1.status}
+                post={showMyModel1.post}
             />
 
             {/* hamburger */}
