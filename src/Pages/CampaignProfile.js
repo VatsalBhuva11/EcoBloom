@@ -185,8 +185,9 @@ const CampaignProfile = () => {
                         <div className="mt-4 flex justify-between w-full">
                             <h1 className="ml-6 md:ml-10 lg:ml-10 font-bold text-xl sm:text-2xl md:text-3xl flex text-[#686968]">
                                 <SlCalender className="mr-2 md:mr-4 mt-1" />
-                                {moment(campaign.startDate).format("ll")} -{" "}
-                                {moment(campaign.endDate).format("ll")}
+                                {moment(campaign.startDate).format(
+                                    "lll"
+                                )} - {moment(campaign.endDate).format("lll")}
                             </h1>
                             {!isRegistered ? (
                                 !clicked && status === null ? (

@@ -204,7 +204,7 @@ const Orgdashboard = () => {
                                             Community Chat
                                         </button>
                                     </Link>
-                                    <Link to="/org/profile/:orgId/profile">
+                                    <Link to={"/org/edit/profile"}>
                                         {" "}
                                         <button className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold">
                                             <HiPencil
@@ -396,7 +396,7 @@ const Orgdashboard = () => {
                                                 <div className="font-bold">
                                                     {moment(
                                                         campaign.endDate
-                                                    ).format("ll")}
+                                                    ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
@@ -442,7 +442,7 @@ const Orgdashboard = () => {
                                                 <div className="font-bold">
                                                     {moment(
                                                         campaign.startDate
-                                                    ).format("ll")}
+                                                    ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
@@ -534,7 +534,7 @@ const Orgdashboard = () => {
                                                 <div className="font-bold text-[#eef0e5] mx-4">
                                                     {moment(
                                                         campaign.endDate
-                                                    ).format("ll")}
+                                                    ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
@@ -575,7 +575,7 @@ const Orgdashboard = () => {
                                                 <div className="font-bold">
                                                     {moment(
                                                         campaign.startDate
-                                                    ).format("ll")}
+                                                    ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">

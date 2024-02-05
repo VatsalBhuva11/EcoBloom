@@ -31,8 +31,9 @@ export default function PastCampaignsCards({ campaign }) {
                             </div>
                             <div className="flex items-center gap-1 text-[#2A7805] text-sm">
                                 <SlCalender />
-                                {moment(campaign.startDate).format("ll")} -{" "}
-                                {moment(campaign.endDate).format("ll")}
+                                {moment(campaign.startDate).format(
+                                    "lll"
+                                )} - {moment(campaign.endDate).format("lll")}
                             </div>
                         </div>
                     </div>

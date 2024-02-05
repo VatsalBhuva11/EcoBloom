@@ -97,6 +97,7 @@ const Orgprofile = () => {
                     setLogo(storageData[0]);
                     setBanner(storageData[1]);
                     setOrg(org);
+                    console.log(org);
                     setLoader(false);
                 } catch (err) {
                     console.log(err);
@@ -346,11 +347,15 @@ const Orgprofile = () => {
                         </div>
                     ) : (
                         <div className="grid grid-cols-2 gap-5 p-8">
-                            <PastCampaignsCards />
-                            <PastCampaignsCards />
-                            <PastCampaignsCards />
-                            <PastCampaignsCards />
-                            <PastCampaignsCards />
+                            {org?.completedCampaigns?.length > 0
+                                ? org.completedCampaigns.map((campaign) => {
+                                      return (
+                                          <PastCampaignsCards
+                                              campaign={campaign}
+                                          />
+                                      );
+                                  })
+                                : "No campaigns organised yet"}
                         </div>
                     )}
                 </div>
@@ -376,7 +381,7 @@ const Orgprofile = () => {
                                                 <div className="font-bold">
                                                     {moment(
                                                         campaign.endDate
-                                                    ).format("ll")}
+                                                    ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
@@ -417,7 +422,7 @@ const Orgprofile = () => {
                                                 <div className="font-bold">
                                                     {moment(
                                                         campaign.startDate
-                                                    ).format("ll")}
+                                                    ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">

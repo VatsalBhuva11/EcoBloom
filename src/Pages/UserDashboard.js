@@ -461,121 +461,13 @@ const UserDashboard = () => {
                                     </p>
                                 </div>
                             )}
-
-                            {/* <a href="">
-                                <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
-                                    <div className="text-6xl ">
-                                        <SlCalender />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
-                                        </p>
-                                        <div className="flex justify-between items-baseline gap-3 ">
-                                            <div>
-                                                <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
-                                                </div>
-                                                <div className="text-[0.7rem]">
-                                                    210 Peoples joined
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-center items-center text-[20px] gap-1">
-                                                Join now{" "}
-                                                <div className="mt-1">
-                                                    <FaLongArrowAltRight />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
-                                    <div className="text-6xl ">
-                                        <SlCalender />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
-                                        </p>
-                                        <div className="flex justify-between items-baseline gap-3 ">
-                                            <div>
-                                                <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
-                                                </div>
-                                                <div className="text-[0.7rem]">
-                                                    210 Peoples joined
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-center items-center text-[20px] gap-1">
-                                                Join now{" "}
-                                                <div className="mt-1">
-                                                    <FaLongArrowAltRight />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
-                                    <div className="text-6xl ">
-                                        <SlCalender />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
-                                        </p>
-                                        <div className="flex justify-between items-baseline gap-3 ">
-                                            <div>
-                                                <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
-                                                </div>
-                                                <div className="text-[0.7rem]">
-                                                    210 Peoples joined
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-center items-center text-[20px] gap-1">
-                                                Join now{" "}
-                                                <div className="mt-1">
-                                                    <FaLongArrowAltRight />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div className=" flex pb-3 border-b-2 gap-7 px-2 hover:scale-105 duration-300">
-                                    <div className="text-6xl ">
-                                        <SlCalender />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <p className="text-black text-[1.15rem] ">
-                                            ENVIRONMENT HELPERS
-                                        </p>
-                                        <div className="flex justify-between items-baseline gap-3 ">
-                                            <div>
-                                                <div className="text-[0.9rem]">
-                                                    24TH JAN,2024
-                                                </div>
-                                                <div className="text-[0.7rem]">
-                                                    210 Peoples joined
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-center items-center text-[20px] gap-1">
-                                                Join now{" "}
-                                                <div className="mt-1">
-                                                    <FaLongArrowAltRight />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a> */}
                         </div>
-                        <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem] border-4 border-[#0f1035] 2xl:h-[3.20rem] w-56 2xl:w-64 2xl:my-5 hover:scale-105 duration-300">
+                        <button
+                            onClick={() => {
+                                window.location.href = "/campaigns";
+                            }}
+                            className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem] border-4 border-[#0f1035] 2xl:h-[3.20rem] w-56 2xl:w-64 2xl:my-5 hover:scale-105 duration-300"
+                        >
                             View More{" "}
                             <div className="mt-[0.32rem] text-3xl">
                                 <FaLongArrowAltRight />
