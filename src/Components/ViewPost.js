@@ -8,7 +8,7 @@ import { BiRepost } from "react-icons/bi";
 import { FaRegCommentDots } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 
-const NewPost = ({ visible, onClose, post }) => {
+const NewPost = ({ visible, onClose, post, org }) => {
     const handleOnClose = (e) => {
         if (e.target.id === "container") {
             onClose();
@@ -30,12 +30,12 @@ const NewPost = ({ visible, onClose, post }) => {
                     <div className="flex items-center lg:gap-3 p-2 hover:scale-105 duration-300">
                         <img
                             className="w-[30px] h-[30px] rounded-full"
-                            src={person}
+                            src={org.logo ? org.logo : person}
                             alt=""
                         />
                         <div>
                             <p className=" text-[14px] mt-1 lg:mt-0 font-semibold">
-                                Greenpeace Organisation
+                                {org.name}
                             </p>
                             {/* <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p>*/}
                         </div>

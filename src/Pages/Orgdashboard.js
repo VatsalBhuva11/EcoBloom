@@ -477,6 +477,7 @@ const Orgdashboard = () => {
                 onClose={handleOnClose1}
                 visible={showMyModel1.status}
                 post={showMyModel1.post}
+                org={{ name: org.name, logo: logo }}
             />
 
             {/* hamburger */}

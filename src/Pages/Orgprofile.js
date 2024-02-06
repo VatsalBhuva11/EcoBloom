@@ -21,6 +21,8 @@ import { jwtDecode } from "jwt-decode";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
 import { useParams } from "react-router";
+import ViewPost from "../Components/ViewPost.js";
+
 import moment from "moment";
 
 const Orgprofile = () => {
@@ -62,6 +64,12 @@ const Orgprofile = () => {
     const [logo, setLogo] = useState(null);
     const [banner, setBanner] = useState(null);
     const [loader, setLoader] = useState(true);
+    const [posts, setPosts] = useState([]);
+    const [showMyModel1, setShowMyModal1] = useState({
+        status: false,
+        post: {},
+    });
+    const handleOnClose1 = () => setShowMyModal1(false);
 
     useEffect(() => {
         if (auth.currentUser) {
@@ -109,6 +117,21 @@ const Orgprofile = () => {
             window.location.replace("/login");
         }
     }, [loading]);
+
+    useEffect(() => {
+        if (org?.orgPosts?.length > 0) {
+            (async () => {
+                const postsPromises = org.orgPosts.map(async (post) => {
+                    const storageRef = ref(storage, post.photo);
+                    const url = await getDownloadURL(storageRef);
+                    return { ...post, photo: url };
+                });
+                const posts = await Promise.all(postsPromises);
+                setPosts(posts);
+                console.log(posts);
+            })();
+        }
+    }, [org]);
 
     const handleJoinCommunity = () => {
         setClicked(true);
@@ -302,48 +325,25 @@ const Orgprofile = () => {
                         </div>
                     ) : status === "post" ? (
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p4}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p5}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p6}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p1}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p2}
-                                    alt=""
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    className="h-auto max-w-full"
-                                    src={p3}
-                                    alt=""
-                                />
-                            </div>
+                            {posts.map((post) => {
+                                return (
+                                    <div
+                                        onClick={() => {
+                                            setShowMyModal1({
+                                                status: true,
+                                                post: post,
+                                            });
+                                        }}
+                                        className="cursor-pointer flex items-center justify-center"
+                                    >
+                                        <img
+                                            className="h-full w-full"
+                                            src={post.photo}
+                                            alt=""
+                                        />
+                                    </div>
+                                );
+                            })}
                         </div>
                     ) : (
                         <div className="grid grid-cols-2 gap-5 p-8">
@@ -461,6 +461,12 @@ const Orgprofile = () => {
             <Community_Joined_Card
                 onClose={handleOnClose}
                 visible={showMyModel}
+            />
+            <ViewPost
+                onClose={handleOnClose1}
+                visible={showMyModel1.status}
+                post={showMyModel1.post}
+                org={{ name: org.name, logo: logo }}
             />
         </div>
     );
