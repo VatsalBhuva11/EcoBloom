@@ -431,7 +431,13 @@ const Orgdashboard = () => {
                             {org?.upcomingCampaigns.length > 0 ? (
                                 org.upcomingCampaigns.map((campaign) => {
                                     return (
-                                        <a href="">
+                                        <Link
+                                            to={
+                                                "/campaign/" +
+                                                campaign._id +
+                                                "/verify"
+                                            }
+                                        >
                                             <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
                                                 <div className="font-bold">
                                                     {moment(
@@ -450,7 +456,7 @@ const Orgdashboard = () => {
                                                     </p>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     );
                                 })
                             ) : (
@@ -565,7 +571,13 @@ const Orgdashboard = () => {
                             {org?.upcomingCampaigns.length > 0 ? (
                                 org.upcomingCampaigns.map((campaign) => {
                                     return (
-                                        <a href="">
+                                        <Link
+                                            to={
+                                                "/campaign/" +
+                                                campaign._id +
+                                                "/verify"
+                                            }
+                                        >
                                             <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
                                                 <div className="font-bold">
                                                     {moment(
@@ -584,7 +596,7 @@ const Orgdashboard = () => {
                                                     </p>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     );
                                 })
                             ) : (

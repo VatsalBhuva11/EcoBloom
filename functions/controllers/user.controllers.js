@@ -184,62 +184,29 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
     }
 });
 
-//join community
-router.post("/join/:communityId", checkUser, async (req, res) => {
+router.get("/:userId/activity", async (req, res) => {
     try {
-        const communityId = req.params.communityId;
-        // const userId = req.user.userId;
-        const userId = req.user.userId;
-
-        const community = await Community.findById(communityId);
+        const userId = req.params.userId;
         const user = await User.findById(userId);
-
-        if (!community) {
-            response_404(res, "Community not found");
-        } else if (!user) {
+        const activities = user.activityLog;
+        activities.sort((a, b) => {
+            return b.date - a.date;
+        });
+        console.log(activities);
+        if (!user) {
             response_404(res, "User not found");
         } else {
-            const isUserAlreadyRegistered =
-                community.joinedUsers.includes(userId);
-            if (isUserAlreadyRegistered) {
-                response_400(res, "User is already registered");
-            } else {
-                const updatedCommunity = await Community.findByIdAndUpdate(
-                    communityId,
-                    {
-                        $push: {
-                            joinedUsers: userId,
-                        },
-                        userCount: community.userCount + 1,
-                    },
-                    {
-                        new: true,
-                    }
-                );
-                const updatedUser = await User.findByIdAndUpdate(
-                    userId,
-                    {
-                        $push: {
-                            communities: communityId,
-                        },
-                    },
-                    {
-                        new: true,
-                    }
-                );
-                response_200(
-                    res,
-                    "Successfully joined the community",
-                    updatedUser
-                );
-            }
+            response_200(
+                res,
+                "Successfully fetched user's activity",
+                activities
+            );
         }
     } catch (err) {
         console.log(err);
-        response_500(res, "Error occurred while joining community", err);
+        response_500(res, "Error occurred while fetching user's activity", err);
     }
 });
-
 router.post("/linkPassword", checkUser, async (req, res) => {
     try {
         const { password, uid } = req.body;

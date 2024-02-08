@@ -99,7 +99,9 @@ export const registerUser = async (req, res) => {
         const campaignId = req.params.campaignId;
         const userId = req.user.userId;
 
-        const campaign = await Campaign.findById(campaignId);
+        const campaign = await Campaign.findById(campaignId).populate(
+            "organization"
+        );
         if (!campaign) {
             response_404(res, "Campaign not found");
         } else {
@@ -115,7 +117,14 @@ export const registerUser = async (req, res) => {
                     }
                 );
                 const updateUser = await User.findByIdAndUpdate(userId, {
-                    $push: { registeredCampaigns: campaignId },
+                    $push: {
+                        registeredCampaigns: campaignId,
+                        activityLog: {
+                            type: "registeredForCampaign",
+                            content: `Registered for campaign "${campaign.name}" organized by ${campaign.organization.name}`,
+                            date: new Date(),
+                        },
+                    },
                 });
                 response_200(res, "Successfully registered for campaign");
             }
@@ -193,6 +202,13 @@ export const verifyUser = async (req, res) => {
                             campaign.verifiedUsersCount =
                                 campaign.verifiedUsersCount + 1;
                             campaign.save();
+                            user.activityLog.push({
+                                type: "verifiedForCampaign",
+
+                                content: `Your participation for campaign "${campaign.name}" has been verified!`,
+                                date: new Date(),
+                            });
+                            user.save();
                             response_200(res, "Success", result);
                         } else {
                             response_404(res, "User not verified");

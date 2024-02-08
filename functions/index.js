@@ -184,6 +184,14 @@ export const checkCompletedCampaigns = onSchedule(
                             userUpdations[user._id] = {
                                 points: campaign.points,
                                 completedCampaigns: [campaign._id],
+                                activityLog: {
+                                    content:
+                                        `Congratulations on completing the campaign "${campaign.name}"! You have been awarded 🪙` +
+                                        campaign.points +
+                                        " points!",
+                                    date: new Date(),
+                                    type: "completedCampaign",
+                                },
                             };
                         } else {
                             userUpdations[user._id].points += campaign.points;

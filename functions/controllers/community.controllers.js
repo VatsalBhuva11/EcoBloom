@@ -62,6 +62,11 @@ export const joinCommunity = async (req, res) => {
                     {
                         $push: {
                             communities: community._id,
+                            activityLog: {
+                                type: "joinedCommunity",
+                                content: `Successfully joined ${community.orgName}'s community!`,
+                                date: new Date(),
+                            },
                         },
                     },
                     {

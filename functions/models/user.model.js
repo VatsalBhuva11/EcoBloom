@@ -44,6 +44,12 @@ const User = new Schema({
             ref: "Community",
         },
     ],
+    activityLog: [
+        {
+            type: Object,
+            //each activity is: content, date
+        },
+    ],
 });
 
 export default mongoose.model("user", User);
