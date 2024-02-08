@@ -96,7 +96,7 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
                     onCloseClick={handleInfoWindowClose}
                 >
                     <div>
-                        <h2 className="text-center font-semibold">
+                        <h2 className="text-center font-bold">
                             Campaign: {selectedMarker.campaignName}
                         </h2>
                         <p>Address: {selectedMarker.address}</p>
@@ -118,6 +118,15 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
                             {selectedMarker.registeredUsersCount}
                         </p>
                         <p>Organized by: {selectedMarker.organizationName}</p>
+                        <br />
+                        <div className="flex justify-center items-center">
+                            <a
+                                href={"/campaign/" + selectedMarker.campaignId}
+                                className="font-semibold underline"
+                            >
+                                View more
+                            </a>
+                        </div>
                     </div>
                 </InfoWindow>
             )}

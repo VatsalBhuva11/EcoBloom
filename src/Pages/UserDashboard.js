@@ -109,6 +109,7 @@ const UserDashboard = () => {
                                     setMarkers(
                                         data[1].data.map((campaign) => {
                                             return {
+                                                campaignId: campaign._id,
                                                 campaignName: campaign.name,
                                                 organizationName:
                                                     campaign.organization.name,
@@ -129,94 +130,6 @@ const UserDashboard = () => {
                                         })
                                     );
                                     console.log(data[1].data);
-                                })
-                                .catch(function (error) {
-                                    console.error(error);
-                                });
-                        })
-                        .catch((err) => {
-                            console.error(
-                                "ERROR WHILE FETCHING USER DATA: ",
-                                err
-                            );
-                        });
-                })
-                .catch((err) => {
-                    console.error("ERROR IN auth.currentUser: ", err);
-                });
-        } else {
-            window.location.replace("/login");
-        }
-    }, [user]);
-    useEffect(() => {
-        if (auth.currentUser) {
-            auth.currentUser
-                .getIdTokenResult()
-                .then((tokenResult) => {
-                    return tokenResult.claims.userId;
-                })
-                .then((userId) => {
-                    Promise.all([
-                        fetch(
-                            `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
-                        ),
-                        fetch(
-                            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
-                        ),
-                    ])
-                        .then((responses) => {
-                            // responses[0] corresponds to the result of the first fetch
-                            // responses[1] corresponds to the result of the second fetch
-                            return Promise.all(
-                                responses.map((response) => response.json())
-                            );
-                        })
-                        .then((data) => {
-                            // data[0] contains the parsed JSON from the first response
-                            // data[1] contains the parsed JSON from the second response
-                            const storageRef = ref(
-                                storage,
-                                data[0].data.photoPathFirestore
-                            );
-                            getDownloadURL(storageRef)
-                                .then(function (url) {
-                                    setProfile({
-                                        url,
-                                        name: data[0].data.name,
-                                    });
-                                    localStorage.setItem(
-                                        "profile",
-                                        JSON.stringify({
-                                            profileUrl: url,
-                                            profileName: data[0].data.name,
-                                        })
-                                    );
-                                    // setName(data[0].data.name);
-                                    setCommunities(data[0].data.communities);
-                                    setLoader(false);
-                                    setCampaigns(data[1].data);
-                                    setMarkers(
-                                        data[1].data.map((campaign) => {
-                                            return {
-                                                campaignName: campaign.name,
-                                                organizationName:
-                                                    campaign.organization.name,
-                                                location: {
-                                                    lat: campaign.latitude,
-                                                    lng: campaign.longitude,
-                                                },
-                                                startDate: campaign.startDate,
-                                                endDate: campaign.endDate,
-                                                locationType:
-                                                    campaign.locationType,
-                                                address: campaign.address,
-                                                city: campaign.city,
-                                                country: campaign.country,
-                                                registeredUsersCount:
-                                                    campaign.registeredUsersCount,
-                                            };
-                                        })
-                                    );
                                 })
                                 .catch(function (error) {
                                     console.error(error);
