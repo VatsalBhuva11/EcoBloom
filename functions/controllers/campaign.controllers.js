@@ -30,6 +30,16 @@ export const getCampaign = async (req, res) => {
     }
 };
 
+export const getCampaigns = async (req, res) => {
+    try {
+        const campaigns = await Campaign.find().populate("organization");
+        response_200(res, "Successfully fetched campaigns", campaigns);
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while fetching campaigns", err);
+    }
+};
+
 export const createCampaign = async (req, res) => {
     try {
         const org = req.org.orgId;

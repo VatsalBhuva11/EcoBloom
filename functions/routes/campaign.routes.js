@@ -5,6 +5,7 @@ import {
     registerUser,
     upcomingCampaigns,
     verifyUser,
+    getCampaigns,
 } from "../controllers/campaign.controllers.js";
 import checkOrg from "../middlewares/checkOrg.middleware.js";
 import checkUser from "../middlewares/checkUser.middleware.js";
@@ -12,6 +13,7 @@ import filesUpload from "../middlewares/upload.middleware.js";
 
 const router = express.Router();
 
+router.get("/", getCampaigns);
 router.post("/create", checkOrg, createCampaign);
 
 router.get("/upcoming", upcomingCampaigns);
