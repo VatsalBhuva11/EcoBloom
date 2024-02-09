@@ -2,7 +2,7 @@ import React from "react";
 import person from "../assets/images/person.png";
 import { useState } from "react";
 
-export default function ChatBubbleArrival() {
+export default function ChatBubbleArrival({ message }) {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
@@ -15,14 +15,14 @@ export default function ChatBubbleArrival() {
                 <div className="flex flex-col w-fit max-w-[35%] shadow-lg  rounded-tr-lg rounded-br-lg rounded-bl-lg leading-1.5 p-2 border-gray-200 bg-[#C8D0D6] ">
                     <div className="flex items-center space-x-2 rtl:space-x-reverse">
                         <span className="text-sm font-semibold text-gray-900">
-                            Bonnie Green
+                            {message.name}
                         </span>
                     </div>
                     <p className="text-sm font-normal py-2.5 text-gray-900">
-                        Lorem ipsum dolor sit amet consectetur
+                        {message.text}
                     </p>
                 </div>
-                <button
+                {/* <button
                     onClick={() => setIsOpen((isOpen) => !isOpen)}
                     className="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-[#DFE4C5] rounded-lg hover:bg-gray-100
     focus:ring-4 focus:outline-none focus:ring-gray-50 "
@@ -37,11 +37,11 @@ export default function ChatBubbleArrival() {
                     >
                         <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                     </svg>
-                </button>
-                {isOpen && (
+                </button> */}
+                {/* {isOpen && (
                     <div
                         id="dropdownDots"
-                        className="z-10 bg-[#c8d0d6] divide-y divide-gray-100 rounded-lg shadow w-40"
+                        className="z-10 absolute bg-[#c8d0d6] divide-y divide-gray-100 rounded-lg shadow w-40"
                     >
                         <ul
                             className="py-2 text-sm text-gray-700"
@@ -82,7 +82,7 @@ export default function ChatBubbleArrival() {
                             </li>
                         </ul>
                     </div>
-                )}
+                )} */}
             </div>
         </div>
     );

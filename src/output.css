@@ -2637,11 +2637,6 @@ video {
   color: rgb(54 49 49 / var(--tw-text-opacity));
 }
 
-.text-\[\#3DBCCD\]{
-  --tw-text-opacity: 1;
-  color: rgb(61 188 205 / var(--tw-text-opacity));
-}
-
 .text-\[\#444743\]{
   --tw-text-opacity: 1;
   color: rgb(68 71 67 / var(--tw-text-opacity));

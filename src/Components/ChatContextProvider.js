@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
+import { HashLoader } from "react-spinners";
 
 export const ChatContext = createContext();
 
@@ -10,8 +11,8 @@ export const ChatContextProvider = (props) => {
         name: "",
         logo: "",
     });
-    const [communities, setCommunities] = useState([]);
 
+    const [communities, setCommunities] = useState([]);
     const [user, loading, error] = useAuthState(auth);
     const [loader, setLoader] = useState(false);
 
@@ -46,6 +47,13 @@ export const ChatContextProvider = (props) => {
             });
         }
     }, [loading]);
+    if (loading || loader) {
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <HashLoader color="#36d7b7" size={100} />
+            </div>
+        );
+    }
     return (
         <ChatContext.Provider
             value={{

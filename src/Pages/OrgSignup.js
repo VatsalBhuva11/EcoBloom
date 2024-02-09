@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useState } from "react";
-import Terms_Conditions from './Terms_Conditions.js'
+import Terms_Conditions from "./Terms_Conditions.js";
 
 export default function UserSignup() {
     const [email, setEmail] = useState("");
@@ -84,175 +84,178 @@ export default function UserSignup() {
                                     id="emailSignUp"
                                 >
                                     <div className="md:flex md:justify-between md:items-center">
-                                    <div className="part1 w-[40%]">
-                                    <div>
-                                        <label
-                                            for="text"
-                                            class="block my-2 text-md font-medium text-gray-900 "
-                                        >
-                                            Name<sup> *</sup>
-                                        </label>
-                                        <input
-                                            type="name"
-                                            name="name"
-                                            id="name"
-                                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
-                                            placeholder="John Doe"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            for="email"
-                                            class="block my-2 text-md font-medium text-gray-900 "
-                                        >
-                                            Email<sup> *</sup>
-                                        </label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            id="email"
-                                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
-                                            placeholder="johndoe@example.com"
-                                            onChange={(e) =>
-                                                setEmail(e.target.value)
-                                            }
-                                            required
-                                        />
-                                    </div>
+                                        <div className="part1 w-[40%]">
+                                            <div>
+                                                <label
+                                                    for="text"
+                                                    class="block my-2 text-md font-medium text-gray-900 "
+                                                >
+                                                    Name<sup> *</sup>
+                                                </label>
+                                                <input
+                                                    type="name"
+                                                    name="name"
+                                                    id="name"
+                                                    className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                                    placeholder="John Doe"
+                                                    required
+                                                />
+                                            </div>
+                                            <div>
+                                                <label
+                                                    for="email"
+                                                    class="block my-2 text-md font-medium text-gray-900 "
+                                                >
+                                                    Email<sup> *</sup>
+                                                </label>
+                                                <input
+                                                    type="email"
+                                                    name="email"
+                                                    id="email"
+                                                    className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                                    placeholder="johndoe@example.com"
+                                                    onChange={(e) =>
+                                                        setEmail(e.target.value)
+                                                    }
+                                                    required
+                                                />
+                                            </div>
 
-                                    <div>
-                                        <label
-                                            for="password"
-                                            class="block my-2 text-md font-medium text-gray-900"
-                                        >
-                                            Password<sup> *</sup>
-                                        </label>
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            id="password"
-                                            placeholder="••••••••"
-                                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
-                                            onChange={(e) =>
-                                                setPassword(e.target.value)
-                                            }
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            for="password"
-                                            class="block my-2 text-md font-medium text-gray-900"
-                                        >
-                                            Confirm Password<sup> *</sup>
-                                        </label>
-                                        <input
-                                            type="password"
-                                            name="confirmPassword"
-                                            id="confirmPassword"
-                                            placeholder="••••••••"
-                                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
-                                            required=""
-                                            onChange={(e) =>
-                                                setConfirmPassword(
-                                                    e.target.value
-                                                )
-                                            }
-                                        />
-                                    </div>
-                                    </div>
-                                    <div className="part2">
-                                    <div>
-                                        <label
-                                            for="text"
-                                            class="block my-2 text-md font-medium text-gray-900 "
-                                        >
-                                            Community Description<sup> *</sup>
-                                        </label>
-                                        <input
-                                            type="name"
-                                            name="name"
-                                            id="name"
-                                            class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
-                                            placeholder="describe your organisation"
-                                            required
-                                        />
-                                    </div>
-                                    
-                                    <div>
-                                    
-                                        <label
-                                            class="block my-2 text-md font-medium text-[#0f1035]"
-                                            for="document"
-                                        >
-                                            Upload Document<sup>*</sup>
-                                        </label>
-                                        <input
-                                            className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
-                                            aria-describedby="file_input_help"
-                                            id="document"
-                                            name="document"
-                                            type="file"
-                                            accept="image/*"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            class="block my-2 text-md font-medium text-[#0f1035]"
-                                            for="logo"
-                                        >
-                                            Upload Logo<sup>*</sup>
-                                        </label>
-                                        <input
-                                            className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
-                                            aria-describedby="file_input_help"
-                                            id="logo"
-                                            name="logo"
-                                            type="file"
-                                            accept="image/*"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            class="block my-2 text-md font-medium text-[#0f1035]"
-                                            for="banner"
-                                        >
-                                            Upload Banner<sup>*</sup>
-                                        </label>
-                                        <input
-                                            class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
-                                            aria-describedby-="file_input_help"
-                                            id="banner"
-                                            name="banner"
-                                            type="file"
-                                            accept="image/*"
-                                            required
-                                        />
-                                    </div>
-                                    </div>
+                                            <div>
+                                                <label
+                                                    for="password"
+                                                    class="block my-2 text-md font-medium text-gray-900"
+                                                >
+                                                    Password<sup> *</sup>
+                                                </label>
+                                                <input
+                                                    type="password"
+                                                    name="password"
+                                                    id="password"
+                                                    placeholder="••••••••"
+                                                    className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                                    onChange={(e) =>
+                                                        setPassword(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    required
+                                                />
+                                            </div>
+                                            <div>
+                                                <label
+                                                    for="password"
+                                                    class="block my-2 text-md font-medium text-gray-900"
+                                                >
+                                                    Confirm Password
+                                                    <sup> *</sup>
+                                                </label>
+                                                <input
+                                                    type="password"
+                                                    name="confirmPassword"
+                                                    id="confirmPassword"
+                                                    placeholder="••••••••"
+                                                    className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                                    required=""
+                                                    onChange={(e) =>
+                                                        setConfirmPassword(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="part2">
+                                            <div>
+                                                <label
+                                                    for="text"
+                                                    class="block my-2 text-md font-medium text-gray-900 "
+                                                >
+                                                    Community Description
+                                                    <sup> *</sup>
+                                                </label>
+                                                <input
+                                                    type="name"
+                                                    name="name"
+                                                    id="name"
+                                                    class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                                    placeholder="describe your organisation"
+                                                    required
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <label
+                                                    class="block my-2 text-md font-medium text-[#0f1035]"
+                                                    for="document"
+                                                >
+                                                    Upload Document<sup>*</sup>
+                                                </label>
+                                                <input
+                                                    className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                                                    aria-describedby="file_input_help"
+                                                    id="document"
+                                                    name="document"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    required
+                                                />
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block my-2 text-md font-medium text-[#0f1035]"
+                                                    for="logo"
+                                                >
+                                                    Upload Logo<sup>*</sup>
+                                                </label>
+                                                <input
+                                                    className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                                                    aria-describedby="file_input_help"
+                                                    id="logo"
+                                                    name="logo"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    required
+                                                />
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block my-2 text-md font-medium text-[#0f1035]"
+                                                    for="banner"
+                                                >
+                                                    Upload Banner<sup>*</sup>
+                                                </label>
+                                                <input
+                                                    class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                                                    aria-describedby-="file_input_help"
+                                                    id="banner"
+                                                    name="banner"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                     {!signUpClicked ? (
                                         <div className="flex justify-center">
-                                        <button
-                                            type="submit"
-                                            class="w-3/4 bg-[#0F1035] items-center text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
-                                            onClick={emailSignUp}
-                                        >
-                                            Create Account
-                                        </button>
+                                            <button
+                                                type="submit"
+                                                class="w-3/4 bg-[#0F1035] items-center text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                                onClick={emailSignUp}
+                                            >
+                                                Create Account
+                                            </button>
                                         </div>
                                     ) : (
                                         <div className="flex justify-center">
-                                        <button
-                                            type="submit"
-                                            class="w-3/4 bg-[#5a5d5f] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
-                                            disabled
-                                        >
-                                            Creating Account...
-                                        </button>
+                                            <button
+                                                type="submit"
+                                                class="w-3/4 bg-[#5a5d5f] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                                disabled
+                                            >
+                                                Creating Account...
+                                            </button>
                                         </div>
                                     )}
                                     {status === "success" ? (
@@ -285,10 +288,12 @@ export default function UserSignup() {
                             </div>
                             <div className="flex justify-around my-2">
                                 <div className=" cursor-pointer hover:underline">
-                                    <button onClick={()=>setShowMyModal1(true)}
+                                    <button
+                                        onClick={() => setShowMyModal1(true)}
                                         className=" hover:underline"
-                                    >Terms&Conditions</button>
-                                    
+                                    >
+                                        Terms&Conditions
+                                    </button>
                                 </div>
                                 <div className=" cursor-pointer hover:underline ">
                                     Support
