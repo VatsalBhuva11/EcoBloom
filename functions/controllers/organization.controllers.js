@@ -53,7 +53,8 @@ export const getOrgDetails = async (req, res) => {
         const orgId = req.params.orgId;
         const org = await Organization.findById(orgId).populate("orgPosts");
 
-        const { name, email, logo, banner, orgPosts, community } = org;
+        const { name, email, logo, banner, orgPosts, community, description } =
+            org;
         const communityData = await Community.findOne({
             organization: org.id,
         });
@@ -90,6 +91,7 @@ export const getOrgDetails = async (req, res) => {
             completedCampaigns,
             communityUsersCount: communityData.userCount,
             communityId: communityData._id,
+            description,
         };
         response_200(res, "Successfully fetched organization data!", data);
     } catch (err) {

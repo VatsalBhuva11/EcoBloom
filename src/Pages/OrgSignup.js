@@ -168,16 +168,16 @@ export default function UserSignup() {
                                         <div className="part2">
                                             <div>
                                                 <label
-                                                    for="text"
+                                                    for="description"
                                                     class="block my-2 text-md font-medium text-gray-900 "
                                                 >
                                                     Community Description
                                                     <sup> *</sup>
                                                 </label>
                                                 <input
-                                                    type="name"
-                                                    name="name"
-                                                    id="name"
+                                                    type="text"
+                                                    name="description"
+                                                    id="description"
                                                     class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                                                     placeholder="describe your organisation"
                                                     required

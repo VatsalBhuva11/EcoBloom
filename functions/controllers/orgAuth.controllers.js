@@ -46,7 +46,7 @@ async function uploadFile(email, file, extensions, paths) {
 
 router.post("/register", async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, description } = req.body;
         const files = req.files; //logo, banner, document
 
         if (!name || !email || !password) {
@@ -96,6 +96,7 @@ router.post("/register", async (req, res) => {
                             logo: paths["logo"],
                             banner: paths["banner"],
                             document: paths["document"],
+                            description,
                         });
                         const community = await Community.create({
                             organization: org.id,

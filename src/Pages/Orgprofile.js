@@ -316,11 +316,7 @@ const Orgprofile = () => {
                                 ABOUT US
                             </div>
                             <div className="mt-4 lg:text-xl text-center text-md ml-2 font-medium p-2">
-                                CleanEarth Initiatives believes in the power of
-                                collective action. We organize and support
-                                community-based cleanliness campaigns to address
-                                local environmental issues, ranging from litter
-                                and waste management to beautification projects.
+                                {org.description}
                             </div>
                         </div>
                     ) : status === "post" ? (

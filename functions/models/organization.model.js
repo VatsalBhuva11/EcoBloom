@@ -12,6 +12,12 @@ const Organization = new Schema({
         required: true,
         unique: true,
     },
+    description: {
+        type: String,
+        required: true,
+        default:
+            "We are committed towards helping this world a better place for everyone!",
+    },
     logo: {
         type: String,
         required: false,
