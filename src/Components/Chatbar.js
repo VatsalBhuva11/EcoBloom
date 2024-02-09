@@ -106,10 +106,10 @@ export default function Chatbar() {
                         />
                         <div className="flex flex-col">
                             <p className="text-[#eef0e5] text-[1.5rem] 2xl:text-xl mt-1 2xl:mt-0">
-                                Ducna Team
+                                {currComm.orgName}
                             </p>
                             <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
-                                32 members
+                                {currComm.userCount} members
                             </p>
                         </div>
                     </div>

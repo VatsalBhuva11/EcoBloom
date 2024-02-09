@@ -70,10 +70,10 @@ export default function ChatLeftBar() {
                                         />
                                         <div className="flex flex-col">
                                             <p className="text-gray-300 text-[0.88rem] xl:text-xl mt-1 xl:mt-0">
-                                                Ducna Team
+                                                {currComm.orgName}
                                             </p>
                                             <p className="text-gray-300 text-[0.75rem] xl:text-[1rem]">
-                                                32 members
+                                                {currComm.userCount} members
                                             </p>
                                         </div>
                                     </div>
@@ -90,11 +90,16 @@ export default function ChatLeftBar() {
                         All messages
                     </div>
                     <div className="mt-5 h-[70%] overflow-scroll overflow-x-hidden scrollbar-hide">
-                        <div className="flex flex-col gap-4 xl:gap-5 mt-5 ">
+                        <div className="flex flex-col xl:gap-5 mt-5 ">
                             {communities.map((community) => {
                                 return (
                                     <a href="#">
-                                        <div className="flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300">
+                                        <div
+                                            onClick={() => {
+                                                setCurrComm(community);
+                                            }}
+                                            className="h-full pt-2 flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300"
+                                        >
                                             <img
                                                 className="w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full"
                                                 src={person}
