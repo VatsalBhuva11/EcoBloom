@@ -188,6 +188,8 @@ const CampaignProfile = () => {
                                     "lll"
                                 )} - {moment(campaign.endDate).format("lll")}
                             </h1>
+                            <button className="md:text-lg text-sm mx-3 px-3 py-1 md:ml-10 lg:mr-6 md:px-5 md:py-2 text-gray-100 rounded-lg bg-gradient-to-r from-[#353657] to-[#404162] hover:from-[#353657] hover:to-[#0F1035]"
+                             >Add to Calender</button>
                             {!isRegistered ? (
                                 !clicked && status === null ? (
                                     <button

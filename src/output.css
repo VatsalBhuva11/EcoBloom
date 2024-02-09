@@ -3631,6 +3631,10 @@ html {
     width: 7rem;
   }
 
+  .md\:w-3\/4{
+    width: 75%;
+  }
+
   .md\:w-48{
     width: 12rem;
   }

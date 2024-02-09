@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useState } from "react";
+import Terms_Conditions from './Terms_Conditions.js'
 
 export default function UserSignup() {
     const [email, setEmail] = useState("");
@@ -11,6 +12,8 @@ export default function UserSignup() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [signUpClicked, setSignUpClicked] = useState(false);
     const [status, setStatus] = useState("none");
+    const [showMyModel1, setShowMyModal1] = useState(false);
+    const handleOnClose1 = () => setShowMyModal1(false);
 
     function emailSignUp(event) {
         setSignUpClicked(true);
@@ -62,11 +65,11 @@ export default function UserSignup() {
 
     return (
         <div className="h-screen">
-            <div className=" bg-[#EEF0E5]">
-                <div className=" flex justify-between items-center">
-                    <div className="flex flex-col items-center px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
-                        <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
-                            <div className="p-1 space-y-1 md:space-y-2 sm:p-3 px-4">
+            <div className=" bg-[#EEF0E5] ">
+                <div className=" flex justify-center">
+                    <div class="flex flex-col items-center md:w-3/4 w-screen justify-center h-screen lg:py-0 ">
+                        <div class="md:w-3/4 w-screen rounded-lg shadow  md:mt-0 mt-8  bg-gradient-to-b from-[#9db39b] to-transparent">
+                            <div class="p-1 space-y-1 md:space-y-2 sm:p-3 px-4">
                                 <div className="content">
                                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                                         Create Account
@@ -75,16 +78,17 @@ export default function UserSignup() {
                                         Just some details to get you in!
                                     </p>
                                 </div>
-
                                 <form
                                     className="space-y-2 md:space-y-4"
                                     action="#"
                                     id="emailSignUp"
                                 >
+                                    <div className="md:flex md:justify-between md:items-center">
+                                    <div className="part1 w-[40%]">
                                     <div>
                                         <label
                                             for="text"
-                                            className="block mb-2 text-sm font-medium text-gray-900 "
+                                            class="block my-2 text-md font-medium text-gray-900 "
                                         >
                                             Name<sup> *</sup>
                                         </label>
@@ -100,7 +104,7 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             for="email"
-                                            className="block mb-2 text-sm font-medium text-gray-900 "
+                                            class="block my-2 text-md font-medium text-gray-900 "
                                         >
                                             Email<sup> *</sup>
                                         </label>
@@ -120,7 +124,7 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             for="password"
-                                            className="block mb-2 text-sm font-medium text-gray-900"
+                                            class="block my-2 text-md font-medium text-gray-900"
                                         >
                                             Password<sup> *</sup>
                                         </label>
@@ -139,7 +143,7 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             for="password"
-                                            className="block mb-2 text-sm font-medium text-gray-900"
+                                            class="block my-2 text-md font-medium text-gray-900"
                                         >
                                             Confirm Password<sup> *</sup>
                                         </label>
@@ -157,9 +161,29 @@ export default function UserSignup() {
                                             }
                                         />
                                     </div>
+                                    </div>
+                                    <div className="part2">
                                     <div>
                                         <label
-                                            className="block mb-2 text-sm font-medium text-[#0f1035]"
+                                            for="text"
+                                            class="block my-2 text-md font-medium text-gray-900 "
+                                        >
+                                            Community Description<sup> *</sup>
+                                        </label>
+                                        <input
+                                            type="name"
+                                            name="name"
+                                            id="name"
+                                            class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                            placeholder="describe your organisation"
+                                            required
+                                        />
+                                    </div>
+                                    
+                                    <div>
+                                    
+                                        <label
+                                            class="block my-2 text-md font-medium text-[#0f1035]"
                                             for="document"
                                         >
                                             Upload Document<sup>*</sup>
@@ -176,7 +200,7 @@ export default function UserSignup() {
                                     </div>
                                     <div>
                                         <label
-                                            className="block mb-2 text-sm font-medium text-[#0f1035]"
+                                            class="block my-2 text-md font-medium text-[#0f1035]"
                                             for="logo"
                                         >
                                             Upload Logo<sup>*</sup>
@@ -193,14 +217,14 @@ export default function UserSignup() {
                                     </div>
                                     <div>
                                         <label
-                                            className="block mb-2 text-sm font-medium text-[#0f1035]"
+                                            class="block my-2 text-md font-medium text-[#0f1035]"
                                             for="banner"
                                         >
                                             Upload Banner<sup>*</sup>
                                         </label>
                                         <input
-                                            className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
-                                            aria-describedby="file_input_help"
+                                            class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                                            aria-describedby-="file_input_help"
                                             id="banner"
                                             name="banner"
                                             type="file"
@@ -208,22 +232,28 @@ export default function UserSignup() {
                                             required
                                         />
                                     </div>
+                                    </div>
+                                    </div>
                                     {!signUpClicked ? (
+                                        <div className="flex justify-center">
                                         <button
                                             type="submit"
-                                            className="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                            class="w-3/4 bg-[#0F1035] items-center text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
                                             onClick={emailSignUp}
                                         >
                                             Create Account
                                         </button>
+                                        </div>
                                     ) : (
+                                        <div className="flex justify-center">
                                         <button
                                             type="submit"
-                                            className="w-full bg-[#5a5d5f] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                            class="w-3/4 bg-[#5a5d5f] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
                                             disabled
                                         >
                                             Creating Account...
                                         </button>
+                                        </div>
                                     )}
                                     {status === "success" ? (
                                         <p className="text-md text-green-500 font-bold">
@@ -255,7 +285,10 @@ export default function UserSignup() {
                             </div>
                             <div className="flex justify-around my-2">
                                 <div className=" cursor-pointer hover:underline">
-                                    Terms&Conditions
+                                    <button onClick={()=>setShowMyModal1(true)}
+                                        className=" hover:underline"
+                                    >Terms&Conditions</button>
+                                    
                                 </div>
                                 <div className=" cursor-pointer hover:underline ">
                                     Support
@@ -266,15 +299,9 @@ export default function UserSignup() {
                             </div>
                         </div>
                     </div>
-                    <div className="image ">
-                        <img
-                            src={login}
-                            alt=".."
-                            className="hidden md:flex w-[50rem] h-auto"
-                        />
-                    </div>
                 </div>
             </div>
+            <Terms_Conditions onClose={handleOnClose1} visible={showMyModel1} />
         </div>
     );
 }

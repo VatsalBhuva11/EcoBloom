@@ -350,9 +350,11 @@ const Orgprofile = () => {
                             {org?.completedCampaigns?.length > 0
                                 ? org.completedCampaigns.map((campaign) => {
                                       return (
+                                        <div className="flex justify-center items-center">
                                           <PastCampaignsCards
                                               campaign={campaign}
                                           />
+                                          </div>
                                       );
                                   })
                                 : "No campaigns organised yet"}
