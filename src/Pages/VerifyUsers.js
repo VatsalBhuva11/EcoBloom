@@ -30,7 +30,7 @@ export default function VerifyUsers() {
         setLoader(true);
         if (auth.currentUser) {
             fetch(
-                `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}`
+                `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`
             )
                 .then((res) => res.json())
                 .then(async (data) => {
@@ -40,7 +40,7 @@ export default function VerifyUsers() {
                         const registeredUsers = await Promise.all(
                             data.data.registeredUsers.map(async (userId) => {
                                 const user = await fetch(
-                                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
+                                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
                                 );
                                 const userData = await user.json();
                                 return userData.data;
@@ -70,7 +70,7 @@ export default function VerifyUsers() {
         setClickedUserData({ userId, userName, campaignId: params.campaignId });
         setShowMyModal(true);
         // setShowVideo(!showVideo);
-        // fetch(`${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}/verify/${userId}`,{
+        // fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}/verify/${userId}`,{
         //     method:"PATCH"
         // }).then(res=>res.json())
         // .then(data=>{
