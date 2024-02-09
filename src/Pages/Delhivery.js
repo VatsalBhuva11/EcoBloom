@@ -29,7 +29,7 @@ const Delhivery = () => {
                 {/* 1st section */}
 
                 <div className=" hidden sm:flex mb-60 mx-auto">
-                    <div class="bg-[#e9e6e0]  border-indigo-600 mt-8  rounded-lg shadow-2xl flex flex-col align-middle">
+                    <div className="bg-[#e9e6e0]  border-indigo-600 mt-8  rounded-lg shadow-2xl flex flex-col align-middle">
                         <div>
                             {item === "tshirt" ? (
                                 <img src={shirt} className="p-2" alt="tshirt" />
@@ -58,47 +58,47 @@ const Delhivery = () => {
                             <span className="text-gray-700 font-semibold text-xl">
                                 Size
                             </span>
-                            <div class="flex space-x-2 mt-1">
-                                <label class="text-center">
+                            <div className="flex space-x-2 mt-1">
+                                <label className="text-center">
                                     <input
                                         type="radio"
-                                        class="flex items-center justify-center w-6 h-6"
+                                        className="flex items-center justify-center w-6 h-6"
                                         name="size"
                                         value="xs"
                                     />
                                     XS
                                 </label>
-                                <label class="text-center">
+                                <label className="text-center">
                                     <input
                                         type="radio"
-                                        class="flex items-center justify-center w-6 h-6"
+                                        className="flex items-center justify-center w-6 h-6"
                                         name="size"
                                         value="s"
                                     />
                                     S
                                 </label>
-                                <label class="text-center">
+                                <label className="text-center">
                                     <input
                                         type="radio"
-                                        class="flex items-center justify-center w-6 h-6"
+                                        className="flex items-center justify-center w-6 h-6"
                                         name="size"
                                         value="m"
                                     />
                                     M
                                 </label>
-                                <label class="text-center">
+                                <label className="text-center">
                                     <input
                                         type="radio"
-                                        class="flex items-center justify-center w-6 h-6"
+                                        className="flex items-center justify-center w-6 h-6"
                                         name="size"
                                         value="l"
                                     />
                                     L
                                 </label>
-                                <label class="text-center">
+                                <label className="text-center">
                                     <input
                                         type="radio"
-                                        class="flex items-center justify-center w-6 h-6"
+                                        className="flex items-center justify-center w-6 h-6"
                                         name="size"
                                         value="xl"
                                     />
@@ -142,47 +142,47 @@ const Delhivery = () => {
                                 <span className="text-gray-700 sm:hidden text-sm md:text-[16px] ">
                                     Size
                                 </span>
-                                <div class="flex space-x-1 md:space-x-2 mt-1 sm:hidden">
-                                    <label class="text-center">
+                                <div className="flex space-x-1 md:space-x-2 mt-1 sm:hidden">
+                                    <label className="text-center">
                                         <input
                                             type="radio"
-                                            class="flex items-center justify-center  w-4 h-4  bg-gray-100 rounded-lg dark:bg-gray-600"
+                                            className="flex items-center justify-center  w-4 h-4  bg-gray-100 rounded-lg dark:bg-gray-600"
                                             name="size"
                                             value="xs"
                                         />
                                         XS
                                     </label>
-                                    <label class="text-center">
+                                    <label className="text-center">
                                         <input
                                             type="radio"
-                                            class="flex items-center justify-center w-4 h-4 "
+                                            className="flex items-center justify-center w-4 h-4 "
                                             name="size"
                                             value="s"
                                         />
                                         S
                                     </label>
-                                    <label class="text-center">
+                                    <label className="text-center">
                                         <input
                                             type="radio"
-                                            class="flex items-center justify-center w-4 h-4 "
+                                            className="flex items-center justify-center w-4 h-4 "
                                             name="size"
                                             value="m"
                                         />
                                         M
                                     </label>
-                                    <label class="text-center">
+                                    <label className="text-center">
                                         <input
                                             type="radio"
-                                            class="flex items-center justify-center w-4 h-4 "
+                                            className="flex items-center justify-center w-4 h-4 "
                                             name="size"
                                             value="l"
                                         />
                                         L
                                     </label>
-                                    <label class="text-center">
+                                    <label className="text-center">
                                         <input
                                             type="radio"
-                                            class="flex items-center justify-center w-4 h-4 "
+                                            className="flex items-center justify-center w-4 h-4 "
                                             name="size"
                                             value="xl"
                                         />

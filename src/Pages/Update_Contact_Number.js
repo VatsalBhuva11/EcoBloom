@@ -69,7 +69,7 @@ const Update_Contact_Number = ({ visible, onClose }) => {
                 <div>
                     <label
                         for="phone"
-                        class="block mb-2 text-sm font-medium text-gray-900"
+                        className="block mb-2 text-sm font-medium text-gray-900"
                     >
                         Enter New Contact Number<sup> *</sup>
                     </label>
@@ -78,7 +78,7 @@ const Update_Contact_Number = ({ visible, onClose }) => {
                         name="phone"
                         id="phone"
                         placeholder="0000000000"
-                        class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                         required=""
                         onChange={(e) => {
                             setPhone(e.target.value);
@@ -88,7 +88,7 @@ const Update_Contact_Number = ({ visible, onClose }) => {
                 <div>
                     <label
                         for="confirmPhone"
-                        class="block mb-2 text-sm font-medium text-gray-900"
+                        className="block mb-2 text-sm font-medium text-gray-900"
                     >
                         Confirm New Contact No.<sup> *</sup>
                     </label>
@@ -97,7 +97,7 @@ const Update_Contact_Number = ({ visible, onClose }) => {
                         name="confirmPhone"
                         id="confirmPhone"
                         placeholder="0000000000"
-                        class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                         required
                         onChange={(e) => {
                             setConfirmPhone(e.target.value);

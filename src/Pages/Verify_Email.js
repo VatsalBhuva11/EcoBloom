@@ -17,12 +17,12 @@ const Verify_Email = ({ visible, onClose }) => {
                 <div>
                     <label
                         for="password"
-                        class="block mb-2 text-sm font-medium text-gray-900"
+                        className="block mb-2 text-sm font-medium text-gray-900"
                     ></label>
                     <input
                         type="email"
                         placeholder="Enter Registered E-mail"
-                        class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                         required=""
                     />
                     <p className="text-[12px] mt-1 ml-2">

@@ -105,18 +105,18 @@ const Change_profile = ({ visible, onClose }) => {
         >
             <div className="bg-[#CDE1C9] p-7 rounded w-96 flex flex-col justify-center mt-7 gap-3">
                 <form
-                    class="space-y-2 md:space-y-4"
+                    className="space-y-2 md:space-y-4"
                     action="#"
                     id="emailSignUp"
                 >
                     <label
-                        class="block mb-2 text-sm font-medium text-[#0f1035]"
+                        className="block mb-2 text-sm font-medium text-[#0f1035]"
                         for="file_input"
                     >
                         Upload Photo<sup>*</sup>
                     </label>
                     <input
-                        class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                        className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
                         aria-describedby="file_input_help"
                         id="profile"
                         name="profile"

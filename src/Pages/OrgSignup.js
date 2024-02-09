@@ -64,11 +64,11 @@ export default function UserSignup() {
         <div className="h-screen">
             <div className=" bg-[#EEF0E5]">
                 <div className=" flex justify-between items-center">
-                    <div class="flex flex-col items-center px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
-                        <div class="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
-                            <div class="p-1 space-y-1 md:space-y-2 sm:p-3 px-4">
+                    <div className="flex flex-col items-center px-6 py-8 w-[50rem] justify-center md:h-screen lg:py-0 ">
+                        <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
+                            <div className="p-1 space-y-1 md:space-y-2 sm:p-3 px-4">
                                 <div className="content">
-                                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                                    <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                                         Create Account
                                     </h1>
                                     <p className=" text-xs">
@@ -77,14 +77,14 @@ export default function UserSignup() {
                                 </div>
 
                                 <form
-                                    class="space-y-2 md:space-y-4"
+                                    className="space-y-2 md:space-y-4"
                                     action="#"
                                     id="emailSignUp"
                                 >
                                     <div>
                                         <label
                                             for="text"
-                                            class="block mb-2 text-sm font-medium text-gray-900 "
+                                            className="block mb-2 text-sm font-medium text-gray-900 "
                                         >
                                             Name<sup> *</sup>
                                         </label>
@@ -92,7 +92,7 @@ export default function UserSignup() {
                                             type="name"
                                             name="name"
                                             id="name"
-                                            class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                                             placeholder="John Doe"
                                             required
                                         />
@@ -100,7 +100,7 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             for="email"
-                                            class="block mb-2 text-sm font-medium text-gray-900 "
+                                            className="block mb-2 text-sm font-medium text-gray-900 "
                                         >
                                             Email<sup> *</sup>
                                         </label>
@@ -108,7 +108,7 @@ export default function UserSignup() {
                                             type="email"
                                             name="email"
                                             id="email"
-                                            class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                                             placeholder="johndoe@example.com"
                                             onChange={(e) =>
                                                 setEmail(e.target.value)
@@ -120,7 +120,7 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             for="password"
-                                            class="block mb-2 text-sm font-medium text-gray-900"
+                                            className="block mb-2 text-sm font-medium text-gray-900"
                                         >
                                             Password<sup> *</sup>
                                         </label>
@@ -129,7 +129,7 @@ export default function UserSignup() {
                                             name="password"
                                             id="password"
                                             placeholder="••••••••"
-                                            class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                                             onChange={(e) =>
                                                 setPassword(e.target.value)
                                             }
@@ -139,7 +139,7 @@ export default function UserSignup() {
                                     <div>
                                         <label
                                             for="password"
-                                            class="block mb-2 text-sm font-medium text-gray-900"
+                                            className="block mb-2 text-sm font-medium text-gray-900"
                                         >
                                             Confirm Password<sup> *</sup>
                                         </label>
@@ -148,7 +148,7 @@ export default function UserSignup() {
                                             name="confirmPassword"
                                             id="confirmPassword"
                                             placeholder="••••••••"
-                                            class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                                             required=""
                                             onChange={(e) =>
                                                 setConfirmPassword(
@@ -159,13 +159,13 @@ export default function UserSignup() {
                                     </div>
                                     <div>
                                         <label
-                                            class="block mb-2 text-sm font-medium text-[#0f1035]"
+                                            className="block mb-2 text-sm font-medium text-[#0f1035]"
                                             for="document"
                                         >
                                             Upload Document<sup>*</sup>
                                         </label>
                                         <input
-                                            class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                                            className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
                                             aria-describedby="file_input_help"
                                             id="document"
                                             name="document"
@@ -176,13 +176,13 @@ export default function UserSignup() {
                                     </div>
                                     <div>
                                         <label
-                                            class="block mb-2 text-sm font-medium text-[#0f1035]"
+                                            className="block mb-2 text-sm font-medium text-[#0f1035]"
                                             for="logo"
                                         >
                                             Upload Logo<sup>*</sup>
                                         </label>
                                         <input
-                                            class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                                            className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
                                             aria-describedby="file_input_help"
                                             id="logo"
                                             name="logo"
@@ -193,13 +193,13 @@ export default function UserSignup() {
                                     </div>
                                     <div>
                                         <label
-                                            class="block mb-2 text-sm font-medium text-[#0f1035]"
+                                            className="block mb-2 text-sm font-medium text-[#0f1035]"
                                             for="banner"
                                         >
                                             Upload Banner<sup>*</sup>
                                         </label>
                                         <input
-                                            class="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                                            className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
                                             aria-describedby="file_input_help"
                                             id="banner"
                                             name="banner"
@@ -211,7 +211,7 @@ export default function UserSignup() {
                                     {!signUpClicked ? (
                                         <button
                                             type="submit"
-                                            class="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                            className="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
                                             onClick={emailSignUp}
                                         >
                                             Create Account
@@ -219,31 +219,34 @@ export default function UserSignup() {
                                     ) : (
                                         <button
                                             type="submit"
-                                            class="w-full bg-[#5a5d5f] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                            className="w-full bg-[#5a5d5f] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
                                             disabled
                                         >
                                             Creating Account...
                                         </button>
                                     )}
                                     {status === "success" ? (
-                                        <p class="text-md text-green-500 font-bold">
+                                        <p className="text-md text-green-500 font-bold">
                                             Successfully registered
                                             organization!{" "}
-                                            <a href="/login" class="underline">
+                                            <a
+                                                href="/login"
+                                                className="underline"
+                                            >
                                                 Please login to continue.
                                             </a>
                                         </p>
                                     ) : status === "failure" ? (
-                                        <p class="text-md text-red-500">
+                                        <p className="text-md text-red-500">
                                             Error occurred while registering
                                             user. Please try again.
                                         </p>
                                     ) : null}
-                                    <p class="text-sm  text-black">
+                                    <p className="text-sm  text-black">
                                         Already have an account?{" "}
                                         <Link
                                             to="/login"
-                                            class="font-bold text-primary-600 hover:underline "
+                                            className="font-bold text-primary-600 hover:underline "
                                         >
                                             Log In
                                         </Link>

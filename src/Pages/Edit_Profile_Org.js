@@ -67,7 +67,7 @@ const Edit_Profile_Org = () => {
 
     return (
         <div className='absolute w-screen bg-[url("./assets/images/profile_bg.jpg")] bg-cover h-screen'>
-            <div class="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
+            <div className="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
                 <button
                     onClick={() => {
                         navigate(-1);
@@ -76,49 +76,49 @@ const Edit_Profile_Org = () => {
                 >
                     <IoArrowBackSharp />
                 </button>
-                <div class="flex justify-center">
+                <div className="flex justify-center">
                     <img
                         src={profile.logo}
                         alt=""
-                        class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
+                        className="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
                     />
                 </div>
 
-                <div class="mt-3">
-                    <h1 class="font-bold text-center text-3xl text-gray-900">
+                <div className="mt-3">
+                    <h1 className="font-bold text-center text-3xl text-gray-900">
                         {profile.name}
                     </h1>
-                    {/* <p class="text-center text-sm text-gray-400 font-medium">
+                    {/* <p className="text-center text-sm text-gray-400 font-medium">
                         New York
                     </p> */}
                     <p>
                         <span></span>
                     </p>
 
-                    <div class="w-full">
-                        {/* <h3 class="font-medium text-gray-900 text-left px-6">Recent activites</h3> */}
-                        <div class="mt-5 w-full flex flex-col items-center overflow-hidden text-sm">
+                    <div className="w-full">
+                        {/* <h3 className="font-medium text-gray-900 text-left px-6">Recent activites</h3> */}
+                        <div className="mt-5 w-full flex flex-col items-center overflow-hidden text-sm">
                             <a
                                 onClick={() => setShowMyModal(true)}
                                 href="#"
-                                class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150"
+                                className="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150"
                             >
                                 <img
                                     src={logo}
                                     alt=""
-                                    class="rounded-full h-6 shadow-md inline-block mr-2"
+                                    className="rounded-full h-6 shadow-md inline-block mr-2"
                                 />
                                 Edit Password
                             </a>
                             <a
                                 onClick={() => setShowMyModal1(true)}
                                 href="#"
-                                class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150"
+                                className="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150"
                             >
                                 <img
                                     src={logo}
                                     alt=""
-                                    class="rounded-full h-6 shadow-md inline-block mr-2"
+                                    className="rounded-full h-6 shadow-md inline-block mr-2"
                                 />
                                 Change Profile Photo
                             </a>
@@ -126,12 +126,12 @@ const Edit_Profile_Org = () => {
                             <a
                                 onClick={() => setShowMyModal2(true)}
                                 href="#"
-                                class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150"
+                                className="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150"
                             >
                                 <img
                                     src={logo}
                                     alt=""
-                                    class="rounded-full h-6 shadow-md inline-block mr-2"
+                                    className="rounded-full h-6 shadow-md inline-block mr-2"
                                 />
                                 Change Profile banner
                             </a>
@@ -139,23 +139,23 @@ const Edit_Profile_Org = () => {
                             <a
                                 onClick={() => setShowMyModal3(true)}
                                 href="#"
-                                class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150"
+                                className="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150"
                             >
                                 <img
                                     src={logo}
                                     alt=""
-                                    class="rounded-full h-6 shadow-md inline-block mr-2"
+                                    className="rounded-full h-6 shadow-md inline-block mr-2"
                                 />
                                 Verify email
                             </a>
-                            <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150">
+                            <a className="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 block hover:bg-gray-100 transition duration-150">
                                 <button onClick={handleLinkWithGoogle}>
                                     <div className="flex items-center">
-                                        <div class="flex items-center justify-center bg-white w-9 h-9 r rounded-full mr-3">
+                                        <div className="flex items-center justify-center bg-white w-9 h-9 r rounded-full mr-3">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24"
-                                                class="w-5 h-5"
+                                                className="w-5 h-5"
                                             >
                                                 <title>
                                                     Sign in with Google
@@ -163,19 +163,19 @@ const Edit_Profile_Org = () => {
                                                 <desc>Google G Logo</desc>
                                                 <path
                                                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                                                    class="fill-google-logo-blue"
+                                                    className="fill-google-logo-blue"
                                                 ></path>
                                                 <path
                                                     d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                                                    class="fill-google-logo-green"
+                                                    className="fill-google-logo-green"
                                                 ></path>
                                                 <path
                                                     d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                                                    class="fill-google-logo-yellow"
+                                                    className="fill-google-logo-yellow"
                                                 ></path>
                                                 <path
                                                     d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                                                    class="fill-google-logo-red"
+                                                    className="fill-google-logo-red"
                                                 ></path>
                                             </svg>
                                         </div>

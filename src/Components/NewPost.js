@@ -68,7 +68,7 @@ const NewPost = ({ visible, onClose }) => {
                 </div>
                 <form id="postForm">
                     <input
-                        class="block w-full text-sm  file:bg-[#0f1035] mt-4  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                        className="block w-full text-sm  file:bg-[#0f1035] mt-4  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
                         type="file"
                         name="photo"
                         accept="image/*"
@@ -77,7 +77,7 @@ const NewPost = ({ visible, onClose }) => {
                     <div className="mt-4">
                         <label
                             for="text"
-                            class="block mb-2 text-sm font-medium text-gray-900 "
+                            className="block mb-2 text-sm font-medium text-gray-900 "
                         >
                             Caption for post
                         </label>
@@ -85,7 +85,7 @@ const NewPost = ({ visible, onClose }) => {
                             type="text"
                             name="caption"
                             id="caption"
-                            class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                             required
                         />
                         <div className="flex justify-around mt-7 mb-5">

@@ -99,13 +99,13 @@ const Store = () => {
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-12 content-center mt-8 pb-6">
                     <div className="flex justify-center items-center">
-                        <div class="bg-[#DFE4C5] rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col justify-center">
+                        <div className="bg-[#DFE4C5] rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col justify-center">
                             <div>
                                 <img src={shirt} className="p-2" alt="tshirt" />
                             </div>
                             <div className="flex justify-between">
                                 <div>
-                                    <h5 class="p-4 text-md md:text-xl text-gray-900">
+                                    <h5 className="p-4 text-md md:text-xl text-gray-900">
                                         EcoBloom T-Shirt
                                     </h5>{" "}
                                 </div>
@@ -143,13 +143,13 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div class="bg-[#DFE4C5] rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col">
                             <div>
                                 <img src={cap} className="p-2" alt="cap" />
                             </div>
                             <div className="flex justify-between">
                                 <div>
-                                    <h5 class="p-4 text-md md:text-xl text-gray-900">
+                                    <h5 className="p-4 text-md md:text-xl text-gray-900">
                                         EcoBloom Cap
                                     </h5>{" "}
                                 </div>
@@ -186,13 +186,13 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div class="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
                             <div>
                                 <img src={bag} className="p-2" alt="bag" />
                             </div>
                             <div className="flex justify-between">
                                 <div>
-                                    <h5 class="p-4 text-md md:text-xl text-gray-900 ">
+                                    <h5 className="p-4 text-md md:text-xl text-gray-900 ">
                                         EcoBloom JuteBag
                                     </h5>{" "}
                                 </div>
@@ -229,7 +229,7 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div class="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
                             <div>
                                 <img
                                     src={hoodie}
@@ -239,7 +239,7 @@ const Store = () => {
                             </div>
                             <div className="flex justify-between">
                                 <div>
-                                    <h5 class="p-4 text-md md:text-xl text-gray-900 ">
+                                    <h5 className="p-4 text-md md:text-xl text-gray-900 ">
                                         EcoBloom Hoodie
                                     </h5>{" "}
                                 </div>
@@ -276,13 +276,13 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div class="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
                             <div>
                                 <img src={book} className="p-2" alt="book" />
                             </div>
                             <div className="flex justify-between">
                                 <div>
-                                    <h5 class="p-4 text-md md:text-xl text-gray-900 ">
+                                    <h5 className="p-4 text-md md:text-xl text-gray-900 ">
                                         EcoBloom Notebook
                                     </h5>{" "}
                                 </div>
@@ -319,7 +319,7 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div class="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
                             <div>
                                 <img
                                     src={keychain}
@@ -329,7 +329,7 @@ const Store = () => {
                             </div>
                             <div className="flex justify-between">
                                 <div>
-                                    <h5 class="p-4 text-md md:text-xl text-gray-900 ">
+                                    <h5 className="p-4 text-md md:text-xl text-gray-900 ">
                                         EcoBloom Keychain
                                     </h5>{" "}
                                 </div>

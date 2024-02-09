@@ -11,7 +11,10 @@ import Community, {
 import Campaign, {
     Campaign as CampaignSchema,
 } from "../models/campaign.model.js";
-import User from "../models/user.model.js";
+import User, { User as UserSchema } from "../models/user.model.js";
+import Organization, {
+    Organization as OrganizationSchema,
+} from "../models/organization.model.js";
 import filesUpload from "../middlewares/upload.middleware.js";
 import { storage } from "../config/firebase.config.js";
 
@@ -27,6 +30,68 @@ const router = express.Router();
 //required for populating the registeredCampaigns and completedCampaigns
 mongoose.model("Community", CommunitySchema);
 mongoose.model("Campaign", CampaignSchema);
+mongoose.model("User", UserSchema);
+mongoose.model("Organization", OrganizationSchema);
+
+router.get("/communities", checkUser, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const joinedCommunities = await Community.find({
+            joinedUsers: userId,
+        })
+            .populate("joinedUsers")
+            .populate("organization");
+        response_200(
+            res,
+            "Successfully fetched user's communities and related info",
+            joinedCommunities
+        );
+    } catch (err) {
+        response_500(res, "Error occurred while fetching user's communities");
+    }
+});
+
+router.post("/linkPassword", checkUser, async (req, res) => {
+    try {
+        const { password, uid } = req.body;
+        const userId = req.user.userId;
+
+        const user = await User.findById(userId);
+        if (!user) {
+            response_404(res, "User not found");
+        } else {
+            auth.updateUser(uid, {
+                password: password,
+            })
+                .then((userRecord) => {
+                    console.log(userRecord);
+                    response_200(
+                        res,
+                        "Successfully linked with password",
+                        user
+                    );
+                })
+                .catch((error) => {
+                    console.log("error while linking: ", error);
+                    response_500(
+                        res,
+                        "Error occurred while linking with password",
+                        error
+                    );
+                });
+            // const credential = auth.GoogleAuthProvider.credential(
+            //     user.providerData[0].uid
+            // );
+            // await auth.updateUser(uid, {
+            //     password: password,
+            // });
+            // response_200(res, "Successfully linked with password", user);
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while linking with password", err);
+    }
+});
 
 router.get("/:userId", async (req, res) => {
     try {
@@ -205,47 +270,6 @@ router.get("/:userId/activity", async (req, res) => {
     } catch (err) {
         console.log(err);
         response_500(res, "Error occurred while fetching user's activity", err);
-    }
-});
-router.post("/linkPassword", checkUser, async (req, res) => {
-    try {
-        const { password, uid } = req.body;
-        const userId = req.user.userId;
-
-        const user = await User.findById(userId);
-        if (!user) {
-            response_404(res, "User not found");
-        } else {
-            auth.updateUser(uid, {
-                password: password,
-            })
-                .then((userRecord) => {
-                    console.log(userRecord);
-                    response_200(
-                        res,
-                        "Successfully linked with password",
-                        user
-                    );
-                })
-                .catch((error) => {
-                    console.log("error while linking: ", error);
-                    response_500(
-                        res,
-                        "Error occurred while linking with password",
-                        error
-                    );
-                });
-            // const credential = auth.GoogleAuthProvider.credential(
-            //     user.providerData[0].uid
-            // );
-            // await auth.updateUser(uid, {
-            //     password: password,
-            // });
-            // response_200(res, "Successfully linked with password", user);
-        }
-    } catch (err) {
-        console.log(err);
-        response_500(res, "Error occurred while linking with password", err);
     }
 });
 

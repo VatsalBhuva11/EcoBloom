@@ -9,7 +9,6 @@ export default async function checkUser(req, res, next) {
     try {
         let token = req.headers["authorization"];
         token = token.split(" ")[1];
-
         auth.verifyIdToken(token)
             .then((decodedToken) => {
                 if (decodedToken.role === "user") {
@@ -18,6 +17,7 @@ export default async function checkUser(req, res, next) {
                         name: decodedToken.name,
                         email: decodedToken.email,
                     };
+                    console.log("User verified");
                     next();
                 } else {
                     response_403(res, "Forbidden");

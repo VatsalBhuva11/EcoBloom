@@ -1396,6 +1396,10 @@ video {
   max-width: 100%;
 }
 
+.basis-4{
+  flex-basis: 1rem;
+}
+
 .basis-\[25\%\]{
   flex-basis: 25%;
 }

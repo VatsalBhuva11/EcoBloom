@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read: if true;
+      allow create, update, delete, write: if request.auth != null;
+    }
+  }
+}
+
+//The  allow read: if true; means that anyone can read your database. The allow create, update, delete, write: if request.auth != null; means only authenticated clients can create, update, delete, and write to your database.

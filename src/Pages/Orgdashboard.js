@@ -339,11 +339,11 @@ const Orgdashboard = () => {
 
                     <div className="search w-[98%]  md:ml-4 lg:ml-8 mt-14">
                         <form>
-                            <div class="flex">
+                            <div className="flex">
                                 <input
                                     type="search"
                                     id="default-search"
-                                    class="block p-1 lg:p-2 text-md lg:text-xl text-gray-200 rounded-lg bg-[#353657] focus:ring-white focus:border-white"
+                                    className="block p-1 lg:p-2 text-md lg:text-xl text-gray-200 rounded-lg bg-[#353657] focus:ring-white focus:border-white"
                                     placeholder="search"
                                 />
                                 <FaSearch
@@ -499,11 +499,11 @@ const Orgdashboard = () => {
 
                     <div className="search w-[98%]  ml-10 mt-6">
                         <form>
-                            <div class="flex">
+                            <div className="flex">
                                 <input
                                     type="search"
                                     id="default-search"
-                                    class="block p-1 lg:p-2 text-md lg:text-xl text-gray-200 rounded-lg bg-[#353657] focus:ring-white focus:border-white"
+                                    className="block p-1 lg:p-2 text-md lg:text-xl text-gray-200 rounded-lg bg-[#353657] focus:ring-white focus:border-white"
                                     placeholder="search"
                                 />
                             </div>

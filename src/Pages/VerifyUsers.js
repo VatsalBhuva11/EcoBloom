@@ -155,38 +155,50 @@ export default function VerifyUsers() {
             </div>
 
             <div className=" flex flex-col justify-start h-[56%] mt-14">
-                <div class="relative overflow-x-hidden overflow-scroll ] rounded-2xl p-6">
-                    <table class="w-full text-sm  text-left rtl:text-right border-black ">
-                        <thead class=" text-sm bg-gradient-to-r from-[#353657] to-[#404162] ">
+                <div className="relative overflow-x-hidden overflow-scroll ] rounded-2xl p-6">
+                    <table className="w-full text-sm  text-left rtl:text-right border-black ">
+                        <thead className=" text-sm bg-gradient-to-r from-[#353657] to-[#404162] ">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-white">
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-white"
+                                >
                                     Name
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-white">
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-white"
+                                >
                                     Email
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-white">
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-white"
+                                >
                                     Phone No.
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-white">
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-white"
+                                >
                                     Status
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             {users.map((user) => (
-                                <tr class="bg-white border-b  hover:bg-gray-50 ">
+                                <tr className="bg-white border-b  hover:bg-gray-50 ">
                                     <th
                                         scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
                                     >
                                         {user.name}
                                     </th>
-                                    <td class="px-6 py-4">{user.email}</td>
-                                    <td class="px-6 py-4">
+                                    <td className="px-6 py-4">{user.email}</td>
+                                    <td className="px-6 py-4">
                                         {user.phone ? user.phone : "-"}
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td className="px-6 py-4">
                                         {campaign.verifiedUsers.includes(
                                             user.id
                                         ) ? (

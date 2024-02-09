@@ -202,7 +202,7 @@ const Orgprofile = () => {
                         <input
                             type="search"
                             id="default-search"
-                            class=" md:ml-2 py-1 px-2 text-md lg:text-xl text-gray-200 rounded-lg bg-[#353657] focus:ring-white focus:border-white w-[250px] md:w-[450px]"
+                            className=" md:ml-2 py-1 px-2 text-md lg:text-xl text-gray-200 rounded-lg bg-[#353657] focus:ring-white focus:border-white w-[250px] md:w-[450px]"
                             placeholder="search"
                         />
                     </div>

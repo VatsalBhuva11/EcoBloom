@@ -68,7 +68,7 @@ const EditPassword = ({ visible, onClose }) => {
                 <div>
                     <label
                         for="password"
-                        class="block mb-2 text-sm font-medium text-gray-900"
+                        className="block mb-2 text-sm font-medium text-gray-900"
                     >
                         Old Password (leave blank if no password set)
                     </label>
@@ -76,13 +76,13 @@ const EditPassword = ({ visible, onClose }) => {
                         type="password"
                         name="confirmPassword"
                         placeholder="••••••••"
-                        class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                     />
                 </div>
                 <div>
                     <label
                         for="password"
-                        class="block mb-2 text-sm font-medium text-gray-900"
+                        className="block mb-2 text-sm font-medium text-gray-900"
                     >
                         New Password<sup> *</sup>
                     </label>
@@ -91,7 +91,7 @@ const EditPassword = ({ visible, onClose }) => {
                         name="password"
                         id="password"
                         placeholder="••••••••"
-                        class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focyus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                         onChange={(e) => {
                             setPassword(e.target.value);
                         }}
@@ -101,7 +101,7 @@ const EditPassword = ({ visible, onClose }) => {
                 <div>
                     <label
                         for="password"
-                        class="block mb-2 text-sm font-medium text-gray-900"
+                        className="block mb-2 text-sm font-medium text-gray-900"
                     >
                         Confirm Password<sup> *</sup>
                     </label>
@@ -110,7 +110,7 @@ const EditPassword = ({ visible, onClose }) => {
                         name="confirmPassword"
                         id="confirmPassword"
                         placeholder="••••••••"
-                        class=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                         onChange={(e) => {
                             setConfirmPassword(e.target.value);
                         }}
