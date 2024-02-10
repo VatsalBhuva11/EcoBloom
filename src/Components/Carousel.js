@@ -57,7 +57,7 @@ export default function Carousel() {
                 <div className="w-full">
                     <Slider {...settings} className="flex justify-center p-16">
                         {data.map((data) => (
-                            <div className="bg-transparent h-[70%px] border-solid border-2 border-black shadow-xl flex flex-col justify-center items-center text-black rounded-xl gap-4">
+                            <div className="bg-transparent h-[70%] border-solid border-2 border-black shadow-xl flex flex-col justify-center items-center text-black rounded-xl gap-4">
                                 <div className="h-28 w-full rounded-t-xl justify-center text-center flex items-center">
                                     <img
                                         src={data.img}
@@ -102,28 +102,28 @@ const data = [
         name: "Emily Chen",
         img: emilychen,
         content:
-        "Being a student, EcoBloom has made it easy for me to actively participate in environmental campaigns. I feel proud to be a part of EcoBloom  ",
+       "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiative which improves sustainability.",
         position: "Student and Eco-Enthusiast",
     },
     {
         name: "James Anderson",
         img: james,
         content:
-        "EcoBloom's technological integration is impressive. As a tech entrepreneur, I appreciate the seamless user experience and the platform's adaptability.",
+        "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiative which improves sustainability.",
         position: "Tech Entrepreneur",
     },
     {
         name: "Dr. Maria Garcia",
         img: maria,
         content:
-        "From a scientific perspective, EcoBloom stands out in its ability to measure and showcase the impact of campaigns.The awareness it creates is commendable.",
+        "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiative which improves sustainability.",
         position: "Environmental Scientist",
     },
     {
         name: "Raj Patel",
         img: raj,
         content:
-        "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiatives.",
+        "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiative which improves sustainability.",
         position: "Small Business Owner",
     },
 ];
