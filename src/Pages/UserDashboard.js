@@ -57,98 +57,85 @@ const UserDashboard = () => {
 
   moment().format("MMMM Do YYYY");
 
-    useEffect(() => {
-        console.log("CURRENT USER: ", auth.currentUser);
-        if (auth.currentUser) {
-            auth.currentUser
-                .getIdTokenResult()
-                .then((tokenResult) => {
-                    return tokenResult.claims.userId;
+  useEffect(() => {
+    console.log("CURRENT USER: ", auth.currentUser);
+    if (auth.currentUser) {
+      auth.currentUser
+        .getIdTokenResult()
+        .then((tokenResult) => {
+          return tokenResult.claims.userId;
+        })
+        .then((userId) => {
+          Promise.all([
+            fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`),
+            fetch(
+              `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/upcoming`
+            ),
+          ])
+            .then((responses) => {
+              // responses[0] corresponds to the result of the first fetch
+              // responses[1] corresponds to the result of the second fetch
+              return Promise.all(responses.map((response) => response.json()));
+            })
+            .then((data) => {
+              // data[0] contains the parsed JSON from the first response
+              // data[1] contains the parsed JSON from the second response
+              console.log(data);
+              const storageRef = ref(storage, data[0].data.photoPathFirestore);
+              getDownloadURL(storageRef)
+                .then(function (url) {
+                  setProfile({
+                    url,
+                    name: data[0].data.name,
+                  });
+                  localStorage.setItem(
+                    "profile",
+                    JSON.stringify({
+                      profileUrl: url,
+                      profileName: data[0].data.name,
+                    })
+                  );
+                  // setName(data[0].data.name);
+                  setCommunities(data[0].data.communities);
+                  setLoader(false);
+                  setCampaigns(data[1].data);
+                  setMarkers(
+                    data[1].data.map((campaign) => {
+                      return {
+                        campaignId: campaign._id,
+                        campaignName: campaign.name,
+                        organizationName: campaign.organization.name,
+                        location: {
+                          lat: campaign.latitude,
+                          lng: campaign.longitude,
+                        },
+                        startDate: campaign.startDate,
+                        endDate: campaign.endDate,
+                        locationType: campaign.locationType,
+                        address: campaign.address,
+                        city: campaign.city,
+                        country: campaign.country,
+                        registeredUsersCount: campaign.registeredUsersCount,
+                      };
+                    })
+                  );
+                  console.log(data[1].data);
                 })
-                .then((userId) => {
-                    Promise.all([
-                        fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
-                        ),
-                        fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/upcoming`
-                        ),
-                    ])
-                        .then((responses) => {
-                            // responses[0] corresponds to the result of the first fetch
-                            // responses[1] corresponds to the result of the second fetch
-                            return Promise.all(
-                                responses.map((response) => response.json())
-                            );
-                        })
-                        .then((data) => {
-                            // data[0] contains the parsed JSON from the first response
-                            // data[1] contains the parsed JSON from the second response
-                            console.log(data);
-                            const storageRef = ref(
-                                storage,
-                                data[0].data.photoPathFirestore
-                            );
-                            getDownloadURL(storageRef)
-                                .then(function (url) {
-                                    setProfile({
-                                        url,
-                                        name: data[0].data.name,
-                                    });
-                                    localStorage.setItem(
-                                        "profile",
-                                        JSON.stringify({
-                                            profileUrl: url,
-                                            profileName: data[0].data.name,
-                                        })
-                                    );
-                                    // setName(data[0].data.name);
-                                    setCommunities(data[0].data.communities);
-                                    setLoader(false);
-                                    setCampaigns(data[1].data);
-                                    setMarkers(
-                                        data[1].data.map((campaign) => {
-                                            return {
-                                                campaignId: campaign._id,
-                                                campaignName: campaign.name,
-                                                organizationName:
-                                                    campaign.organization.name,
-                                                location: {
-                                                    lat: campaign.latitude,
-                                                    lng: campaign.longitude,
-                                                },
-                                                startDate: campaign.startDate,
-                                                endDate: campaign.endDate,
-                                                locationType:
-                                                    campaign.locationType,
-                                                address: campaign.address,
-                                                city: campaign.city,
-                                                country: campaign.country,
-                                                registeredUsersCount:
-                                                    campaign.registeredUsersCount,
-                                            };
-                                        })
-                                    );
-                                    console.log(data[1].data);
-                                })
-                                .catch(function (error) {
-                                    console.error(error);
-                                });
-                        })
-                        .catch((err) => {
-                            console.error(
-                                "ERROR WHILE FETCHING USER DATA: ",
-                                err
-                            );
-                        });
-                })
-                .catch((err) => {
-                    console.error("ERROR IN auth.currentUser: ", err);
+                .catch(function (error) {
+                  console.error(error);
                 });
-        } else {
-            window.location.replace("/login");
-        }
-    }, [user]);
+            })
+            .catch((err) => {
+              console.error("ERROR WHILE FETCHING USER DATA: ", err);
+            });
+        })
+        .catch((err) => {
+          console.error("ERROR IN auth.currentUser: ", err);
+        });
+    } else {
+      window.location.replace("/login");
+    }
+  }, [user]);
 
   const [search, setSearch] = useState("");
   if (loading || loader) {
@@ -179,7 +166,7 @@ const UserDashboard = () => {
               alt=""
             />
           </Link>
-          <div className="ml-5 xl:m-6 text-3xl font-bold hidden xl:flex">
+          <div className="ml-5 xl:m-6 text-2xl font-bold hidden xl:flex">
             USER DASHBOARD
           </div>
           <a className="flex items-center sm:text-2xl md:text-3xl lg:text-3xl m-5 xl:m-8 sm:m-7 lg:m-6 gap-1 sm:gap-2 lg:gap-3 cursor-pointer ">
@@ -251,55 +238,57 @@ const UserDashboard = () => {
 
       <div className="flex h-full">
         <div className="hidden xl:flex bg-[#0f1035] w-[25%] flex-col justify-between place-items-center gap-0 items-center pb-0 border-t border-[#eef0e5]">
-          <div className="flex flex-col justify-start items-center">
-            <p className="text-[#eef0e5] text-2xl 2xl:text-2xl font-bold my-1 mt-1">
+          <div className="flex flex-col justify-start items-center w-full h-full mb-3">
+            <p className="text-[#eef0e5] text-2xl 2xl:text-2xl font-bold mt-3 mb-4">
               Joined Communities
             </p>
-            <input
-              onChange={(e) => setSearch(e.target.value)}
-              type="text"
-              className="w-full h-8 rounded-2xl px-4 border-2 border-[##eef0e5] mx-2"
-              placeholder="🔍"
-            />
-            <div className="flex flex-col gap-2 2xl:gap-5 overflow-scroll overflow-x-hidden w-full px-3">
-              {communities ? (
-                communities
-                  .filter((community) => {
-                    return search.toLowerCase() === ""
-                      ? community
-                      : community.orgName.toLowerCase().includes(search);
-                  })
-                  .map((community, key) => (
-                    <a
-                      key={key}
-                      href={"/org/profile/" + community.organization}
-                    >
-                      <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300">
-                        <img
-                          className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
-                          src={person}
-                          alt=""
-                        />
-                        <div className="flex flex-col">
-                          <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0 overflow-hidden">
-                            {community.orgName}
-                          </p>
-                          <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
-                            {community.userCount} People
-                          </p>
+            <div className="h-full flex flex-col">
+              <input
+                onChange={(e) => setSearch(e.target.value)}
+                type="text"
+                className=" h-8 rounded-2xl border-2 border-[##eef0e5]"
+                placeholder="🔍"
+              />
+              <div className="flex flex-col gap-2 2xl:gap-5 overflow-scroll overflow-x-hidden w-full px-3 h-full mt-2">
+                {communities ? (
+                  communities
+                    .filter((community) => {
+                      return search.toLowerCase() === ""
+                        ? community
+                        : community.orgName.toLowerCase().includes(search);
+                    })
+                    .map((community, key) => (
+                      <a
+                        key={key}
+                        href={"/org/profile/" + community.organization}
+                      >
+                        <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300 justify-start overflow-hidden">
+                          <img
+                            className="w-[50px] h-[50px] 2xl:w-[52px] 2xl:h-[52px] rounded-full"
+                            src={person}
+                            alt=""
+                          />
+                          <div className="flex flex-col">
+                            <p className="text-[#eef0e5] text-[0.88rem] 2xl:text-[1rem] mt-1 2xl:mt-0 overflow-hidden">
+                              {community.orgName}
+                            </p>
+                            <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[0.9rem]">
+                              {community.userCount} People
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  ))
-              ) : (
-                <div className="flex justify-center items-center">
-                  <p className="text-white">No community joined yet</p>
-                </div>
-              )}
+                      </a>
+                    ))
+                ) : (
+                  <div className="flex justify-center items-center">
+                    <p className="text-white">No community joined yet</p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           <Link to="/user/join">
-            <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[15px] 2xl:text-[19px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.2rem] w-56 2xl:w-64 hover:scale-105 duration-300 mt-3">
+            <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[15px] 2xl:text-[19px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.2rem] w-56 2xl:w-64 hover:scale-105 duration-300 mb-4">
               {" "}
               <FaPlus />
               Join Community
