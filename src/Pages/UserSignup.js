@@ -200,7 +200,7 @@ export default function UserSignup() {
                                                     Upload Photo<sup>*</sup>
                                                 </div>
                                                 <div className="flex ">
-                                                    <button
+                                                    <div
                                                         onMouseOver={() =>
                                                             setIsOpen(true)
                                                         }
@@ -210,13 +210,22 @@ export default function UserSignup() {
                                                         onMouseOut={() =>
                                                             setIsOpen(false)
                                                         }
+                                                        className="text-lg cursor-pointer "
                                                     >
-                                                        <div className="text-lg cursor-pointer ">
-                                                            <FaInfoCircle />
-                                                        </div>
-                                                    </button>
+                                                        <FaInfoCircle />
+                                                    </div>
                                                     {isOpen && (
-                                                        <div className="flex flex-col absolute  md:left-[250px] md:bottom-[180px] bg-white  p-2 rounded-lg ml-4 border-black">
+                                                        <div
+                                                            onMouseOver={() =>
+                                                                setIsOpen(true)
+                                                            }
+                                                            onMouseOut={() =>
+                                                                setIsOpen(false)
+                                                            }
+                                                            className={
+                                                                "flex flex-col absolute z-10 md:left-[400px] md:bottom-[180px] bg-white  p-2 rounded-lg ml-4 border-black "
+                                                            }
+                                                        >
                                                             <div className=" text-[10px]">
                                                                 &rarr; upload a
                                                                 clear picture of
@@ -317,7 +326,7 @@ export default function UserSignup() {
                                         </p>
                                     ) : null}
                                     <p className="text-sm  text-black">
-                                        Already have an account?
+                                        Already have an account?{" "}
                                         <Link
                                             to="/login"
                                             className="font-bold text-primary-600 hover:underline "
