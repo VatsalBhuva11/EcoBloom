@@ -23,10 +23,10 @@ export default function ChatRightBar() {
                             alt=""
                         />
                         <div className="text-[23px] font-inter text-gray-300 mt-2">
-                            {currComm.orgName}
+                            {currComm?.orgName}
                         </div>
                         <div className="text-[15px] font-inter text-gray-300">
-                            {currComm.userCount} members
+                            {currComm?.userCount} members
                         </div>
                     </div>
                     <div className="description mt-4 p-3">

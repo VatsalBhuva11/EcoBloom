@@ -17,57 +17,106 @@ export default function UserSignup() {
     const [status, setStatus] = useState("none");
     const [isOpen, setIsOpen] = useState(false);
 
-    function emailSignUp(event) {
-        setSignUpClicked(true);
-        event.preventDefault();
-        if (password !== confirmPassword) {
-            console.log("Passwords do not match!");
-            setSignUpClicked(false);
-            return;
-        }
+    // function emailSignUp(event) {
+    //     setSignUpClicked(true);
+    //     event.preventDefault();
+    //     if (password !== confirmPassword) {
+    //         console.log("Passwords do not match!");
+    //         setSignUpClicked(false);
+    //         return;
+    //     }
 
+    //     // let files = document.querySelector('input[type="file"]').files;
+    //     let formData = new FormData(document.getElementById("emailSignUp"));
+
+    //     fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`, {
+    //         method: "POST",
+    //         body: formData,
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             if (data.status === "error") {
+    //                 setStatus("failure");
+    //                 setSignUpClicked(false);
+    //                 throw new Error("Invalid form input. Please check again.");
+    //             } else {
+    //                 // fix auth-function deadline error by maybe creating firebase user first.
+    //                 createUserWithEmailAndPassword(auth, email, password)
+    //                     .then((userCredential) => {
+    //                         // Signed Up
+    //                         setStatus("success");
+    //                         setSignUpClicked(false);
+    //                         setShowMyModal(true);
+    //                     })
+    //                     .catch((error) => {
+    //                         const errorCode = error.code;
+    //                         const errorMessage = error.message;
+    //                         setStatus("failure");
+    //                         setSignUpClicked(false);
+    //                         console.log(error);
+    //                     });
+    //                 console.log("Success:", data);
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             setStatus("failure");
+    //             setSignUpClicked(false);
+    //             console.error("Error:", error);
+    //         });
+
+    //     /*
+
+    //          */
+    // }
+
+    function emailSignUp(event) {
+        event.preventDefault();
+        setSignUpClicked(true);
         // let files = document.querySelector('input[type="file"]').files;
         let formData = new FormData(document.getElementById("emailSignUp"));
 
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`, {
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
             method: "POST",
             body: formData,
         })
             .then((response) => response.json())
             .then((data) => {
                 if (data.status === "error") {
-                    setStatus("failure");
                     setSignUpClicked(false);
-                    throw new Error("Invalid form input. Please check again.");
+                    throw new Error("Invalid form input. Please check again,");
                 } else {
-                    // fix auth-function deadline error by maybe creating firebase user first.
+                    console.log("User in DB: ");
+                    console.log(data);
                     createUserWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                             // Signed Up
-                            setStatus("success");
-                            setSignUpClicked(false);
+                            console.log("User in Firebase");
+                            const user = userCredential.user;
+                            console.log(user);
                             setShowMyModal(true);
+                            setSignUpClicked(false);
+                            setStatus("success");
+
+                            // ...
                         })
                         .catch((error) => {
                             const errorCode = error.code;
                             const errorMessage = error.message;
+                            // ..
+                            console.log(error);
                             setStatus("failure");
                             setSignUpClicked(false);
-                            console.log(error);
                         });
                     console.log("Success:", data);
                 }
             })
             .catch((error) => {
+                console.error("Error:", error);
                 setStatus("failure");
                 setSignUpClicked(false);
-                console.error("Error:", error);
             });
-
-        /* 
-            
-             */
     }
+
     const [showMyModel, setShowMyModal] = useState(false);
     const [showMyModel1, setShowMyModal1] = useState(false);
     const handleOnClose = () => setShowMyModal(false);

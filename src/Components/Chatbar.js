@@ -108,10 +108,10 @@ export default function Chatbar() {
                         />
                         <div className="flex flex-col">
                             <p className="text-[#eef0e5] text-[1.5rem] 2xl:text-xl mt-1 2xl:mt-0">
-                                {currComm.orgName}
+                                {currComm?.orgName}
                             </p>
                             <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
-                                {currComm.userCount} members
+                                {currComm?.userCount} members
                             </p>
                         </div>
                     </div>
@@ -158,7 +158,7 @@ export default function Chatbar() {
                                             className="rounded-full h-[30px] w-[30px] my-2"
                                         />
                                         <div className="text-white font-semibold my-2">
-                                            {community.orgName}
+                                            {community?.orgName}
                                         </div>
                                     </div>
                                 ))}
@@ -192,8 +192,8 @@ export default function Chatbar() {
                 ) : null}
             </div>
             <div className="chatbox px-4 h-[75%]  border-black overflow-scroll scrollbar-hide bg-[#eef0e5]">
-                {messages.map((message) =>
-                    message.community === currComm._id ? (
+                {messages?.map((message) =>
+                    message.community === currComm?._id ? (
                         message.uid === uid ? (
                             <ChatBubbleDept message={message} />
                         ) : (

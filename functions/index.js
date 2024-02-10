@@ -51,7 +51,8 @@ export const beforecreated = beforeUserCreated(async (event) => {
     try {
         const email = event.data.email;
         const checkUser = await User.findOne({ email: event.data.email });
-        // console.log("EVENT: ", event);
+
+        //when sign in with google is clicked
         if (event.additionalUserInfo.providerId === "google.com") {
             const checkOrg = await Organization.findOne({ email });
             if (checkUser) {
@@ -71,7 +72,8 @@ export const beforecreated = beforeUserCreated(async (event) => {
                     },
                 };
             } else {
-                console.log("Coming in else");
+                //google sign in and user not in db
+                //create user in db
                 const name = event.data.displayName;
                 const email = event.data.email;
                 const photoURL = event.data.photoURL;
@@ -108,6 +110,7 @@ export const beforecreated = beforeUserCreated(async (event) => {
                 }
             }
         } else {
+            //email/password sign in
             if (checkUser) {
                 return {
                     customClaims: {
@@ -127,7 +130,6 @@ export const beforecreated = beforeUserCreated(async (event) => {
 });
 
 export const beforesignin = beforeUserSignedIn(async (event) => {
-    // console.log("In sign in: ", event);
     try {
         const email = event.data.email;
         const checkUser = await User.findOne({ email });

@@ -28,6 +28,7 @@ import OrgCampaignProfile from "./OrgCampaignProfile.js";
 import VerifyUsers from "./VerifyUsers.js";
 import Delhivery from "./Delhivery.js";
 import Edit_Profile_Org from "./Edit_Profile_Org.js";
+import UserAuth from "../UserAuth.js";
 
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
@@ -63,6 +64,12 @@ export default function Home() {
                             path="/signup/user"
                             element={<UserSignup />}
                         />
+
+                        {/* <Route
+                            exact
+                            path="/signup/user"
+                            element={<UserAuth />}
+                        /> */}
                         <Route
                             exact
                             path="/user/dashboard"

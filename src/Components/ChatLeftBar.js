@@ -70,10 +70,10 @@ export default function ChatLeftBar() {
                                         />
                                         <div className="flex flex-col">
                                             <p className="text-gray-300 text-[0.88rem] xl:text-xl mt-1 xl:mt-0">
-                                                {currComm.orgName}
+                                                {currComm?.orgName}
                                             </p>
                                             <p className="text-gray-300 text-[0.75rem] xl:text-[1rem]">
-                                                {currComm.userCount} members
+                                                {currComm?.userCount} members
                                             </p>
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@ export default function ChatLeftBar() {
                     </div>
                     <div className="mt-5 h-[70%] overflow-scroll overflow-x-hidden scrollbar-hide">
                         <div className="flex flex-col xl:gap-5 mt-5 ">
-                            {communities.map((community) => {
+                            {communities?.map((community) => {
                                 return (
                                     <a href="#">
                                         <div
@@ -107,7 +107,7 @@ export default function ChatLeftBar() {
                                             />
                                             <div className="flex flex-col">
                                                 <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
-                                                    {community.orgName}
+                                                    {community?.orgName}
                                                 </p>
                                             </div>
                                         </div>

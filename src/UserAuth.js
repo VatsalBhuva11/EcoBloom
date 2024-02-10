@@ -5,7 +5,7 @@ import {
     linkWithPopup,
     createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "./index.js";
+import { auth } from "./firebase.js";
 import { useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -100,7 +100,7 @@ export default function UserAuth() {
         // let files = document.querySelector('input[type="file"]').files;
         let formData = new FormData(document.getElementById("emailSignUp"));
 
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`, {
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
             method: "POST",
             body: formData,
         })
