@@ -80,9 +80,9 @@ export default function UserSignup() {
         <div className="h-screen">
             <div className=" bg-[#EEF0E5] ">
                 <div className=" flex justify-center">
-                    <div class="flex flex-col items-center md:w-3/4 w-screen justify-center h-screen lg:py-0 ">
-                        <div class="md:w-3/4 w-screen rounded-lg shadow  md:mt-0 mt-8  bg-gradient-to-b from-[#9db39b] to-transparent">
-                            <div class="p-1 space-y-1 md:space-y-2 sm:p-3 px-4">
+                    <div class="flex flex-col items-center lg:w-3/4 md:w-5/6 tablet:w-7/8 w-screen justify-center h-screen lg:py-0 ">
+                        <div class="lg:w-3/4 md:w-5/6  rounded-lg shadow md:px-0 px-4 md:mt-0 mt-8  bg-gradient-to-b from-[#9db39b] to-transparent">
+                            <div class="p-1 space-y-1 md:space-y-2 sm:p-3 px-4 py-2">
                                 <div className="content">
                                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                                         Create Account
