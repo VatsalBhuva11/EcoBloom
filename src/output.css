@@ -1723,6 +1723,10 @@ video {
   border-style: solid;
 }
 
+.border-\[\#\#eef0e5\]{
+  border-color: ##eef0e5;
+}
+
 .border-\[\#0F1035\]{
   --tw-border-opacity: 1;
   border-color: rgb(15 16 53 / var(--tw-border-opacity));
