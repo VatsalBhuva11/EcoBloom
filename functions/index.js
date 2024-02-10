@@ -15,6 +15,7 @@ import { storage } from "./config/firebase.config.js";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import fetch from "node-fetch";
 import { onSchedule } from "firebase-functions/v2/scheduler";
+import { setGlobalOptions } from "firebase-functions/v2";
 import mongoose from "mongoose";
 
 mongoose.model("User", UserSchema);
@@ -41,6 +42,8 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api", router);
+
+setGlobalOptions({ maxInstances: 10 });
 
 export const ecobloom = onRequest({ cors: true }, app);
 

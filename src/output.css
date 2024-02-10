@@ -1723,6 +1723,10 @@ video {
   border-style: solid;
 }
 
+.border-\[\#\#eef0e5\]{
+  border-color: ##eef0e5;
+}
+
 .border-\[\#0F1035\]{
   --tw-border-opacity: 1;
   border-color: rgb(15 16 53 / var(--tw-border-opacity));
@@ -2906,6 +2910,15 @@ video {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
+.scrollbar-hide{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar{
+  display: none;
+}
+
 *{
   font-family: Inter;
 }
@@ -3460,8 +3473,8 @@ html {
     bottom: 180px;
   }
 
-  .md\:left-\[250px\]{
-    left: 250px;
+  .md\:left-\[400px\]{
+    left: 400px;
   }
 
   .md\:-m-2{

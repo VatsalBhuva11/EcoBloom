@@ -35,11 +35,12 @@ export default function Chatbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [nav, setNav] = useState(false);
     const [message, setMessage] = useState("");
-    const { currComm, setCurrComm } = useContext(ChatContext);
+    const { currComm, setCurrComm, communities } = useContext(ChatContext);
     const [profile, setProfile] = useContext(ProfileContext);
     const [user, loading, error] = useAuthState(auth);
     const [messages, setMessages] = useState([]);
     const [sender, setSender] = useState({});
+    const { uid, displayName } = auth.currentUser;
 
     useEffect(() => {
         if (auth.currentUser) {
@@ -79,7 +80,7 @@ export default function Chatbar() {
             alert("Enter valid message");
             return;
         }
-        const { uid, displayName } = auth.currentUser;
+
         setMessage("");
         await addDoc(collection(db, "messages"), {
             text: message,
@@ -87,6 +88,7 @@ export default function Chatbar() {
             avatar: profile.url,
             createdAt: serverTimestamp(),
             uid,
+            community: currComm._id,
         });
     };
 
@@ -143,80 +145,32 @@ export default function Chatbar() {
                                 </div>{" "}
                             </div>
                             <div className="flex flex-col justify-center p-2 h-[185px] overflow-scroll overflow-x-hidden">
-                                <div className="flex items-center border-b-2 border-b-gray-white p-1 gap-1 ">
-                                    <img
-                                        src={person}
-                                        alt=".."
-                                        className="rounded-full h-[30px] w-[30px] my-2"
-                                    />
-                                    <div className="text-white font-semibold my-2">
-                                        GreenPeace Org
+                                {communities?.map((community) => (
+                                    <div
+                                        onClick={() => {
+                                            setCurrComm(community);
+                                        }}
+                                        className="flex items-center border-b-2 border-b-gray-white p-1 gap-1 "
+                                    >
+                                        <img
+                                            src={person}
+                                            alt=".."
+                                            className="rounded-full h-[30px] w-[30px] my-2"
+                                        />
+                                        <div className="text-white font-semibold my-2">
+                                            {community.orgName}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="flex items-center border-b-2 border-b-gray-white p-2 gap-1 mt-1 ">
-                                    <img
-                                        src={person}
-                                        alt=".."
-                                        className="rounded-full h-[30px] w-[30px] my-2"
-                                    />
-                                    <div className="text-white font-semibold my-2">
-                                        GreenPeace Org
-                                    </div>
-                                </div>
-                                <div className="flex items-center border-b-2 border-b-gray-white p-1 gap-1 ">
-                                    <img
-                                        src={person}
-                                        alt=".."
-                                        className="rounded-full h-[30px] w-[30px] my-2"
-                                    />
-                                    <div className="text-white font-semibold my-2">
-                                        GreenPeace Org
-                                    </div>
-                                </div>
-                                <div className="flex items-center border-b-2 border-b-gray-white p-1 gap-1 ">
-                                    <img
-                                        src={person}
-                                        alt=".."
-                                        className="rounded-full h-[30px] w-[30px] my-2"
-                                    />
-                                    <div className="text-white font-semibold my-2">
-                                        GreenPeace Org
-                                    </div>
-                                </div>
-                                <div className="flex items-center border-b-2 border-b-gray-white p-1 gap-1 ">
-                                    <img
-                                        src={person}
-                                        alt=".."
-                                        className="rounded-full h-[30px] w-[30px] my-2"
-                                    />
-                                    <div className="text-white font-semibold my-2">
-                                        GreenPeace Org
-                                    </div>
-                                </div>
-                                <div className="flex items-center border-b-2 border-b-gray-white p-1 gap-1 ">
-                                    <img
-                                        src={person}
-                                        alt=".."
-                                        className="rounded-full h-[30px] w-[30px] my-2"
-                                    />
-                                    <div className="text-white font-semibold my-2">
-                                        GreenPeace Org
-                                    </div>
-                                </div>
-                                <div className="flex items-center border-b-2 border-b-gray-white p-1 gap-1 ">
-                                    <img
-                                        src={person}
-                                        alt=".."
-                                        className="rounded-full h-[30px] w-[30px] my-2"
-                                    />
-                                    <div className="text-white font-semibold my-2">
-                                        GreenPeace Org
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                             <div className="px-10 py-2 flex justify-center mt-1">
                                 {" "}
-                                <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] font-bold rounded-xl h-[2.5rem] w-32 hover:scale-105 duration-300 ">
+                                <button
+                                    onClick={() => {
+                                        window.location.href = "/";
+                                    }}
+                                    className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] font-bold rounded-xl h-[2.5rem] w-32 hover:scale-105 duration-300 "
+                                >
                                     <div className=" text-lg">
                                         <FaLongArrowAltLeft />
                                     </div>
@@ -237,26 +191,16 @@ export default function Chatbar() {
                     </div>
                 ) : null}
             </div>
-            <div className="chatbox h-[75%]  border-black overflow-scroll scrollbar-hide bg-[#eef0e5]">
-                <ChatBubbleArrival />
-                <ChatBubbleDept />
-                <ChatBubbleArrival />
-                <ChatBubbleArrival />
-                <ChatBubbleDept />
-                <ChatBubbleArrival />
-                <ChatBubbleDept />
-                <ChatBubbleArrival />
-                <ChatBubbleDept />
-                <ChatBubbleDept />
-                <ChatBubbleDept />
-                <ChatBubbleArrival />
-                <ChatBubbleDept />
-                <ChatBubbleArrival />
-                <ChatBubbleDept />
-                <ChatBubbleArrival />
-                <ChatBubbleDept />
-                <ChatBubbleArrival />
-                <ChatBubbleDept />
+            <div className="chatbox px-4 h-[75%]  border-black overflow-scroll scrollbar-hide bg-[#eef0e5]">
+                {messages.map((message) =>
+                    message.community === currComm._id ? (
+                        message.uid === uid ? (
+                            <ChatBubbleDept message={message} />
+                        ) : (
+                            <ChatBubbleArrival message={message} />
+                        )
+                    ) : null
+                )}
             </div>
             <div className="inputarea">
                 <div className="flex items-center ml-5 gap-2">

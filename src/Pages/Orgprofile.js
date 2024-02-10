@@ -77,10 +77,10 @@ const Orgprofile = () => {
                 try {
                     const data = await Promise.all([
                         await fetch(
-                            `${process.env.REACT_APP_LOCAL_API_URL}/community/${params.orgId}`
+                            `${process.env.REACT_APP_DEPLOYED_API_URL}/community/${params.orgId}`
                         ),
                         await fetch(
-                            `${process.env.REACT_APP_LOCAL_API_URL}/org/${params.orgId}`
+                            `${process.env.REACT_APP_DEPLOYED_API_URL}/org/${params.orgId}`
                         ),
                     ]);
                     let community = await data[0].json();
@@ -145,7 +145,7 @@ const Orgprofile = () => {
                     console.log("Please login as a user first.");
                 } else {
                     fetch(
-                        `${process.env.REACT_APP_LOCAL_API_URL}/community/join/${params.orgId}`,
+                        `${process.env.REACT_APP_DEPLOYED_API_URL}/community/join/${params.orgId}`,
                         {
                             headers: {
                                 authorization: `Bearer ${idToken}`,
@@ -316,11 +316,7 @@ const Orgprofile = () => {
                                 ABOUT US
                             </div>
                             <div className="mt-4 lg:text-xl text-center text-md ml-2 font-medium p-2">
-                                CleanEarth Initiatives believes in the power of
-                                collective action. We organize and support
-                                community-based cleanliness campaigns to address
-                                local environmental issues, ranging from litter
-                                and waste management to beautification projects.
+                                {org.description}
                             </div>
                         </div>
                     ) : status === "post" ? (
@@ -350,10 +346,10 @@ const Orgprofile = () => {
                             {org?.completedCampaigns?.length > 0
                                 ? org.completedCampaigns.map((campaign) => {
                                       return (
-                                        <div className="flex justify-center items-center">
-                                          <PastCampaignsCards
-                                              campaign={campaign}
-                                          />
+                                          <div className="flex justify-center items-center">
+                                              <PastCampaignsCards
+                                                  campaign={campaign}
+                                              />
                                           </div>
                                       );
                                   })

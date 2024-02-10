@@ -52,8 +52,8 @@ export default function ChatRightBar() {
                                 Members
                             </div>
                         </div>
-                        <div className="flex  h-[65%] overflow-scroll  scrollbar-hide flex-col gap-3 2xl:gap-5 p-4">
-                            {currComm.joinedUsers.map((member) => (
+                        <div className="flex  h-[65%] overflow-scroll  scrollbar-hide overflow-x-hidden flex-col gap-3 2xl:gap-5 p-4">
+                            {currComm?.joinedUsers?.map((member) => (
                                 <a href="">
                                     <div className=" flex items-center mx-1 mt-1">
                                         <img
