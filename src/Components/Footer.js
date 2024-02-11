@@ -17,7 +17,6 @@ export default function Footer() {
           </h6>
           <ul>
             <li className="py-2 text-sm">Analytics</li>
-            <li className="py-2 text-sm">Marketing</li>
             <li className="py-2 text-sm">Commerce</li>
             <li className="py-2 text-sm">Insight</li>
           </ul>
@@ -26,7 +25,6 @@ export default function Footer() {
         <div>
           <h6 className="font-medium text-gray-200 pt-2 uppercase">Support</h6>
           <ul>
-            <li className="py-2 text-sm">Pricing</li>
             <li className="py-2 text-sm">Documentation</li>
             <li className="py-2 text-sm">Guides</li>
             <li className="py-2 text-sm">API status</li>
@@ -38,20 +36,16 @@ export default function Footer() {
           <ul>
             <li className="py-2 text-sm">About</li>
             <li className="py-2 text-sm">Blog</li>
-            <li className="py-2 text-sm">Jobs</li>
             <li className="py-2 text-sm">Press</li>
-            <li className="py-2 text-sm">Career</li>
           </ul>
         </div>
 
         <div>
           <h6 className="pt-2 uppercase font-medium text-gray-200">Legal</h6>
           <ul>
-            <li className="py-2 text-sm">About</li>
-            <li className="py-2 text-sm">Blog</li>
-            <li className="py-2 text-sm">Jobs</li>
-            <li className="py-2 text-sm">Press</li>
-            <li className="py-2 text-sm">Career</li>
+            <li className="py-2 text-sm">Claim</li>
+            <li className="py-2 text-sm">Policies</li>
+            <li className="py-2 text-sm">Terms</li>
           </ul>
         </div>
         <div className="col-span-2 pt-8 md:pt-2">
