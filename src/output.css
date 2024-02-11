@@ -782,6 +782,10 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.mb-4{
+  margin-bottom: 1rem;
+}
+
 .mb-5{
   margin-bottom: 1.25rem;
 }
@@ -3235,6 +3239,10 @@ html {
 }
 
 @media (min-width: 640px){
+  .sm\:top-\[4\.9rem\]{
+    top: 4.9rem;
+  }
+
   .sm\:top-\[5\.25rem\]{
     top: 5.25rem;
   }
@@ -3853,6 +3861,10 @@ html {
     bottom: 10rem;
   }
 
+  .lg\:top-\[5\.6rem\]{
+    top: 5.6rem;
+  }
+
   .lg\:m-6{
     margin: 1.5rem;
   }
@@ -3984,6 +3996,10 @@ html {
 
   .lg\:h-\[79\%\]{
     height: 79%;
+  }
+
+  .lg\:h-screen{
+    height: 100vh;
   }
 
   .lg\:w-14{
@@ -4223,10 +4239,6 @@ html {
 
   .xl\:h-\[60px\]{
     height: 60px;
-  }
-
-  .xl\:h-screen{
-    height: 100vh;
   }
 
   .xl\:w-16{

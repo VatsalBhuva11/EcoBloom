@@ -150,7 +150,7 @@ const UserDashboard = () => {
   }
 
   return (
-    <div className="flex flex-col w-full xl:h-screen">
+    <div className="flex flex-col w-full lg:h-screen">
       <div className="w-full bg-[#0f1035] text-white flex justify-between ">
         <div className="flex items-center">
           <div
@@ -370,7 +370,7 @@ const UserDashboard = () => {
       <div
         className={
           nav
-            ? "absolute left-0 top-[4.3rem] sm:top-[5.25rem] flex flex-col h-[600px] border-r border-r-gray-900 ease-in-out duration-500 bg-[#0f1035]"
+            ? "absolute left-0 top-[4.3rem] sm:top-[4.9rem] lg:top-[5.6rem] flex flex-col border-r border-r-gray-900 ease-in-out duration-500 bg-[#0f1035]"
             : "fixed left-[-200%]"
         }
       >
