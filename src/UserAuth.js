@@ -100,37 +100,38 @@ export default function UserAuth() {
         // let files = document.querySelector('input[type="file"]').files;
         let formData = new FormData(document.getElementById("emailSignUp"));
 
-        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
-            method: "POST",
-            body: formData,
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.status === "error") {
-                    throw new Error("Invalid form input. Please check again,");
-                } else {
-                    console.log("User in DB: ");
-                    console.log(data);
-                    createUserWithEmailAndPassword(auth, email, password)
-                        .then((userCredential) => {
-                            // Signed Up
-                            console.log("User in Firebase");
-                            const user = userCredential.user;
-                            console.log(user);
-                            // ...
-                        })
-                        .catch((error) => {
-                            const errorCode = error.code;
-                            const errorMessage = error.message;
-                            // ..
-                            console.log(error);
-                        });
-                    console.log("Success:", data);
-                }
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed Up
+                console.log("User in Firebase");
+                const user = userCredential.user;
+                console.log(user);
+                // ...
             })
             .catch((error) => {
-                console.error("Error:", error);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(error);
             });
+        // fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
+        //     method: "POST",
+        //     body: formData,
+        // })
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         if (data.status === "error") {
+        //             throw new Error("Invalid form input. Please check again,");
+        //         } else {
+        //             console.log("User in DB: ");
+        //             console.log(data);
+
+        //             console.log("Success:", data);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error("Error:", error);
+        //     });
     }
 
     return (

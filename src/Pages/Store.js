@@ -18,11 +18,11 @@ const Store = () => {
     const [showMyModel, setShowMyModal] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
     const [user, loading, error] = useAuthState(auth);
-    // const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(false);
     const [loggedInUser, setLoggedInUser] = useState({});
 
     useEffect(() => {
-        // setLoader(true);
+        setLoader(true);
         if (auth.currentUser) {
             console.log("AUTH CURRENT USER");
             auth.currentUser.getIdToken().then((idToken) => {
@@ -42,15 +42,15 @@ const Store = () => {
                         console.log(data);
                         if (data.status === "OK") {
                             setLoggedInUser(data.data);
-                            // setLoader(false);
+                            setLoader(false);
                         } else {
                             console.log(data);
-                            // setLoader(false);
+                            setLoader(false);
                         }
                     })
                     .catch((err) => {
                         console.log(err);
-                        // setLoader(false);
+                        setLoader(false);
                     });
             });
         } else {
@@ -58,7 +58,7 @@ const Store = () => {
         }
     }, [loading]);
 
-    if (loading) {
+    if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <HashLoader color="#36d7b7" size={100} />

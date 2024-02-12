@@ -74,6 +74,26 @@ export default function UserSignup() {
         setSignUpClicked(true);
         // let files = document.querySelector('input[type="file"]').files;
         let formData = new FormData(document.getElementById("emailSignUp"));
+        // createUserWithEmailAndPassword(auth, email, password)
+        //     .then((userCredential) => {
+        //         // Signed Up
+        //         console.log("User in Firebase");
+        //         const user = userCredential.user;
+        //         console.log(user);
+        //         setShowMyModal(true);
+        //         setSignUpClicked(false);
+        //         setStatus("success");
+
+        //         // ...
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         // ..
+        //         console.log(error);
+        //         setStatus("failure");
+        //         setSignUpClicked(false);
+        //     });
 
         fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
             method: "POST",

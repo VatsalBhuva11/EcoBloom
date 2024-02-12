@@ -33,6 +33,7 @@ export default function Login() {
                 // redirect based on role
                 auth.currentUser.getIdTokenResult().then((tokenResult) => {
                     setClicked(false);
+                    console.log(tokenResult.claims);
                     if (tokenResult.claims.role === "user") {
                         window.location.replace("/user/dashboard");
                     } else if (tokenResult.claims.role === "org") {
@@ -43,7 +44,7 @@ export default function Login() {
                             "Error occurred while logging in. Please check your credentials/network."
                         );
                         console.log("Error: Invalid role");
-                        window.location.href = "/login";
+                        // window.location.href = "/login";
                     }
                 });
             })
