@@ -159,7 +159,7 @@ const UserDashboard = () => {
             </div>
         );
     }
-    if (!loading) {
+    if (!loading && !user) {
         window.location.replace("/login");
     }
 

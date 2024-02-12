@@ -78,7 +78,10 @@ router.post("/register", async (req, res) => {
                             console.log("Successfully created new user in DB!");
                             response_200(
                                 res,
-                                "Successfully created new user in DB"
+                                "Successfully created new user in DB",
+                                {
+                                    _id: user._id,
+                                }
                             );
                         } else {
                             response_500(

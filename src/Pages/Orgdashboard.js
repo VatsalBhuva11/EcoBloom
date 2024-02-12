@@ -121,7 +121,7 @@ const Orgdashboard = () => {
                 setPosts(posts);
             })();
         }
-    }, [org]);
+    }, [loading]);
 
     const handleABoutChange = () => {
         setIfBold1("bold");
