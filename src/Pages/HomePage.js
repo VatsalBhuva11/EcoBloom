@@ -7,7 +7,7 @@ import {
     useScroll,
     useSpring,
     useTransform,
-    MotionValue
+    MotionValue,
 } from "framer-motion";
 
 export default function HomePage() {
@@ -19,7 +19,7 @@ export default function HomePage() {
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
-        restDelta: 0.001
+        restDelta: 0.001,
     });
 
     return (
@@ -32,17 +32,20 @@ export default function HomePage() {
                     <div>
                         <All_Home id={id} useParallax={useParallax} />
                     </div>
-                )
-
-            })
-            }
+                );
+            })}
             {/* <Carousel/> */}
             <div className="flex justify-center ml-[2px]">
-            {/* <motion.div className="fixed left-[66px] right-0 h-[4px] bg-[#304d30] top-[7px] max-w-[91%]" style={{ scaleX }} /> */}
-            <motion.div className="fixed left-[66px] right-0 h-[4px] bg-black top-[94px] max-w-[91%]" style={{ scaleX }} />
+                {/* <motion.div
+                    className="fixed left-[66px] right-0 h-[4px] bg-[#304d30] top-[7px] max-w-[91%]"
+                    style={{ scaleX }}
+                /> */}
+                <motion.div
+                    className="fixed left-[66px] right-0 h-[4px] bg-black top-[94px] max-w-[91%]"
+                    style={{ scaleX }}
+                />
             </div>
-            
-            
+
             <Footer />
         </>
     );
