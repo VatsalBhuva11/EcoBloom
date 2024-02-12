@@ -95,7 +95,7 @@ export default function UserSignup() {
         //         setStatus("failure");
         //         setSignUpClicked(false);
         //     });
-        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
+        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`, {
             method: "POST",
             body: formData,
         })
