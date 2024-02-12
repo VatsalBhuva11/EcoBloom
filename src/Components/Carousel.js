@@ -5,9 +5,15 @@ import emilychen from '../assets/images/emilychen.jpeg'
 import james from '../assets/images/james.jpg'
 import maria from '../assets/images/maria.jpeg'
 import raj from '../assets/images/raj.jpeg'
+import { useScroll , motion } from "framer-motion";
+import { useRef } from "react";
 
 
 export default function Carousel() {
+//     const ref = useRef(null);
+//   const { scrollYProgress } = useScroll({ target: ref });
+//   const y = useParallax(scrollYProgress, 300);
+
     const settings = {
         dots: true,
         infinite: true,
@@ -57,7 +63,7 @@ export default function Carousel() {
                 <div className="w-full">
                     <Slider {...settings} className="flex justify-center p-16">
                         {data.map((data) => (
-                            <div className="bg-transparent h-[70%] border-solid border-2 border-black shadow-xl flex flex-col justify-center items-center text-black rounded-xl gap-4">
+                            <div className="bg-transparent h-[70%] border-solid border-2 border-black hover:shadow-xl  cursor-pointer flex flex-col justify-center items-center text-black rounded-xl gap-4">
                                 <div className="h-28 w-full rounded-t-xl justify-center text-center flex items-center">
                                     <img
                                         src={data.img}
@@ -84,6 +90,7 @@ export default function Carousel() {
                     </Slider>
                 </div>
             </div>
+            {/* <motion.h2 style={{ y }}></motion.h2> */}
         </div>
     );
 }

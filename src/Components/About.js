@@ -1,8 +1,17 @@
 import React from "react";
+import { useRef } from "react";
 import about from "../assets/images/about.png";
 import { FaArrowRight } from "react-icons/fa";
+import {
+  useScroll,
+  motion
+} from "framer-motion";
 
 export default function About() {
+
+  // const ref = useRef(null);
+  // const { scrollYProgress } = useScroll({ target: ref});
+  // const y = useParallax(scrollYProgress, 300);
   return (
     <div
       id="about"
@@ -30,6 +39,7 @@ export default function About() {
           
         </div>
       </div>
+      {/* <motion.h2 style={{ y }}></motion.h2> */}
     </div>
   );
 }

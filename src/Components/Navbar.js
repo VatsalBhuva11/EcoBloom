@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase.js";
 import { signOut } from "firebase/auth";
+// import {motion} from "framer-motion"
 
 const Navbar = () => {
   const [nav, setNav] = useState(true);
@@ -27,6 +28,8 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-center">
+    {/* <motion.div className="fixed left-0 right-0 h-[5px] bg-[#304d30] top-[7px] " style={{ scaleX }} /> */}
+            {/* <motion.div className="fixed left-0 right-0 h-[5px] bg-[#304d30] top-[94px] " style={{ scaleX }} /> */}
       <div className="m-15 top-3 rounded-lg fixed backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#151414] border-t border-b border-[#b4b4b444] w-11/12">
         <div className="bg-transparent flex justify-between text-white  w-full  mx-auto items-center h-20 ">
           <img className="h-28 mt-6" src={logo} alt="" />

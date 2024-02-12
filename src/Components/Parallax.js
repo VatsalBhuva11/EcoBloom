@@ -7,7 +7,12 @@ import tree from "../assets/images/tree.png";
 import leaf from "../assets/images/leaf.png";
 import plant from "../assets/images/plant.png";
 import sky from "../assets/images/sky.jpg";
-import { useEffect } from "react";
+import { useEffect , useRef } from "react";
+import {
+  useScroll,
+  motion
+} from "framer-motion";
+
 export default function Parallax() {
     const scrollUpdate = () => {
         let textElem = document.getElementById("parallaxText");
@@ -28,6 +33,8 @@ export default function Parallax() {
         hill2Elem.style.top = value * -0.1 + "px";
         skyElem.style.top = -50 + value * -1.5 + "px";
     };
+    
+
 
     useEffect(() => {
         window.addEventListener("scroll", scrollUpdate);
@@ -94,6 +101,7 @@ export default function Parallax() {
             id="parallaxPlant"
           ></img>
         </section>
+        
       </div>
     );
 }

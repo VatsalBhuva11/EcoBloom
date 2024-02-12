@@ -4,9 +4,14 @@ import { IoIosPeople } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase.js";
+import { useRef } from "react";
+import { useScroll , motion } from "framer-motion";
 
 export default function JoinUs() {
     const [user, loading, error] = useAuthState(auth);
+//     const ref = useRef(null);
+//   const { scrollYProgress } = useScroll({ target: ref });
+//   const y = useParallax(scrollYProgress, 300);
     return (
         <div name="support" className="w-full">
             <div className="w-full h-[600px] absolute mx-auto overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat bg-[url('./assets/images/joinUs.png')]">
@@ -43,6 +48,7 @@ export default function JoinUs() {
                     </button>
                 </div>
             </div>
+            {/* <motion.h2 style={{ y }}></motion.h2> */}
         </div>
     );
 }
