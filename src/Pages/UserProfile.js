@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import logo from "../assets/images/logo.png";
 import EditPassword from "./EditPassword";
 import Change_profile from "./Change_profile";
@@ -16,6 +16,7 @@ import {
 } from "firebase/auth";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const UserProfile = () => {
     const [showMyModel, setShowMyModal] = useState(false);
@@ -32,6 +33,42 @@ const UserProfile = () => {
     const [user, loading, error] = useAuthState(auth);
     const [profile, setProfile] = useContext(ProfileContext);
     const [googleLinked, setGoogleLinked] = useState(null);
+    const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+        if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                fetch(
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.userId}`
+                )
+                    .then((res) => res.json())
+                    .then((user) => {
+                        if (user.status !== "OK") {
+                            console.log(
+                                "Error occurred while fetching user info"
+                            );
+                            throw new Error(
+                                "Error occurred while fetching user info"
+                            );
+                        } else {
+                            const data = user.data;
+                            console.log(data);
+                            setUserData(data);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(
+                            "Error occurred while fetching user info (in catch)"
+                        );
+                        throw new Error(err);
+                    });
+            });
+        } else {
+            window.replace.login("/login");
+        }
+    }, [loading]);
 
     function handleLinkWithGoogle() {
         const provider = new GoogleAuthProvider();
@@ -104,18 +141,18 @@ const UserProfile = () => {
             </div> */}
                     <div className="flex justify-evenly my-6 text-[12px] sm:text-[15px]">
                         <div className="flex flex-col justify-center items-center bg-[#DFE4C5] rounded-lg px-5">
-                            <div>35🪙</div>
+                            <div>{userData.points}🪙</div>
                             <div>Earned</div>
                         </div>
                         <div className="flex flex-col justify-center items-center bg-[#DFE4C5] rounded-lg px-5">
-                            <div>53</div>
+                            <div>{userData.completedCampaigns.length}</div>
                             <div className="flex flex-col items-center justify-center gap-0">
                                 <div>Campaigns</div>
                                 <div>Attended</div>
                             </div>
                         </div>
                         <div className="flex flex-col justify-center items-center bg-[#DFE4C5] rounded-lg px-5">
-                            <div>21</div>
+                            <div>{userData.communities.length}</div>
                             <div className="flex flex-col items-center justify-center gap-0">
                                 <div>Communities</div>
                                 <div>Joined</div>
