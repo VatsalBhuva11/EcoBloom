@@ -3,6 +3,7 @@ import login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
+import { getFunctions, httpsCallable } from "firebase/functions";
 import { useState } from "react";
 import Login_Card from "./Create_Account_Card.js";
 import Terms_Conditions from "./Terms_Conditions.js";
@@ -74,8 +75,27 @@ export default function UserSignup() {
         setSignUpClicked(true);
         // let files = document.querySelector('input[type="file"]').files;
         let formData = new FormData(document.getElementById("emailSignUp"));
+        // createUserWithEmailAndPassword(auth, email, password)
+        //     .then((userCredential) => {
+        //         // Signed Up
+        //         console.log("User in Firebase");
+        //         const user = userCredential.user;
+        //         console.log(user);
+        //         setShowMyModal(true);
+        //         setSignUpClicked(false);
+        //         setStatus("success");
 
-        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
+        //         // ...
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         // ..
+        //         console.log(error);
+        //         setStatus("failure");
+        //         setSignUpClicked(false);
+        //     });
+        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`, {
             method: "POST",
             body: formData,
         })
@@ -90,12 +110,39 @@ export default function UserSignup() {
                     createUserWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                             // Signed Up
-                            console.log("User in Firebase");
+                            console.log(
+                                "User in Firebase: ",
+                                userCredential.user
+                            );
                             const user = userCredential.user;
-                            console.log(user);
-                            setShowMyModal(true);
-                            setSignUpClicked(false);
-                            setStatus("success");
+                            const userData = {
+                                role: "user",
+                                dbId: data.data._id,
+                                firebaseId: user.uid,
+                            }; // Include any other relevant user data
+                            console.log("userData: ", userData);
+                            // Call Cloud Function to handle custom claims and other operations
+                            const functions = getFunctions();
+                            const setCustomClaims = httpsCallable(
+                                functions,
+                                "setCustomClaims"
+                            );
+                            setCustomClaims(userData)
+                                .then((result) => {
+                                    console.log(
+                                        "result from setCustomClaims from client: ",
+                                        result
+                                    );
+                                    console.log(user);
+                                    setShowMyModal(true);
+                                    setSignUpClicked(false);
+                                    setStatus("success");
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                    setSignUpClicked(false);
+                                    setStatus("failure");
+                                });
 
                             // ...
                         })

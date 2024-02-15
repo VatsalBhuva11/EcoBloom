@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useState } from "react";
+import { getFunctions, httpsCallable } from "firebase/functions";
+
 import Terms_Conditions from "./Terms_Conditions.js";
 
 export default function UserSignup() {
@@ -39,24 +41,41 @@ export default function UserSignup() {
                     setSignUpClicked(false);
                     throw new Error("Invalid form input. Please check again.");
                 } else {
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //leverage this to the server?
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
                     createUserWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                             // Signed Up
-                            setStatus("success");
-                            setSignUpClicked(false);
+                            console.log(
+                                "User in Firebase: ",
+                                userCredential.user
+                            );
+                            const user = userCredential.user;
+                            const userData = {
+                                role: "org",
+                                dbId: data.data._id,
+                                firebaseId: user.uid,
+                            }; // Include any other relevant user data
+                            console.log("userData: ", userData);
+                            // Call Cloud Function to handle custom claims and other operations
+                            const functions = getFunctions();
+                            const setCustomClaims = httpsCallable(
+                                functions,
+                                "setCustomClaims"
+                            );
+                            setCustomClaims(userData)
+                                .then((result) => {
+                                    console.log(
+                                        "result from setCustomClaims from client: ",
+                                        result
+                                    );
+                                    console.log(user);
+                                    setStatus("success");
+                                    setSignUpClicked(false);
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                    setStatus("failure");
+                                    setSignUpClicked(false);
+                                });
                         })
                         .catch((error) => {
                             const errorCode = error.code;

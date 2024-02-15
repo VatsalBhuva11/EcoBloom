@@ -97,7 +97,7 @@ export default function Chatbar() {
     };
 
     return (
-        <div className="bg-[#eef0e5] h-screen ">
+        <div className="bg-[#eef0e5] h-screen w-full ">
             <div className=" infobar flex  flex-col">
                 <div className="flex items-center bg-gradient-to-b from-[#0f1035] to-[#4b4e97] p-6 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-7 px-4 2xl:px-7 justify-between ">
                     <div className="element items-center flex gap-2">

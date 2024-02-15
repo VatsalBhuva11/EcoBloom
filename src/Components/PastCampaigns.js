@@ -6,8 +6,15 @@ import p3 from "../assets/images/p3.png";
 import p4 from "../assets/images/p4.png";
 import p5 from "../assets/images/p5.png";
 import p6 from "../assets/images/p6.png";
+import { useRef } from "react";
+import { useScroll , motion} from "framer-motion";
 
 export default function PastCampaigns() {
+
+//     const ref = useRef(null);
+//   const { scrollYProgress } = useScroll({ target: ref });
+//   const y = useParallax(scrollYProgress, 300);
+
     return (
         <div className="w-full bg-[#EEF0E5] justify-between pt-12">
             <div className="max-w-[95%] mx-auto flex flex-col justify-center items-center">
@@ -65,7 +72,7 @@ export default function PastCampaigns() {
                     </div>
                 </div>
                 <a href="https://www.instagram.com/eco_bloom_/" target="_blank">
-                    <button className="flex  justify-center items-center text-center mt-32 py-2 px-6 text-center md:text-3xl mb-10 text-gray-100 border bg-[#0F1035] font-bold hover:bg-[#000000] hover:text-[#ffff] hover:shadow-lg hover:border-indigo-600 rounded-md">
+                    <button className="flex  justify-center items-center  mt-32 py-2 px-6 text-center md:text-3xl mb-10 text-gray-100 border bg-[#0F1035] font-bold hover:bg-[#000000] hover:text-[#ffff] hover:shadow-lg hover:border-indigo-600 rounded-md">
                         See More
                         <FaArrowRight
                             className="hidden md:flex ml-4 mt-2 "
@@ -74,6 +81,7 @@ export default function PastCampaigns() {
                     </button>
                 </a>
             </div>
+            {/* <motion.h2 style={{ y }}></motion.h2> */}
         </div>
     );
 }

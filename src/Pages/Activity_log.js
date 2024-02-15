@@ -48,7 +48,7 @@ const Activity_log = () => {
             <div className="flex items-center gap-5 text-[#0F1035] ml-5 pt-2">
                 <Link
                     to="/user/dashboard"
-                    className="text-xl sm:text-2xl lg:text-3xl mt-1 sm:mt-1 lg:mt-2 cursor-pointer hover:scale-110 duration-300"
+                    className="mb-1 lg:mb-4 text-xl sm:text-2xl lg:text-3xl mt-1 sm:mt-1 lg:mt-2 cursor-pointer hover:scale-110 duration-300"
                 >
                     <FaArrowLeft />
                 </Link>

@@ -15,7 +15,7 @@ export default function ChatLeftBar() {
         useContext(ChatContext);
 
     return (
-        <div className="h-screen">
+        <div className="h-screen w-full">
             <div className="flex">
                 <div className=" left-sidebar lg:flex bg-[#0F1035] w-[100%] flex-col h-screen pb-2  border-[#eef0e5]">
                     {/* <div className="Peoples flex justify-around items-center mt-5 mb-5 p-[1.5rem] border-b-2 border-b-gray-300">
