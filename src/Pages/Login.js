@@ -13,6 +13,7 @@ import Login_Card from "./Create_Account_Card.js";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Terms_Conditions from "./Terms_Conditions.js";
 import logo from "../assets/images/logo.png";
+import { getFunctions, httpsCallable } from "firebase/functions";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -137,17 +138,39 @@ export default function Login() {
                         );
                         const responseData = await res.json();
                         console.log("after fetch: ", responseData);
-                        if (tokenResult.claims.role === "user") {
-                            // window.location.replace("/user/dashboard");
-                        } else if (tokenResult.claims.role === "org") {
-                            // window.location.replace("/org/dashboard");
-                        } else {
-                            setStatus("failure");
-                            setMessage(
-                                "Error occurred while logging in. Please check your credentials/network."
+                        if (responseData.error !== "user already exists") {
+                            const functions = getFunctions();
+                            const setCustomClaims = httpsCallable(
+                                functions,
+                                "setCustomClaims"
                             );
-                            console.log("Error: Invalid role");
-                            // window.location.href = "/login";
+                            setCustomClaims({
+                                role: "user",
+                                firebaseId: result.user.uid,
+                            })
+                                .then((result) => {
+                                    console.log(
+                                        "result from setCustomClaims from client: ",
+                                        result
+                                    );
+                                    console.log(user);
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                });
+                        } else {
+                            if (tokenResult.claims.role === "user") {
+                                // window.location.replace("/user/dashboard");
+                            } else if (tokenResult.claims.role === "org") {
+                                // window.location.replace("/org/dashboard");
+                            } else {
+                                setStatus("failure");
+                                setMessage(
+                                    "Error occurred while logging in. Please check your credentials/network."
+                                );
+                                console.log("Error: Invalid role");
+                                // window.location.href = "/login";
+                            }
                         }
                     });
                 // ...
