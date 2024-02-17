@@ -45,9 +45,10 @@ const CampaignProfile = () => {
                 const userData = jwtDecode(user.accessToken);
                 if (data.status === "OK") {
                     setCampaign(data.data);
+                    console.log(data.data);
                     const checkIfUserRegistered =
                         data.data.registeredUsers.filter((user) => {
-                            return user.registeredUsers.includes(
+                            return user.registeredCampaigns.includes(
                                 params.campaignId
                             );
                         });
@@ -274,7 +275,18 @@ const CampaignProfile = () => {
                                         Registration Deadline
                                     </p>
                                     <p className="mt-[-4px] lg:mt-1">
-                                        25 days left
+                                        {new Date().toISOString() <
+                                        campaign.startDate
+                                            ? Math.trunc(
+                                                  (new Date(
+                                                      campaign.startDate
+                                                  ) -
+                                                      new Date(
+                                                          new Date().toISOString()
+                                                      )) /
+                                                      3600000
+                                              ) + " hours"
+                                            : "Ongoing"}
                                     </p>
                                 </div>
                             </div>
@@ -286,7 +298,9 @@ const CampaignProfile = () => {
                                     Registration Deadline
                                 </p>
                                 <p className="mt-[-4px] md:mt-[0]">
-                                    25 days left
+                                    {new Date() < campaign.startDate
+                                        ? new Date() - campaign.startDate
+                                        : "Ongoing"}
                                 </p>
                             </div>
                         </div>
@@ -297,7 +311,8 @@ const CampaignProfile = () => {
                     <div className="flex ml-4 md:ml-10 lg:ml-10 font-bold text-xl sm:text-2xl md:text-3xl text-[#CD8521] mt-4">
                         <h1>Participate and Earn :</h1>
                         <p className="pl-2 lg:ml-4 md:ml-2 flex font-bold  text-[#FA9A0F]">
-                            <SiDogecoin className=" mr-1 mt-1 " /> 587
+                            <SiDogecoin className=" mr-1 mt-1 " />{" "}
+                            {campaign.points}
                         </p>
                     </div>
                     {/* points */}

@@ -119,9 +119,10 @@ const Orgdashboard = () => {
                 });
                 const posts = await Promise.all(postsPromises);
                 setPosts(posts);
+                console.log(posts);
             })();
         }
-    }, [loading]);
+    }, [org]);
 
     const handleABoutChange = () => {
         setIfBold1("bold");
