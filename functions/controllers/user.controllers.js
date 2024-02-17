@@ -99,7 +99,10 @@ router.get("/:userId", async (req, res) => {
         const user = await User.findOne({ firebaseId: userId })
             .populate("registeredCampaigns")
             .populate("completedCampaigns")
-            .populate("communities");
+            .populate({
+                path: "communities",
+                populate: { path: "organization" },
+            });
 
         if (!user) {
             response_404(

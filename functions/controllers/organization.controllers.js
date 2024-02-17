@@ -36,7 +36,7 @@ export const getOrgs = async (req, res) => {
                     logo: org.logo,
                     banner: org.banner,
                     isVerified: org.isVerified,
-                    members: community.userCount,
+                    members: community ? community.userCount : 0,
                 };
             })
         );
