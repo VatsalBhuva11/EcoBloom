@@ -3,7 +3,11 @@ import login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { useState } from "react";
-import { linkWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import {
+    linkWithPopup,
+    signInWithEmailAndPassword,
+    getAdditionalUserInfo,
+} from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Login_Card from "./Create_Account_Card.js";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -112,21 +116,40 @@ export default function Login() {
                 // linkWithGoogle option once user logged in through Creds
                 console.log(result);
 
-                auth.currentUser.getIdTokenResult().then((tokenResult) => {
-                    setClicked(false);
-                    if (tokenResult.claims.role === "user") {
-                        window.location.replace("/user/dashboard");
-                    } else if (tokenResult.claims.role === "org") {
-                        window.location.replace("/org/dashboard");
-                    } else {
-                        setStatus("failure");
-                        setMessage(
-                            "Error occurred while logging in. Please check your credentials/network."
+                auth.currentUser
+                    .getIdTokenResult()
+                    .then(async (tokenResult) => {
+                        setClicked(false);
+                        // const res = await fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`);
+                        const profileDets =
+                            getAdditionalUserInfo(result).profile;
+                        const dataToSend = new FormData();
+                        dataToSend.append("name", profileDets.name);
+                        dataToSend.append("email", profileDets.email);
+                        dataToSend.append("photoURL", profileDets.picture);
+                        dataToSend.append("firebaseId", result.user.uid);
+                        const res = await fetch(
+                            `${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`,
+                            {
+                                method: "POST",
+                                body: dataToSend,
+                            }
                         );
-                        console.log("Error: Invalid role");
-                        window.location.href = "/login";
-                    }
-                });
+                        const responseData = await res.json();
+                        console.log("after fetch: ", responseData);
+                        if (tokenResult.claims.role === "user") {
+                            // window.location.replace("/user/dashboard");
+                        } else if (tokenResult.claims.role === "org") {
+                            // window.location.replace("/org/dashboard");
+                        } else {
+                            setStatus("failure");
+                            setMessage(
+                                "Error occurred while logging in. Please check your credentials/network."
+                            );
+                            console.log("Error: Invalid role");
+                            // window.location.href = "/login";
+                        }
+                    });
                 // ...
             })
             .catch((error) => {

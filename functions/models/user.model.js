@@ -4,6 +4,11 @@ import Campaign from "./campaign.model.js";
 const Schema = mongoose.Schema;
 
 const User = new Schema({
+    firebaseId: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     name: {
         type: String,
         required: true,

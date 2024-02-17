@@ -52,19 +52,19 @@ export const ecobloom = onRequest({ cors: true }, app);
 export const setCustomClaims = onCall(async (data, context) => {
     try {
         // Set custom claims for the user
-        const { role, dbId, firebaseId } = data.data;
+        const { role, firebaseId } = data.data;
         const uid = firebaseId;
         console.log("data: ", data.data);
         if (role === "user") {
             await auth.setCustomUserClaims(uid, {
                 role: role, // Example custom claim
-                userId: dbId,
+                userId: firebaseId,
                 // Add more custom claims as needed
             });
         } else {
             await auth.setCustomUserClaims(uid, {
                 role: role, // Example custom claim
-                orgId: dbId,
+                orgId: firebaseId,
                 // Add more custom claims as needed
             });
         }

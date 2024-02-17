@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const Organization = new Schema({
+    firebaseId: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     name: {
         type: String,
         required: true,

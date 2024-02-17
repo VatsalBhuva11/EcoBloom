@@ -46,7 +46,7 @@ async function uploadFile(email, file, extensions, paths) {
 
 router.post("/register", async (req, res) => {
     try {
-        const { name, email, password, description } = req.body;
+        const { name, email, password, description, firebaseId } = req.body;
         const files = req.files; //logo, banner, document
 
         if (!name || !email || !password) {
@@ -91,6 +91,7 @@ router.post("/register", async (req, res) => {
                     })
                     .then(async () => {
                         const org = await Organization.create({
+                            firebaseId,
                             name,
                             email,
                             logo: paths["logo"],
