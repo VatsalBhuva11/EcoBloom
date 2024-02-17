@@ -213,7 +213,7 @@ export default function UserAuth() {
                 <button
                     className="btn btn-lime"
                     onClick={() => {
-                        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}`)
+                        fetch(`${process.env.REACT_APP_LOCAL_API_URL}`)
                             .then((response) => response.json())
                             .then((data) => {
                                 console.log("Success:", data);

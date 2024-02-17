@@ -32,7 +32,7 @@ const CreateCampaign = () => {
                 auth.currentUser.getIdToken().then((idToken) => {
                     try {
                         fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/create`,
+                            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/create`,
                             {
                                 body: JSON.stringify(formData),
                                 headers: {

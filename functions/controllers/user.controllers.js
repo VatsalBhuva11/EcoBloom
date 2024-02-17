@@ -96,7 +96,7 @@ router.post("/linkPassword", checkUser, async (req, res) => {
 router.get("/:userId", async (req, res) => {
     try {
         const userId = req.params.userId;
-        const user = await User.findById(userId)
+        const user = await User.findOne({ firebaseId: userId })
             .populate("registeredCampaigns")
             .populate("completedCampaigns")
             .populate("communities");
@@ -145,7 +145,7 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
 
         const userId = req.params.userId;
 
-        const checkUser = await User.findById(userId);
+        const checkUser = await User.findOne({ firebaseId: userId });
         if (!checkUser) {
             response_404(res, "User not found");
         }
@@ -199,8 +199,8 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
                         console.log("Updated photo in storage");
                         if (snapshot.state === "success") {
                             toUpdate.photoPathFirestore = pathToFile;
-                            const user = await User.findByIdAndUpdate(
-                                userId,
+                            const user = await User.findOneAndUpdate(
+                                { firebaseId: userId },
                                 toUpdate,
                                 {
                                     new: true,
@@ -252,7 +252,7 @@ router.patch("/:userId/profile", checkUser, filesUpload, async (req, res) => {
 router.get("/:userId/activity", async (req, res) => {
     try {
         const userId = req.params.userId;
-        const user = await User.findById(userId);
+        const user = await User.findOne({ firebaseId: userId });
         const activities = user.activityLog;
         activities.sort((a, b) => {
             return b.date - a.date;

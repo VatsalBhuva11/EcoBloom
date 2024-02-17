@@ -23,7 +23,7 @@ const Badha_Campaigns = () => {
     useEffect(() => {
         setLoader(true);
         if (auth.currentUser) {
-            fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/campaign`)
+            fetch(`${process.env.REACT_APP_LOCAL_API_URL}/campaign`)
                 .then((res) => res.json())
                 .then((campaigns) => {
                     setCampaigns(campaigns.data);

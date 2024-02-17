@@ -64,15 +64,15 @@ const UserDashboard = () => {
                 .getIdTokenResult()
                 .then((tokenResult) => {
                     console.log(tokenResult.claims);
-                    return tokenResult.claims.userId;
+                    return tokenResult.claims.user_id;
                 })
                 .then((userId) => {
                     Promise.all([
                         fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
+                            `${process.env.REACT_APP_LOCAL_API_URL}/user/${userId}`
                         ),
                         fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/upcoming`
+                            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/upcoming`
                         ),
                     ])
                         .then((responses) => {

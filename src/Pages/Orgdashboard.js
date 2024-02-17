@@ -65,7 +65,7 @@ const Orgdashboard = () => {
                     window.location.replace("/login");
                 } else {
                     fetch(
-                        `${process.env.REACT_APP_DEPLOYED_API_URL}/org/${idTokenResult.orgId}`
+                        `${process.env.REACT_APP_LOCAL_API_URL}/org/${idTokenResult.user_id}`
                     )
                         .then((response) => response.json())
                         .then(async (org) => {

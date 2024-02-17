@@ -13,7 +13,7 @@ const Communities = () => {
     const [orgs, setOrgs] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/org`)
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/org`)
             .then((response) => response.json())
             .then((orgsFetched) => {
                 console.log(orgsFetched.data);

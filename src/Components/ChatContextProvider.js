@@ -21,7 +21,7 @@ export const ChatContextProvider = (props) => {
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/communities`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/user/communities`,
                     {
                         method: "GET",
                         headers: {

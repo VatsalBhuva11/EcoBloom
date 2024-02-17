@@ -26,7 +26,7 @@ const Update_Contact_Number = ({ visible, onClose }) => {
                 const idTokenResult = jwtDecode(idToken);
 
                 const response = await fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.userId}/profile?type=phone`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.user_id}/profile?type=phone`,
                     {
                         method: "PATCH",
                         body: formData,

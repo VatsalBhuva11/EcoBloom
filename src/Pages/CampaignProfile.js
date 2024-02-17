@@ -31,7 +31,7 @@ const CampaignProfile = () => {
 
     useEffect(() => {
         fetch(
-            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`,
+            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}`,
             {
                 method: "GET",
                 headers: {
@@ -45,7 +45,13 @@ const CampaignProfile = () => {
                 const userData = jwtDecode(user.accessToken);
                 if (data.status === "OK") {
                     setCampaign(data.data);
-                    if (data.data.registeredUsers.includes(userData.userId)) {
+                    const checkIfUserRegistered =
+                        data.data.registeredUsers.filter((user) => {
+                            return user.registeredUsers.includes(
+                                params.campaignId
+                            );
+                        });
+                    if (checkIfUserRegistered.length > 0) {
                         setIsRegistered(true);
                     }
                 } else {
@@ -63,7 +69,7 @@ const CampaignProfile = () => {
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}/register`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}/register`,
                     {
                         method: "POST",
                         headers: {

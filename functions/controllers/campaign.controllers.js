@@ -15,9 +15,9 @@ mongoose.model("Organization", OrganizationSchema);
 export const getCampaign = async (req, res) => {
     try {
         const campaignId = req.params.campaignId;
-        const campaign = await Campaign.findById(campaignId).populate(
-            "organization"
-        );
+        const campaign = await Campaign.findById(campaignId)
+            .populate("organization")
+            .populate("registeredUsers");
         // console.log("checking campaigns: ", campaigns);
         if (!campaign) {
             response_404(res, "Campaign not found");
@@ -160,7 +160,7 @@ export const verifyUser = async (req, res) => {
         // >    size: 28354
         const userId = req.query.userId;
         const campaignId = req.params.campaignId;
-        const user = await User.findById(userId);
+        const user = await User.findOne({ firebaseId: userId });
         if (!user) {
             response_404(res, "User not found");
         }
@@ -208,7 +208,7 @@ export const verifyUser = async (req, res) => {
                     .then((response) => response.json())
                     .then((result) => {
                         if (result.confidence >= 85) {
-                            campaign.verifiedUsers.push(userId);
+                            campaign.verifiedUsers.push(user._id);
                             campaign.verifiedUsersCount =
                                 campaign.verifiedUsersCount + 1;
                             campaign.save();

@@ -94,7 +94,7 @@ export default function OrganizationAuth() {
         // let files = document.querySelector('input[type="file"]').files;
         let formData = new FormData(document.getElementById("emailSignUp"));
 
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/org/register`, {
+        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/org/register`, {
             method: "POST",
             body: formData,
         })
@@ -207,7 +207,7 @@ export default function OrganizationAuth() {
                 <button
                     className="btn btn-lime"
                     onClick={() => {
-                        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}`)
+                        fetch(`${process.env.REACT_APP_LOCAL_API_URL}`)
                             .then((response) => response.json())
                             .then((data) => {
                                 console.log("Success:", data);

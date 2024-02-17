@@ -30,6 +30,7 @@ export const getOrgs = async (req, res) => {
                 });
                 return {
                     id: org._id,
+                    firebaseId: org.firebaseId,
                     name: org.name,
                     email: org.email,
                     logo: org.logo,
@@ -51,15 +52,25 @@ export const getOrgs = async (req, res) => {
 export const getOrgDetails = async (req, res) => {
     try {
         const orgId = req.params.orgId;
-        const org = await Organization.findById(orgId).populate("orgPosts");
+        const org = await Organization.findOne({ firebaseId: orgId }).populate(
+            "orgPosts"
+        );
 
-        const { name, email, logo, banner, orgPosts, community, description } =
-            org;
+        const {
+            name,
+            firebaseId,
+            email,
+            logo,
+            banner,
+            orgPosts,
+            community,
+            description,
+        } = org;
         const communityData = await Community.findOne({
-            organization: org.id,
+            organization: org._id,
         });
         const campaigns = await Campaign.find({
-            organization: org.id,
+            organization: org._id,
         });
         const completedCampaigns = campaigns.filter((campaign) => {
             const campaignEndDate = new Date(campaign.endDate);
@@ -82,6 +93,7 @@ export const getOrgDetails = async (req, res) => {
 
         let data = {
             name,
+            firebaseId,
             email,
             logo,
             banner,
@@ -255,7 +267,7 @@ export const createPost = async (req, res) => {
 
 async function uploadFile(email, file, extensions, paths) {
     const fileType = file.fieldname.toLowerCase().replace("optional", "");
-    const pathToFile = `/org/${email}/${fileType}.${extensions}`;
+    const pathToFile = `org/${email}/${fileType}.${extensions}`;
     const storageRef = ref(storage, pathToFile);
     const metadata = {
         contentType: file.mimetype,

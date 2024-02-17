@@ -153,23 +153,32 @@ export default function Login() {
                                         "result from setCustomClaims from client: ",
                                         result
                                     );
+                                    window.location.replace("/user/dashboard");
+
                                     console.log(user);
                                 })
                                 .catch((err) => {
-                                    console.log(err);
+                                    setStatus("failure");
+                                    setMessage(
+                                        "Error occurred while logging in. Please check your credentials/network."
+                                    );
+                                    console.log(
+                                        "error frmo setting custom claims:",
+                                        err
+                                    );
+                                    window.location.href = "/login";
                                 });
                         } else {
                             if (tokenResult.claims.role === "user") {
-                                // window.location.replace("/user/dashboard");
+                                window.location.replace("/user/dashboard");
                             } else if (tokenResult.claims.role === "org") {
-                                // window.location.replace("/org/dashboard");
+                                window.location.replace("/org/dashboard");
                             } else {
                                 setStatus("failure");
                                 setMessage(
                                     "Error occurred while logging in. Please check your credentials/network."
                                 );
-                                console.log("Error: Invalid role");
-                                // window.location.href = "/login";
+                                window.location.href = "/login";
                             }
                         }
                     });

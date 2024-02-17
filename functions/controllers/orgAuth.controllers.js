@@ -100,7 +100,7 @@ router.post("/register", async (req, res) => {
                             description,
                         });
                         const community = await Community.create({
-                            organization: org.id,
+                            organization: org._id,
                             orgName: org.name,
                         });
                         response_200(

@@ -25,7 +25,7 @@ const NewPost = ({ visible, onClose }) => {
                 const formData = new FormData(
                     document.getElementById("postForm")
                 );
-                fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/org/post`, {
+                fetch(`${process.env.REACT_APP_LOCAL_API_URL}/org/post`, {
                     method: "POST",
                     body: formData,
                     headers: {
