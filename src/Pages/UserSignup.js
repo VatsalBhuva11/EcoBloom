@@ -30,7 +30,7 @@ export default function UserSignup() {
     //     // let files = document.querySelector('input[type="file"]').files;
     //     let formData = new FormData(document.getElementById("emailSignUp"));
 
-    //     fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`, {
+    //     fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`, {
     //         method: "POST",
     //         body: formData,
     //     })
@@ -114,7 +114,7 @@ export default function UserSignup() {
                 formData.append("firebaseId", user.uid);
 
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`,
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
                     {
                         method: "POST",
                         body: formData,

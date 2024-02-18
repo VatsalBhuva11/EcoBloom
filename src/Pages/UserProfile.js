@@ -41,7 +41,7 @@ const UserProfile = () => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.user_id}`
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.user_id}`
                 )
                     .then((res) => res.json())
                     .then((user) => {

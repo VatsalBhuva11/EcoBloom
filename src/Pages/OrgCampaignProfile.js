@@ -29,7 +29,7 @@ const OrgCampaignProfile = () => {
     useEffect(() => {
         setLoader(true);
         fetch(
-            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}`,
+            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`,
             {
                 method: "GET",
                 headers: {

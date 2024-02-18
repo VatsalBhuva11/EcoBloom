@@ -121,7 +121,7 @@ export default function Login() {
                     .getIdTokenResult()
                     .then(async (tokenResult) => {
                         setClicked(false);
-                        // const res = await fetch(`${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`);
+                        // const res = await fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`);
                         const profileDets =
                             getAdditionalUserInfo(result).profile;
                         const dataToSend = new FormData();
@@ -130,7 +130,7 @@ export default function Login() {
                         dataToSend.append("photoURL", profileDets.picture);
                         dataToSend.append("firebaseId", result.user.uid);
                         const res = await fetch(
-                            `${process.env.REACT_APP_LOCAL_API_URL}/auth/user/register`,
+                            `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
                             {
                                 method: "POST",
                                 body: dataToSend,

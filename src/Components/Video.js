@@ -32,7 +32,7 @@ export default function Video({ userId, campaignId }) {
         if (auth.currentUser) {
             auth.currentUser.getIdTokenResult().then((idTokenResult) => {
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${campaignId}/verifyUser?userId=${userId}`,
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${campaignId}/verifyUser?userId=${userId}`,
                     {
                         method: "POST",
                         body: formData,

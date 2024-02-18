@@ -28,7 +28,7 @@ const Store = () => {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.user_id}`,
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.user_id}`,
                     {
                         method: "GET",
                         headers: {

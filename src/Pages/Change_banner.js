@@ -26,7 +26,7 @@ const Change_banner = ({ visible, onClose }) => {
                     document.getElementById("emailSignUp")
                 );
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/user/${idTokenResult.user_id}/profile?type=photo`,
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.user_id}/profile?type=photo`,
                     {
                         method: "PATCH",
                         body: fileInput,

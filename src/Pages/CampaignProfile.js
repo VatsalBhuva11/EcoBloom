@@ -31,7 +31,7 @@ const CampaignProfile = () => {
 
     useEffect(() => {
         fetch(
-            `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}`,
+            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`,
             {
                 method: "GET",
                 headers: {
@@ -70,7 +70,7 @@ const CampaignProfile = () => {
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${params.campaignId}/register`,
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}/register`,
                     {
                         method: "POST",
                         headers: {
