@@ -63,6 +63,7 @@ const UserDashboard = () => {
             auth.currentUser
                 .getIdTokenResult()
                 .then((tokenResult) => {
+                    //tokenResult.claims.role === "user" |
                     console.log(tokenResult.claims);
                     if(tokenResult.claims.role === 'org'){
                         window.location.replace('/org/dashboard');

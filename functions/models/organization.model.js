@@ -12,6 +12,11 @@ const Organization = new Schema({
         required: true,
         unique: true,
     },
+    applyDate: {
+        type: Date,
+        required: true,
+        default: new Date(),
+    },
     email: {
         type: String,
         required: true,

@@ -98,6 +98,7 @@ router.post("/register", async (req, res) => {
                             banner: paths["banner"],
                             document: paths["document"],
                             description,
+                            applyDate: new Date(),
                         });
                         const community = await Community.create({
                             organization: org._id,

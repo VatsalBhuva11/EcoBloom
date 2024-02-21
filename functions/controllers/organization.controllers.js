@@ -37,6 +37,7 @@ export const getOrgs = async (req, res) => {
                     banner: org.banner,
                     isVerified: org.isVerified,
                     members: community ? community.userCount : 0,
+                    applyDate: org.applyDate,
                 };
             })
         );
@@ -65,6 +66,7 @@ export const getOrgDetails = async (req, res) => {
             orgPosts,
             community,
             description,
+            applyDate,
         } = org;
         const communityData = await Community.findOne({
             organization: org._id,
@@ -104,6 +106,7 @@ export const getOrgDetails = async (req, res) => {
             communityUsersCount: communityData.userCount,
             communityId: communityData._id,
             description,
+            applyDate,
         };
         response_200(res, "Successfully fetched organization data!", data);
     } catch (err) {
