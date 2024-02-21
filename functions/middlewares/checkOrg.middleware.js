@@ -3,6 +3,7 @@ import {
     response_403,
     response_500,
 } from "../utils/responseCodes.js";
+import Organization from "../models/organization.model.js";
 
 import { auth } from "../config/firebaseAdmin.config.js";
 export default async function checkOrg(req, res, next) {
@@ -10,12 +11,15 @@ export default async function checkOrg(req, res, next) {
         let token = req.headers["authorization"];
         token = token.split(" ")[1];
         auth.verifyIdToken(token)
-            .then((decodedToken) => {
+            .then(async (decodedToken) => {
+                const getOrg = await Organization.findOne({
+                    firebaseId: decodedToken.user_id,
+                });
                 if (decodedToken.role === "org") {
                     req.org = {
-                        orgId: decodedToken.orgId,
-                        name: decodedToken.name,
-                        email: decodedToken.email,
+                        orgId: getOrg._id,
+                        name: getOrg.name,
+                        email: getOrg.email,
                     };
                     next();
                 } else {

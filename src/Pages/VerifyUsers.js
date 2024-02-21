@@ -36,17 +36,8 @@ export default function VerifyUsers() {
                 .then(async (data) => {
                     if (data.status === "OK") {
                         setCampaign(data.data);
-                        //fetch user details of registeredUsers, and update in users state
-                        const registeredUsers = await Promise.all(
-                            data.data.registeredUsers.map(async (userId) => {
-                                const user = await fetch(
-                                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
-                                );
-                                const userData = await user.json();
-                                return userData.data;
-                            })
-                        );
-                        setUsers(registeredUsers);
+
+                        setUsers(data.data.registeredUsers);
                         setLoader(false);
                     } else {
                         console.log("Status not OK");

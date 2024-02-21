@@ -95,38 +95,41 @@ export default function UserSignup() {
         //         setStatus("failure");
         //         setSignUpClicked(false);
         //     });
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`, {
-            method: "POST",
-            body: formData,
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.status === "error") {
-                    setSignUpClicked(false);
-                    throw new Error("Invalid form input. Please check again,");
-                } else {
-                    console.log("User in DB: ");
-                    console.log(data);
-                    createUserWithEmailAndPassword(auth, email, password)
-                        .then((userCredential) => {
-                            // Signed Up
-                            console.log(
-                                "User in Firebase: ",
-                                userCredential.user
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed Up
+                console.log("User in Firebase: ", userCredential.user);
+                const user = userCredential.user;
+                const userData = {
+                    role: "user",
+                    firebaseId: user.uid,
+                }; // Include any other relevant user data
+                console.log("userData: ", userData);
+                // Call Cloud Function to handle custom claims and other operations
+                const functions = getFunctions();
+                const setCustomClaims = httpsCallable(
+                    functions,
+                    "setCustomClaims"
+                );
+                formData.append("firebaseId", user.uid);
+
+                fetch(
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
+                    {
+                        method: "POST",
+                        body: formData,
+                    }
+                )
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.status === "error") {
+                            setSignUpClicked(false);
+                            throw new Error(
+                                "Invalid form input. Please check again,"
                             );
-                            const user = userCredential.user;
-                            const userData = {
-                                role: "user",
-                                dbId: data.data._id,
-                                firebaseId: user.uid,
-                            }; // Include any other relevant user data
-                            console.log("userData: ", userData);
-                            // Call Cloud Function to handle custom claims and other operations
-                            const functions = getFunctions();
-                            const setCustomClaims = httpsCallable(
-                                functions,
-                                "setCustomClaims"
-                            );
+                        } else {
+                            console.log("User in DB: ");
+                            console.log(data);
                             setCustomClaims(userData)
                                 .then((result) => {
                                     console.log(
@@ -144,21 +147,22 @@ export default function UserSignup() {
                                     setStatus("failure");
                                 });
 
-                            // ...
-                        })
-                        .catch((error) => {
-                            const errorCode = error.code;
-                            const errorMessage = error.message;
-                            // ..
-                            console.log(error);
-                            setStatus("failure");
-                            setSignUpClicked(false);
-                        });
-                    console.log("Success:", data);
-                }
+                            console.log("Success:", data);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        setStatus("failure");
+                        setSignUpClicked(false);
+                    });
+
+                // ...
             })
             .catch((error) => {
-                console.error("Error:", error);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(error);
                 setStatus("failure");
                 setSignUpClicked(false);
             });

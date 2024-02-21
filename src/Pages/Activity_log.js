@@ -20,7 +20,7 @@ const Activity_log = () => {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.userId}/activity`
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.user_id}/activity`
                 )
                     .then((res) => res.json())
                     .then((activities) => {

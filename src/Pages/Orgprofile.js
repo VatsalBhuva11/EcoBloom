@@ -88,9 +88,10 @@ const Orgprofile = () => {
 
                     community = community.data;
                     org = org.data;
-
+                    console.log("profile se data: ", idTokenResult);
                     const checkJoined = community?.joinedUsers?.filter(
-                        (userId) => userId === idTokenResult.claims.userId
+                        (user) =>
+                            user.firebaseId === idTokenResult.claims.user_id
                     );
                     checkJoined.length > 0
                         ? setJoinCommStatus(true)

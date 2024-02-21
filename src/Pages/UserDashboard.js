@@ -64,7 +64,7 @@ const UserDashboard = () => {
                 .getIdTokenResult()
                 .then((tokenResult) => {
                     console.log(tokenResult.claims);
-                    return tokenResult.claims.userId;
+                    return tokenResult.claims.user_id;
                 })
                 .then((userId) => {
                     Promise.all([
@@ -286,6 +286,7 @@ const UserDashboard = () => {
                                                 href={
                                                     "/org/profile/" +
                                                     community.organization
+                                                        .firebaseId
                                                 }
                                             >
                                                 <div className="flex pb-3 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-4 px-4 2xl:px-7 hover:scale-105 duration-300 justify-start overflow-hidden">

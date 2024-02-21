@@ -65,7 +65,7 @@ const Orgdashboard = () => {
                     window.location.replace("/login");
                 } else {
                     fetch(
-                        `${process.env.REACT_APP_DEPLOYED_API_URL}/org/${idTokenResult.orgId}`
+                        `${process.env.REACT_APP_DEPLOYED_API_URL}/org/${idTokenResult.user_id}`
                     )
                         .then((response) => response.json())
                         .then(async (org) => {
@@ -119,9 +119,10 @@ const Orgdashboard = () => {
                 });
                 const posts = await Promise.all(postsPromises);
                 setPosts(posts);
+                console.log(posts);
             })();
         }
-    }, [loading]);
+    }, [org]);
 
     const handleABoutChange = () => {
         setIfBold1("bold");

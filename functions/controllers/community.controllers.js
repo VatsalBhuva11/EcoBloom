@@ -7,14 +7,19 @@ import {
 
 import Community from "../models/community.model.js";
 import User from "../models/user.model.js";
+import Organization from "../models/organization.model.js";
 
 export const getCommunity = async (req, res) => {
     try {
         const orgId = req.params.orgId;
+        const org = await Organization.findOne({ firebaseId: orgId });
+        if (!org) {
+            response_404(res, "org not found");
+        }
 
         const community = await Community.findOne({
-            organization: orgId,
-        });
+            organization: org._id,
+        }).populate("joinedUsers");
 
         response_200(res, "Successfully fetched community data", community);
     } catch (err) {
@@ -27,9 +32,12 @@ export const joinCommunity = async (req, res) => {
     try {
         const orgId = req.params.orgId;
         const userId = req.user.userId;
-
+        const org = await Organization.findOne({ firebaseId: orgId });
+        if (!org) {
+            response_404(res, "org not found");
+        }
         const community = await Community.findOne({
-            organization: orgId,
+            organization: org._id,
         });
         const user = await User.findById(userId);
 

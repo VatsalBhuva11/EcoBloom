@@ -99,7 +99,7 @@ const Communities = () => {
                                         </div>
                                         <button
                                             onClick={() => {
-                                                window.location.href = `/org/profile/${org.id}`;
+                                                window.location.href = `/org/profile/${org.firebaseId}`;
                                             }}
                                             className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
                                         >
