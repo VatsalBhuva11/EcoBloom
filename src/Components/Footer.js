@@ -62,7 +62,12 @@ export default function Footer() {
       <div className="mt-2 flex flex-col  max-w-[1240px] m-auto justify-between sm:flex-row text-center text-gray-500">
         <p>EcoBloom - All rights reserverved</p>
         <div className="justify-between sm:w-[300px]  flex gap-2 mt-2">
-          <FaFacebookSquare size={30} />
+          <a
+            href="https://www.facebook.com/profile.php?id=61556828273634&mibextid=ZbWKwL"
+            target="_blank"
+          >
+            <FaFacebookSquare className="cursor-pointer" size={30} />
+          </a>
           <a href="https://www.instagram.com/eco_bloom_/" target="_blank">
             <FaInstagram className="cursor-pointer" size={30} />
           </a>
