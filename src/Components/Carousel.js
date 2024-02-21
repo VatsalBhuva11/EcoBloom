@@ -81,9 +81,9 @@ export default function Carousel() {
                                 </div>
                                 <div className=" flex flex-col justify-center items-center gap-4 p-4">
                                     <p>{data.content}</p>
-                                    <button className=" bg-[#304D30] text-white text-lg px-6  py-1 rounded-xl">
+                                    {/* <button className=" bg-[#304D30] text-white text-lg px-6  py-1 rounded-xl">
                                         Read More!
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         ))}

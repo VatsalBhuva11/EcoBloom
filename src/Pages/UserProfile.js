@@ -15,7 +15,7 @@ import {
     sendPasswordResetEmail,
 } from "firebase/auth";
 import { IoArrowBackSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 const UserProfile = () => {
@@ -31,6 +31,7 @@ const UserProfile = () => {
     const [showMyModel3, setShowMyModal3] = useState(false);
     const handleOnClose3 = () => setShowMyModal3(false);
     const [user, loading, error] = useAuthState(auth);
+    const [loader, setLoader] = useState(true);
     const [profile, setProfile] = useContext(ProfileContext);
     const [googleLinked, setGoogleLinked] = useState(null);
     const [userData, setUserData] = useState({});
@@ -40,6 +41,10 @@ const UserProfile = () => {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
+                if (idTokenResult.role === "org"){
+                    window.location.replace( '/org/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                }
                 fetch(
                     `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.user_id}`
                 )
@@ -56,6 +61,7 @@ const UserProfile = () => {
                             const data = user.data;
                             console.log(data);
                             setUserData(data);
+                            setLoader(false);
                         }
                     })
                     .catch((err) => {
@@ -93,7 +99,7 @@ const UserProfile = () => {
             });
     }
 
-    if (loading) {
+    if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <HashLoader color="#36d7b7" size={100} />

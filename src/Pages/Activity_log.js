@@ -12,13 +12,15 @@ import moment from "moment";
 const Activity_log = () => {
     const [activities, setActivities] = useState([]);
     const [user, loading, error] = useAuthState(auth);
-    const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
-        setLoader(true);
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
+                if (idTokenResult.role === "org"){
+                    window.location.replace("/org/dashboard");
+                }
                 fetch(
                     `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.user_id}/activity`
                 )
@@ -26,10 +28,10 @@ const Activity_log = () => {
                     .then((activities) => {
                         setActivities(activities.data);
                         console.log(activities);
+                        setLoader(false);
                     });
             });
         }
-        setLoader(false);
     }, [loading]);
 
     if (loading || loader) {

@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { HashLoader } from "react-spinners";
 import { useNavigate } from "react-router";
-
+import { jwtDecode } from "jwt-decode";
 import VideoCard from "./VideoCard.js";
 
 export default function VerifyUsers() {
@@ -29,6 +29,17 @@ export default function VerifyUsers() {
     useEffect(() => {
         setLoader(true);
         if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                if (idTokenResult.role === "user" || !idTokenResult.role){
+                    window.location.replace( '/user/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                } else {
+
+                    setLoader(false)
+                }
+            });
             fetch(
                 `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`
             )

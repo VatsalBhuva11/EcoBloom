@@ -6,27 +6,46 @@ import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { HashLoader } from "react-spinners";
+import { jwtDecode } from "jwt-decode";
+import { auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Communities = () => {
     const [search, setSearch] = useState("");
     const [profile, setProfile] = useContext(ProfileContext);
     const [orgs, setOrgs] = useState([]);
-    const [loading, setLoading] = useState(true);
+    //const [loading, setLoading] = useState(true);
+    const [loader, setLoader] = useState(true);
+    const [user, loading, error] = useAuthState(auth);
+    // const [profile, setProfile] = useState(pers
     useEffect(() => {
+
+        if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                if (idTokenResult.role === "org"){
+                    window.location.replace( '/org/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                }
         fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/org`)
             .then((response) => response.json())
             .then((orgsFetched) => {
                 console.log(orgsFetched.data);
                 setOrgs(orgsFetched.data);
-                setLoading(false);
+                setLoader(false);
             })
             .catch((err) => {
                 console.log("error occurred while fetching organizations");
                 console.log(err);
-                setLoading(false);
+                setLoader(false);
             });
+        });
+    }
     }, [loading]);
-    if (loading) {
+
+
+    if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <HashLoader color="#36d7b7" size={100} />

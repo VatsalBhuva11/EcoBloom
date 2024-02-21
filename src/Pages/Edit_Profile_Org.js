@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import logo from "../assets/images/logo.png";
 import EditPassword from "./EditPassword";
 import Change_profile from "./Change_profile";
@@ -13,6 +13,7 @@ import { IoArrowBackSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import Change_banner from "./Change_banner.js";
+import { jwtDecode } from "jwt-decode";
 
 const Edit_Profile_Org = () => {
     const [showMyModel, setShowMyModal] = useState(false);
@@ -29,7 +30,29 @@ const Edit_Profile_Org = () => {
     const [user, loading, error] = useAuthState(auth);
     const [profile, setProfile] = useContext(ProfileContext);
     const [googleLinked, setGoogleLinked] = useState(null);
+    const [loader, setLoader] = useState(true);
     const navigate = useNavigate();
+
+    //have a look at this loader function
+    useEffect(()=>{
+
+        if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                if (idTokenResult.role === "user" || !idTokenResult.role){
+                    window.location.replace( '/user/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                }else{
+                    setLoader(false)
+
+                }
+            });
+            
+        }
+       
+
+    },[loading])
 
     function handleLinkWithGoogle() {
         const provider = new GoogleAuthProvider();
@@ -54,7 +77,7 @@ const Edit_Profile_Org = () => {
             });
     }
 
-    if (loading) {
+    if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <HashLoader color="#36d7b7" size={100} />

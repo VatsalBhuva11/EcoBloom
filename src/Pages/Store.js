@@ -27,6 +27,10 @@ const Store = () => {
             console.log("AUTH CURRENT USER");
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
+                if (idTokenResult.role === "org"){
+                    window.location.replace( '/org/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                }
                 fetch(
                     `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${idTokenResult.user_id}`,
                     {

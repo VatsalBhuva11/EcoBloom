@@ -60,9 +60,9 @@ const Orgdashboard = () => {
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
-                if (idTokenResult.role !== "org") {
-                    alert("Please login with organization credentials.");
-                    window.location.replace("/login");
+                if (idTokenResult.role === "user" || !idTokenResult.role) {
+                   // alert("Please login with organization credentials.");
+                    window.location.replace("/user/dashboard");
                 } else {
                     fetch(
                         `${process.env.REACT_APP_DEPLOYED_API_URL}/org/${idTokenResult.user_id}`

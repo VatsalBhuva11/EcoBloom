@@ -1,11 +1,35 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Webcam from "react-webcam";
 import { auth, storage } from "../firebase.js";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { jwtDecode } from "jwt-decode";
+import { HashLoader } from "react-spinners";
 
 export default function Video({ userId, campaignId }) {
     console.log(userId, " from Video");
     const [status, setStatus] = useState(null);
     const [clicked, setClicked] = useState(null);
+    const [loader, setLoader] = useState(true);
+    const [user, loading, error] = useAuthState(auth);
+
+    useEffect(()=>{
+
+        if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                if (idTokenResult.role === "user" || !idTokenResult.role){
+                    window.location.replace( '/user/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                }else{
+                    setLoader(false)
+                }
+            });
+            
+        }
+       
+
+    },[loading])
 
     function DataURIToBlob(dataURI) {
         const splitDataURI = dataURI.split(",");
@@ -80,6 +104,14 @@ export default function Video({ userId, campaignId }) {
                     });
             });
         }
+    }
+
+    if (loading || loader) {
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <HashLoader color="#36d7b7" size={100} />
+            </div>
+        );
     }
 
     const videoConstraints = {

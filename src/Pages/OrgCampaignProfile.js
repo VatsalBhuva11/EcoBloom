@@ -18,16 +18,34 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router";
 import { HashLoader } from "react-spinners";
 import moment from "moment";
+//import { auth } from "../firebase";
+import { jwtDecode } from "jwt-decode";
+
 
 const OrgCampaignProfile = () => {
     const [profile, setProfile] = useContext(ProfileContext);
     const [campaign, setCampaign] = useState({});
     const [user, loading, error] = useAuthState(auth);
-    const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(true);
     const params = useParams();
 
     useEffect(() => {
         setLoader(true);
+        if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                if (idTokenResult.role === "user" || !idTokenResult.role){
+                    window.location.replace( '/user/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                } else {
+
+                    setLoader(false)
+                }
+            });
+            
+        }
+
         fetch(
             `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`,
             {

@@ -10,11 +10,15 @@ import {
     ChatContextProvider,
 } from "../Components/ChatContextProvider";
 
+
 export default function CommunityChat() {
     const [user, loading, error] = useAuthState(auth);
-    const [loader, setLoader] = useState(false);
+    //const [loader, setLoader] = useState(false);
+    
 
-    if (loading || loader) {
+
+
+    if (loading) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <HashLoader color="#36d7b7" size={100} />

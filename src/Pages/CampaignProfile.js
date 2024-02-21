@@ -27,9 +27,18 @@ const CampaignProfile = () => {
     const [status, setStatus] = useState(null);
     const [campaign, setCampaign] = useState({});
     const [isRegistered, setIsRegistered] = useState(false);
+    const [loader, setLoader] = useState(true);
     const [user, loading, error] = useAuthState(auth);
 
     useEffect(() => {
+        if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                if (idTokenResult.role === "org"){
+                    window.location.replace( '/org/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                }
         fetch(
             `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`,
             {
@@ -62,6 +71,9 @@ const CampaignProfile = () => {
             .catch((err) => {
                 console.log(err);
             });
+        setLoader(false)
+        });
+    }
     }, [loading]);
 
     function handleRegistration(e) {
@@ -118,7 +130,7 @@ const CampaignProfile = () => {
         }
     }
 
-    if (loading) {
+    if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <HashLoader color="#36d7b7" size={100} />

@@ -16,7 +16,7 @@ import { getDownloadURL, ref } from "firebase/storage";
 import Logout from "./logout_pop.js";
 import EditPassword from "./EditPassword.js";
 import { TbMessages } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import moment from "moment";
 import { useContext } from "react";
 import { ProfileContext } from "../Components/ProfileContextProvider.js";
@@ -64,6 +64,9 @@ const UserDashboard = () => {
                 .getIdTokenResult()
                 .then((tokenResult) => {
                     console.log(tokenResult.claims);
+                    if(tokenResult.claims.role === 'org'){
+                        window.location.replace('/org/dashboard');
+                    }
                     return tokenResult.claims.user_id;
                 })
                 .then((userId) => {

@@ -41,7 +41,7 @@ export default function HomePage() {
                     style={{ scaleX }}
                 /> */}
                 <motion.div
-                    className="fixed left-[66px] right-0 h-[4px] bg-black top-[94px] max-w-[91%]"
+                    className="fixed flex justify-center w-11/12 h-[4px] bg-black top-[94px] max-w-[91%]"
                     style={{ scaleX }}
                 />
             </div>

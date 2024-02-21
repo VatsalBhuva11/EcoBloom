@@ -1,9 +1,12 @@
-import { React, useState } from "react";
+import { React, useState , useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import Create_Campaign_Card from "./Create_Campaign_Card";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
+import { HashLoader } from "react-spinners";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { jwtDecode } from "jwt-decode";
 
 import Maps_Card from "./Map_Card.js";
 
@@ -12,14 +15,37 @@ const CreateCampaign = () => {
     const [showMyModel1, setShowMyModal1] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [formData, setFormData] = useState({});
+    const handleOnClose = () => setShowMyModal(false);
+    const handleOnClose1 = () => setShowMyModal1(false);
+    const [loader, setLoader] = useState(true);
+    const [user, loading, error] = useAuthState(auth);
+
+    useEffect(()=>{
+
+        if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                if (idTokenResult.role === "user" || !idTokenResult.role){
+                    window.location.replace( '/user/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                } else {
+
+                    setLoader(false)
+                }
+            });
+            
+        }
+       
+
+    },[loading])
 
     // const handleMarkerClick = (marker) => {
     //     console.log("Marker clicked:", marker);
     //     // Perform actions when a marker is clicked
     // };
+    
 
-    const handleOnClose = () => setShowMyModal(false);
-    const handleOnClose1 = () => setShowMyModal1(false);
 
     function handleCreateCampaign(event) {
         event.preventDefault();
@@ -64,6 +90,14 @@ const CreateCampaign = () => {
                 alert("Login as an organization.");
             }
         }
+    }
+
+    if (loading || loader) {
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <HashLoader color="#36d7b7" size={100} />
+            </div>
+        );
     }
 
     return (

@@ -6,23 +6,33 @@ import logo_commu from "../assets/images/logo_commu.jpg";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { SlCalender } from "react-icons/sl";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { ProfileContext } from "../Components/ProfileContextProvider";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import moment from "moment";
+import { jwtDecode } from "jwt-decode";
+import { HashLoader } from "react-spinners";
 
 const Badha_Campaigns = () => {
     const [profile, setProfile] = useContext(ProfileContext);
     const [campaigns, setCampaigns] = useState([]);
     const [ongoingCampaigns, setOngoingCampaigns] = useState([]);
     const [upcomingCampaigns, setUpcomingCampaigns] = useState([]);
-    const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(true);
     const [user, loading, error] = useAuthState(auth);
 
     useEffect(() => {
-        setLoader(true);
+        // setLoader(true);
         if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                console.log(idTokenResult);
+                if (idTokenResult.role === "org"){
+                    window.location.replace( '/org/dashboard');
+                    // <Navigate to = 'org/dashboard'  replace  = {true}/>
+                }
+                // setLoader(false);
             fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/campaign`)
                 .then((res) => res.json())
                 .then((campaigns) => {
@@ -40,18 +50,32 @@ const Badha_Campaigns = () => {
                             upcoming.push(campaign);
                         }
                     });
+                    setLoader(false);
                     setOngoingCampaigns(ongoing);
                     setUpcomingCampaigns(upcoming);
                     console.log(ongoing);
                     console.log(upcoming);
+                    setLoader(false);
+                    
                 })
                 .catch((err) => {
+                    setLoader(false);
                     console.log(err);
                     throw new Error("Error occurred while fetching campaigns");
                 });
+            });
+        }else{
+            window.location.replace('/login')
         }
-        setLoader(false);
     }, [loading]);
+
+    if (loading || loader) {
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <HashLoader color="#36d7b7" size={100} />
+            </div>
+        );
+    }
 
     return (
         <div className="h-screen w-full bg-[#eef0e5]">
