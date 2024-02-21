@@ -15,7 +15,7 @@ export default function About() {
   return (
     <div
       id="about"
-      className="w-full bg-[url('./assets/images/underground.jpg')] bg-cover justify-between pt-12"
+      className="w-full bg-[url('./assets/images/roots.png')] bg-cover justify-between"
     >
       <div className="max-w-[1240px] mx-auto justify-center items-center">
         {/* <h1 className="py-3 text-[#EEF0E5] text-4xl md:text-6xl text-center font-bold mt-12">
@@ -33,7 +33,7 @@ export default function About() {
           
             <img
               src={about}
-              className="hidden md:flex h-72 lg:h-96 lg:w-96"
+              className="hidden md:flex h-72 lg:w-96"
               alt="ecobloom"
             />
           

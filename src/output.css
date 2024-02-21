@@ -2134,8 +2134,8 @@ video {
   background-image: url('./assets/images/joinUs.png');
 }
 
-.bg-\[url\(\'\.\/assets\/images\/underground\.jpg\'\)\]{
-  background-image: url('./assets/images/underground.jpg');
+.bg-\[url\(\'\.\/assets\/images\/roots\.png\'\)\]{
+  background-image: url('./assets/images/roots.png');
 }
 
 .bg-gradient-to-b{
@@ -3667,10 +3667,6 @@ html {
     margin-top: 0;
   }
 
-  .md\:block{
-    display: block;
-  }
-
   .md\:flex{
     display: flex;
   }
@@ -4054,6 +4050,10 @@ html {
     margin-top: 2rem;
   }
 
+  .lg\:block{
+    display: block;
+  }
+
   .lg\:flex{
     display: flex;
   }
@@ -4076,10 +4076,6 @@ html {
 
   .lg\:h-64{
     height: 16rem;
-  }
-
-  .lg\:h-96{
-    height: 24rem;
   }
 
   .lg\:h-\[2\.4rem\]{
@@ -4160,6 +4156,10 @@ html {
 
   .lg\:w-\[75\%\]{
     width: 75%;
+  }
+
+  .lg\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:flex-row{

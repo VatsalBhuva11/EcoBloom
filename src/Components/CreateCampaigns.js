@@ -16,7 +16,7 @@ export default function CreateCampaigns() {
                 {/* <h1 className="py-3 text-[#0F1035] text-4xl md:text-6xl text-center font-bold">
           About Us
         </h1> */}
-                <div className="grid md:grid-cols-2 px-2 py-12">
+                <div className="grid lg:grid-cols-2 px-2 py-12">
                     <div className="">
                         <h1 className="text-[#1d1f5b] text-4xl md:text-6xl text-left font-bold">
                             CREATE
@@ -39,10 +39,10 @@ export default function CreateCampaigns() {
                             />
                         </button>
                     </div>
-                    <div>
+                    <div className="hidden lg:block">
                         <img
                             src={campaign}
-                            className="hidden md:block ml-8 w-[40rem]"
+                            className="hidden lg:block ml-8 w-[40rem]"
                             alt="ecobloom"
                         />
                     </div>
