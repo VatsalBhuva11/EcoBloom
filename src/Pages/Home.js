@@ -30,6 +30,7 @@ import Delhivery from "./Delhivery.js";
 import Edit_Profile_Org from "./Edit_Profile_Org.js";
 import UserAuth from "../UserAuth.js";
 import Admin from "./Admin.js";
+import VerifyDummy from "./VerifyDummy.js";
 export default function Home() {
   const [user, loading, error] = useAuthState(auth);
   if (loading) {
@@ -103,6 +104,7 @@ export default function Home() {
             />
 
             <Route exact path="/admin" element={<Admin />} />
+            <Route exact path="/verifydummy" element={<VerifyDummy />} />
 
             <Route exact path="/store/order" element={<Delhivery />} />
           </Routes>
