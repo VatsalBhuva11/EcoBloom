@@ -101,6 +101,9 @@ export default function Home() {
               path="/campaign/:campaignId/verify"
               element={<VerifyUsers />}
             />
+
+            <Route exact path="/admin" element={<Admin />} />
+
             <Route exact path="/store/order" element={<Delhivery />} />
           </Routes>
         </BrowserRouter>
