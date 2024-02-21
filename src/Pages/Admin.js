@@ -19,7 +19,7 @@ const Admin = () => {
     function handleVerifyOrg(firebaseId, key) {
         setClicked({ id: firebaseId });
         fetch(
-            `${process.env.REACT_APP_LOCAL_API_URL}/admin/verify?orgId=${firebaseId}`,
+            `${process.env.REACT_APP_DEPLOYED_API_URL}/admin/verify?orgId=${firebaseId}`,
             {
                 method: "POST",
                 headers: {

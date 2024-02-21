@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useState } from "react";
 import { getFunctions, httpsCallable } from "firebase/functions";
+import logo from "../assets/images/logo.png";
 
 import Terms_Conditions from "./Terms_Conditions.js";
 
@@ -101,6 +102,15 @@ export default function UserSignup() {
     return (
         <div className="h-screen">
             <div className=" bg-[#EEF0E5] ">
+                <div className="absolute top-20 left-20">
+                    <Link to="/">
+                        <img
+                            className="h-12  hover:scale-105 duration-300 md:h-16 "
+                            src={logo}
+                            alt=""
+                        />
+                    </Link>
+                </div>
                 <div className=" flex justify-center">
                     <div class="flex flex-col items-center lg:w-3/4 md:w-5/6 tablet:w-7/8 w-screen justify-center h-screen lg:py-0 ">
                         <div class="lg:w-3/4 md:w-5/6  rounded-lg shadow md:px-0 px-4 md:mt-0 mt-8  bg-gradient-to-b from-[#9db39b] to-transparent">
