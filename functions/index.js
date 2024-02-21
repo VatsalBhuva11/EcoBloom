@@ -6,8 +6,8 @@ import router from "./routes/index.routes.js";
 import { onRequest, onCall } from "firebase-functions/v2/https";
 import { auth as firebaseAuth } from "firebase-functions";
 import {
-    beforeUserCreated,
-    beforeUserSignedIn,
+  beforeUserCreated,
+  beforeUserSignedIn,
 } from "firebase-functions/v2/identity";
 import User, { User as UserSchema } from "./models/user.model.js";
 import Organization from "./models/organization.model.js";
@@ -33,14 +33,14 @@ app.use(express.json());
 connectDB();
 //https://ecobloom-rsxx5czyua-uc.a.run.app
 app.get("/", (req, res) => {
-    const message = "EcoBloom API at /";
-    res.json(message);
+  const message = "EcoBloom API at /";
+  res.json(message);
 });
 
 //https://ecobloom-rsxx5czyua-uc.a.run.app/api
 app.get("/api", (req, res) => {
-    const message = "EcoBloom API at /api";
-    res.json(message);
+  const message = "EcoBloom API at /api";
+  res.json(message);
 });
 
 app.use("/api", router);
@@ -50,29 +50,29 @@ setGlobalOptions({ maxInstances: 10 });
 export const ecobloom = onRequest({ cors: true }, app);
 
 export const setCustomClaims = onCall(async (data, context) => {
-    try {
-        // Set custom claims for the user
-        const { role, firebaseId } = data.data;
-        const uid = firebaseId;
-        console.log("data: ", data.data);
-        if (role === "user") {
-            await auth.setCustomUserClaims(uid, {
-                role: role, // Example custom claim
-                userId: firebaseId,
-                // Add more custom claims as needed
-            });
-        } else {
-            await auth.setCustomUserClaims(uid, {
-                role: role, // Example custom claim
-                orgId: firebaseId,
-                // Add more custom claims as needed
-            });
-        }
-        console.log("User from setCustomClaims: ", firebaseId);
-        console.log("Custom claims set for user:", firebaseId);
-    } catch (error) {
-        console.error("Error setting custom claims:", error);
+  try {
+    // Set custom claims for the user
+    const { role, firebaseId } = data.data;
+    const uid = firebaseId;
+    console.log("data: ", data.data);
+    if (role === "user") {
+      await auth.setCustomUserClaims(uid, {
+        role: role, // Example custom claim
+        userId: firebaseId,
+        // Add more custom claims as needed
+      });
+    } else {
+      await auth.setCustomUserClaims(uid, {
+        role: role, // Example custom claim
+        orgId: firebaseId,
+        // Add more custom claims as needed
+      });
     }
+    console.log("User from setCustomClaims: ", firebaseId);
+    console.log("Custom claims set for user:", firebaseId);
+  } catch (error) {
+    console.error("Error setting custom claims:", error);
+  }
 });
 
 // export const beforecreated = beforeUserCreated(async (event) => {
@@ -187,71 +187,69 @@ export const setCustomClaims = onCall(async (data, context) => {
 // });
 
 export const checkCompletedCampaigns = onSchedule(
-    "every 10 minutes",
-    async (event) => {
-        console.log("Event from scheduler: ", event);
-        try {
-            // Retrieve all campaigns from the database
-            const campaigns = await Campaign.find({
-                isCompleted: false,
-                endDate: {
-                    $lte: new Date().toISOString(),
+  "every 10 minutes",
+  async (event) => {
+    console.log("Event from scheduler: ", event);
+    try {
+      // Retrieve all campaigns from the database
+      const campaigns = await Campaign.find({
+        isCompleted: false,
+        endDate: {
+          $lte: new Date().toISOString(),
+        },
+      }).populate("verifiedUsers");
+      console.log("campaigns to update: ", campaigns);
+
+      // Iterate through campaigns and check if any have reached their end date
+      const userUpdations = {};
+
+      campaigns.forEach(async (campaign) => {
+        // If the current date is after the campaign's end date
+        // Update the campaign's status to "Completed"
+        campaign.isCompleted = true;
+        console.log("updated " + campaign.name);
+        if (campaign.verifiedUsersCount > 0) {
+          campaign.verifiedUsers.forEach(async (user) => {
+            if (
+              !userUpdations[user._id] ||
+              Object.keys(userUpdations[user._id]).length === 0
+            ) {
+              userUpdations[user._id] = {
+                points: campaign.points,
+                completedCampaigns: [campaign._id],
+                activityLog: {
+                  content:
+                    `Congratulations on completing the campaign "${campaign.name}"! You have been awarded 🪙` +
+                    campaign.points +
+                    " points!",
+                  date: new Date(),
+                  type: "completedCampaign",
                 },
-            }).populate("verifiedUsers");
-            console.log("campaigns to update: ", campaigns);
-
-            // Iterate through campaigns and check if any have reached their end date
-            const userUpdations = {};
-
-            campaigns.forEach(async (campaign) => {
-                // If the current date is after the campaign's end date
-                // Update the campaign's status to "Completed"
-                campaign.isCompleted = true;
-                console.log("updated " + campaign.name);
-                if (campaign.verifiedUsersCount > 0) {
-                    campaign.verifiedUsers.forEach(async (user) => {
-                        if (
-                            !userUpdations[user._id] ||
-                            Object.keys(userUpdations[user._id]).length === 0
-                        ) {
-                            userUpdations[user._id] = {
-                                points: campaign.points,
-                                completedCampaigns: [campaign._id],
-                                activityLog: {
-                                    content:
-                                        `Congratulations on completing the campaign "${campaign.name}"! You have been awarded 🪙` +
-                                        campaign.points +
-                                        " points!",
-                                    date: new Date(),
-                                    type: "completedCampaign",
-                                },
-                            };
-                        } else {
-                            userUpdations[user._id].points += campaign.points;
-                            userUpdations[user._id].completedCampaigns.push(
-                                campaign._id
-                            );
-                        }
-                    });
-                }
-
-                await campaign.save();
-            });
-            const userUpdationPromises = Object.keys(userUpdations).map(
-                async (userId) => {
-                    const user = await User.findById(userId);
-                    user.points += userUpdations[userId].points;
-                    user.completedCampaigns.push(
-                        ...userUpdations[userId].completedCampaigns
-                    );
-                    await user.save();
-                }
-            );
-            console.log("userUpdations: ", userUpdations);
-            console.log("userUpdationPromises: ", userUpdationPromises);
-            await Promise.all(userUpdationPromises);
-        } catch (error) {
-            console.error("Error in scheduled task:", error);
+              };
+            } else {
+              userUpdations[user._id].points += campaign.points;
+              userUpdations[user._id].completedCampaigns.push(campaign._id);
+            }
+          });
         }
+
+        await campaign.save();
+      });
+      const userUpdationPromises = Object.keys(userUpdations).map(
+        async (userId) => {
+          const user = await User.findById(userId);
+          user.points += userUpdations[userId].points;
+          user.completedCampaigns.push(
+            ...userUpdations[userId].completedCampaigns
+          );
+          await user.save();
+        }
+      );
+      console.log("userUpdations: ", userUpdations);
+      console.log("userUpdationPromises: ", userUpdationPromises);
+      await Promise.all(userUpdationPromises);
+    } catch (error) {
+      console.error("Error in scheduled task:", error);
     }
+  }
 );
