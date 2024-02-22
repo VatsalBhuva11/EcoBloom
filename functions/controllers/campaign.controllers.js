@@ -159,6 +159,7 @@ export const verifyUser = async (req, res) => {
         // >    buffer: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 00 00 01 00 01 00 00 ff e2 01 d8 49 43 43 5f 50 52 4f 46 49 4c 45 00 01 01 00 00 01 c8 00 00 00 00 04 30 00 00 ... 28304 more bytes>,
         // >    size: 28354
         const userId = req.query.userId;
+        console.log(userId);
         const campaignId = req.params.campaignId;
         const user = await User.findOne({ firebaseId: userId });
         if (!user) {
