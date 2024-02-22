@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Webcam from "react-webcam";
 import { auth, storage } from "../firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -12,24 +12,20 @@ export default function Video({ userId, campaignId }) {
     const [loader, setLoader] = useState(true);
     const [user, loading, error] = useAuthState(auth);
 
-    useEffect(()=>{
-
+    useEffect(() => {
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
-                if (idTokenResult.role === "user" || !idTokenResult.role){
-                    window.location.replace( '/user/dashboard');
+                if (idTokenResult.role === "user" || !idTokenResult.role) {
+                    window.location.replace("/user/dashboard");
                     // <Navigate to = 'org/dashboard'  replace  = {true}/>
-                }else{
-                    setLoader(false)
+                } else {
+                    setLoader(false);
                 }
             });
-            
         }
-       
-
-    },[loading])
+    }, [loading]);
 
     function DataURIToBlob(dataURI) {
         const splitDataURI = dataURI.split(",");
@@ -55,8 +51,9 @@ export default function Video({ userId, campaignId }) {
         formData.append("upload", file, "image.jpeg");
         if (auth.currentUser) {
             auth.currentUser.getIdTokenResult().then((idTokenResult) => {
+                console.log(idTokenResult);
                 fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${campaignId}/verifyUser?userId=${userId}`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/campaign/${campaignId}/verifyUser?userId=${userId}`,
                     {
                         method: "POST",
                         body: formData,

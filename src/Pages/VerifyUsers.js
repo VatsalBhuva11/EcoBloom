@@ -32,12 +32,11 @@ export default function VerifyUsers() {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
-                if (idTokenResult.role === "user" || !idTokenResult.role){
-                    window.location.replace( '/user/dashboard');
+                if (idTokenResult.role === "user" || !idTokenResult.role) {
+                    window.location.replace("/user/dashboard");
                     // <Navigate to = 'org/dashboard'  replace  = {true}/>
                 } else {
-
-                    setLoader(false)
+                    setLoader(false);
                 }
             });
             fetch(
@@ -202,7 +201,7 @@ export default function VerifyUsers() {
                                     </td>
                                     <td className="px-6 py-4">
                                         {campaign.verifiedUsers.includes(
-                                            user.id
+                                            user._id
                                         ) ? (
                                             <a href="#">
                                                 <button
@@ -217,12 +216,15 @@ export default function VerifyUsers() {
                                                 <button
                                                     onClick={() => {
                                                         handleUserVerify(
-                                                            user.id,
+                                                            user.firebaseId,
                                                             user.name
                                                         );
                                                     }}
                                                     className="p-4 bg-[#353657] text-white rounded-full text-xs scale-105 duration-300 "
-                                                    id={"verify" + user.id}
+                                                    id={
+                                                        "verify" +
+                                                        user.firebaseId
+                                                    }
                                                 >
                                                     Verify
                                                 </button>

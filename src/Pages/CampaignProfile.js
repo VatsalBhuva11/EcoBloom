@@ -35,45 +35,51 @@ const CampaignProfile = () => {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
-                if (idTokenResult.role === "org"){
-                    window.location.replace( '/org/dashboard');
+                if (idTokenResult.role === "org") {
+                    window.location.replace("/org/dashboard");
                     // <Navigate to = 'org/dashboard'  replace  = {true}/>
                 }
-        fetch(
-            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`,
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                const userData = jwtDecode(user.accessToken);
-                if (data.status === "OK") {
-                    setCampaign(data.data);
-                    console.log(data.data);
-                    const checkIfUserRegistered =
-                        data.data.registeredUsers.filter((user) => {
-                            return user.registeredCampaigns.includes(
-                                params.campaignId
-                            );
-                        });
-                    if (checkIfUserRegistered.length > 0) {
-                        setIsRegistered(true);
+                fetch(
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/${params.campaignId}`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
                     }
-                } else {
-                    console.log("Error occurred while fetching campaign");
-                }
-            })
-            .catch((err) => {
-                console.log(err);
+                )
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log(data);
+                        const userData = jwtDecode(user.accessToken);
+                        if (data.status === "OK") {
+                            setCampaign(data.data);
+                            console.log(data.data);
+                            const checkIfUserRegistered =
+                                data.data.registeredUsers.filter((user) => {
+                                    return (
+                                        user.firebaseId ===
+                                            idTokenResult.user_id &&
+                                        user.registeredCampaigns.includes(
+                                            params.campaignId
+                                        )
+                                    );
+                                });
+                            if (checkIfUserRegistered.length > 0) {
+                                setIsRegistered(true);
+                            }
+                        } else {
+                            console.log(
+                                "Error occurred while fetching campaign"
+                            );
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                setLoader(false);
             });
-        setLoader(false)
-        });
-    }
+        }
     }, [loading]);
 
     function handleRegistration(e) {
