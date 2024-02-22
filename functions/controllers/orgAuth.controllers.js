@@ -61,14 +61,15 @@ router.post("/register", async (req, res) => {
                 (extension) =>
                     extension !== "jpg" &&
                     extension !== "png" &&
-                    extension !== "jpeg"
+                    extension !== "jpeg" &&
+                    extension !== "pdf"
             );
             //email variable, update record in DB
 
             if (validate.length > 0) {
                 response_400(
                     res,
-                    "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
+                    "Invalid file format. Only .jpg, .png, .jpeg, .pdf files are allowed"
                 );
             } else {
                 // const pathToLogo = `/org/${email}/logo_${Date.now()}.jpg`;

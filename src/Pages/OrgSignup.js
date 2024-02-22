@@ -242,7 +242,7 @@ export default function UserSignup() {
                                                     id="document"
                                                     name="document"
                                                     type="file"
-                                                    accept="image/*"
+                                                    accept="application/pdf"
                                                     required
                                                 />
                                             </div>
