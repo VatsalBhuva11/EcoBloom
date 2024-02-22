@@ -2011,11 +2011,6 @@ video {
   background-color: rgb(240 144 75 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#aaa31d\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(170 163 29 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#b4c6b6\]{
   --tw-bg-opacity: 1;
   background-color: rgb(180 198 182 / var(--tw-bg-opacity));
@@ -2046,11 +2041,6 @@ video {
   background-color: rgb(213 89 73 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#dad23e\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(218 210 62 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#e9e6e0\]{
   --tw-bg-opacity: 1;
   background-color: rgb(233 230 224 / var(--tw-bg-opacity));
@@ -2059,6 +2049,11 @@ video {
 .bg-\[\#eef0e5\]{
   --tw-bg-opacity: 1;
   background-color: rgb(238 240 229 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f1ed9f\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 237 159 / var(--tw-bg-opacity));
 }
 
 .bg-black{
@@ -2612,10 +2607,6 @@ video {
 
 .text-\[3rem\]{
   font-size: 3rem;
-}
-
-.text-\[8px\]{
-  font-size: 8px;
 }
 
 .text-lg{
@@ -4214,11 +4205,6 @@ html {
   .lg\:px-32{
     padding-left: 8rem;
     padding-right: 8rem;
-  }
-
-  .lg\:px-6{
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 
   .lg\:py-0{

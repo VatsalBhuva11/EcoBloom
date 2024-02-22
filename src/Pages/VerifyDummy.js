@@ -12,6 +12,7 @@ import VideoCard from "./VideoCard.js";
 import logo from "../assets/images/logo.png";
 
 const VerifyDummy = () => {
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [profile, setProfile] = useContext(ProfileContext);
   const [user, loading, error] = useAuthState(auth);
@@ -148,6 +149,7 @@ const VerifyDummy = () => {
       search */}
       <div className="mx-8 my-3 mt-8 flex justify-center items-center">
         <input
+          onChange={(e) => setSearch(e.target.value)}
           type="text"
           className="h-10 w-full rounded-2xl px-4"
           placeholder="🔍 Search For Communities"
@@ -178,52 +180,58 @@ const VerifyDummy = () => {
         </div>
       </div>
 
-      {users.map((user) => {
-        //  console.log("user credentials" , user);
-        //  console.log(user.name);
-        return (
-          <div className="flex items-center justify-center  ">
-            <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#E4E8D3] w-11/12 mt-3 md:mt-4">
-              <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
-                <div className="flex justify-center">
-                  <p className="font-semibold"> {user.name} </p>
+      {users
+        .filter((user) => {
+          return search.toLowerCase() === ""
+            ? user
+            : user.name.toLowerCase().includes(search);
+        })
+        .map((user) => {
+          //  console.log("user credentials" , user);
+          //  console.log(user.name);
+          return (
+            <div className="flex items-center justify-center  ">
+              <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#E4E8D3] w-11/12 mt-3 md:mt-4">
+                <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                  <div className="flex justify-center">
+                    <p className="font-semibold"> {user.name} </p>
+                  </div>
                 </div>
-              </div>
-              <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
-                <div className="flex justify-center">
-                  <p>{user.email}</p>
+                <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                  <div className="flex justify-center">
+                    <p>{user.email}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
-                <div className="flex justify-center">
-                  <p> {user.phone ? user.phone : "-"}</p>
+                <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                  <div className="flex justify-center">
+                    <p> {user.phone ? user.phone : "-"}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="w-full flex justify-center text-gray-700 p-2  md:text-[20px] sm:text-[15px] text-[13px]">
-                {campaign.verifiedUsers.includes(user.id) ? (
-                  <a href="#">
-                    <button className="hover:scale-105 duration-300  bg-[#6BBE7D] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[8px] md:text-[14px]">
-                      VERIFIED
-                    </button>
-                  </a>
-                ) : (
-                  <a href="#">
-                    <button
-                      className="hover:scale-105 duration-300  bg-[#BEBA6B] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[8px] md:text-[14px]"
-                      onClick={() => {
-                        handleUserVerify(user.id, user.name);
-                      }}
-                      id={"verify" + user.id}
-                    >
-                      REVIEW
-                    </button>
-                  </a>
-                )}
+                <div className="w-full flex justify-center text-gray-700 p-2  md:text-[20px] sm:text-[15px] text-[13px]">
+                  {campaign.verifiedUsers.includes(user.id) ? (
+                    <a href="#">
+                      <button className="hover:scale-105 duration-300  bg-[#6BBE7D] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[14px]">
+                        VERIFIED
+                      </button>
+                    </a>
+                  ) : (
+                    <a href="#">
+                      <button
+                        className="hover:scale-105 duration-300  bg-[#BEBA6B] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[14px]"
+                        onClick={() => {
+                          handleUserVerify(user.id, user.name);
+                        }}
+                        id={"verify" + user.id}
+                      >
+                        REVIEW
+                      </button>
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
 
       {/* <div className="flex items-center justify-center  ">
         <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#E4E8D3] w-11/12 mt-3 md:mt-4">
