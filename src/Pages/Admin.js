@@ -7,6 +7,7 @@ import { HashLoader } from "react-spinners";
 import { FaRegFilePdf } from "react-icons/fa6";
 import { IoLogOutOutline } from "react-icons/io5";
 import moment from "moment";
+import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 const Admin = () => {
     const [search, setSearch] = useState("");
@@ -103,6 +104,7 @@ const Admin = () => {
                 }
             });
         } else {
+            window.location.replace("/login");
             setLoader(false);
         }
     }, [loading]);
@@ -115,23 +117,36 @@ const Admin = () => {
         );
     }
 
+    if (!loading && !user) {
+        window.location.replace("/login");
+    }
+
     return (
         <div className="bg-[#eef0e5] h-screen flex flex-col ">
             <div className="flex justify-between">
                 <div>
                     <div className="flex items-center pt-3 md:pt-6">
-                        <img
-                            className="h-16 hover:scale-105 duration-300 mt-4 ml-4 sm:ml-8 md:ml-12"
-                            src={logo}
-                            alt=""
-                        />
+                        <Link to="/home">
+                            <img
+                                className="h-16 hover:scale-105 duration-300 mt-4 ml-4 sm:ml-8 md:ml-12"
+                                src={logo}
+                                alt=""
+                            />
+                        </Link>
                         <p className="text-lg sm:text-2xl md:text-3xl font-bold text-[#191B58] pt-2">
                             VERIFY ORGANIZATION
                         </p>
                     </div>
                 </div>
                 <div className=" cursor-pointer hover:scale-105 text-xl sm:text-2xl md:text-4xl lg:text-5xl flex justify-center items-center lg:mr-10 md:mr-8 sm:mr-6 mr-3">
-                    <IoLogOutOutline />
+                    <button
+                        onClick={() => {
+                            auth.signOut();
+                            window.location.replace("/login");
+                        }}
+                    >
+                        <IoLogOutOutline className="cursor-pointer" />
+                    </button>
                 </div>
             </div>
             <div className="flex items-center justify-center">

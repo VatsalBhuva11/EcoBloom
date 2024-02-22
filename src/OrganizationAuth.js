@@ -8,6 +8,7 @@ import {
 import { auth } from "./index.js";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
 
 //figure out sign out, and how to manage auth state.
 //organization registration
@@ -223,7 +224,7 @@ export default function OrganizationAuth() {
             <button
                 className="btn btn-lime"
                 onClick={() => {
-                    auth.signOut();
+                    signOut(auth);
                 }}
             >
                 Sign out!
