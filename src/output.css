@@ -3371,6 +3371,10 @@ html {
     margin-left: 2rem;
   }
 
+  .sm\:mr-6{
+    margin-right: 1.5rem;
+  }
+
   .sm\:mt-1{
     margin-top: 0.25rem;
   }
@@ -3629,6 +3633,10 @@ html {
 
   .md\:mr-6{
     margin-right: 1.5rem;
+  }
+
+  .md\:mr-8{
+    margin-right: 2rem;
   }
 
   .md\:mt-0{
@@ -4020,6 +4028,10 @@ html {
 
   .lg\:ml-8{
     margin-left: 2rem;
+  }
+
+  .lg\:mr-10{
+    margin-right: 2.5rem;
   }
 
   .lg\:mr-12{
