@@ -9,10 +9,9 @@ import { HashLoader } from "react-spinners";
 import { useNavigate } from "react-router";
 import { jwtDecode } from "jwt-decode";
 import VideoCard from "./VideoCard.js";
-import logo from '../assets/images/logo.png'
+import logo from "../assets/images/logo.png";
 
 const VerifyDummy = () => {
-
   const navigate = useNavigate();
   const [profile, setProfile] = useContext(ProfileContext);
   const [user, loading, error] = useAuthState(auth);
@@ -34,11 +33,10 @@ const VerifyDummy = () => {
         const idTokenResult = jwtDecode(idToken);
         console.log(idTokenResult);
         if (idTokenResult.role === "user" || !idTokenResult.role) {
-          window.location.replace('/user/dashboard');
+          window.location.replace("/user/dashboard");
           // <Navigate to = 'org/dashboard'  replace  = {true}/>
         } else {
-
-          setLoader(false)
+          setLoader(false);
         }
       });
       fetch(
@@ -120,19 +118,25 @@ const VerifyDummy = () => {
           <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-2 md:text-[20px] sm:text-[15px] text-[10px]">
             <div className="flex justify-center">
               <p>Submitted: </p>
-              <p className="pl-2 text-[#EAC5C5]">{campaign.registeredUsersCount}</p>
+              <p className="pl-2 text-[#EAC5C5]">
+                {campaign.registeredUsersCount}
+              </p>
             </div>
           </div>
           <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-2 md:text-[20px] sm:text-[15px] text-[10px]">
             <div className="flex justify-center">
               <p>Accepted: </p>
-              <p className="pl-2 text-[#EAC5C5]">{campaign.verifiedUsersCount}</p>
+              <p className="pl-2 text-[#EAC5C5]">
+                {campaign.verifiedUsersCount}
+              </p>
             </div>
           </div>
           <div className="w-full text-gray-100 border-b-gray-100 p-2  md:text-[20px] sm:text-[15px] text-[10px]">
             <div className="flex justify-center">
               <p>Remaining: </p>
-              <p className="pl-2 text-[#EAC5C5]">{campaign.registeredUsersCount - campaign.verifiedUsersCount}</p>
+              <p className="pl-2 text-[#EAC5C5]">
+                {campaign.registeredUsersCount - campaign.verifiedUsersCount}
+              </p>
             </div>
           </div>
         </div>
@@ -175,58 +179,50 @@ const VerifyDummy = () => {
       </div>
 
       {users.map((user) => {
-      //  console.log("user credentials" , user);
-      //  console.log(user.name);
+        //  console.log("user credentials" , user);
+        //  console.log(user.name);
         return (
-          
-        <div className="flex items-center justify-center  ">
-          <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#E4E8D3] w-11/12 mt-3 md:mt-4">
-            <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
-              <div className="flex justify-center">
-                <p className="font-semibold"> {user.name} </p>
+          <div className="flex items-center justify-center  ">
+            <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#E4E8D3] w-11/12 mt-3 md:mt-4">
+              <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                <div className="flex justify-center">
+                  <p className="font-semibold"> {user.name} </p>
+                </div>
               </div>
-            </div>
-            <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
-              <div className="flex justify-center">
-                <p>{user.email}</p>
+              <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                <div className="flex justify-center">
+                  <p>{user.email}</p>
+                </div>
               </div>
-            </div>
-            <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
-              <div className="flex justify-center">
-                <p> {user.phone ? user.phone : "-"}</p>
+              <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                <div className="flex justify-center">
+                  <p> {user.phone ? user.phone : "-"}</p>
+                </div>
               </div>
-            </div>
-            <div className="w-full flex justify-center text-gray-700 p-2  md:text-[20px] sm:text-[15px] text-[13px]">
-              {campaign.verifiedUsers.includes(
-                user.id
-              ) ? (
-                <a href="#">
-                  <button className="hover:scale-105 duration-300  bg-[#6BBE7D] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[14px]">
-                    VERIFIED
-                  </button>
-                </a>
-              ) : (
-
-
-                <a href="#">
-                  <button className="hover:scale-105 duration-300  bg-[#BEBA6B] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[14px]"
-                    onClick={() => {
-                      handleUserVerify(
-                        user.id,
-                        user.name
-                      );
-                    }}
-                    id={"verify" + user.id}
-                  >
-                    REVIEW
-                  </button>
-                </a>
-              )}
+              <div className="w-full flex justify-center text-gray-700 p-2  md:text-[20px] sm:text-[15px] text-[13px]">
+                {campaign.verifiedUsers.includes(user.id) ? (
+                  <a href="#">
+                    <button className="hover:scale-105 duration-300  bg-[#6BBE7D] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[8px] md:text-[14px]">
+                      VERIFIED
+                    </button>
+                  </a>
+                ) : (
+                  <a href="#">
+                    <button
+                      className="hover:scale-105 duration-300  bg-[#BEBA6B] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[8px] md:text-[14px]"
+                      onClick={() => {
+                        handleUserVerify(user.id, user.name);
+                      }}
+                      id={"verify" + user.id}
+                    >
+                      REVIEW
+                    </button>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        )
-
+        );
       })}
 
       {/* <div className="flex items-center justify-center  ">

@@ -2134,8 +2134,8 @@ video {
   background-image: url('./assets/images/joinUs.png');
 }
 
-.bg-\[url\(\'\.\/assets\/images\/roots\.png\'\)\]{
-  background-image: url('./assets/images/roots.png');
+.bg-\[url\(\'\.\/assets\/images\/rrootz\.png\'\)\]{
+  background-image: url('./assets/images/rrootz.png');
 }
 
 .bg-gradient-to-b{
@@ -2416,10 +2416,6 @@ video {
   padding-left: 0.5rem;
 }
 
-.pl-3{
-  padding-left: 0.75rem;
-}
-
 .pl-4{
   padding-left: 1rem;
 }
@@ -2598,6 +2594,10 @@ video {
 
 .text-\[3rem\]{
   font-size: 3rem;
+}
+
+.text-\[8px\]{
+  font-size: 8px;
 }
 
 .text-lg{
