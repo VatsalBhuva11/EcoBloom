@@ -351,22 +351,7 @@ const CampaignProfile = () => {
                                 Guidelines
                             </h1>
                             <ul className="md:text-xl ml-10 text-md lg:text-2xl mt-4 lg:mt-6 list-disc">
-                                <li>
-                                    No verbal communication during drawing
-                                    sessions in Pictionary.
-                                </li>
-                                <li>
-                                    Respectful conduct towards all participants.
-                                </li>
-                                <li>
-                                    No verbal communication during drawing
-                                    sessions in Pictionary.
-                                </li>
-                                <li>
-                                    In case of any disputes or issues, the
-                                    organizing committee<sup>'</sup>s decision
-                                    will be considered final.
-                                </li>
+                                {campaign.guidelines}
                             </ul>
                         </div>
                     </div>

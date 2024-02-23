@@ -140,15 +140,10 @@ export default function Home() {
                         <Route
                             exact
                             path="/campaign/:campaignId/verify"
-                            element={<VerifyUsers />}
+                            element={<VerifyDummy />}
                         />
 
                         <Route exact path="/admin" element={<Admin />} />
-                        <Route
-                            exact
-                            path="/verifydummy"
-                            element={<VerifyDummy />}
-                        />
 
                         <Route
                             exact
