@@ -65,8 +65,8 @@ const UserDashboard = () => {
                 .then((tokenResult) => {
                     //tokenResult.claims.role === "user" |
                     console.log(tokenResult.claims);
-                    if(tokenResult.claims.role === 'org'){
-                        window.location.replace('/org/dashboard');
+                    if (tokenResult.claims.role === "org") {
+                        window.location.replace("/org/dashboard");
                     }
                     return tokenResult.claims.user_id;
                 })
@@ -109,6 +109,10 @@ const UserDashboard = () => {
                                     );
                                     // setName(data[0].data.name);
                                     setCommunities(data[0].data.communities);
+                                    console.log(
+                                        "communities: ",
+                                        data[0].data.communities
+                                    );
                                     setLoader(false);
                                     setCampaigns(data[1].data);
                                     setMarkers(
@@ -428,93 +432,54 @@ const UserDashboard = () => {
                         Joined Communities
                     </p>
                     <div className="flex flex-col gap-3 2xl:gap-5">
-                        <a href="">
-                            <div className="flex pb-3 border-b-2 xl:gap-3 2xl:gap-7 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] rounded-full mr-3"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.9rem] 2xl:text-xl mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
+                        {communities?.length > 0 ? (
+                            communities
+                                .filter((community) => {
+                                    return search.toLowerCase() === ""
+                                        ? community
+                                        : community.orgName
+                                              .toLowerCase()
+                                              .includes(search);
+                                })
+                                .map((community, key) => (
+                                    <a
+                                        key={key}
+                                        href={
+                                            "/org/profile/" +
+                                            community.organization.firebaseId
+                                        }
+                                    >
+                                        <div className="flex pb-3 border-b-2 xl:gap-3 2xl:gap-7 px-4 2xl:px-7 hover:scale-105 duration-300">
+                                            <img
+                                                className="w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] rounded-full mr-3"
+                                                src={person}
+                                                alt=""
+                                            />
+                                            <div className="flex flex-col">
+                                                <p className="text-[#eef0e5] text-[0.9rem] 2xl:text-xl mt-1 2xl:mt-0">
+                                                    {community.orgName}
+                                                </p>
+                                                <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
+                                                    {community.userCount} People
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                ))
+                        ) : (
+                            <div className="flex justify-center items-center">
+                                <p className="text-white">
+                                    No community joined yet
+                                </p>
                             </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 border-b-2 xl:gap-3 2xl:gap-7 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] rounded-full mr-3"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.9rem] 2xl:text-xl mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 border-b-2 xl:gap-3 2xl:gap-7 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] rounded-full mr-3"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.9rem] 2xl:text-xl mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 border-b-2 xl:gap-3 2xl:gap-7 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] rounded-full mr-3"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.9rem] 2xl:text-xl mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div className="flex pb-3 border-b-2 xl:gap-3 2xl:gap-7 px-4 2xl:px-7 hover:scale-105 duration-300">
-                                <img
-                                    className="w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] rounded-full mr-3"
-                                    src={person}
-                                    alt=""
-                                />
-                                <div className="flex flex-col">
-                                    <p className="text-[#eef0e5] text-[0.9rem] 2xl:text-xl mt-1 2xl:mt-0">
-                                        GreenPeace Organisation
-                                    </p>
-                                    <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
-                                        345 Peoples
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
+                        )}
                     </div>
-                    <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.20rem] w-56 2xl:w-64 my-4 2xl:my-5 hover:scale-105 duration-300">
+                    <button
+                        onClick={() => {
+                            window.location.href = "/campaigns";
+                        }}
+                        className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] xl:text-[17px] 2xl:text-[22px] font-bold rounded-xl h-[2.8rem]  2xl:h-[3.20rem] w-56 2xl:w-64 my-4 2xl:my-5 hover:scale-105 duration-300"
+                    >
                         View More{" "}
                         <div className="mt-[0.32rem] text-3xl">
                             <FaLongArrowAltRight />
