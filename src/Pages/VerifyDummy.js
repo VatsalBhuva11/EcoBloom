@@ -101,17 +101,33 @@ const VerifyDummy = () => {
 
   return (
     <div className="bg-[#eef0e5] h-screen flex flex-col ">
-      <div className="flex items-center pt-3 md:pt-6">
+      <div className="flex items-center w-screen md:pt-6">
+        <div className="w-1/3">
         <Link to="/">
           <img
-            className="h-16 hover:scale-105 duration-300 mt-4 ml-4 sm:ml-8 md:ml-12"
+            className="h-16 hover:scale-105 duration-300 mt-4 "
             src={logo}
             alt=""
           />
         </Link>
+        </div>
+        <div className="w-1/3 flex justify-center">
         <p className="text-lg sm:text-2xl md:text-3xl font-bold text-[#191B58] pt-2">
           VERIFY USERS
         </p>
+        </div>
+        <div className="flex items-center justify-end w-1/3 mr-4 gap-3">
+                    <Link to="/org/edit/profile">
+                        <img
+                            className="w-9 md:w-12  cursor-pointer hover:scale-105 duration-300 lg:w-14 rounded-full h-9 md:h-12 lg:h-14"
+                            src={profile.logo}
+                            alt=""
+                        />
+                    </Link>
+                    <p className="hidden sm:flex text-xl font-medium">
+                        {profile.name}
+                    </p>
+                </div>
       </div>
 
       <div className="flex items-center justify-center">

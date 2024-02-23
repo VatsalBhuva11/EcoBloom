@@ -270,7 +270,7 @@ const Orgdashboard = () => {
               </div>
             </div>
           ) : status === "post" ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 p-6 gap-3 place-items-center">
+            <div className="grid grid-cols-2  md:grid-cols-3 p-6 gap-3 place-items-center">
               {posts.map((post) => {
                 return (
                   <div

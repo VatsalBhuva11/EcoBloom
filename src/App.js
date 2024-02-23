@@ -5,7 +5,7 @@ import UserDashboard from "./Pages/UserDashboard";
 import CommunityChat from "./Pages/CommunityChat";
 import Orgprofile from "./Pages/Orgprofile";
 import CreateCampaign from "./Pages/CreateCampaign";
-import CropImage from "./Components/CropImage";
+//import CropImage from "./Components/CropImage";
 // import SignupInitial from './Pages/SignupInitial';
 
 export default function App() {
