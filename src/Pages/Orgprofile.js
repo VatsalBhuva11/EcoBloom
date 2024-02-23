@@ -211,18 +211,18 @@ const Orgprofile = () => {
                 {/* navbar */}
                 <div className="w-full h-full bg-[#EEF0E5]">
                     <div className="mx-2 flex flex-col bg-[#DFE4C5] rounded-lg">
-                        <div className=" ">
+                        <div className="overflow-hidden">
                             <img
-                                className="h-32 sm:h-36 md:h-48 w-full "
+                                className="h-32 sm:h-36 md:h-48 w-full bg-cover"
                                 src={banner}
                                 alt=""
                             />
                         </div>
 
                         <div className="flex border-b-2 pb-5 border-[#7A7A7A]">
-                            <div className="w-[20%] md:w-[15%]">
+                            <div className="w-[20%] md:w-[15%] overflow-hidden">
                                 <img
-                                    className="h-16 sm:h-24 md:h-32 mt-[-32px] md:mt-[-48px] pl-4"
+                                    className="h-16 sm:h-24 md:h-32 mt-[-32px] md:mt-[-48px] pl-4 bg-cover"
                                     src={logo}
                                     alt=""
                                 />
