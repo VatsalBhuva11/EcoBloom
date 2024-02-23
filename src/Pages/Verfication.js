@@ -21,11 +21,11 @@ const Verification = ({ visible, onClose }) => {
                         <img src={logout_logo} alt="" />
                     </div>
                 </div>
-                <div className="text-3xl text-center font-bold text-[#1C1C1C] flex justify-center">
+                <div className="sm:text-xl text-md text-center font-bold text-[#1C1C1C] flex justify-center">
                     Please wait for the
                     <br /> Organisation to be verified.
                 </div>
-                <div className="text-md text-center pt-2 text-[#1C1C1C] flex justify-center">
+                <div className="text-sm text-center pt-2 text-[#1C1C1C] flex justify-center">
                     Mail us for help at: ecobloom7@gmail.com
                 </div>
                 <div className="flex justify-around mt-7 mb-5">

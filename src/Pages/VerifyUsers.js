@@ -99,150 +99,128 @@ export default function VerifyUsers() {
     }
 
     return (
-        <div className="bg-[#eef0e5] h-screen flex flex-col">
-            <div className="flex items-center justify-between p-3">
-                <button
-                    onClick={() => {
-                        navigate(-1);
-                    }}
-                    className=" hover:scale-100 duration-300 text-3xl p-2"
-                >
-                    <IoArrowBackSharp />
-                </button>
-                <p className="text-lg sm:text-2xl md:text-3xl font-bold">
-                    Verify Users
-                </p>
-                <div className="flex items-center mr-4 gap-3">
-                    <Link to="/org/edit/profile">
-                        <img
-                            className="w-9 md:w-12  cursor-pointer hover:scale-105 duration-300 lg:w-14 rounded-full h-9 md:h-12 lg:h-14"
-                            src={profile.logo}
-                            alt=""
-                        />
-                    </Link>
-                    <p className="hidden sm:flex text-xl font-medium">
-                        {profile.name}
-                    </p>
-                </div>
-            </div>
-
-            <div className="flex items-center justify-center">
-                <div className="flex justify-center items-center rounded-3xl p-8 bg-gradient-to-r from-[#353657] to-[#404162] w-3/4 mt-14">
-                    <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-5">
-                        <div className="flex justify-center items-center">
-                            Applications Submitted:{" "}
-                            {campaign.registeredUsersCount}{" "}
-                        </div>
-                    </div>
-                    <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-5">
-                        <div className="flex justify-center items-center">
-                            Applications Accepted:
-                            <span id="verifiedUsers">
-                                &nbsp;{campaign.verifiedUsersCount}
-                            </span>
-                        </div>
-                    </div>
-                    <div className="w-full text-gray-100">
-                        <div className="flex justify-center items-center">
-                            Applications Remaining:{" "}
-                            <span id="remainingUsers">
-                                &nbsp;
-                                {campaign.registeredUsersCount -
-                                    campaign.verifiedUsersCount}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className=" flex flex-col justify-start h-[56%] mt-14">
-                <div className="relative overflow-x-hidden overflow-scroll ] rounded-2xl p-6">
-                    <table className="w-full text-sm  text-left rtl:text-right border-black ">
-                        <thead className=" text-sm bg-gradient-to-r from-[#353657] to-[#404162] ">
-                            <tr>
-                                <th
-                                    scope="col"
-                                    className="px-6 py-3 text-white"
-                                >
-                                    Name
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="px-6 py-3 text-white"
-                                >
-                                    Email
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="px-6 py-3 text-white"
-                                >
-                                    Phone No.
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="px-6 py-3 text-white"
-                                >
-                                    Status
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user) => (
-                                <tr className="bg-white border-b  hover:bg-gray-50 ">
-                                    <th
-                                        scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                                    >
-                                        {user.name}
-                                    </th>
-                                    <td className="px-6 py-4">{user.email}</td>
-                                    <td className="px-6 py-4">
-                                        {user.phone ? user.phone : "-"}
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        {campaign.verifiedUsers.includes(
-                                            user._id
-                                        ) ? (
-                                            <a href="#">
-                                                <button
-                                                    disabled
-                                                    className="p-4 bg-lime-600 text-white rounded-full text-xs scale-105 duration-300 "
-                                                >
-                                                    Verified!
-                                                </button>
-                                            </a>
-                                        ) : (
-                                            <a href="#">
-                                                <button
-                                                    onClick={() => {
-                                                        handleUserVerify(
-                                                            user.firebaseId,
-                                                            user.name
-                                                        );
-                                                    }}
-                                                    className="p-4 bg-[#353657] text-white rounded-full text-xs scale-105 duration-300 "
-                                                    id={
-                                                        "verify" +
-                                                        user.firebaseId
-                                                    }
-                                                >
-                                                    Verify
-                                                </button>
-                                            </a>
-                                        )}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <VideoCard
-                visible={showMyModal}
-                onClose={handleOnClose}
-                data={clickedUserData}
-            />
+      <div className="bg-[#eef0e5] h-screen flex flex-col">
+        <div className="flex items-center justify-between p-3">
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+            className=" hover:scale-100 duration-300 text-3xl p-2"
+          >
+            <IoArrowBackSharp />
+          </button>
+          <p className="text-lg sm:text-2xl md:text-3xl font-bold">
+            Verify Users
+          </p>
+          <div className="flex items-center mr-4 gap-3">
+            <Link to="/org/edit/profile">
+              <img
+                className="w-9 md:w-12  cursor-pointer hover:scale-105 duration-300 lg:w-14 rounded-full h-9 md:h-12 lg:h-14"
+                src={profile.logo}
+                alt=""
+              />
+            </Link>
+            <p className="hidden sm:flex text-xl font-medium">{profile.name}</p>
+          </div>
         </div>
+
+        <div className="flex items-center justify-center">
+          <div className="flex justify-center items-center rounded-3xl p-8 bg-gradient-to-r from-[#353657] to-[#404162] w-3/4 mt-14">
+            <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-5">
+              <div className="flex justify-center items-center">
+                Applications Submitted: {campaign.registeredUsersCount}{" "}
+              </div>
+            </div>
+            <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-5">
+              <div className="flex justify-center items-center">
+                Applications Accepted:
+                <span id="verifiedUsers">
+                  &nbsp;{campaign.verifiedUsersCount}
+                </span>
+              </div>
+            </div>
+            <div className="w-full text-gray-100">
+              <div className="flex justify-center items-center">
+                Applications Remaining:{" "}
+                <span id="remainingUsers">
+                  &nbsp;
+                  {campaign.registeredUsersCount - campaign.verifiedUsersCount}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className=" flex flex-col justify-start h-[56%] mt-14">
+          <div className="relative overflow-x-hidden overflow-scroll ] rounded-2xl p-6">
+            <table className="w-full text-sm  text-left rtl:text-right border-black ">
+              <thead className=" text-sm bg-gradient-to-r from-[#353657] to-[#404162] ">
+                <tr>
+                  <th scope="col" className="px-6 py-3 text-white">
+                    Name
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-white">
+                    Email
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-white">
+                    Phone No.
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-white">
+                    Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <div className="h-full overflow-scroll mb-5 overflow-x-hidden">
+                  {users.map((user) => (
+                    <tr className="bg-white border-b  hover:bg-gray-50 ">
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                      >
+                        {user.name}
+                      </th>
+                      <td className="px-6 py-4">{user.email}</td>
+                      <td className="px-6 py-4">
+                        {user.phone ? user.phone : "-"}
+                      </td>
+                      <td className="px-6 py-4">
+                        {campaign.verifiedUsers.includes(user._id) ? (
+                          <a href="#">
+                            <button
+                              disabled
+                              className="p-4 bg-lime-600 text-white rounded-full text-xs scale-105 duration-300 "
+                            >
+                              Verified!
+                            </button>
+                          </a>
+                        ) : (
+                          <a href="#">
+                            <button
+                              onClick={() => {
+                                handleUserVerify(user.firebaseId, user.name);
+                              }}
+                              className="p-4 bg-[#353657] text-white rounded-full text-xs scale-105 duration-300 "
+                              id={"verify" + user.firebaseId}
+                            >
+                              Verify
+                            </button>
+                          </a>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <VideoCard
+          visible={showMyModal}
+          onClose={handleOnClose}
+          data={clickedUserData}
+        />
+      </div>
     );
 }
 

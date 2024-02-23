@@ -2018,6 +2018,11 @@ video {
   background-color: rgb(190 186 186 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#bff148\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 241 72 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#c8d0d6\]{
   --tw-bg-opacity: 1;
   background-color: rgb(200 208 214 / var(--tw-bg-opacity));
@@ -2036,11 +2041,6 @@ video {
 .bg-\[\#eef0e5\]{
   --tw-bg-opacity: 1;
   background-color: rgb(238 240 229 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#f1ed9f\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(241 237 159 / var(--tw-bg-opacity));
 }
 
 .bg-black{
