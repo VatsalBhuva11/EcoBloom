@@ -21,9 +21,11 @@ async function uploadFile(email, file, extensions, paths) {
     const fileType = file.fieldname.toLowerCase().replace("optional", "");
     const pathToFile = `org/${email}/${fileType}.${extensions}`;
     const storageRef = ref(storage, pathToFile);
+    // try application/pdf ?
     const metadata = {
         contentType: file.mimetype,
     };
+    console.log(`metadata for ${file.originalname}: `, metadata);
 
     try {
         const response = await uploadBytesResumable(

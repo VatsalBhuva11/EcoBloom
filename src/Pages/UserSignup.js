@@ -73,6 +73,7 @@ export default function UserSignup() {
     function emailSignUp(event) {
         event.preventDefault();
         setSignUpClicked(true);
+        setStatus("none");
         // let files = document.querySelector('input[type="file"]').files;
         let formData = new FormData(document.getElementById("emailSignUp"));
         // createUserWithEmailAndPassword(auth, email, password)
@@ -124,6 +125,7 @@ export default function UserSignup() {
                     .then((data) => {
                         if (data.status === "error") {
                             setSignUpClicked(false);
+                            auth.currentUser.delete();
                             throw new Error(
                                 "Invalid form input. Please check again,"
                             );

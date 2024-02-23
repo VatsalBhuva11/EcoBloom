@@ -21,6 +21,7 @@ export default function UserSignup() {
     function emailSignUp(event) {
         setSignUpClicked(true);
         event.preventDefault();
+        setStatus("none");
         if (password !== confirmPassword) {
             console.log("Passwords do not match!");
             setSignUpClicked(false);
@@ -49,7 +50,7 @@ export default function UserSignup() {
 
                 formData.append("firebaseId", user.uid);
                 fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/org/register`,
+                    `${process.env.REACT_APP_LOCAL_API_URL}/auth/org/register`,
                     {
                         method: "POST",
                         body: formData,
@@ -61,6 +62,8 @@ export default function UserSignup() {
                         if (data.status === "error") {
                             setStatus("failure");
                             setSignUpClicked(false);
+                            auth.currentUser.delete();
+
                             throw new Error(
                                 "Invalid form input. Please check again."
                             );
