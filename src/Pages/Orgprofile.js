@@ -213,7 +213,7 @@ const Orgprofile = () => {
                     <div className="mx-2 flex flex-col bg-[#DFE4C5] rounded-lg">
                         <div className="overflow-hidden">
                             <img
-                                className="h-32 sm:h-36 md:h-48 w-full bg-cover"
+                                className="h-32 sm:h-36 md:h-48 w-full object-cover"
                                 src={banner}
                                 alt=""
                             />
@@ -222,7 +222,7 @@ const Orgprofile = () => {
                         <div className="flex border-b-2 pb-5 border-[#7A7A7A]">
                             <div className="w-[20%] md:w-[15%] overflow-hidden">
                                 <img
-                                    className="h-16 sm:h-24 md:h-32 mt-[-32px] md:mt-[-48px] pl-4 bg-cover"
+                                    className="h-16 sm:h-24 md:h-32 mt-[-32px] md:mt-[-48px] pl-4 object-cover absolute"
                                     src={logo}
                                     alt=""
                                 />

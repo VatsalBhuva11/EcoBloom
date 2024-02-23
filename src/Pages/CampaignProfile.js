@@ -175,7 +175,7 @@ const CampaignProfile = () => {
                 <div className="flex flex-col bg-[#DFE4C5] rounded-lg ">
                     <div className="overflow-hidden">
                         <img
-                            className="h-32 sm:h-36 md:h-48 w-full bg-cover"
+                            className="h-32 sm:h-36 md:h-48 w-full object-cover"
                             src={bannerorg}
                             alt=""
                         />
@@ -183,7 +183,7 @@ const CampaignProfile = () => {
                     <div className="flex lg:pb-12 lg:mt-6 md:pb-8 md:mt-4 mt-4 pb-6">
                         <div className="w-[20%] md:w-[15%] overflow-hidden">
                             <img
-                                className="h-16 sm:h-24 md:h-32 mt-3 pl-6 md:pl-8 lg:pl-12 bg-cover"
+                                className="h-16 sm:h-24 md:h-32 mt-3 pl-6 md:pl-8 lg:pl-12 object-cover absolute"
                                 src={org_logo}
                                 alt=""
                             />
