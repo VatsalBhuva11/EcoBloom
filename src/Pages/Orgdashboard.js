@@ -308,8 +308,8 @@ const Orgdashboard = () => {
           {/* search bar */}
 
           <div className="search w-[98%]  md:ml-4 lg:ml-8 mt-14">
-            <form>
-              <div className="flex">
+            {/* <form> */}
+              {/* <div className="flex">
                 <input
                   type="search"
                   id="default-search"
@@ -320,8 +320,8 @@ const Orgdashboard = () => {
                   className="hidden lg:flex text-gray-300 ml-4 mt-2"
                   size={25}
                 />
-              </div>
-            </form>
+              </div> */}
+            {/* </form> */}
           </div>
           <div className="justify-center items-center md:ml-4 lg:ml-14">
             <Link to="/campaign/create">

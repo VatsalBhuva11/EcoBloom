@@ -14,8 +14,11 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Terms_Conditions from "./Terms_Conditions.js";
 import logo from "../assets/images/logo.png";
 import { getFunctions, httpsCallable } from "firebase/functions";
+import Verification from "./Verfication.js";
 
 export default function Login() {
+    const [showMyModel1, setShowMyModal1] = useState(false);
+    const handleOnClose1 = () => setShowMyModal1(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [clicked, setClicked] = useState(false);
@@ -287,6 +290,7 @@ export default function Login() {
                     type="submit"
                     className="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
                     onClick={emailSignIn}
+                    // onClick={() => setShowMyModal1(true)}
                   >
                     Sign in
                   </button>
@@ -398,6 +402,7 @@ export default function Login() {
         </div>
       </div>
       <Terms_Conditions onClose={handleOnClose} visible={showMyModel} />
+      <Verification onClose={handleOnClose1} visible={showMyModel1} />
     </div>
   );
 }
