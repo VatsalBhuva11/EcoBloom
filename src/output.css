@@ -619,10 +619,6 @@ video {
   left: 0px;
 }
 
-.left-20{
-  left: 5rem;
-}
-
 .left-3{
   left: 0.75rem;
 }
@@ -645,10 +641,6 @@ video {
 
 .top-0{
   top: 0px;
-}
-
-.top-20{
-  top: 5rem;
 }
 
 .top-3{
@@ -3785,6 +3777,10 @@ html {
 
   .md\:justify-between{
     justify-content: space-between;
+  }
+
+  .md\:justify-evenly{
+    justify-content: space-evenly;
   }
 
   .md\:gap-12{

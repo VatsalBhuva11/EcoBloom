@@ -377,10 +377,15 @@ export default function Login() {
                   Terms&Conditions
                 </div>
               </a>
-              <div className=" cursor-pointer hover:underline ">Support</div>
-              <div className=" cursor-pointer hover:underline">
-                Customer Care
-              </div>
+              <a href="https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/docs%2FSupport.pdf?alt=media&token=9521bd7c-3e74-4c94-b33e-dff6d340ddae">
+                <div className=" cursor-pointer hover:underline ">Support</div>
+              </a>
+
+              <a href="https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/docs%2FCustomer%20care.pdf?alt=media&token=415654fe-1d86-4da7-81bf-96715be05cd3">
+                <div className=" cursor-pointer hover:underline">
+                  Customer Care
+                </div>
+              </a>
             </div>
           </div>
         </div>

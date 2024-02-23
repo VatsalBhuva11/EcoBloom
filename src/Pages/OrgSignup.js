@@ -105,7 +105,7 @@ export default function UserSignup() {
     return (
         <div className="h-screen">
             <div className=" bg-[#EEF0E5] ">
-                <div className="absolute top-20 left-20">
+                <div className="md:flex hidden">
                     <Link to="/">
                         <img
                             className="h-12  hover:scale-105 duration-300 md:h-16 "
@@ -131,7 +131,7 @@ export default function UserSignup() {
                                     action="#"
                                     id="emailSignUp"
                                 >
-                                    <div className="md:flex md:justify-between md:items-center">
+                                    <div className="md:flex md:justify-evenly md:items-center">
                                         <div className="part1 w-[40%]">
                                             <div>
                                                 <label
@@ -343,12 +343,17 @@ export default function UserSignup() {
                                         Terms&Conditions
                                     </button>
                                 </div>
+                                <a href="https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/docs%2FSupport.pdf?alt=media&token=9521bd7c-3e74-4c94-b33e-dff6d340ddae">
                                 <div className=" cursor-pointer hover:underline ">
                                     Support
                                 </div>
+                                </a>
+                                <a href="https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/docs%2FCustomer%20care.pdf?alt=media&token=415654fe-1d86-4da7-81bf-96715be05cd3">
                                 <div className=" cursor-pointer hover:underline">
                                     Customer Care
                                 </div>
+                                </a>
+                               
                             </div>
                         </div>
                     </div>
