@@ -2,7 +2,8 @@
 
 ## Overview
 
-EcoBloom is a web platform designed to facilitate and incentivize cleanliness campaigns organised by various entities. Users can actively participate in campaigns, earn rewards, and contribute to a cleaner environment. The project utilizes ReactJS for the frontend, Firebase for authentication, real-time updates, and hosting, Tailwind CSS for styling, and MongoDB for data storage. We've also integrated AI/ML into our site, by utilising an open-source Face-Recognition and Face-Comparison model provided by Face++ to verify users at the campaign sites. 
+EcoBloom is a web platform designed to facilitate and incentivize cleanliness campaigns organised by various entities. Users can actively participate in campaigns, earn rewards, and contribute to a cleaner environment. The project utilizes **ReactJS** for the frontend, **Firebase** for authentication, real-time updates, and hosting, **Tailwind CSS** for styling, and **MongoDB** for data storage. We've also utilised the very special **Realtime Database** provided by Firebase to maintain the chats of our users, and the **Firebase Storage** for storing file uploads in a logical, hierarchical manner. 
+In addition, we've also integrated AI/ML into our site, by utilising an open-source Face-Recognition and Face-Comparison model provided by Face++ to verify users at the campaign sites. 
 
 ## Table of Contents
 
@@ -11,7 +12,7 @@ EcoBloom is a web platform designed to facilitate and incentivize cleanliness ca
     - [Configuration](#configuration)
     - [Usage](#usage)
 2. [Key Highlights](#key-highlights)
-    - [User Authentication](#user-authentication)
+    - [Authentication](#authentication)
     - [Campaign Creation](#campaign-creation)
     - [Campaign Participation](#campaign-participation)
     - [Gamification](#gamification)
@@ -56,7 +57,7 @@ To initialise and configure , follow these steps:
    REACT_APP_MEASUREMENT_ID= your-measurement-id
    REACT_APP_GOOGLE_MAPS_API_KEY= your-google-maps-api
    
-5. Create a .env file in the functions folder and add your Firebase and MongoDB config:
+4. Create a .env file in the functions folder and add your Firebase and MongoDB config:
    
     ```bash
    DEPLOYED_URL= deployed-url
@@ -96,11 +97,13 @@ npm run serve
 
 
 ### Authentication
-- EcoBloom implements Firebase Authentication for secure user login and signup. We have extensively utilised the Custom Claims feature of Firebase Auth to account for our 3 types of users: Organisations, Participants, and Admin.
+
+- EcoBloom implements **Firebase Authentication** for secure user login and signup. We have extensively utilised the Custom Claims feature of Firebase Auth to account for our 3 types of users: Organisations, Participants, and Admin.
 
 - We've also implemented two types of Auth Providers provided by Firebase: Google, and Email/Password. We would also be adding Facebook Auth later in the future!
 
 #### User Auth
+
 - A user can either choose to register using the sign-up form, or get automatically signed up (and signed in) by directly clicking the Google Sign-in option made available on the `/login` route. We've tried to make our queries as ACID compliant as they can be (as an example, a Firebase Auth user cannot be created until the entire process is completed, which consists of creating a record in our database as well by implementing transactions).
 
 - While sign-up, it's **mandatory** for the user to upload a **_good quality, plain recent photo of their face with no other faces in the background_**. This is required to verify the users at the campaign sites, which makes up our points and rewards system.
@@ -129,6 +132,14 @@ npm run serve
   
 - Users can choose to register for an **upcoming or an ongoing** campaign. If you registered for a campaign but are not able to attend it, worry not! You won't be penalised for false registrations.
 
+### Community and Bonding
+
+- There's a high chance that while participating in some campaign, you came across really nice and like-minded people :)! But did you forget to exchange contact, or would you like to get close to these amazing people who are helping out this world just like you? We've got you covered, with our community chat feature!
+
+- Community chat allows the users to chat with all the members who've joined that organisation's community, allowing for a better bonding between the members of an organisation.
+
+- The organisation also has the feature to create posts, which can spread a smile on the face of their members, and others who are interested!
+
 ### Gamification
 
 - EcoBloom incorporates a gamified point system, encouraging users through rewards for their active involvement in campaigns.
@@ -137,7 +148,9 @@ npm run serve
   
 - Before or after the campaign ends, a face-recognition system (which is made available on the campaign page in the organisation portal) will be used to match each participant and the photo they uploaded while sign-up. This part is handled by any member of the organisation present at the site.
   
-- Upon successful verification, the user obtains points and they can view those points in their Activity Log / Store page, which can be redeemed for exciting merch made available by EcoBloom!
+- Upon successful verification, the user obtains points and they can view those points in their Activity Log / Store page, which can be redeemed for exciting merch made available by EcoBloom! (we have not implemented a payment gateway / delivery system as of now, as it requires alot of verification and paperwork, and also since we do not actually have these products available for shipping but just a concept or an idea about it)
+
+- It is to note that these points are updated only after the campaign ends. When the campaign ends, all the verified users will have their points updated. This is handled through a cron-job, which runs every 10 minutes to check whether any campaign has ended or not.
 
 
 ## Contributing
@@ -154,10 +167,6 @@ We welcome and appreciate contributions from the community! To contribute to Eco
 ### Code Style
 
 Follow the existing code style and conventions. Ensure your code is well-documented.
-
-### Testing
-
-If your contribution includes new features or bug fixes, add relevant tests and ensure existing tests pass.
 
 ### Reporting Issues
 
@@ -200,8 +209,11 @@ Thank you for helping make EcoBloom better! 🌱
 EcoBloom is built using the following technologies:
 
 - **React**: A JavaScript library for building user interfaces.
+  
 - **Firebase**: A comprehensive platform for building web and mobile applications, including authentication and real-time database features.
+  
 - **Tailwind CSS**: A utility-first CSS framework for building modern designs.
+  
 - **MongoDB**: A NoSQL database for storing and retrieving data efficiently.
 
 ### Frontend
@@ -211,6 +223,8 @@ EcoBloom is built using the following technologies:
 - **Tailwind CSS**: Tailwind CSS is used for styling, enabling a streamlined and customizable design approach.
 
 ### Backend
+
+- **Firebase Functions**: Provide specific data as required by the frontend.
 
 - **Firebase Authentication**: Provides secure user authentication for EcoBloom.
 
