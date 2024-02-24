@@ -44,6 +44,10 @@ const Admin = () => {
                     newElem.className =
                         "hover:scale-105 duration-300 bg-[#6BBE7D] text-[#edede3] w-32 h-8 rounded-2xl font-medium text-[14px]";
                     newElem.innerText = "VERIFIED";
+                    setOrgsInfo({
+                        ...orgsInfo,
+                        accepted: orgsInfo.accepted + 1,
+                    });
                     old.parentNode.replaceChild(newElem, old);
                     setClicked(false);
                 } else {
@@ -83,16 +87,16 @@ const Admin = () => {
                                 })
                             );
 
-                            setOrgs(updatedOrgDocs);
                             let accepted = 0;
-                            orgs.forEach((org) => {
+                            updatedOrgDocs.forEach((org) => {
                                 if (org.isVerified) accepted++;
                             });
                             setOrgsInfo({
                                 ...orgsInfo,
                                 accepted,
-                                unreviewed: orgs.length - accepted,
+                                unreviewed: updatedOrgDocs.length - accepted,
                             });
+                            setOrgs(updatedOrgDocs);
                             setLoader(false);
                         })
                         .catch((err) => {
