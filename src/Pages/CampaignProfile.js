@@ -5,6 +5,7 @@ import { SlCalender } from "react-icons/sl";
 import { IoIosPeople } from "react-icons/io";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaRegClock } from "react-icons/fa6";
+import { GrMapLocation } from "react-icons/gr";
 import { SiDogecoin } from "react-icons/si";
 import logo from "../assets/images/logo.png";
 import face from "../assets/images/face.jpg";
@@ -198,7 +199,11 @@ const CampaignProfile = () => {
                             </p>
                             <p className="text-[16px] sm:text-xl md:text-2xl  md:pt-3 sm:pt-3 text-[#2A7805] flex font-semibold">
                                 <FaLocationDot className="mt-1 pr-1" />
+                                {campaign.address}
+                                <br />
                                 {campaign.city}, {campaign.country}
+                                <br />({campaign.latitude}, {campaign.longitude}
+                                )
                             </p>
                         </div>
                     </div>
@@ -213,9 +218,9 @@ const CampaignProfile = () => {
                                     "lll"
                                 )} - {moment(campaign.endDate).format("lll")}
                             </h1>
-                            <button className="md:text-lg text-sm mx-3 px-3 py-1 md:ml-10 lg:mr-6 md:px-5 md:py-2 text-gray-100 rounded-lg bg-gradient-to-r from-[#353657] to-[#404162] hover:from-[#353657] hover:to-[#0F1035]">
+                            {/* <button className="md:text-lg text-sm mx-3 px-3 py-1 md:ml-10 lg:mr-6 md:px-5 md:py-2 text-gray-100 rounded-lg bg-gradient-to-r from-[#353657] to-[#404162] hover:from-[#353657] hover:to-[#0F1035]">
                                 Add to Calender
-                            </button>
+                            </button> */}
                             {!isRegistered ? (
                                 !clicked && status === null ? (
                                     <button
@@ -273,13 +278,15 @@ const CampaignProfile = () => {
                             </div>
 
                             <div className="flex text-[#686968]">
-                                <IoEyeSharp
+                                <GrMapLocation
                                     size={40}
                                     className="md:mr-4 mr-2"
                                 />
                                 <div className="text-md md:text-xl lg:text-2xl">
-                                    <p className="font-bold">Impressions</p>
-                                    <p className="mt-[-4px] md:mt-[0]">2135</p>
+                                    <p className="font-bold">Location Type</p>
+                                    <p className="mt-[-4px] md:mt-[0]">
+                                        {campaign.locationType}
+                                    </p>
                                 </div>
                             </div>
 
