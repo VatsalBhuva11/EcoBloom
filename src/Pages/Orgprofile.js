@@ -446,14 +446,14 @@ const Orgprofile = () => {
                                 </div>
                             )}
                         </div>
-                        <div className="flex p-8 ml-10">
+                        {/* <div className="flex p-8 ml-10">
                             <button className=" font-bold flex items-center p-2 rounded-lg border-2 border-b-gray-300">
                                 View All
                                 <div className="ml-2">
                                     <FaArrowRightLong />
                                 </div>
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
