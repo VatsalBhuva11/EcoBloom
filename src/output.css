@@ -755,11 +755,6 @@ video {
   margin-bottom: 0.75rem;
 }
 
-.my-4{
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .my-5{
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -4545,11 +4540,6 @@ html {
   .\32xl\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
-  }
-
-  .\32xl\:text-3xl{
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 
   .\32xl\:text-\[0\.9rem\]{

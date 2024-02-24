@@ -42,6 +42,12 @@ export const getOrgs = async (req, res) => {
                 };
             })
         );
+        data.sort((a, b) => {
+            return b.applyDate - a.applyDate;
+        });
+        data.forEach((org) => {
+            console.log(org.applyDate);
+        });
         response_200(res, "Successfully fetched organizations", data);
     } catch (err) {
         console.log(err);
