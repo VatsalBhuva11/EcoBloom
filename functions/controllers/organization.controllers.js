@@ -130,61 +130,85 @@ export const getOrgDetails = async (req, res) => {
 
 //updating the organization's details (logo, banner only possible)
 export const updateOrgPics = async (req, res) => {
-    const files = req.files; //logo, banner
-    const extensions = files.map((file) => file.originalname.split(".").pop());
-    const validate = extensions.filter(
-        (extension) =>
-            extension !== "jpg" && extension !== "png" && extension !== "jpeg"
-    );
-    //email variable, update record in DB
-
-    if (validate.length > 0) {
-        response_400(
-            res,
-            "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
-        );
-    } else {
-        // const pathToLogo = `/org/${email}/logo_${Date.now()}.jpg`;
-        // const pathToBanner = `/org/${email}/banner_${Date.now()}.jpg`;
-        // const pathToDocument = `/org/${email}/document_${Date.now()}.jpg`;
-
-        const filesToUpload = [];
-        const paths = {};
-        for (let i = 0; i < files.length; i++) {
-            filesToUpload.push(
-                uploadFile(req.org.email, files[i], extensions[i], paths)
+    try {
+        const orgId = req.org.orgId;
+        const org = await Organization.findById(orgId);
+        if (!org) {
+            console.log("Organisation not found");
+            response_404(res, "Organization not found");
+        } else {
+            const files = req.files; //logo, banner
+            console.log(files);
+            const extensions = files.map((file) =>
+                file.originalname.split(".").pop()
             );
-        }
+            const validate = extensions.filter(
+                (extension) =>
+                    extension !== "jpg" &&
+                    extension !== "png" &&
+                    extension !== "jpeg"
+            );
+            //email variable, update record in DB
 
-        Promise.all(filesToUpload)
-            .then((values) => {
-                console.log(values);
-            })
-            .then(async () => {
-                const doc = await Organization.findOneAndUpdate(
-                    {
-                        email: req.org.email,
-                    },
-                    {
-                        logo: paths["logo"],
-                        banner: paths["banner"],
-                    },
-                    {
-                        new: true,
-                    }
-                );
-
-                console.log("Successfully updated organization details!");
-                response_200(
+            if (validate.length > 0) {
+                response_400(
                     res,
-                    "Successfully updated organization details!",
-                    doc
+                    "Invalid file format. Only .jpg, .png, .jpeg files are allowed"
                 );
-            })
-            .catch((err) => {
-                console.log(err);
-                response_500(res, "Error creating organization", err);
-            });
+            } else {
+                // const pathToLogo = `/org/${email}/logo_${Date.now()}.jpg`;
+                // const pathToBanner = `/org/${email}/banner_${Date.now()}.jpg`;
+                // const pathToDocument = `/org/${email}/document_${Date.now()}.jpg`;
+
+                const filesToUpload = [];
+                const paths = {};
+                for (let i = 0; i < files.length; i++) {
+                    filesToUpload.push(
+                        uploadFile(req.org.email, files[i], paths)
+                    );
+                }
+
+                Promise.all(filesToUpload)
+                    .then((values) => {
+                        console.log("values: ", values);
+                        console.log("paths: ", paths);
+                    })
+                    .then(async () => {
+                        const doc = await Organization.findOneAndUpdate(
+                            {
+                                email: req.org.email,
+                            },
+                            {
+                                logo: paths["logo"],
+                                banner: paths["banner"],
+                            },
+                            {
+                                new: true,
+                            }
+                        );
+
+                        console.log(
+                            "Successfully updated organization details!"
+                        );
+                        response_200(
+                            res,
+                            "Successfully updated organization details!",
+                            doc
+                        );
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        response_500(res, "Error creating organization", err);
+                    });
+            }
+        }
+    } catch (err) {
+        console.log("Error occurred while updating organisation pictures");
+        response_500(
+            res,
+            "Error occurred while updating organisation pictures",
+            err
+        );
     }
 };
 
@@ -308,27 +332,43 @@ export const createPost = async (req, res) => {
     }
 };
 
-async function uploadFile(email, file, extensions, paths) {
+async function uploadFile(email, file, paths) {
     const fileType = file.fieldname.toLowerCase().replace("optional", "");
-    const pathToFile = `org/${email}/${fileType}.${extensions}`;
-    const storageRef = ref(storage, pathToFile);
-    const metadata = {
-        contentType: file.mimetype,
-    };
 
     try {
-        const response = await uploadBytesResumable(
-            storageRef,
-            file.buffer,
-            metadata
-        );
-        console.log(response.state);
-        if (!(response.state === "success")) {
-            throw new Error(`Failed to upload ${file.originalname}`);
-        }
+        Jimp.read(file.buffer)
+            .then((image) => {
+                // Convert the image to JPEG with quality 100 (you can adjust the quality as needed)
+                return image.quality(100).getBufferAsync(Jimp.MIME_JPEG);
+            })
+            .then(async (jpegBuffer) => {
+                console.log("Image converted successfully!");
+                // Now you have the converted buffer (jpegBuffer) that you can use
+                const pathToFile = `org/${email}/${fileType}.jpeg`;
 
-        paths[fileType] = pathToFile;
-        return `Successfully uploaded ${file.originalname}`;
+                const storageRef = ref(storage, pathToFile);
+
+                const metadata = {
+                    contentType: "image/jpeg",
+                };
+
+                const snapshot = await uploadBytesResumable(
+                    storageRef,
+                    jpegBuffer,
+                    metadata
+                );
+                if (!(snapshot.state === "success")) {
+                    throw new Error(`Failed to upload ${file.originalname}`);
+                }
+                console.log("pathToFile: ", pathToFile);
+                paths[fileType] = pathToFile;
+                console.log("paths: ", paths);
+                return `Successfully uploaded ${file.originalname}`;
+            })
+            .catch((err) => {
+                console.error("Error converting image:", err);
+                throw new Error(`Failed to upload images: `, err);
+            });
     } catch (error) {
         console.error(`Error uploading ${fileType} file: ${error.message}`);
         throw error;

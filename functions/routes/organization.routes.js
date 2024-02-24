@@ -20,7 +20,7 @@ router.post("/linkPassword", checkOrg, linkOrgPassword);
 
 router.post("/post", filesUpload, checkOrg, createPost);
 
-router.patch("/:orgName", checkOrg, filesUpload, updateOrgPics);
+router.patch("/", checkOrg, filesUpload, updateOrgPics);
 // router.patch("/:orgName", filesUpload, updateOrgPics);
 
 export default router;

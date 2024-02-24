@@ -23,17 +23,20 @@ const EditPasswordOrg = ({ visible, onClose }) => {
         } else {
             const user = auth.currentUser;
             const token = await user.getIdToken();
-            fetch(`${process.env.REACT_APP_LOCAL_API_URL}/org/linkPassword`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    password: password,
-                    uid: user.uid,
-                }),
-            })
+            fetch(
+                `${process.env.REACT_APP_DEPLOYED_API_URL}/org/linkPassword`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                        password: password,
+                        uid: user.uid,
+                    }),
+                }
+            )
                 .then((res) => {
                     if (res.status === 200) {
                         alert(

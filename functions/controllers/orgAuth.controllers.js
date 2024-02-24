@@ -12,12 +12,13 @@ import {
     response_500,
 } from "../utils/responseCodes.js";
 import Community from "../models/community.model.js";
+import Jimp from "jimp";
 
 dotenv.config();
 const router = express.Router();
 
 // Create a new user
-async function uploadFile(email, file, extensions, paths) {
+async function uploadPdf(email, file, extensions, paths) {
     const fileType = file.fieldname.toLowerCase().replace("optional", "");
     const pathToFile = `org/${email}/${fileType}.${extensions}`;
     const storageRef = ref(storage, pathToFile);
@@ -40,6 +41,48 @@ async function uploadFile(email, file, extensions, paths) {
 
         paths[fileType] = pathToFile;
         return `Successfully uploaded ${file.originalname}`;
+    } catch (error) {
+        console.error(`Error uploading ${fileType} file: ${error.message}`);
+        throw error;
+    }
+}
+async function uploadFile(email, file, paths) {
+    const fileType = file.fieldname.toLowerCase().replace("optional", "");
+
+    try {
+        Jimp.read(file.buffer)
+            .then((image) => {
+                // Convert the image to JPEG with quality 100 (you can adjust the quality as needed)
+                return image.quality(100).getBufferAsync(Jimp.MIME_JPEG);
+            })
+            .then(async (jpegBuffer) => {
+                console.log("Image converted successfully!");
+                // Now you have the converted buffer (jpegBuffer) that you can use
+                const pathToFile = `org/${email}/${fileType}.jpeg`;
+
+                const storageRef = ref(storage, pathToFile);
+
+                const metadata = {
+                    contentType: "image/jpeg",
+                };
+
+                const snapshot = await uploadBytesResumable(
+                    storageRef,
+                    jpegBuffer,
+                    metadata
+                );
+                if (!(snapshot.state === "success")) {
+                    throw new Error(`Failed to upload ${file.originalname}`);
+                }
+                console.log("pathToFile: ", pathToFile);
+                paths[fileType] = pathToFile;
+                console.log("paths: ", paths);
+                return `Successfully uploaded ${file.originalname}`;
+            })
+            .catch((err) => {
+                console.error("Error converting image:", err);
+                throw new Error(`Failed to upload images: `, err);
+            });
     } catch (error) {
         console.error(`Error uploading ${fileType} file: ${error.message}`);
         throw error;
@@ -81,9 +124,20 @@ router.post("/register", async (req, res) => {
                 const filesToUpload = [];
                 const paths = {};
                 for (let i = 0; i < files.length; i++) {
-                    filesToUpload.push(
-                        uploadFile(email, files[i], extensions[i], paths)
-                    );
+                    if (extensions[i] === "pdf") {
+                        filesToUpload.push(
+                            await uploadPdf(
+                                email,
+                                files[i],
+                                extensions[i],
+                                paths
+                            )
+                        );
+                    } else {
+                        filesToUpload.push(
+                            await uploadFile(email, files[i], paths)
+                        );
+                    }
                 }
 
                 //try syncrhonously
@@ -97,9 +151,9 @@ router.post("/register", async (req, res) => {
                             firebaseId,
                             name,
                             email,
-                            logo: paths["logo"],
-                            banner: paths["banner"],
-                            document: paths["document"],
+                            logo: `org/${email}/logo.jpeg`,
+                            banner: `org/${email}/banner.jpeg`,
+                            document: `org/${email}/document.pdf`,
                             description,
                             applyDate: new Date(),
                         });

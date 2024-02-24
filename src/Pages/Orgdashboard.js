@@ -62,7 +62,7 @@ const Orgdashboard = () => {
                 const idTokenResult = jwtDecode(idToken);
                 if (idTokenResult.role === "user" || !idTokenResult.role) {
                     // alert("Please login with organization credentials.");
-                    window.location.replace("/user/dashboard");
+                    window.location.replace("/login");
                 } else {
                     fetch(
                         `${process.env.REACT_APP_DEPLOYED_API_URL}/org/${idTokenResult.user_id}`
@@ -99,8 +99,8 @@ const Orgdashboard = () => {
                         .catch((err) => {
                             console.log(err);
                             setLoader(false);
-                            alert("Unable to fetch organization data");
-                            window.location.replace("/user/dashboard");
+                            // alert("Unable to fetch organization data");
+                            // window.location.replace("/login");
                         });
                 }
             });

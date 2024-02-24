@@ -102,8 +102,8 @@ const Change_profile_org = ({ visible, onClose }) => {
                     <input
                         className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
                         aria-describedby="file_input_help"
-                        id="banner"
-                        name="banner"
+                        id="logo"
+                        name="logo"
                         type="file"
                         accept="image/*"
                         required

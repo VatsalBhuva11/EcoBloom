@@ -1,7 +1,7 @@
 import { React, useState, useContext, useEffect } from "react";
 import logo from "../assets/images/logo.png";
-import EditPasswordOrg from "./EditPasswordOrg";
-import Change_profile from "./Change_profile";
+import EditPasswordOrg from "./EditPassword";
+import Change_profile_org from "./Change_profile_org";
 import Verify_Email from "./Verify_Email";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase.js";
@@ -161,7 +161,10 @@ const Edit_Profile_Org = () => {
             </div>
 
             <EditPasswordOrg onClose={handleOnClose} visible={showMyModel} />
-            <Change_profile onClose={handleOnClose1} visible={showMyModel1} />
+            <Change_profile_org
+                onClose={handleOnClose1}
+                visible={showMyModel1}
+            />
             <Change_banner onClose={handleOnClose2} visible={showMyModel2} />
             <Verify_Email onClose={handleOnClose3} visible={showMyModel3} />
         </div>
