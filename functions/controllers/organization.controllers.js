@@ -14,6 +14,7 @@ import moment from "moment";
 import Jimp from "jimp";
 import Post, { Post as PostSchema } from "../models/post.model.js";
 import mongoose from "mongoose";
+import { auth } from "../config/firebaseAdmin.config.js";
 
 const router = express.Router();
 mongoose.model("Post", PostSchema);
@@ -186,6 +187,37 @@ export const updateOrgPics = async (req, res) => {
             });
     }
 };
+
+export async function linkOrgPassword(req, res) {
+    try {
+        const { password, uid } = req.body;
+        const orgId = req.org.orgId;
+
+        const org = await Organization.findById(orgId);
+        if (!org) {
+            response_404(res, "Organization not found");
+        } else {
+            auth.updateUser(uid, {
+                password: password,
+            })
+                .then((userRecord) => {
+                    console.log(userRecord);
+                    response_200(res, "Successfully linked with password", org);
+                })
+                .catch((error) => {
+                    console.log("error while linking: ", error);
+                    response_500(
+                        res,
+                        "Error occurred while linking with password",
+                        error
+                    );
+                });
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while linking with password", err);
+    }
+}
 
 export const createPost = async (req, res) => {
     try {

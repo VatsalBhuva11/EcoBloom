@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase";
 
-const EditPassword = ({ visible, onClose }) => {
+const EditPasswordOrg = ({ visible, onClose }) => {
     const handleOnClose = (e) => {
         if (e.target.id === "container") onClose();
     };
@@ -23,20 +23,17 @@ const EditPassword = ({ visible, onClose }) => {
         } else {
             const user = auth.currentUser;
             const token = await user.getIdToken();
-            fetch(
-                `${process.env.REACT_APP_DEPLOYED_API_URL}/user/linkPassword`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({
-                        password: password,
-                        uid: user.uid,
-                    }),
-                }
-            )
+            fetch(`${process.env.REACT_APP_LOCAL_API_URL}/org/linkPassword`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    password: password,
+                    uid: user.uid,
+                }),
+            })
                 .then((res) => {
                     if (res.status === 200) {
                         alert(
@@ -150,4 +147,4 @@ const EditPassword = ({ visible, onClose }) => {
     );
 };
 
-export default EditPassword;
+export default EditPasswordOrg;

@@ -4,6 +4,7 @@ import {
     getOrgDetails,
     updateOrgPics,
     createPost,
+    linkOrgPassword,
 } from "../controllers/organization.controllers.js";
 import filesUpload from "../middlewares/upload.middleware.js";
 import checkOrg from "../middlewares/checkOrg.middleware.js";
@@ -15,6 +16,7 @@ router.get("/", getOrgs);
 
 // specific org details
 router.get("/:orgId", getOrgDetails);
+router.post("/linkPassword", checkOrg, linkOrgPassword);
 
 router.post("/post", filesUpload, checkOrg, createPost);
 
