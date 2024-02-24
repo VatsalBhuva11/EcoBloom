@@ -2,7 +2,9 @@
 
 ## Overview
 
-EcoBloom is a web platform designed to facilitate and incentivize cleanliness campaigns organised by various entities. Users can actively participate in campaigns, earn rewards, and contribute to a cleaner environment. The project utilizes **ReactJS** for the frontend, **Firebase** for authentication, real-time updates, and hosting, **Tailwind CSS** for styling, and **MongoDB** for data storage. We've also utilised the very special **Realtime Database** provided by Firebase to maintain the chats of our users, and the **Firebase Storage** for storing file uploads in a logical, hierarchical manner. 
+EcoBloom is a web platform designed to facilitate and incentivize cleanliness campaigns organised by various entities. Users can actively participate in campaigns, earn rewards, and contribute to a cleaner environment. The project utilizes **ReactJS** for the frontend, **Firebase** for authentication, real-time updates, and hosting, **Tailwind CSS** for styling, and **MongoDB** for data storage. 
+
+We've also utilised the very special **Realtime Database** provided by Firebase to maintain the chats of our users, and the **Firebase Storage** for storing file uploads in a logical, hierarchical manner. 
 In addition, we've also integrated AI/ML into our site, by utilising an open-source Face-Recognition and Face-Comparison model provided by Face++ to verify users at the campaign sites. 
 
 ## Table of Contents
