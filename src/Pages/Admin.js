@@ -47,6 +47,7 @@ const Admin = () => {
                     setOrgsInfo({
                         ...orgsInfo,
                         accepted: orgsInfo.accepted + 1,
+                        unreviewed: orgsInfo.unreviewed - 1,
                     });
                     old.parentNode.replaceChild(newElem, old);
                     setClicked(false);

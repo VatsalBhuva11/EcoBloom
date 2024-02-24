@@ -184,12 +184,12 @@ const CampaignProfile = () => {
                     <div className="flex lg:pb-12 lg:mt-6 md:pb-8 md:mt-4 mt-4 pb-6">
                         <div className="w-[20%] md:w-[15%] overflow-hidden">
                             <img
-                                className="h-16 sm:h-24 md:h-32 mt-3 pl-6 md:pl-8 lg:pl-12 object-cover absolute"
+                                className="h-16 sm:h-24 md:h-32 mt-3 pl-2 md:pl-4 lg:pl-12 object-cover absolute"
                                 src={org_logo}
                                 alt=""
                             />
                         </div>
-                        <div className="flex flex-col pt-2 pl-2 md:pl-4 ">
+                        <div className="flex flex-col pt-2 pl-12 lg:pl-12 ">
                             <h1 className="text-[#0f1035] md:pt-4 font-bold text-xl sm:text-2xl md:text-3xl flex">
                                 <LuTrophy className="mt-1 mr-1 md:mt-2  md:mr-2" />{" "}
                                 {campaign?.name}
@@ -202,8 +202,9 @@ const CampaignProfile = () => {
                                 {campaign.address}
                                 <br />
                                 {campaign.city}, {campaign.country}
-                                <br />({campaign.latitude}, {campaign.longitude}
-                                )
+                                <br />
+                                Coordinates: ({campaign.latitude},{" "}
+                                {campaign.longitude})
                             </p>
                         </div>
                     </div>

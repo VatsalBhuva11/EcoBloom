@@ -25,7 +25,7 @@ const NewPost = ({ visible, onClose, post, org }) => {
             onClick={handleOnClose}
             className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
         >
-            <div className="bg-[#CDE1C9] p-2 rounded-lg w-[40%] flex flex-col justify-center">
+            <div className="bg-[#CDE1C9] p-2 rounded-lg w-[40%] bg-contain flex flex-col justify-center">
                 <div className="flex justify-between">
                     <div className="flex items-center lg:gap-3 p-2 hover:scale-105 duration-300">
                         <img
@@ -59,10 +59,10 @@ const NewPost = ({ visible, onClose, post, org }) => {
                     <img
                         src={post.photo}
                         alt=".."
-                        className="rounded-lg w-full h-full"
+                        className="rounded-lg w-full"
                     />
                 </div>
-                <div className="flex justify-around mt-2">
+                {/* <div className="flex justify-around mt-2">
                     <button>
                         <BiLike className="text-3xl" />
                     </button>
@@ -75,7 +75,7 @@ const NewPost = ({ visible, onClose, post, org }) => {
                     <button>
                         <IoIosSend className="text-3xl" />
                     </button>
-                </div>
+                </div> */}
             </div>
         </div>
     );
