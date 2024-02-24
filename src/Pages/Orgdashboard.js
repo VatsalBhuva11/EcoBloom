@@ -206,11 +206,10 @@ const Orgdashboard = () => {
                                 <h1 className="text-[#0f1035] md:pt-4 font-bold text-xl sm:text-2xl md:text-4xl">
                                     {org.name}
                                 </h1>
-                                <p className="text-[14px] sm:text-lg md:text-2xl pt-1 sm:pt-3">
-                                    The Technical Club Information Technology,
-                                    Allahabad
+                                <p className="text-[14px] sm:text-lg md:text-xl pt-1 sm:pt-3">
+                                    Contact us at: {org.email}
                                 </p>
-                                <p className="text-[14px] sm:text-lg md:text-xl pt-1 sm:pt-1">
+                                <p className="text-[14px] sm:text-md md:text-lg pt-1 sm:pt-1">
                                     {org.communityUsersCount} Members
                                 </p>
                                 <div className="flex pt-3 md:pt-6  gap-3 sm:gap-4 md:gap-6 ">

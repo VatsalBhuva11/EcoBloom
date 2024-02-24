@@ -37,6 +37,7 @@ export const getOrgs = async (req, res) => {
                     banner: org.banner,
                     document: org.document,
                     isVerified: org.isVerified,
+                    description: org.description,
                     members: community ? community.userCount : 0,
                     applyDate: org.applyDate,
                 };

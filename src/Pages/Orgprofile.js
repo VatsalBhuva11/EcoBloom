@@ -200,12 +200,12 @@ const Orgprofile = () => {
                                 alt=""
                             />
                         </Link>
-                        <input
+                        {/* <input
                             type="search"
                             id="default-search"
                             className=" md:ml-2 py-1 px-2 text-md lg:text-xl text-gray-200 rounded-lg bg-[#353657] focus:ring-white focus:border-white w-[250px] md:w-[450px]"
                             placeholder="search"
-                        />
+                        /> */}
                     </div>
                 </div>
                 {/* navbar */}
@@ -232,8 +232,7 @@ const Orgprofile = () => {
                                     {org.name}
                                 </h1>
                                 <p className="text-[14px] sm:text-lg md:text-2xl pt-1 sm:pt-3">
-                                    The Technical Club Information Technology,
-                                    Allahabad
+                                    Contact us at: {org.email}
                                 </p>
                                 <p className="text-[14px] sm:text-lg md:text-xl pt-1 sm:pt-1">
                                     {org.communityUsersCount} Members
@@ -253,9 +252,9 @@ const Orgprofile = () => {
                                             onClick={() => {
                                                 console.log("u already joined");
                                             }}
-                                            className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
+                                            className="bg-[#0f1035] bg-opacity-50 flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
                                         >
-                                            View Community
+                                            Joined
                                         </button>
                                     ) : !clicked ? (
                                         <button

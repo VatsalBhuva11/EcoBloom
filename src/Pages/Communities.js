@@ -19,31 +19,31 @@ const Communities = () => {
     const [user, loading, error] = useAuthState(auth);
     // const [profile, setProfile] = useState(pers
     useEffect(() => {
-
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
-                if (idTokenResult.role === "org"){
-                    window.location.replace( '/org/dashboard');
+                if (idTokenResult.role === "org") {
+                    window.location.replace("/org/dashboard");
                     // <Navigate to = 'org/dashboard'  replace  = {true}/>
                 }
-        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/org`)
-            .then((response) => response.json())
-            .then((orgsFetched) => {
-                console.log(orgsFetched.data);
-                setOrgs(orgsFetched.data);
-                setLoader(false);
-            })
-            .catch((err) => {
-                console.log("error occurred while fetching organizations");
-                console.log(err);
-                setLoader(false);
+                fetch(`${process.env.REACT_APP_LOCAL_API_URL}/org`)
+                    .then((response) => response.json())
+                    .then((orgsFetched) => {
+                        console.log(orgsFetched.data);
+                        setOrgs(orgsFetched.data);
+                        setLoader(false);
+                    })
+                    .catch((err) => {
+                        console.log(
+                            "error occurred while fetching organizations"
+                        );
+                        console.log(err);
+                        setLoader(false);
+                    });
             });
-        });
-    }
+        }
     }, [loading]);
-
 
     if (loading || loader) {
         return (
@@ -96,7 +96,7 @@ const Communities = () => {
                     .map((org) => {
                         if (org.isVerified) {
                             return (
-                                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg h-64 lg:h-56 lg:pb-4">
+                                <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex-col rounded-lg h-64 lg:h-56">
                                     <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
                                         <img
                                             className="rounded-xl bg-cover"
@@ -104,36 +104,37 @@ const Communities = () => {
                                             alt=""
                                         />
                                     </div>
-                                    <div className="ml-24">
-                                        <div className="text-lg lg:text-xl font-medium overflow-hidden">
-                                            {org.name}
+                                    <div className="flex justify-center items-center w-full">
+                                        <div className="w-1/4">
+                                            <img
+                                                className="w-16 h-16 relative bottom-[5rem] lg:bottom-[rem]"
+                                                src={logo_commu}
+                                                alt=""
+                                            />
                                         </div>
-                                        <div>
-                                            The Technical Club of Indian
-                                            Institute of Infromation Technology,
-                                            Allahabad
-                                        </div>
-                                        <div className="text-xs">
-                                            {org.members} Members
-                                        </div>
-                                        <button
-                                            onClick={() => {
-                                                window.location.href = `/org/profile/${org.firebaseId}`;
-                                            }}
-                                            className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
-                                        >
-                                            See Profile{" "}
-                                            <div className="text-md mt-[0.34rem]">
-                                                {" "}
-                                                <FaArrowRightLong />{" "}
+                                        <div className="w-3/4 flex flex-col justify-center pl-6 pt-4">
+                                            <div className="text-lg lg:text-xl font-medium overflow-hidden">
+                                                {org.name}
                                             </div>
-                                        </button>
+                                            <div>{org.members} Members</div>
+                                            <div className="text-xs">
+                                                {org.description.slice(0, 30)}
+                                                ...
+                                            </div>
+                                            <button
+                                                onClick={() => {
+                                                    window.location.href = `/org/profile/${org.firebaseId}`;
+                                                }}
+                                                className="w-36 mt-2 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
+                                            >
+                                                See Profile{" "}
+                                                <div className="text-md mt-[0.34rem]">
+                                                    {" "}
+                                                    <FaArrowRightLong />{" "}
+                                                </div>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <img
-                                        className="w-16 h-16 relative bottom-[11rem] lg:bottom-[10rem] left-3"
-                                        src={logo_commu}
-                                        alt=""
-                                    />
                                 </div>
                             );
                         }
