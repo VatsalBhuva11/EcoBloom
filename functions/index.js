@@ -70,7 +70,6 @@ export const setCustomClaims = onCall(async (data, context) => {
             });
         }
         console.log("User from setCustomClaims: ", firebaseId);
-        console.log("Custom claims set for user:", firebaseId);
     } catch (error) {
         console.error("Error setting custom claims:", error);
         throw new Error(error);
