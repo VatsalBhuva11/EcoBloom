@@ -325,38 +325,37 @@ export default function UserSignup() {
                                                                 setIsOpen(false)
                                                             }
                                                             className={
-                                                                "flex flex-col absolute z-10 md:left-[400px] md:bottom-[180px] bg-white  p-2 rounded-lg ml-4 border-black "
+                                                                "flex flex-col absolute z-10 md:left-[30px] md:bottom-[180px] bg-white  p-2 rounded-lg ml-6 border-black "
                                                             }
                                                         >
-                                                            <div className=" text-[10px]">
-                                                                &rarr; upload a
-                                                                clear picture of
-                                                                your face with
-                                                                size less than
-                                                                2mb
+                                                            <div className=" text-[20px]">
+                                                                &rarr; Clear
+                                                                picture of your{" "}
+                                                                <strong>
+                                                                    face
+                                                                </strong>{" "}
+                                                                with size less
+                                                                than{" "}
+                                                                <strong>
+                                                                    100kb
+                                                                </strong>
                                                             </div>
-                                                            <div className="text-[10px]">
-                                                                &rarr; size of
-                                                                the image should
-                                                                be between 48
-                                                                <sup>*</sup>48
-                                                                pixels and 4096
-                                                                <sup>*</sup>4096
-                                                                pixels
+                                                            <div className="text-[20px]">
+                                                                &rarr; Square
+                                                                photo
+                                                                (preferably
+                                                                passport sized)
                                                             </div>
-                                                            <div className="text-[10px]">
+                                                            <div className="text-[20px]">
                                                                 &rarr; Format of
                                                                 the image should
                                                                 be either JPG,
                                                                 JPEg or PNG
                                                             </div>
-                                                            <div className="text-[10px]">
-                                                                &rarr; It would
-                                                                be preferred to
-                                                                upload a clear
-                                                                photo where face
-                                                                is clearly
-                                                                visible
+                                                            <div className="text-[20px]">
+                                                                &rarr; Face
+                                                                should be
+                                                                clearly visible
                                                             </div>
                                                         </div>
                                                     )}
