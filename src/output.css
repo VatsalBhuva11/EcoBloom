@@ -3556,8 +3556,12 @@ html {
     bottom: 180px;
   }
 
-  .md\:left-\[400px\]{
-    left: 400px;
+  .md\:bottom-\[500px\]{
+    bottom: 500px;
+  }
+
+  .md\:left-\[30px\]{
+    left: 30px;
   }
 
   .md\:-m-2{

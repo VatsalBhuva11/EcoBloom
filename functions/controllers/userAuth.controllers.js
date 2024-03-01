@@ -75,6 +75,7 @@ router.post("/register", async (req, res) => {
                 const file = req.files[0];
                 const filename = file.originalname;
                 const extension = filename.split(".").pop();
+
                 if (
                     extension !== "png" &&
                     extension !== "jpg" &&
@@ -86,58 +87,67 @@ router.post("/register", async (req, res) => {
                     );
                 } else {
                     // Resize image and get extension
-                    Jimp.read(file.buffer)
-                        .then((image) => {
-                            // Convert the image to JPEG with quality 100 (you can adjust the quality as needed)
-                            return image
-                                .quality(100)
-                                .getBufferAsync(Jimp.MIME_JPEG);
-                        })
-                        .then(async (jpegBuffer) => {
-                            console.log("Image converted successfully!");
-                            // Now you have the converted buffer (jpegBuffer) that you can use
+                    console.log("size: ", file.size);
+                    console.log("greater? : ", file.size > 100000);
+                    if (file.size > 100000) {
+                        response_400(
+                            res,
+                            "File size should be less than 100kb"
+                        );
+                    } else {
+                        Jimp.read(file.buffer)
+                            .then((image) => {
+                                // Convert the image to JPEG with quality 100 (you can adjust the quality as needed)
+                                return image
+                                    .quality(100)
+                                    .getBufferAsync(Jimp.MIME_JPEG);
+                            })
+                            .then(async (jpegBuffer) => {
+                                console.log("Image converted successfully!");
+                                // Now you have the converted buffer (jpegBuffer) that you can use
 
-                            const pathToFile = `user/${email}/profile.jpeg`;
-                            const storageRef = ref(storage, pathToFile);
+                                const pathToFile = `user/${email}/profile.jpeg`;
+                                const storageRef = ref(storage, pathToFile);
 
-                            const metadata = {
-                                contentType: "image/jpeg",
-                            };
+                                const metadata = {
+                                    contentType: "image/jpeg",
+                                };
 
-                            const snapshot = await uploadBytesResumable(
-                                storageRef,
-                                jpegBuffer,
-                                metadata
-                            );
-                            if (snapshot.state === "success") {
-                                const user = await User.create({
-                                    firebaseId,
-                                    name,
-                                    email,
-                                    photoPathFirestore: pathToFile,
-                                    phone,
-                                });
-                                console.log(
-                                    "Successfully created new user in DB!"
+                                const snapshot = await uploadBytesResumable(
+                                    storageRef,
+                                    jpegBuffer,
+                                    metadata
                                 );
-                                response_200(
-                                    res,
-                                    "Successfully created new user in DB",
-                                    {
-                                        _id: user._id,
-                                    }
-                                );
-                            } else {
-                                response_500(
-                                    res,
-                                    "Error occurred while uploading user file"
-                                );
-                            }
-                        })
-                        .catch((err) => {
-                            console.error("Error converting image:", err);
-                            response_500(res, "Error converting image");
-                        });
+                                if (snapshot.state === "success") {
+                                    const user = await User.create({
+                                        firebaseId,
+                                        name,
+                                        email,
+                                        photoPathFirestore: pathToFile,
+                                        phone,
+                                    });
+                                    console.log(
+                                        "Successfully created new user in DB!"
+                                    );
+                                    response_200(
+                                        res,
+                                        "Successfully created new user in DB",
+                                        {
+                                            _id: user._id,
+                                        }
+                                    );
+                                } else {
+                                    response_500(
+                                        res,
+                                        "Error occurred while uploading user file"
+                                    );
+                                }
+                            })
+                            .catch((err) => {
+                                console.error("Error converting image:", err);
+                                response_500(res, "Error converting image");
+                            });
+                    }
                 }
             }
         }

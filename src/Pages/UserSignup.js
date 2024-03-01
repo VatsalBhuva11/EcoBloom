@@ -126,6 +126,7 @@ export default function UserSignup() {
                         if (data.status === "error") {
                             setSignUpClicked(false);
                             auth.currentUser.delete();
+                            console.log(data);
                             throw new Error(
                                 "Invalid form input. Please check again,"
                             );
