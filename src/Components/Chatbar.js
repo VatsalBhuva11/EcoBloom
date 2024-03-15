@@ -103,7 +103,7 @@ export default function Chatbar() {
                     <div className="element items-center flex gap-2">
                         <img
                             className="w-[73px] h-[71px] 2xl:w-[60px] 2xl:h-[60px] rounded-full"
-                            src={person}
+                            src={currComm.logo}
                             alt=""
                         />
                         <div className="flex flex-col">

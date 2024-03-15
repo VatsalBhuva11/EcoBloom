@@ -611,8 +611,8 @@ video {
   bottom: 4rem;
 }
 
-.bottom-\[5rem\]{
-  bottom: 5rem;
+.bottom-\[3rem\]{
+  bottom: 3rem;
 }
 
 .left-0{
@@ -1143,10 +1143,6 @@ video {
 
 .h-\[60px\]{
   height: 60px;
-}
-
-.h-\[65\%\]{
-  height: 65%;
 }
 
 .h-\[70\%\]{
@@ -2417,6 +2413,10 @@ video {
 
 .pl-6{
   padding-left: 1.5rem;
+}
+
+.pl-8{
+  padding-left: 2rem;
 }
 
 .pr-1{

@@ -7,6 +7,7 @@ import { ChatContext } from "./ChatContextProvider";
 export default function ChatRightBar() {
     const { currComm, setCurrComm, communities, setCommunities } =
         useContext(ChatContext);
+    console.log(currComm);
 
     return (
         <div className="h-screen fixed">
@@ -19,7 +20,7 @@ export default function ChatRightBar() {
                     <div className="message flex flex-col items-center justify-center mt-5">
                         <img
                             className="w-[105px] h-[100px] 2xl:w-[137px] 2xl:h-[145px] rounded-full"
-                            src={person}
+                            src={currComm.logo}
                             alt=""
                         />
                         <div className="text-[23px] font-inter text-gray-300 mt-2">
@@ -34,10 +35,7 @@ export default function ChatRightBar() {
                             Description
                         </div>
                         <div className="desc2 font-inter text-gray-500 text-[10px] w-fit">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Suscipit consectetur laborum necessitatibus,
-                            maiores aliquid explicabo facere dolore illo optio
-                            qui quaerat saepe quo?
+                            {currComm?.organization?.description}
                         </div>
                     </div>
 
@@ -52,7 +50,7 @@ export default function ChatRightBar() {
                                 Members
                             </div>
                         </div>
-                        <div className="flex  h-[65%] overflow-scroll  scrollbar-hide overflow-x-hidden flex-col gap-3 2xl:gap-5 p-4">
+                        <div className="flex  h-full overflow-scroll  scrollbar-hide overflow-x-hidden flex-col gap-3 2xl:gap-5 p-4">
                             {currComm?.joinedUsers?.map((member) => (
                                 <a href="">
                                     <div className=" flex items-center mx-1 mt-1">
@@ -69,9 +67,9 @@ export default function ChatRightBar() {
                                 </a>
                             ))}
                         </div>
-                        <div className=" text-end text-gray-300 text-[12px] border-b-2 border-b-gray-300 hover:undeline cursor-pointer font-inter"></div>
+                        {/* <div className=" text-end text-gray-300 text-[12px] border-b-2 border-b-gray-300 hover:undeline cursor-pointer font-inter"></div> */}
 
-                        <div className="mt-4 cursor-pointer flex justify-center items-center  ">
+                        {/* <div className="mt-4 cursor-pointer flex justify-center items-center  ">
                             <img
                                 className="w-[25px] h-[25px] 2xl:w-[50px] 2xl:h-[50px] cursor-pointer rounded-full"
                                 src={deleteicon}
@@ -80,7 +78,7 @@ export default function ChatRightBar() {
                             <div className=" font-inter text-red-500 font-bold text-[20px] hover:underline">
                                 Leave Community
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

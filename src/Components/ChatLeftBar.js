@@ -65,7 +65,7 @@ export default function ChatLeftBar() {
                                     <div className="flex pb-5 xl:pb-3  lg:gap-3 xl:gap-7 px-4 xl:px-7 ">
                                         <img
                                             className="w-[50px] h-[50px] xl:w-[60px] xl:h-[60px] rounded-full"
-                                            src={person}
+                                            src={currComm.logo}
                                             alt=""
                                         />
                                         <div className="flex flex-col">
@@ -92,27 +92,28 @@ export default function ChatLeftBar() {
                     <div className="mt-5 h-[70%] overflow-scroll overflow-x-hidden scrollbar-hide">
                         <div className="flex flex-col xl:gap-5 mt-5 ">
                             {communities?.map((community) => {
-                                return (
-                                    <a href="#">
-                                        <div
-                                            onClick={() => {
-                                                setCurrComm(community);
-                                            }}
-                                            className="h-full pt-2 flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300"
-                                        >
-                                            <img
-                                                className="w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full"
-                                                src={person}
-                                                alt=""
-                                            />
-                                            <div className="flex flex-col">
-                                                <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
-                                                    {community?.orgName}
-                                                </p>
+                                if (community._id !== currComm._id)
+                                    return (
+                                        <a href="#">
+                                            <div
+                                                onClick={() => {
+                                                    setCurrComm(community);
+                                                }}
+                                                className="h-full pt-2 flex pb-6 lg:pb-3 border-b-2 lg:gap-3 xl:gap-7 px-4 xl:px-7 hover:scale-105 duration-300"
+                                            >
+                                                <img
+                                                    className="w-[50px] h-[50px] xl:w-[50px] xl:h-[50px] rounded-full"
+                                                    src={community.logo}
+                                                    alt=""
+                                                />
+                                                <div className="flex flex-col">
+                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                        {community?.orgName}
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                );
+                                        </a>
+                                    );
                             })}
                         </div>
                     </div>

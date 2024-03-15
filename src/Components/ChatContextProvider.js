@@ -1,7 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../firebase";
 import { HashLoader } from "react-spinners";
+import { auth, storage } from "../firebase.js";
+import { getDownloadURL, ref } from "firebase/storage";
 
 export const ChatContext = createContext();
 
@@ -31,10 +32,33 @@ export const ChatContextProvider = (props) => {
                     }
                 )
                     .then((res) => res.json())
-                    .then((data) => {
+                    .then(async (data) => {
                         console.log(data);
-                        setCommunities(data.data);
-                        setCurrComm(data.data[0]);
+                        let comms = data.data;
+
+                        let logoPromises = comms.map(async (comm) => {
+                            const storageRef = ref(
+                                storage,
+                                comm.organization.logo
+                            );
+                            return getDownloadURL(storageRef);
+                        });
+
+                        let logoPromisesResolved = await Promise.all(
+                            logoPromises
+                        );
+
+                        let updatedComms = comms.map((comm, index) => {
+                            return {
+                                ...comm,
+                                logo: logoPromisesResolved[index],
+                            };
+                        });
+
+                        console.log("updatedComms: ", updatedComms);
+
+                        setCommunities(updatedComms);
+                        setCurrComm(updatedComms[0]);
                         setLoader(false);
                     })
                     .catch((err) => {

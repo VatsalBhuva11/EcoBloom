@@ -89,11 +89,7 @@ export const upcomingCampaigns = async (req, res) => {
             return a.startDate - b.startDate;
         });
 
-        response_200(
-            res,
-            "Successfully fetched upcoming campaigns",
-            campaigns.slice(0, 4)
-        );
+        response_200(res, "Successfully fetched upcoming campaigns", campaigns);
     } catch (err) {
         console.log(err);
         response_500(

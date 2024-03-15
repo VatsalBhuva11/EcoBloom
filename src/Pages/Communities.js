@@ -7,8 +7,9 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import { jwtDecode } from "jwt-decode";
-import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, storage } from "../firebase.js";
+import { getDownloadURL, ref } from "firebase/storage";
 
 const Communities = () => {
     const [search, setSearch] = useState("");
@@ -31,7 +32,35 @@ const Communities = () => {
                     .then((response) => response.json())
                     .then((orgsFetched) => {
                         console.log(orgsFetched.data);
-                        setOrgs(orgsFetched.data);
+                        if (orgsFetched.data) {
+                            (async () => {
+                                const postsPromises = orgsFetched.data.map(
+                                    async (org) => {
+                                        const storageRef1 = ref(
+                                            storage,
+                                            org.logo
+                                        );
+                                        const storageRef2 = ref(
+                                            storage,
+                                            org.banner
+                                        );
+                                        const urls = await Promise.all([
+                                            getDownloadURL(storageRef1),
+                                            getDownloadURL(storageRef2),
+                                        ]);
+
+                                        return {
+                                            ...org,
+                                            logo: urls[0],
+                                            banner: urls[1],
+                                        };
+                                    }
+                                );
+                                const posts = await Promise.all(postsPromises);
+                                setOrgs(posts);
+                                console.log(posts);
+                            })();
+                        }
                         setLoader(false);
                     })
                     .catch((err) => {
@@ -100,15 +129,15 @@ const Communities = () => {
                                     <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
                                         <img
                                             className="rounded-xl bg-cover"
-                                            src={banner}
+                                            src={org.banner}
                                             alt=""
                                         />
                                     </div>
-                                    <div className="flex justify-center items-center w-full">
+                                    <div className="flex pl-8 justify-center items-center w-full">
                                         <div className="w-1/4">
                                             <img
-                                                className="w-16 h-16 relative bottom-[5rem] lg:bottom-[rem]"
-                                                src={logo_commu}
+                                                className="w-16 h-16 relative bottom-[3rem] lg:bottom-[rem]"
+                                                src={org.logo}
                                                 alt=""
                                             />
                                         </div>
