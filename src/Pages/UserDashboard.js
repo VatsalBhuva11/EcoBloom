@@ -299,7 +299,7 @@ const UserDashboard = () => {
                                 className=" h-8 rounded-2xl border-2 border-[##eef0e5]"
                                 placeholder="🔍"
                             />
-                            <div className="flex flex-col gap-2 2xl:gap-5 overflow-scroll overflow-x-hidden w-full px-3 h-full mt-2">
+                            <div className="flex flex-col gap-2 2xl:gap-5 scrollbar-hide overflow-scroll overflow-x-hidden w-full px-3 h-full mt-2">
                                 {communities ? (
                                     communities
                                         .filter((community) => {

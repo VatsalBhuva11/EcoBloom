@@ -32,7 +32,12 @@ const Community_Joined_Card = ({ visible, onClose }) => {
                     >
                         Cancel
                     </button>
-                    <button className="text-lg bg-[#0F1035] text-[#EEF0E5] w-40 h-8 rounded-lg">
+                    <button
+                        onClick={() => {
+                            window.location.href = "/user/join";
+                        }}
+                        className="text-lg bg-[#0F1035] text-[#EEF0E5] w-40 h-8 rounded-lg"
+                    >
                         Start Exploring
                     </button>
                 </div>

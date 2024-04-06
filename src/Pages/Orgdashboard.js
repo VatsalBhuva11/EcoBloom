@@ -161,7 +161,7 @@ const Orgdashboard = () => {
     }
     return (
         <div className="flex">
-            <div className=" flex flex-col w-full lg:w-[75%]">
+            <div className=" flex flex-col w-full h-screen lg:w-[75%]">
                 {/* navbar */}
                 <div className="w-full bg-[#0f1035] text-gray-200 flex shadow-2xl justify-between">
                     <div className="flex items-center ">
@@ -279,40 +279,54 @@ const Orgdashboard = () => {
                             </div>
                         </div>
                     ) : status === "post" ? (
-                        <div className="grid grid-cols-2  md:grid-cols-3 p-6 gap-3 place-items-center">
-                            {posts.map((post) => {
-                                return (
-                                    <div
-                                        onClick={() => {
-                                            setShowMyModal1({
-                                                status: true,
-                                                post: post,
-                                            });
-                                        }}
-                                        className="cursor-pointer flex items-center justify-center"
-                                    >
-                                        <img
-                                            className="h-full w-full"
-                                            src={post.photo}
-                                            alt=""
-                                        />
-                                    </div>
-                                );
-                            })}
+                        <div>
+                            {posts.length > 0 ? (
+                                posts.map((post) => {
+                                    return (
+                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
+                                            <div
+                                                onClick={() => {
+                                                    setShowMyModal1({
+                                                        status: true,
+                                                        post: post,
+                                                    });
+                                                }}
+                                                className="cursor-pointer flex items-center justify-center"
+                                            >
+                                                <img
+                                                    className="h-full w-full"
+                                                    src={post.photo}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            ) : (
+                                <div className="flex justify-start items-center ml-4 mt-4 text-xl">
+                                    No posts yet.
+                                </div>
+                            )}
                         </div>
                     ) : (
-                        <div className="grid grid-cols-2 gap-5 p-8 place-items-center">
-                            {org?.completedCampaigns?.length > 0
-                                ? org.completedCampaigns.map((campaign) => {
-                                      return (
-                                          <div className="flex items-center justify-center">
-                                              <PastCampaignsCards
-                                                  campaign={campaign}
-                                              />
-                                          </div>
-                                      );
-                                  })
-                                : "No campaigns organised yet"}
+                        <div>
+                            {org?.completedCampaigns?.length > 0 ? (
+                                org.completedCampaigns.map((campaign) => {
+                                    return (
+                                        <div className="grid grid-cols-2 gap-5 p-8 place-items-center">
+                                            <div className="flex items-center justify-center">
+                                                <PastCampaignsCards
+                                                    campaign={campaign}
+                                                />
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            ) : (
+                                <div className="flex justify-start items-center mt-4 ml-4 text-xl">
+                                    No campaigns organised yet.
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -365,11 +379,7 @@ const Orgdashboard = () => {
                                 org.ongoingCampaigns.map((campaign) => {
                                     return (
                                         <Link
-                                            to={
-                                                "/campaign/" +
-                                                campaign._id +
-                                                "/verify"
-                                            }
+                                            to={"/org/campaign/" + campaign._id}
                                         >
                                             <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
                                                 <div className="font-bold">
@@ -417,11 +427,7 @@ const Orgdashboard = () => {
                                 org.upcomingCampaigns.map((campaign) => {
                                     return (
                                         <Link
-                                            to={
-                                                "/campaign/" +
-                                                campaign._id +
-                                                "/verify"
-                                            }
+                                            to={"/org/campaign/" + campaign._id}
                                         >
                                             <div className="flex pb-3 items-center  border-b-2 lg:gap-3 xl:gap-7 px-2 ">
                                                 <div className="font-bold">

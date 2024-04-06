@@ -58,11 +58,11 @@ export default function filesUpload(req, res, next) {
                                 size,
                             });
 
-                            try {
-                                fs.unlinkSync(filepath);
-                            } catch (error) {
-                                return reject(error);
-                            }
+                            // try {
+                            // fs.unlinkSync(filepath);
+                            // } catch (error) {
+                            // return reject(error);
+                            // }
 
                             resolve();
                         });

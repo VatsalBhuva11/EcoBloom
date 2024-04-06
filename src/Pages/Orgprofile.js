@@ -189,7 +189,7 @@ const Orgprofile = () => {
 
     return (
         <div className="flex">
-            <div className=" flex flex-col w-full  lg:w-[75%]">
+            <div className=" flex flex-col w-full h-screen lg:w-[75%]">
                 {/* navbar */}
                 <div className="w-full bg-[#0f1035]  text-gray-200 flex shadow-2xl h-[10%] ">
                     <div className="flex items-center ">
@@ -311,49 +311,63 @@ const Orgprofile = () => {
                         </div>
                     </div>
                     {status === "about" ? (
-                        <div>
+                        <div className="">
                             <div className="text-center lg:text-2xl text-lg font-semibold mt-5">
                                 ABOUT US
                             </div>
-                            <div className="mt-4 lg:text-xl text-center text-md ml-2 font-medium p-2">
+                            <div className="h-full mt-4 lg:text-xl text-center text-md ml-2 font-medium p-2">
                                 {org.description}
                             </div>
                         </div>
                     ) : status === "post" ? (
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
-                            {posts.map((post) => {
-                                return (
-                                    <div
-                                        onClick={() => {
-                                            setShowMyModal1({
-                                                status: true,
-                                                post: post,
-                                            });
-                                        }}
-                                        className="cursor-pointer flex items-center justify-center"
-                                    >
-                                        <img
-                                            className="h-full w-full"
-                                            src={post.photo}
-                                            alt=""
-                                        />
-                                    </div>
-                                );
-                            })}
+                        <div>
+                            {posts.length > 0 ? (
+                                posts.map((post) => {
+                                    return (
+                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
+                                            <div
+                                                onClick={() => {
+                                                    setShowMyModal1({
+                                                        status: true,
+                                                        post: post,
+                                                    });
+                                                }}
+                                                className="cursor-pointer flex items-center justify-center"
+                                            >
+                                                <img
+                                                    className="h-full w-full"
+                                                    src={post.photo}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            ) : (
+                                <div className="flex justify-start items-center ml-4 mt-4 text-xl">
+                                    No posts yet.
+                                </div>
+                            )}
                         </div>
                     ) : (
-                        <div className="grid grid-cols-2 gap-5 p-8">
-                            {org?.completedCampaigns?.length > 0
-                                ? org.completedCampaigns.map((campaign) => {
-                                      return (
-                                          <div className="flex justify-center items-center">
-                                              <PastCampaignsCards
-                                                  campaign={campaign}
-                                              />
-                                          </div>
-                                      );
-                                  })
-                                : "No campaigns organised yet"}
+                        <div>
+                            {org?.completedCampaigns?.length > 0 ? (
+                                org.completedCampaigns.map((campaign) => {
+                                    return (
+                                        <div className="grid grid-cols-2 gap-5 p-8 place-items-center">
+                                            <div className="flex items-center justify-center">
+                                                <PastCampaignsCards
+                                                    campaign={campaign}
+                                                />
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            ) : (
+                                <div className="flex justify-start items-center mt-4 ml-4 text-xl">
+                                    No campaigns organised yet.
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
