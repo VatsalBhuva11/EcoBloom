@@ -109,7 +109,7 @@ const Communities = () => {
             </div>
             <div className="mx-8 my-3">
                 <input
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => setSearch(e.target.value.toLowerCase())}
                     type="text"
                     className="w-full h-10 rounded-2xl px-4"
                     placeholder="🔍 Search For Communities"

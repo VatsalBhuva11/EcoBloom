@@ -294,7 +294,9 @@ const UserDashboard = () => {
                         </p>
                         <div className="h-full w-[85%] flex flex-col">
                             <input
-                                onChange={(e) => setSearch(e.target.value)}
+                                onChange={(e) =>
+                                    setSearch(e.target.value.toLowerCase())
+                                }
                                 type="text"
                                 className=" h-8 rounded-2xl border-2 border-[##eef0e5]"
                                 placeholder="🔍"
