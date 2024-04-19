@@ -809,6 +809,10 @@ video {
   margin-left: 2.5rem;
 }
 
+.ml-12{
+  margin-left: 3rem;
+}
+
 .ml-2{
   margin-left: 0.5rem;
 }
@@ -873,6 +877,10 @@ video {
   margin-right: 2rem;
 }
 
+.mr-\[-16rem\]{
+  margin-right: -16rem;
+}
+
 .mr-\[60px\]{
   margin-right: 60px;
 }
@@ -903,6 +911,10 @@ video {
 
 .mt-2{
   margin-top: 0.5rem;
+}
+
+.mt-24{
+  margin-top: 6rem;
 }
 
 .mt-3{
@@ -1549,6 +1561,10 @@ video {
   gap: 1.75rem;
 }
 
+.gap-8{
+  gap: 2rem;
+}
+
 .gap-y-4{
   row-gap: 1rem;
 }
@@ -1746,6 +1762,11 @@ video {
 
 .border-\[\#8c858544\]{
   border-color: #8c858544;
+}
+
+.border-\[\#EECB46\]{
+  --tw-border-opacity: 1;
+  border-color: rgb(238 203 70 / var(--tw-border-opacity));
 }
 
 .border-\[\#b4b4b444\]{
@@ -2121,12 +2142,20 @@ video {
   background-image: url('./assets/images/joinUs.png');
 }
 
+.bg-\[url\(\'\.\/assets\/images\/quiz_bg\.jpg\'\)\]{
+  background-image: url('./assets/images/quiz_bg.jpg');
+}
+
 .bg-\[url\(\'\.\/assets\/images\/rrootz\.png\'\)\]{
   background-image: url('./assets/images/rrootz.png');
 }
 
 .bg-gradient-to-b{
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-l{
+  background-image: linear-gradient(to left, var(--tw-gradient-stops));
 }
 
 .bg-gradient-to-r{
@@ -2142,6 +2171,12 @@ video {
 .from-\[\#0f1035\]{
   --tw-gradient-from: #0f1035 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(15 16 53 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[\#335252\]{
+  --tw-gradient-from: #335252 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(51 82 82 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -2161,6 +2196,11 @@ video {
   --tw-gradient-from: #be0606 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(190 6 6 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.via-\[\#335252\]{
+  --tw-gradient-to: rgb(51 82 82 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #335252 var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
 .to-\[\#037117b7\]{
@@ -2760,6 +2800,11 @@ video {
   color: rgb(255 204 77 / var(--tw-text-opacity));
 }
 
+.text-\[\#c1c1c1\]{
+  --tw-text-opacity: 1;
+  color: rgb(193 193 193 / var(--tw-text-opacity));
+}
+
 .text-\[\#edede3\]{
   --tw-text-opacity: 1;
   color: rgb(237 237 227 / var(--tw-text-opacity));
@@ -3153,6 +3198,11 @@ html {
 .hover\:bg-\[\#000000\]:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-\[\#335252\]:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 82 82 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-\[\#9fa67e\]:hover{
@@ -3846,6 +3896,10 @@ html {
     padding: 1rem;
   }
 
+  .md\:p-8{
+    padding: 2rem;
+  }
+
   .md\:px-0{
     padding-left: 0px;
     padding-right: 0px;
@@ -3869,6 +3923,11 @@ html {
   .md\:py-3{
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+  }
+
+  .md\:py-4{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .md\:pb-12{
@@ -4189,8 +4248,16 @@ html {
     gap: 0.25rem;
   }
 
+  .lg\:gap-24{
+    gap: 6rem;
+  }
+
   .lg\:gap-3{
     gap: 0.75rem;
+  }
+
+  .lg\:p-12{
+    padding: 3rem;
   }
 
   .lg\:p-2{
@@ -4360,6 +4427,10 @@ html {
     width: 50%;
   }
 
+  .xl\:w-44{
+    width: 11rem;
+  }
+
   .xl\:w-96{
     width: 24rem;
   }
@@ -4400,6 +4471,11 @@ html {
     padding: 0px;
   }
 
+  .xl\:px-32{
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
   .xl\:px-7{
     padding-left: 1.75rem;
     padding-right: 1.75rem;
@@ -4412,6 +4488,11 @@ html {
 
   .xl\:pb-3{
     padding-bottom: 0.75rem;
+  }
+
+  .xl\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
   }
 
   .xl\:text-6xl{
@@ -4463,6 +4544,10 @@ html {
 
   .\32xl\:mt-0{
     margin-top: 0px;
+  }
+
+  .\32xl\:mt-12{
+    margin-top: 3rem;
   }
 
   .\32xl\:h-\[145px\]{
@@ -4531,6 +4616,10 @@ html {
 
   .\32xl\:gap-4{
     gap: 1rem;
+  }
+
+  .\32xl\:gap-48{
+    gap: 12rem;
   }
 
   .\32xl\:gap-5{

@@ -1,6 +1,4 @@
 import React from "react";
-import React from "react";
-import quiz_bg from "../assets/images/quiz_bg.jpg";
 import question from "../assets/images/question.png";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
