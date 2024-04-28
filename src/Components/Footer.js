@@ -1,11 +1,10 @@
 import React from "react";
 import {
-  FaDribbbleSquare,
   FaFacebookSquare,
   FaInstagram,
-  FaTwitterSquare,
   FaGithubSquare,
 } from "react-icons/fa";
+
 
 export default function Footer() {
   return (
@@ -135,7 +134,7 @@ export default function Footer() {
       </div>
       <div className="mt-2 flex flex-col  max-w-[1240px] m-auto justify-between sm:flex-row text-center text-gray-500">
         <p>EcoBloom - All rights reserverved</p>
-        <div className="justify-around sm:w-[300px]  flex gap-2 mt-2">
+        <div className="justify-evenly sm:w-[300px]  flex gap-2 mt-2">
           <a
             href="https://www.facebook.com/profile.php?id=61556828273634&mibextid=ZbWKwL"
             target="_blank"
@@ -145,12 +144,12 @@ export default function Footer() {
           <a href="https://www.instagram.com/eco_bloom_/" target="_blank">
             <FaInstagram className="cursor-pointer" size={30} />
           </a>
-          <a
+          {/* <a
             href="https://www.github.com/Vatsalbhuva11/Ecobloom"
             target="_blank"
           >
             <FaGithubSquare size={30} className="cursor-pointer" />
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

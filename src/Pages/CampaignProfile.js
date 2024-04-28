@@ -3,12 +3,10 @@ import { LuTrophy } from "react-icons/lu";
 import { FaLocationDot } from "react-icons/fa6";
 import { SlCalender } from "react-icons/sl";
 import { IoIosPeople } from "react-icons/io";
-import { IoEyeSharp } from "react-icons/io5";
 import { FaRegClock } from "react-icons/fa6";
 import { GrMapLocation } from "react-icons/gr";
 import { SiDogecoin } from "react-icons/si";
 import logo from "../assets/images/logo.png";
-import face from "../assets/images/face.jpg";
 import bannerorg from "../assets/images/bannerorg.png";
 import org_logo from "../assets/images/org_logo.png";
 import { ProfileContext } from "../Components/ProfileContextProvider";
@@ -52,7 +50,7 @@ const CampaignProfile = () => {
                     .then((res) => res.json())
                     .then((data) => {
                         console.log(data);
-                        const userData = jwtDecode(user.accessToken);
+                        // const userData = jwtDecode(user.accessToken);
                         if (data.status === "OK") {
                             setCampaign(data.data);
                             console.log(data.data);
@@ -347,7 +345,7 @@ const CampaignProfile = () => {
                             <h1 className="mt-4 font-bold text-xl w-full sm:text-2xl md:text-3xl flex text-[#686968]">
                                 Our Goal
                             </h1>
-                            <p className="md:text-xl text-md lg:text-2xl mt-4 lg:mt-6 ">
+                            <p className="md:text-xl text-md ml-10 lg:text-2xl mt-4 lg:mt-6 ">
                                 {campaign.goal}
                             </p>
                         </div>

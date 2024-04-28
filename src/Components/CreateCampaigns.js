@@ -1,22 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import campaign from "../assets/images/campaign.png";
 import { FaArrowRight } from "react-icons/fa";
-import { useScroll, motion } from "framer-motion";
-import { useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { jwtDecode } from "jwt-decode";
+import Aos from "aos";
+import "aos/dist/aos.css"
 
 export default function CreateCampaigns() {
-    //     const ref = useRef(null);
-    //   const { scrollYProgress } = useScroll({ target: ref });
-    //   const y = useParallax(scrollYProgress, 300);
+
     const [user, loading, error] = useAuthState(auth);
     let role;
     if (!loading) {
         const accessToken = user?.accessToken;
         if (accessToken) role = jwtDecode(user?.accessToken).role;
     }
+    
+    useEffect(()=>{
+        Aos.init();
+        Aos.refresh();
+    })
+
     return (
         <div className="w-full h-full bg-[#fbfbfa] justify-between mt-16 bg-opacity-0">
             <div className="w-full h-[750px] absolute z-0 mx-auto overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat bg-[url('./assets/images/beach_cleaning_edited.jpg')]"></div>
@@ -26,13 +30,22 @@ export default function CreateCampaigns() {
         </h1> */}
                 <div className="grid lg:grid-cols-2 px-2 py-12">
                     <div className="">
-                        <h1 className="text-[#1d1f5b] text-4xl md:text-6xl text-left font-bold">
+                        <h1
+                        data-aos = "fade-up"
+                        data-aos-duration = "1000" 
+                        className="text-[#1d1f5b] text-4xl md:text-6xl text-left font-bold">
                             CREATE
                         </h1>
-                        <h1 className="text-[#010204] text-4xl md:text-6xl text-left font-bold">
+                        <h1
+                         data-aos = "fade-up"
+                         data-aos-duration = "1000"
+                        className="text-[#010204] text-4xl md:text-6xl text-left font-bold">
                             CAMPAIGNS
                         </h1>
-                        <p className="mt-12 text-xl md:text-2xl text-[#0F1035] font-medium ">
+                        <p
+                        data-aos = "fade-up"
+                        data-aos-duration = "1000" 
+                        className="mt-12 text-xl md:text-2xl text-[#0F1035] font-medium ">
                             It doesn't matter if you're a grassroots initiative
                             or an established entity. EcoBloom is your canvas to
                             amplify your environmental impact. Join us in this
@@ -46,6 +59,8 @@ export default function CreateCampaigns() {
                                         ? "/campaign/create"
                                         : "/signup/org";
                             }}
+                            data-aos = "fade-up"
+                        data-aos-duration = "1000"
                             className="flex mt-8 py-2 px-6 text-center md:text-3xl text-white border bg-[#0F1035] hover:bg-transparent hover:border-[#0F1035]  rounded-md"
                         >
                             Create Now
@@ -57,6 +72,8 @@ export default function CreateCampaigns() {
                     </div>
                     <div className="hidden lg:block">
                         <img
+                        data-aos = "fade-up"
+                        data-aos-duration = "1000"
                             src={campaign}
                             className="hidden lg:block ml-8 w-[40rem]"
                             alt="ecobloom"

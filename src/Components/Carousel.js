@@ -5,8 +5,10 @@ import emilychen from '../assets/images/emilychen.jpeg'
 import james from '../assets/images/james.jpg'
 import maria from '../assets/images/maria.jpeg'
 import raj from '../assets/images/raj.jpeg'
-import { useScroll , motion } from "framer-motion";
-import { useRef } from "react";
+import { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css"
+
 
 
 export default function Carousel() {
@@ -45,6 +47,12 @@ export default function Carousel() {
             },
         ],
     };
+
+    useEffect(()=>{
+        Aos.init();
+        Aos.refresh();
+    },[])
+
     return (
         //responsiveness
         //side buttons of carousel
@@ -52,10 +60,16 @@ export default function Carousel() {
         //change card carousel
         <div className="w-full relative box-border bg-[#fbfbfa] pt-20 pb-20">
             <div className="flex flex-col justify-center items-center">
-                <h1 className=" text-[#0F1035] text-4xl md:text-6xl text-center font-bold ">
+                <h1 
+                data-aos = "fade-up"
+                data-aos-duration = "1000"
+                className=" text-[#0F1035] text-4xl md:text-6xl text-center font-bold ">
                     TESTIMONIALS
                 </h1>
-                <p className="text-[#0F1035] text-xl md:text-2xl text-center font-bold">
+                <p 
+                data-aos = "fade-up"
+                data-aos-duration = "1000"
+                className="text-[#0F1035] text-xl md:text-2xl text-center font-bold">
                     Others have done it so you can too.
                 </p>
             </div>
@@ -63,7 +77,10 @@ export default function Carousel() {
                 <div className="w-full">
                     <Slider {...settings} className="flex justify-center p-16">
                         {data.map((data) => (
-                            <div className="bg-transparent h-[70%] border-solid border-2 border-black hover:shadow-xl  cursor-pointer flex flex-col justify-center items-center text-black rounded-xl gap-4">
+                            <div 
+                            data-aos = "zoom-in"
+                            data-aos-duration = "1000"
+                            className="bg-transparent h-[70%] border-solid border-2 border-black hover:shadow-xl  cursor-pointer flex flex-col justify-center items-center text-black rounded-xl gap-4">
                                 <div className="h-28 w-full rounded-t-xl justify-center text-center flex items-center">
                                     <img
                                         src={data.img}

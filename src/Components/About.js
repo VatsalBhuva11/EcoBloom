@@ -1,13 +1,18 @@
-import React from "react";
-import { useRef } from "react";
-import about from "../assets/images/about.png";
-import { FaArrowRight } from "react-icons/fa";
-import { useScroll, motion } from "framer-motion";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"
+
 
 export default function About() {
   // const ref = useRef(null);
   // const { scrollYProgress } = useScroll({ target: ref});
   // const y = useParallax(scrollYProgress, 300);
+
+  useEffect(()=>{
+    AOS.init();
+    AOS.refresh();
+  },[])
+
   return (
     <div
       id="about"
@@ -18,7 +23,10 @@ export default function About() {
           ABOUT US
         </h1> */}
         <div className="flex justify-evenly items-center px-2 py-12">
-          <p className="text-sm sm:text-lg md:text-xl px-4 lg:text-2xl tracking-wide text-center  md:mt-12 text-[#f5d2a8] font-semibold mx-8">
+          <p
+          data-aos = "fade-up"
+          data-aos-duration = "1000" 
+          className="text-sm sm:text-lg md:text-xl px-4 lg:text-2xl tracking-wide text-center  md:mt-12 text-[#f5d2a8] font-semibold mx-8">
             Welcome to EcoBloom, a thriving ecosystem where environmental
             enthusiasts, whether they're grassroots initiatives or established
             entities, come together to make a tangible difference in the world.

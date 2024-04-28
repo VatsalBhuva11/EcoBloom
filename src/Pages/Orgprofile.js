@@ -1,20 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import p1 from "../assets/images/p1.png";
-import p2 from "../assets/images/p2.png";
-import p3 from "../assets/images/p3.png";
-import p4 from "../assets/images/p4.png";
-import p5 from "../assets/images/p5.png";
-import p6 from "../assets/images/p6.png";
-import org_logo from "../assets/images/org_logo.png";
-import bannerorg from "../assets/images/bannerorg.png";
 import topleftLogo from "../assets/images/logo.png";
 import { IoIosSend } from "react-icons/io";
-import { FaPlus, FaArrowRightLong } from "react-icons/fa6";
+import { FaPlus} from "react-icons/fa6";
 import PastCampaignsCards from "../Components/PastCampaignsCards";
 import { Link } from "react-router-dom";
-import arrow from "../assets/images/arrow.png";
-import Community_Joined_Card from "./Community_Joined_Card";
+import CommunityJoinedCard from "./Community_Joined_Card";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { jwtDecode } from "jwt-decode";
@@ -470,7 +461,7 @@ const Orgprofile = () => {
                     </div>
                 </div>
             </div>
-            <Community_Joined_Card
+            <CommunityJoinedCard
                 onClose={handleOnClose}
                 visible={showMyModel}
             />
