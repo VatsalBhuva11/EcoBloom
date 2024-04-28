@@ -1365,6 +1365,10 @@ video {
   width: 73px;
 }
 
+.w-\[80\%\]{
+  width: 80%;
+}
+
 .w-\[85\%\]{
   width: 85%;
 }
@@ -1435,6 +1439,10 @@ video {
 
 .transform{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cursor-default{
+  cursor: default;
 }
 
 .cursor-pointer{
@@ -1741,8 +1749,8 @@ video {
   border-style: solid;
 }
 
-.border-\[\#\#fbfbfa\]{
-  border-color: ##fbfbfa;
+.border-\[\#\#eef0e5\]{
+  border-color: ##eef0e5;
 }
 
 .border-\[\#0F1035\]{
@@ -1771,6 +1779,11 @@ video {
 
 .border-\[\#b4b4b444\]{
   border-color: #b4b4b444;
+}
+
+.border-\[\#eef0e5\]{
+  --tw-border-opacity: 1;
+  border-color: rgb(238 240 229 / var(--tw-border-opacity));
 }
 
 .border-\[\#fbfbfa\]{
@@ -2041,6 +2054,11 @@ video {
   background-color: rgb(233 230 224 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#eef0e5\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 240 229 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#fbfbfa\]{
   --tw-bg-opacity: 1;
   background-color: rgb(251 251 250 / var(--tw-bg-opacity));
@@ -2079,6 +2097,11 @@ video {
 .bg-green-500{
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+.bg-green-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity));
 }
 
 .bg-lime-600{
@@ -2775,6 +2798,11 @@ video {
   color: rgb(234 197 197 / var(--tw-text-opacity));
 }
 
+.text-\[\#EEF0E5\]{
+  --tw-text-opacity: 1;
+  color: rgb(238 240 229 / var(--tw-text-opacity));
+}
+
 .text-\[\#FA9A0F\]{
   --tw-text-opacity: 1;
   color: rgb(250 154 15 / var(--tw-text-opacity));
@@ -2798,6 +2826,11 @@ video {
 .text-\[\#edede3\]{
   --tw-text-opacity: 1;
   color: rgb(237 237 227 / var(--tw-text-opacity));
+}
+
+.text-\[\#eef0e5\]{
+  --tw-text-opacity: 1;
+  color: rgb(238 240 229 / var(--tw-text-opacity));
 }
 
 .text-\[\#f5d2a8\]{
@@ -4246,10 +4279,6 @@ html {
     gap: 0.75rem;
   }
 
-  .lg\:p-12{
-    padding: 3rem;
-  }
-
   .lg\:p-2{
     padding: 0.5rem;
   }
@@ -4417,8 +4446,8 @@ html {
     width: 50%;
   }
 
-  .xl\:w-44{
-    width: 11rem;
+  .xl\:w-36{
+    width: 9rem;
   }
 
   .xl\:w-96{
@@ -4480,9 +4509,9 @@ html {
     padding-bottom: 0.75rem;
   }
 
-  .xl\:text-5xl{
-    font-size: 3rem;
-    line-height: 1;
+  .xl\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .xl\:text-6xl{
@@ -4570,6 +4599,10 @@ html {
 
   .\32xl\:h-\[60px\]{
     height: 60px;
+  }
+
+  .\32xl\:w-56{
+    width: 14rem;
   }
 
   .\32xl\:w-64{

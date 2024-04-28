@@ -1,4 +1,5 @@
 import Question from "../models/question.model.js";
+import User from "../models/user.model.js";
 import {
     response_200,
     response_404,
@@ -124,5 +125,29 @@ export const updateQuestions = async (req, res) => {
             "Error occurred while making changes in questions",
             err
         );
+    }
+};
+
+export const answerQuestion = async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        //send question also incase session open when question being reset
+        const { option, question } = req.body;
+        console.log("BODY: ", req.body);
+        if (question.correctAnswer === option) {
+            const updated = await User.findByIdAndUpdate(
+                userId,
+                {
+                    $inc: { points: 5 },
+                },
+                { new: true }
+            );
+            response_200(res, "correct answer", updated);
+        } else {
+            response_200(res, "incorrect answer", { data: null });
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while marking answer for user", err);
     }
 };

@@ -12,6 +12,8 @@ export default async function checkUser(req, res, next) {
         token = token.split(" ")[1];
         auth.verifyIdToken(token)
             .then(async (decodedToken) => {
+                // OBTAINING FIREBASE ID FROM CLIENT
+                // ADDING THE DB ID THROUGH MIDDLEWARE IN req.user
                 console.log("decoded token from checkUser: ", decodedToken);
                 const getUser = await User.findOne({
                     firebaseId: decodedToken.user_id,
