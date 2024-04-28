@@ -62,7 +62,7 @@ const Edit_Profile_Org = () => {
 
     return (
         <div className='absolute w-screen bg-[url("./assets/images/profile_bg.jpg")] bg-cover h-screen'>
-            <div className="bg-[#eef0e5] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
+            <div className="bg-[#fbfbfa] relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto mt-32">
                 <button
                     onClick={() => {
                         navigate(-1);

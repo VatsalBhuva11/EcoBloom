@@ -18,7 +18,7 @@ export default function CreateCampaigns() {
         if (accessToken) role = jwtDecode(user?.accessToken).role;
     }
     return (
-        <div className="w-full h-full bg-[#EEF0E5] justify-between mt-16 bg-opacity-0">
+        <div className="w-full h-full bg-[#fbfbfa] justify-between mt-16 bg-opacity-0">
             <div className="w-full h-[750px] absolute z-0 mx-auto overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat bg-[url('./assets/images/beach_cleaning_edited.jpg')]"></div>
             <div className="max-w-[1240px] mx-auto justify-center items-center relative z-2">
                 {/* <h1 className="py-3 text-[#0F1035] text-4xl md:text-6xl text-center font-bold">

@@ -209,7 +209,7 @@ const Orgprofile = () => {
                     </div>
                 </div>
                 {/* navbar */}
-                <div className="w-full h-full bg-[#EEF0E5]">
+                <div className="w-full h-full bg-[#fbfbfa]">
                     <div className="mx-2 flex flex-col bg-[#DFE4C5] rounded-lg">
                         <div className="overflow-hidden">
                             <img
@@ -380,7 +380,7 @@ const Orgprofile = () => {
                     <div className="justify-center items-center mt-10 md:ml-4 lg:ml-14"></div>
                     <div className="">
                         <div className="flex items-center cursor-pointer ml-2">
-                            <div className="text-[#eef0e5] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
+                            <div className="text-[#fbfbfa] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
                                 Ongoing Campaigns
                             </div>
                         </div>
@@ -396,10 +396,10 @@ const Orgprofile = () => {
                                                     ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
-                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                    <p className="text-[#fbfbfa] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
                                                         {campaign.name}
                                                     </p>
-                                                    <p className="text-[#eef0e5] text-[0.75rem]">
+                                                    <p className="text-[#fbfbfa] text-[0.75rem]">
                                                         {
                                                             campaign.verifiedUsersCount
                                                         }{" "}
@@ -421,7 +421,7 @@ const Orgprofile = () => {
                     </div>
                     <div className="mt-10 h-[50%] ">
                         <div className="flex items-center cursor-pointer ml-2">
-                            <div className="text-[#eef0e5] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
+                            <div className="text-[#fbfbfa] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
                                 Upcoming Campaigns
                             </div>
                         </div>
@@ -437,10 +437,10 @@ const Orgprofile = () => {
                                                     ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
-                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                    <p className="text-[#fbfbfa] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
                                                         {campaign.name}
                                                     </p>
-                                                    <p className="text-[#eef0e5] text-[0.75rem]">
+                                                    <p className="text-[#fbfbfa] text-[0.75rem]">
                                                         {
                                                             campaign.registeredUsersCount
                                                         }{" "}

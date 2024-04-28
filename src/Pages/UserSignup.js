@@ -177,7 +177,7 @@ export default function UserSignup() {
     const handleOnClose1 = () => setShowMyModal1(false);
     return (
         <div className="h-screen">
-            <div className=" bg-[#EEF0E5] flex">
+            <div className=" bg-[#fbfbfa] flex">
                 <Link to="/">
                     <img
                         className="h-12  hover:scale-105 duration-300 md:h-16 "

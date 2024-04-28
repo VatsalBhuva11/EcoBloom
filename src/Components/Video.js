@@ -127,7 +127,7 @@ export default function Video({ userId, campaignId }) {
                 {({ getScreenshot }) => (
                     <div className="flex justify-around w-full mt-4">
                         <button
-                            className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
+                            className="text-lg bg-[#fbfbfa] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                             onClick={() => {
                                 setStatus("");
                                 setClicked(null);
@@ -138,28 +138,28 @@ export default function Video({ userId, campaignId }) {
                         </button>
                         {clicked && status === null ? (
                             <button
-                                className="text-lg bg-[#1d2068] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                                className="text-lg bg-[#1d2068] text-[#fbfbfa] w-32 h-8 rounded-lg"
                                 disabled
                             >
                                 Verifying...
                             </button>
                         ) : !clicked && status === "success" ? (
                             <button
-                                className="text-lg bg-[#2b8b23] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                                className="text-lg bg-[#2b8b23] text-[#fbfbfa] w-32 h-8 rounded-lg"
                                 disabled
                             >
                                 Verified!
                             </button>
                         ) : !clicked && status === "failure" ? (
                             <button
-                                className="text-lg bg-[#b83148] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                                className="text-lg bg-[#b83148] text-[#fbfbfa] w-32 h-8 rounded-lg"
                                 disabled
                             >
                                 Error
                             </button>
                         ) : (
                             <button
-                                className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                                className="text-lg bg-[#0F1035] text-[#fbfbfa] w-32 h-8 rounded-lg"
                                 onClick={() => {
                                     handleUserVerify(getScreenshot);
                                 }}

@@ -25,7 +25,7 @@ const ForgetPassword = () => {
     };
 
     return (
-        <div className="h-screen bg-[#EEF0E5] flex justify-around items-center">
+        <div className="h-screen bg-[#fbfbfa] flex justify-around items-center">
             <div className="flex flex-col justify-around items-center sm:items-start h-[30%] xl:h-[40%] ml-5 ">
                 <div className="hidden sm:flex sm:text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-medium  items-start">
                     FORGOT <br /> PASSWORD?
@@ -45,14 +45,14 @@ const ForgetPassword = () => {
                     {!clicked ? (
                         <button
                             onClick={handlePasswordReset}
-                            className="sm:h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#CB4331] text-[#eef0e5] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
+                            className="sm:h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#CB4331] text-[#fbfbfa] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
                         >
                             Send reset link!
                         </button>
                     ) : (
                         <button
                             disabled
-                            className="sm:h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#d55949] text-[#eef0e5] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
+                            className="sm:h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#d55949] text-[#fbfbfa] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
                         >
                             Sending...
                         </button>

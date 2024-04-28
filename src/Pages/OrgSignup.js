@@ -108,7 +108,7 @@ export default function UserSignup() {
 
     return (
         <div className="h-screen">
-            <div className=" bg-[#EEF0E5] ">
+            <div className=" bg-[#fbfbfa] ">
                 <div className="md:flex hidden">
                     <Link to="/">
                         <img

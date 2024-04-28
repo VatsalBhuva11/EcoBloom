@@ -73,7 +73,7 @@ const Store = () => {
         window.location.replace("/login");
     }
     return (
-        <div className=" h-full bg-[#EEF0E5] ">
+        <div className=" h-full bg-[#fbfbfa] ">
             <div>
                 <div className="flex justify-between">
                     <div className="flex">

@@ -9,8 +9,8 @@ import moment from "moment";
 
 export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
     const containerStyle = {
-        width: "600px",
-        height: "500px",
+        width: "800px", //600px
+        height: "700px", //500px
     };
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
@@ -85,7 +85,7 @@ export default function Maps_DashBoard({ zoom, onMarkerClick, markers }) {
                     }}
                     // onMouseOver={() => handleMarkerHover(marker)}
                     onCloseClick={() => handleInfoWindowClose()}
-                ></Marker>
+                ></Marker>  
             ))}
             {selectedMarker && (
                 <InfoWindow

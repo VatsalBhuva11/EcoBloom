@@ -122,7 +122,7 @@ const EditPassword = ({ visible, onClose }) => {
                 </div>
                 <div className="flex justify-around mt-7 mb-5">
                     <button
-                        className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
+                        className="text-lg bg-[#fbfbfa] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                         onClick={() => {
                             document.getElementById("container").click();
                         }}
@@ -131,14 +131,14 @@ const EditPassword = ({ visible, onClose }) => {
                     </button>
                     {!clicked ? (
                         <button
-                            className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                            className="text-lg bg-[#0F1035] text-[#fbfbfa] w-32 h-8 rounded-lg"
                             onClick={handleAccountLinking}
                         >
                             Change
                         </button>
                     ) : (
                         <button
-                            className="text-lg bg-[#131544] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                            className="text-lg bg-[#131544] text-[#fbfbfa] w-32 h-8 rounded-lg"
                             disabled
                         >
                             Changing Password...

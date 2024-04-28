@@ -100,7 +100,7 @@ const VerifyDummy = () => {
     }
 
     return (
-        <div className="bg-[#eef0e5] h-screen flex flex-col ">
+        <div className="bg-[#fbfbfa] h-screen flex flex-col ">
             <div className="flex items-center w-screen md:pt-6">
                 <div className="w-1/3">
                     <Link to="/">

@@ -50,7 +50,7 @@ export default function Carousel() {
         //side buttons of carousel
         //parallax background for carousel outer div
         //change card carousel
-        <div className="w-full relative box-border bg-[#EEF0E5] pt-20 pb-20">
+        <div className="w-full relative box-border bg-[#fbfbfa] pt-20 pb-20">
             <div className="flex flex-col justify-center items-center">
                 <h1 className=" text-[#0F1035] text-4xl md:text-6xl text-center font-bold ">
                     TESTIMONIALS

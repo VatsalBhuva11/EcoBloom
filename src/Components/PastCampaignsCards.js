@@ -43,7 +43,7 @@ export default function PastCampaignsCards({ campaign }) {
                                 window.location.href =
                                     "/org/campaign/" + campaign._id;
                             }}
-                            className="w-36 h-7 text-[16px] text-[#eef0e5] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
+                            className="w-36 h-7 text-[16px] text-[#fbfbfa] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
                         >
                             View Details
                             <div className="text-md mt-[0.34rem]">

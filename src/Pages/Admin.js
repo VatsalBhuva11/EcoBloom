@@ -127,7 +127,7 @@ const Admin = () => {
     }
 
     return (
-        <div className="bg-[#eef0e5] h-screen flex flex-col ">
+        <div className="bg-[#fbfbfa] h-screen flex flex-col ">
             <div className="flex justify-between">
                 <div>
                     <div className="flex items-center pt-3 md:pt-6">

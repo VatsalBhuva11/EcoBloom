@@ -81,7 +81,7 @@ const OrgCampaignProfile = () => {
     }
 
     return (
-        <div className="flex flex-col w-full h-full bg-[#EEF0E5] ">
+        <div className="flex flex-col w-full h-full bg-[#fbfbfa] ">
             {/* navbar */}
             <div className="justify-between fex w-full bg-[#0f1035] text-gray-200 flex shadow-2xl h-[10%]">
                 <Link to="/">

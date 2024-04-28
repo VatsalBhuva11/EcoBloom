@@ -30,7 +30,7 @@ const Verification = ({ visible, onClose }) => {
                 </div>
                 <div className="flex justify-around mt-7 mb-5">
                     <button
-                        className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
+                        className="text-lg bg-[#fbfbfa] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                         onClick={() => {
                             document.querySelector("#container").click();
                         }}
@@ -38,7 +38,7 @@ const Verification = ({ visible, onClose }) => {
                         Cancel
                     </button>
                     <Link to="/">
-                        <button className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]">
+                        <button className="text-lg bg-[#fbfbfa] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]">
                             Home
                         </button>
                     </Link>

@@ -14,7 +14,7 @@ export default function About() {
       className="w-full bg-[url('./assets/images/rrootz.png')] bg-fixed bg-center bg-no-repeat bg-cover justify-between"
     >
       <div className="max-w-[1240px] mx-auto justify-center items-center">
-        {/* <h1 className="py-3 text-[#EEF0E5] text-4xl md:text-6xl text-center font-bold mt-12">
+        {/* <h1 className="py-3 text-[#fbfbfa] text-4xl md:text-6xl text-center font-bold mt-12">
           ABOUT US
         </h1> */}
         <div className="flex justify-evenly items-center px-2 py-12">

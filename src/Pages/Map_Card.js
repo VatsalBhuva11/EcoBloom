@@ -37,7 +37,7 @@ const Maps_Card = ({ visible, onClose, formData, setFormData }) => {
                 </div>
                 <div className="flex justify-around w-full mt-4">
                     <button
-                        className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
+                        className="text-lg bg-[#fbfbfa] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                         onClick={() => {
                             document.querySelector("#container").click();
                         }}
@@ -45,7 +45,7 @@ const Maps_Card = ({ visible, onClose, formData, setFormData }) => {
                         Cancel
                     </button>
                     <button
-                        className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                        className="text-lg bg-[#0F1035] text-[#fbfbfa] w-32 h-8 rounded-lg"
                         onClick={() => {
                             document.getElementById("container").click();
                         }}

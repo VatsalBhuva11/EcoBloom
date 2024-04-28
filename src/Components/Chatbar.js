@@ -97,7 +97,7 @@ export default function Chatbar() {
     };
 
     return (
-        <div className="bg-[#eef0e5] h-screen w-full ">
+        <div className="bg-[#fbfbfa] h-screen w-full ">
             <div className=" infobar flex  flex-col">
                 <div className="flex items-center bg-gradient-to-b from-[#0f1035] to-[#4b4e97] p-6 2xl:pb-3 border-b-2 xl:gap-3 2xl:gap-7 px-4 2xl:px-7 justify-between ">
                     <div className="element items-center flex gap-2">
@@ -107,10 +107,10 @@ export default function Chatbar() {
                             alt=""
                         />
                         <div className="flex flex-col">
-                            <p className="text-[#eef0e5] text-[1.5rem] 2xl:text-xl mt-1 2xl:mt-0">
+                            <p className="text-[#fbfbfa] text-[1.5rem] 2xl:text-xl mt-1 2xl:mt-0">
                                 {currComm?.orgName}
                             </p>
-                            <p className="text-[#eef0e5] text-[0.75rem] 2xl:text-[1rem]">
+                            <p className="text-[#fbfbfa] text-[0.75rem] 2xl:text-[1rem]">
                                 {currComm?.userCount} members
                             </p>
                         </div>
@@ -128,7 +128,7 @@ export default function Chatbar() {
                         <div className=" absolute mt-1 flex flex-col bg-gradient-to-b from-[#0f1035] to-[#4b4e97] justify-center rounded-lg">
                             <div className="px-10 py-5 flex justify-center ">
                                 {" "}
-                                <button className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] font-bold rounded-xl h-[2.5rem] w-32 hover:scale-105 duration-300 ">
+                                <button className=" flex justify-center items-center gap-1 bg-[#fbfbfa] text-[#0f1035] font-bold rounded-xl h-[2.5rem] w-32 hover:scale-105 duration-300 ">
                                     View Profile
                                     <div className="mt-[0.32rem] text-xl">
                                         <FaLongArrowAltRight />
@@ -169,7 +169,7 @@ export default function Chatbar() {
                                     onClick={() => {
                                         window.location.href = "/";
                                     }}
-                                    className=" flex justify-center items-center gap-1 bg-[#eef0e5] text-[#0f1035] font-bold rounded-xl h-[2.5rem] w-32 hover:scale-105 duration-300 "
+                                    className=" flex justify-center items-center gap-1 bg-[#fbfbfa] text-[#0f1035] font-bold rounded-xl h-[2.5rem] w-32 hover:scale-105 duration-300 "
                                 >
                                     <div className=" text-lg">
                                         <FaLongArrowAltLeft />
@@ -191,7 +191,7 @@ export default function Chatbar() {
                     </div>
                 ) : null}
             </div>
-            <div className="chatbox px-4 h-[75%]  border-black overflow-scroll scrollbar-hide bg-[#eef0e5]">
+            <div className="chatbox px-4 h-[75%]  border-black overflow-scroll scrollbar-hide bg-[#fbfbfa]">
                 {messages?.map((message) =>
                     message.community === currComm?._id ? (
                         message.uid === uid ? (

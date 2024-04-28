@@ -26,7 +26,7 @@ const Login_Card = ({ visible, onClose }) => {
         <div className="flex justify-center">Successfully</div>
         <div className="flex justify-around mt-7 mb-5">
           <Link to="/login">
-            <button className="text-lg bg-[#0F1035] text-[#EEF0E5] w-40 h-8 rounded-lg">
+            <button className="text-lg bg-[#0F1035] text-[#fbfbfa] w-40 h-8 rounded-lg">
               Login
             </button>
           </Link>

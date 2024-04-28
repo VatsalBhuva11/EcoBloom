@@ -30,12 +30,12 @@ const Store_Error = ({ visible, onClose }) => {
                         onClick={() => {
                             onClose();
                         }}
-                        className="text-md bg-[#0F1035] text-[#EEF0E5] w-40 h-8 rounded-lg"
+                        className="text-md bg-[#0F1035] text-[#fbfbfa] w-40 h-8 rounded-lg"
                     >
                         Cancel
                     </button>
                     <Link to="/user/join">
-                        <button className="text-md bg-[#0F1035] text-[#EEF0E5] w-40 h-8 rounded-lg">
+                        <button className="text-md bg-[#0F1035] text-[#fbfbfa] w-40 h-8 rounded-lg">
                             Start Exploring
                         </button>
                     </Link>

@@ -101,7 +101,7 @@ const CreateCampaign = () => {
     }
 
     return (
-        <div className="w-screen h-screen p-8 sm:p-12 lg:p-20 bg-[#EEF0E5] flex flex-col justify-evenly gap-1 sm:gap-3">
+        <div className="w-screen h-screen p-8 sm:p-12 lg:p-20 bg-[#fbfbfa] flex flex-col justify-evenly gap-1 sm:gap-3">
             <div className="flex items-center gap-5 text-[#0F1035]">
                 <Link
                     to="/org/dashboard"
@@ -367,14 +367,14 @@ const CreateCampaign = () => {
                     {!clicked ? (
                         <button
                             onClick={handleCreateCampaign}
-                            className="text-xl sm:text-2xl bg-[#0F1035] text-[#EEF0E5] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
+                            className="text-xl sm:text-2xl bg-[#0F1035] text-[#fbfbfa] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
                         >
                             CREATE
                         </button>
                     ) : (
                         <button
                             onClick={handleCreateCampaign}
-                            className="text-xl sm:text-2xl bg-[#0f1035e9] text-[#EEF0E5] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
+                            className="text-xl sm:text-2xl bg-[#0f1035e9] text-[#fbfbfa] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
                             disabled
                         >
                             Creating...
@@ -382,7 +382,7 @@ const CreateCampaign = () => {
                     )}
 
                     <Link to="/org/dashboard">
-                        <button className="text-xl sm:text-2xl bg-[#EEF0E5] text-[#0F1035] px-2 sm:px-5 w-auto h-12 rounded-lg border-2 border-[#0F1035] cursor-pointer hover:scale-110 duration-300">
+                        <button className="text-xl sm:text-2xl bg-[#fbfbfa] text-[#0F1035] px-2 sm:px-5 w-auto h-12 rounded-lg border-2 border-[#0F1035] cursor-pointer hover:scale-110 duration-300">
                             CANCEL
                         </button>
                     </Link>

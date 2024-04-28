@@ -130,21 +130,21 @@ const Change_profile = ({ visible, onClose }) => {
                         onClick={() => {
                             document.getElementById("container").click();
                         }}
-                        className="text-lg bg-[#EEF0E5] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
+                        className="text-lg bg-[#fbfbfa] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                     >
                         Cancel
                     </button>
                     {!clicked ? (
                         <button
                             onClick={updateLogo}
-                            className="text-lg bg-[#0F1035] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                            className="text-lg bg-[#0F1035] text-[#fbfbfa] w-32 h-8 rounded-lg"
                         >
                             Update
                         </button>
                     ) : (
                         <button
                             disabled
-                            className="text-lg bg-[#0f1035cd] text-[#EEF0E5] w-32 h-8 rounded-lg"
+                            className="text-lg bg-[#0f1035cd] text-[#fbfbfa] w-32 h-8 rounded-lg"
                         >
                             Updating...
                         </button>

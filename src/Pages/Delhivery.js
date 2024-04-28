@@ -281,7 +281,7 @@ const Delhivery = () => {
 
                             <div className="mb-6">
                                 <button
-                                    className="text-sm md:text-md border  border-indigo-600 hover:bg-transparent hover:text-indigo-600 bg-[#075426] px-3 py-1 text-[#EEF0E5] rounded-lg cursor-pointer hover:scale-110 duration-300"
+                                    className="text-sm md:text-md border  border-indigo-600 hover:bg-transparent hover:text-indigo-600 bg-[#075426] px-3 py-1 text-[#fbfbfa] rounded-lg cursor-pointer hover:scale-110 duration-300"
                                     type="submit"
                                 >
                                     CONFIRM

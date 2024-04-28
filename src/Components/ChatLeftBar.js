@@ -17,7 +17,7 @@ export default function ChatLeftBar() {
     return (
         <div className="h-screen w-full">
             <div className="flex">
-                <div className=" left-sidebar lg:flex bg-[#0F1035] w-[100%] flex-col h-screen pb-2  border-[#eef0e5]">
+                <div className=" left-sidebar lg:flex bg-[#0F1035] w-[100%] flex-col h-screen pb-2  border-[#fbfbfa]">
                     {/* <div className="Peoples flex justify-around items-center mt-5 mb-5 p-[1.5rem] border-b-2 border-b-gray-300">
                         <img className='w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] cursor-pointer rounded-full hover:scale-105 duration-300' src={person} alt="" />
                         <img className='w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] cursor-pointer rounded-full hover:scale-105 duration-300' src={person} alt="" />
@@ -107,7 +107,7 @@ export default function ChatLeftBar() {
                                                     alt=""
                                                 />
                                                 <div className="flex flex-col">
-                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                    <p className="text-[#fbfbfa] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
                                                         {community?.orgName}
                                                     </p>
                                                 </div>

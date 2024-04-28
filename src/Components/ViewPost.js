@@ -37,7 +37,7 @@ const NewPost = ({ visible, onClose, post, org }) => {
                             <p className=" text-[14px] mt-1 lg:mt-0 font-semibold">
                                 {org.name}
                             </p>
-                            {/* <p className='text-[#eef0e5] text-[0.75rem]'>32 members</p>*/}
+                            {/* <p className='text-[#fbfbfa] text-[0.75rem]'>32 members</p>*/}
                         </div>
                     </div>
                     <div className="flex gap-2 mr-2">

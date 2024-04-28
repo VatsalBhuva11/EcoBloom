@@ -16,7 +16,7 @@ export default function PastCampaigns() {
 //   const y = useParallax(scrollYProgress, 300);
 
     return (
-        <div className="w-full bg-[#EEF0E5] justify-between pt-12">
+        <div className="w-full bg-[#fbfbfa] justify-between pt-12">
             <div className="max-w-[95%] mx-auto flex flex-col justify-center items-center">
                 <h1 className=" text-[#0F1035] text-4xl md:text-6xl text-center font-bold pb-12">
                     PAST CAMPAIGNS

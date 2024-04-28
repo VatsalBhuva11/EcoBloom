@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function SignupInitial() {
     return (
-        <div className="bg-[#eef0e5] flex flex-col justify-center items-center p-11 h-screen">
+        <div className="bg-[#fbfbfa] flex flex-col justify-center items-center p-11 h-screen">
             <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0f1035] font-bold font-inter mb-10 ">
                 JOIN US AS AN
             </div>

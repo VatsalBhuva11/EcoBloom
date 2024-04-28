@@ -184,7 +184,7 @@ const Orgdashboard = () => {
                     </div>
                 </div>
                 {/* navbar */}
-                <div className="w-full h-full bg-[#EEF0E5]">
+                <div className="w-full h-full bg-[#fbfbfa]">
                     <div className="mx-2 flex flex-col bg-[#DFE4C5] rounded-lg">
                         <div className="overflow-hidden">
                             <img
@@ -354,7 +354,7 @@ const Orgdashboard = () => {
                     </div>
                     <div className="justify-center items-center md:ml-4 lg:ml-14">
                         <Link to="/campaign/create">
-                            <button className=" flex justify-center items-center gap-2 bg-[#eef0e5] text-[#0f1035] md:text-[16px] lg:text-[18px] 2xl:text-[20px] font-bold rounded-lg  md:h-[2.2rem] lg:h-[2.4rem]  2xl:h-[2.8rem] md:w-48 lg:w-52 2xl:w-64 hover:scale-105 duration-300 mt-10">
+                            <button className=" flex justify-center items-center gap-2 bg-[#fbfbfa] text-[#0f1035] md:text-[16px] lg:text-[18px] 2xl:text-[20px] font-bold rounded-lg  md:h-[2.2rem] lg:h-[2.4rem]  2xl:h-[2.8rem] md:w-48 lg:w-52 2xl:w-64 hover:scale-105 duration-300 mt-10">
                                 <FaPlus />
                                 Create Campaign
                             </button>
@@ -362,7 +362,7 @@ const Orgdashboard = () => {
                     </div>
                     <div className="">
                         <div className="flex items-center cursor-pointer ml-2">
-                            <div className="text-[#eef0e5] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
+                            <div className="text-[#fbfbfa] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
                                 Ongoing Campaigns
                             </div>
                             <img
@@ -388,10 +388,10 @@ const Orgdashboard = () => {
                                                     ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
-                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                    <p className="text-[#fbfbfa] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
                                                         {campaign.name}
                                                     </p>
-                                                    <p className="text-[#eef0e5] text-[0.75rem]">
+                                                    <p className="text-[#fbfbfa] text-[0.75rem]">
                                                         {
                                                             campaign.verifiedUsersCount
                                                         }{" "}
@@ -413,7 +413,7 @@ const Orgdashboard = () => {
                     </div>
                     <div className="mt-10 h-[50%] ">
                         <div className="flex items-center cursor-pointer ml-2">
-                            <div className="text-[#eef0e5] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
+                            <div className="text-[#fbfbfa] lg:text-2xl tex-xl md:mt-4 lg:mt-6  font-semibold">
                                 Upcoming Campaigns
                             </div>
                             <img
@@ -436,10 +436,10 @@ const Orgdashboard = () => {
                                                     ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
-                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                    <p className="text-[#fbfbfa] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
                                                         {campaign.name}
                                                     </p>
-                                                    <p className="text-[#eef0e5] text-[0.75rem]">
+                                                    <p className="text-[#fbfbfa] text-[0.75rem]">
                                                         {
                                                             campaign.registeredUsersCount
                                                         }{" "}
@@ -485,7 +485,7 @@ const Orgdashboard = () => {
                         : "hidden"
                 }
             >
-                <div className="flex lg:hidden bg-[#0f1035] w-[300px] flex-col items-center pb-2 border-t border-[#eef0e5] px-4 ">
+                <div className="flex lg:hidden bg-[#0f1035] w-[300px] flex-col items-center pb-2 border-t border-[#fbfbfa] px-4 ">
                     {/* search bar */}
 
                     <div className="search w-[98%]  ml-10 mt-6">
@@ -502,7 +502,7 @@ const Orgdashboard = () => {
                     </div>
                     <div className="justify-center items-center md:ml-4 lg:ml-14">
                         <Link to="/createcampaign">
-                            <button className="px-2 py-1 flex justify-center items-center gap-2 bg-[#eef0e5] text-[#0f1035] md:text-[16px] font-bold rounded-lg  md:h-[2.2rem] md:w-48 hover:scale-105 duration-300 mt-10">
+                            <button className="px-2 py-1 flex justify-center items-center gap-2 bg-[#fbfbfa] text-[#0f1035] md:text-[16px] font-bold rounded-lg  md:h-[2.2rem] md:w-48 hover:scale-105 duration-300 mt-10">
                                 <FaPlus />
                                 Create Campaign
                             </button>
@@ -510,7 +510,7 @@ const Orgdashboard = () => {
                     </div>
                     <div className="border-b-2">
                         <div className="flex items-center cursor-pointer ml-2 mt-6  ">
-                            <div className="text-[#eef0e5]  tex-xl md:mt-4 lg:mt-6  ml-10 font-semibold">
+                            <div className="text-[#fbfbfa]  tex-xl md:mt-4 lg:mt-6  ml-10 font-semibold">
                                 Ongoing Campaigns
                             </div>
                         </div>
@@ -523,16 +523,16 @@ const Orgdashboard = () => {
                                     return (
                                         <a href="">
                                             <div className="flex pb-3 items-center  lg:gap-3 xl:gap-7 mx-4 ">
-                                                <div className="font-bold text-[#eef0e5] mx-4">
+                                                <div className="font-bold text-[#fbfbfa] mx-4">
                                                     {moment(
                                                         campaign.endDate
                                                     ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
-                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                    <p className="text-[#fbfbfa] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
                                                         {campaign.name}
                                                     </p>
-                                                    <p className="text-[#eef0e5] text-[0.75rem]">
+                                                    <p className="text-[#fbfbfa] text-[0.75rem]">
                                                         {
                                                             campaign.verifiedUsersCount
                                                         }{" "}
@@ -554,7 +554,7 @@ const Orgdashboard = () => {
                     </div>
                     <div className="mt-10 h-[50%] ">
                         <div className="flex items-center cursor-pointer ml-2">
-                            <div className="text-[#eef0e5]  tex-xl md:mt-4 lg:mt-6   px-10 font-semibold">
+                            <div className="text-[#fbfbfa]  tex-xl md:mt-4 lg:mt-6   px-10 font-semibold">
                                 Upcoming Campaigns
                             </div>
                         </div>
@@ -576,10 +576,10 @@ const Orgdashboard = () => {
                                                     ).format("lll")}
                                                 </div>
                                                 <div className="flex flex-col">
-                                                    <p className="text-[#eef0e5] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
+                                                    <p className="text-[#fbfbfa] text-[1rem] xl:text-[18px] mt-1 lg:mt-0">
                                                         {campaign.name}
                                                     </p>
-                                                    <p className="text-[#eef0e5] text-[0.75rem]">
+                                                    <p className="text-[#fbfbfa] text-[0.75rem]">
                                                         {
                                                             campaign.registeredUsersCount
                                                         }{" "}
