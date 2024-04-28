@@ -133,21 +133,75 @@ export const answerQuestion = async (req, res) => {
         const userId = req.user.userId;
         //send question also incase session open when question being reset
         const { option, question } = req.body;
-        console.log("BODY: ", req.body);
         if (question.correctAnswer === option) {
             const updated = await User.findByIdAndUpdate(
                 userId,
                 {
                     $inc: { points: 5 },
+                    $push: {
+                        questionsAttempted: {
+                            question: question._id,
+                            optionSelected: option,
+                        },
+                    },
                 },
                 { new: true }
             );
             response_200(res, "correct answer", updated);
         } else {
-            response_200(res, "incorrect answer", { data: null });
+            const updated = await User.findByIdAndUpdate(
+                userId,
+                {
+                    $push: {
+                        questionsAttempted: {
+                            question: question._id,
+                            optionSelected: option,
+                        },
+                    },
+                },
+                { new: true }
+            );
+            response_200(res, "incorrect answer", updated);
         }
     } catch (err) {
         console.log(err);
         response_500(res, "Error occurred while marking answer for user", err);
+    }
+};
+
+export const checkUserAnswered = async (req, res) => {
+    try {
+        const { question } = req.body;
+        //get it from params since it is the system making the request.
+        //can get it by user req.user.id, but it is not the user that is making the request.
+        const userId = req.params.userId;
+        const user = await User.findOne({ firebaseId: userId });
+        let data = {
+            attempted: "",
+            attemptedStatus: false,
+        };
+        let flag = 0;
+        user.questionsAttempted.forEach((qn) => {
+            if (qn.question.toString() === question._id.toString()) {
+                data.attempted = qn.optionSelected;
+                data.attemptedStatus = true;
+                flag = 1;
+                return response_200(
+                    res,
+                    "Successfully fetched whether user attempted question",
+                    data
+                );
+            }
+        });
+        if (!flag) {
+            return response_200(
+                res,
+                "Successfully fetched whether user attempted question",
+                data
+            );
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while fetching user answer", err);
     }
 };

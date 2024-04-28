@@ -4,6 +4,7 @@ import {
     deleteQuestions,
     getQuestion,
     updateQuestions,
+    checkUserAnswered,
 } from "../controllers/question.controllers.js";
 import express from "express";
 import checkUser from "../middlewares/checkUser.middleware.js";
@@ -15,5 +16,6 @@ router.delete("/", deleteQuestions);
 router.get("/", getQuestion);
 router.patch("/", updateQuestions);
 router.post("/checkAnswer", checkUser, answerQuestion);
+router.post("/:userId/answered", checkUserAnswered);
 
 export default router;

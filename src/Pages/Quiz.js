@@ -5,6 +5,7 @@ import logo from "../assets/images/logo.png";
 import { HashLoader } from "react-spinners";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase.js";
+import { jwtDecode } from "jwt-decode";
 
 const Quiz = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -18,17 +19,63 @@ const Quiz = () => {
     useEffect(() => {
         if (!auth.currentUser) {
             window.location.replace("/login");
+            return; // Stop execution if user is not authenticated
         }
+
         console.log("COMING HERE");
+
         fetch(`${process.env.REACT_APP_LOCAL_API_URL}/question`)
             .then((res) => res.json())
-            .then((res) => {
-                console.log(res);
-                setQuestion(res.data);
-                setLoader(false);
+            .then((res) => res.data)
+            .then((question) => {
+                // Now that we have the question, fetch the answered question
+                auth.currentUser.getIdToken().then((token) => {
+                    let decodedToken = jwtDecode(token);
+                    return fetch(
+                        `${process.env.REACT_APP_LOCAL_API_URL}/question/${decodedToken.userId}/answered`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                question,
+                            }),
+                        }
+                    )
+                        .then((res) => res.json())
+                        .then((res) => res.data)
+                        .then((answeredQuestion) => {
+                            // Handle the response from the second fetch
+                            console.log("Question:", question);
+                            console.log("Answered Question:", answeredQuestion);
+
+                            setQuestion(question);
+                            setLoader(false);
+
+                            if (
+                                answeredQuestion &&
+                                answeredQuestion.attemptedStatus === true
+                            ) {
+                                setAnswered(true);
+                                setOptionSelected(answeredQuestion.attempted);
+                                setCorrect(
+                                    answeredQuestion.attempted ===
+                                        question.correctAnswer
+                                );
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(
+                                "Error occurred while fetching answered question: ",
+                                err
+                            );
+                            throw err; // Propagate the error
+                        });
+                });
             })
             .catch((err) => {
-                console.log("Error occurred while fetching question: ", err);
+                console.log("Error occurred while fetching questions: ", err);
                 setLoader(false);
             });
     }, []);
@@ -40,37 +87,36 @@ const Quiz = () => {
         setOptionSelected(e.target.value);
         if (e.target.value === question.correctAnswer) {
             setCorrect(true);
-            const body = {
-                question,
-                option: e.target.value,
-            };
-            console.log("BODY: ", body);
-            auth.currentUser.getIdToken().then((token) => {
-                fetch(
-                    `${process.env.REACT_APP_LOCAL_API_URL}/question/checkAnswer`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                        },
-                        body: JSON.stringify(body),
-                    }
-                )
-                    .then((res) => res.json())
-                    .then((res) => {
-                        console.log(res);
-                    })
-                    .catch((err) => {
-                        console.log(
-                            "Error occurred while fetching question: ",
-                            err
-                        );
-                    });
-            });
         } else {
             setCorrect(false);
         }
+        const body = {
+            question,
+            option: e.target.value,
+        };
+        auth.currentUser.getIdToken().then((token) => {
+            fetch(
+                `${process.env.REACT_APP_LOCAL_API_URL}/question/checkAnswer`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify(body),
+                }
+            )
+                .then((res) => res.json())
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(
+                        "Error occurred while fetching question: ",
+                        err
+                    );
+                });
+        });
     }
 
     if (loading || loader) {
@@ -82,13 +128,14 @@ const Quiz = () => {
     }
     return (
         <div className="bg-cover bg-fixed bg-center bg-no-repeat bg-[url('./assets/images/quiz_bg.jpg')] h-screen">
-            <Link to="/">
-                <img
-                    className="h-24 hover:scale-105  duration-300"
-                    src={logo}
-                    alt=""
-                />
-            </Link>
+            <img
+                className="h-24 absolute z-20 hover:scale-105 cursor-pointer duration-300"
+                src={logo}
+                alt=""
+                onClick={() => {
+                    window.location.href = "/user/dashboard";
+                }}
+            />
             <div className="absolute flex flex-col justify-center items-center h-screen w-screen top-0 left-0">
                 <div className="xl:flex w-[80%]">
                     <img

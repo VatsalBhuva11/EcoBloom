@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Community from "./community.model.js";
 import Campaign from "./campaign.model.js";
+import Question from "./question.model.js";
 const Schema = mongoose.Schema;
 
 const User = new Schema({
@@ -53,6 +54,18 @@ const User = new Schema({
         {
             type: Object,
             //each activity is: content, date
+        },
+    ],
+    questionsAttempted: [
+        {
+            question: {
+                type: Schema.Types.ObjectId,
+                ref: "Question",
+                required: true,
+            },
+            optionSelected: {
+                type: String,
+            },
         },
     ],
 });
