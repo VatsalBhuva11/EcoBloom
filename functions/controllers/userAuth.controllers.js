@@ -24,7 +24,7 @@ router.post("/register", async (req, res) => {
         //email variable, update record in DB
         const checkUser = await User.findOne({ email });
         if (checkUser) {
-            response_400(res, "user already exists");
+            response_400(res, "User already exists.");
         }
         if (!name || !email) {
             throw new Error(

@@ -72,6 +72,7 @@ export default function Login() {
                 );
                 setClicked(false);
                 console.log(error);
+                console.log(errorMessage);
             });
     }
 

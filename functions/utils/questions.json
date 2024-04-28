@@ -1,0 +1,541 @@
+[
+    {
+        "question": "Which of the following is a renewable source of energy?",
+        "options": [
+            "Coal",
+            "Solar power",
+            "Natural gas",
+            "Nuclear power"
+        ],
+        "correctAnswer": "Solar power",
+        "status": false
+    },
+    {
+        "question": "What is the primary function of wetlands in an ecosystem?",
+        "options": [
+            "Carbon sequestration",
+            "Flood control",
+            "Water filtration",
+            "All of the above"
+        ],
+        "correctAnswer": "All of the above",
+        "status": false
+    },
+    {
+        "question": "What is the most common greenhouse gas?",
+        "options": [
+            "Oxygen",
+            "Methane",
+            "Nitrogen",
+            "Carbon monoxide"
+        ],
+        "correctAnswer": "Carbon monoxide",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a biodegradable material?",
+        "options": [
+            "Plastic",
+            "Aluminum",
+            "Glass",
+            "Paper"
+        ],
+        "correctAnswer": "Paper",
+        "status": false
+    },
+    {
+        "question": "What is the process of removing salt from seawater to obtain freshwater called?",
+        "options": [
+            "Desalination",
+            "Filtration",
+            "Distillation",
+            "Evaporation"
+        ],
+        "correctAnswer": "Desalination",
+        "status": false
+    },
+    {
+        "question": "Which of these pollutants contributes to acid rain?",
+        "options": [
+            "Carbon dioxide",
+            "Nitrogen oxides",
+            "Sulfur dioxide",
+            "Methane"
+        ],
+        "correctAnswer": "Sulfur dioxide",
+        "status": false
+    },
+    {
+        "question": "What is the primary purpose of composting organic waste?",
+        "options": [
+            "Generate electricity",
+            "Reduce landfill waste",
+            "Extract minerals",
+            "Create synthetic fibers"
+        ],
+        "correctAnswer": "Reduce landfill waste",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a common method of cleaning polluted water?",
+        "options": [
+            "Chlorination",
+            "Incineration",
+            "Pesticide spraying",
+            "Logging"
+        ],
+        "correctAnswer": "Chlorination",
+        "status": false
+    },
+    {
+        "question": "What is the process of breaking down organic matter using microorganisms called?",
+        "options": [
+            "Incineration",
+            "Composting",
+            "Hydrolysis",
+            "Distillation"
+        ],
+        "correctAnswer": "Composting",
+        "status": false
+    },
+    {
+        "question": "Which of these is a sustainable practice in agriculture?",
+        "options": [
+            "Clear-cutting forests",
+            "Monoculture farming",
+            "Crop rotation",
+            "Overgrazing"
+        ],
+        "correctAnswer": "Crop rotation",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a non-renewable resource?",
+        "options": [
+            "Wind energy",
+            "Coal",
+            "Hydroelectric power",
+            "Biomass"
+        ],
+        "correctAnswer": "Coal",
+        "status": false
+    },
+    {
+        "question": "What is the term for the process of converting waste materials into reusable materials?",
+        "options": [
+            "Upcycling",
+            "Downcycling",
+            "Recycling",
+            "Landfilling"
+        ],
+        "correctAnswer": "Recycling",
+        "status": false
+    },
+    {
+        "question": "Which gas is responsible for the depletion of the ozone layer?",
+        "options": [
+            "Oxygen",
+            "Nitrogen",
+            "Chlorofluorocarbons (CFCs)",
+            "Argon"
+        ],
+        "correctAnswer": "Chlorofluorocarbons (CFCs)",
+        "status": false
+    },
+    {
+        "question": "What is the main purpose of using biodegradable cleaning products?",
+        "options": [
+            "Reduce water consumption",
+            "Prevent soil erosion",
+            "Minimize chemical pollution",
+            "Increase energy efficiency"
+        ],
+        "correctAnswer": "Minimize chemical pollution",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a greenhouse gas released from agricultural activities?",
+        "options": [
+            "Ozone",
+            "Carbon monoxide",
+            "Methane",
+            "Sulfur dioxide"
+        ],
+        "correctAnswer": "Methane",
+        "status": false
+    },
+    {
+        "question": "What is the primary source of marine pollution?",
+        "options": [
+            "Oil spills",
+            "Plastic waste",
+            "Industrial runoff",
+            "Sewage discharge"
+        ],
+        "correctAnswer": "Plastic waste",
+        "status": false
+    },
+    {
+        "question": "What is the process of using natural microorganisms to break down organic matter in water called?",
+        "options": [
+            "Filtration",
+            "Aeration",
+            "Bioremediation",
+            "Chemical treatment"
+        ],
+        "correctAnswer": "Bioremediation",
+        "status": false
+    },
+    {
+        "question": "Which of these is a method of sustainable waste management?",
+        "options": [
+            "Incineration",
+            "Open dumping",
+            "Landfilling",
+            "Waste segregation"
+        ],
+        "correctAnswer": "Waste segregation",
+        "status": false
+    },
+    {
+        "question": "What is the main function of riparian buffers in water conservation?",
+        "options": [
+            "Prevent erosion",
+            "Increase water temperature",
+            "Reduce nutrient runoff",
+            "Encourage algal growth"
+        ],
+        "correctAnswer": "Reduce nutrient runoff",
+        "status": false
+    },
+    {
+        "question": "Which of the following is an example of a renewable building material?",
+        "options": [
+            "Concrete",
+            "Steel",
+            "Bamboo",
+            "Aluminum"
+        ],
+        "correctAnswer": "Bamboo",
+        "status": false
+    },
+    {
+        "question": "What is the term for the process of converting sunlight into electricity?",
+        "options": [
+            "Photosynthesis",
+            "Solarization",
+            "Solar energy",
+            "Solar conversion"
+        ],
+        "correctAnswer": "Solar energy",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a method of reducing air pollution from vehicles?",
+        "options": [
+            "Carpooling",
+            "Burning more fossil fuels",
+            "Using leaded gasoline",
+            "Increasing traffic congestion"
+        ],
+        "correctAnswer": "Carpooling",
+        "status": false
+    },
+    {
+        "question": "What is the primary cause of deforestation?",
+        "options": [
+            "Urbanization",
+            "Mining activities",
+            "Forest fires",
+            "Clearing land for agriculture"
+        ],
+        "correctAnswer": "Clearing land for agriculture",
+        "status": false
+    },
+    {
+        "question": "Which of these is a characteristic of a sustainable city?",
+        "options": [
+            "High pollution levels",
+            "Heavy reliance on fossil fuels",
+            "Efficient public transportation",
+            "Excessive waste generation"
+        ],
+        "correctAnswer": "Efficient public transportation",
+        "status": false
+    },
+    {
+        "question": "What is the main benefit of using compost in gardening?",
+        "options": [
+            "Increase soil acidity",
+            "Promote weed growth",
+            "Enhance soil fertility",
+            "Reduce water retention"
+        ],
+        "correctAnswer": "Enhance soil fertility",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a consequence of ocean acidification?",
+        "options": [
+            "Increased coral reef growth",
+            "Reduced fish populations",
+            "Improved marine biodiversity",
+            "Stable pH levels"
+        ],
+        "correctAnswer": "Reduced fish populations",
+        "status": false
+    },
+    {
+        "question": "What is the process of converting organic waste into biogas called?",
+        "options": [
+            "Fermentation",
+            "Pyrolysis",
+            "Anaerobic digestion",
+            "Oxidation"
+        ],
+        "correctAnswer": "Anaerobic digestion",
+        "status": false
+    },
+    {
+        "question": "Which of these is a method of conserving water in agriculture?",
+        "options": [
+            "Flood irrigation",
+            "Drip irrigation",
+            "Open canal irrigation",
+            "Overhead sprinkler irrigation"
+        ],
+        "correctAnswer": "Drip irrigation",
+        "status": false
+    },
+    {
+        "question": "What is the main purpose of wildlife corridors?",
+        "options": [
+            "Promote hunting",
+            "Prevent animal migration",
+            "Facilitate genetic diversity",
+            "Increase human settlement"
+        ],
+        "correctAnswer": "Facilitate genetic diversity",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a sustainable practice in forestry?",
+        "options": [
+            "Clear-cutting",
+            "Selective logging",
+            "Illegal logging",
+            "Monoculture planting"
+        ],
+        "correctAnswer": "Selective logging",
+        "status": false
+    },
+    {
+        "question": "What is the primary function of wet scrubbers in air pollution control?",
+        "options": [
+            "Reduce greenhouse gas emissions",
+            "Remove particulate matter",
+            "Increase ozone levels",
+            "Enhance acid rain formation"
+        ],
+        "correctAnswer": "Remove particulate matter",
+        "status": false
+    },
+    {
+        "question": "Which of these is an example of a natural pesticide?",
+        "options": [
+            "DDT",
+            "Glyphosate",
+            "Neem oil",
+            "Malathion"
+        ],
+        "correctAnswer": "Neem oil",
+        "status": false
+    },
+    {
+        "question": "What is the term for the reintroduction of native plant species into an ecosystem?",
+        "options": [
+            "Invasive species control",
+            "Ecosystem restoration",
+            "Habitat destruction",
+            "Species extinction"
+        ],
+        "correctAnswer": "Ecosystem restoration",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a method of reducing soil erosion?",
+        "options": [
+            "Deforestation",
+            "Contour plowing",
+            "Overgrazing",
+            "Tilling deeply"
+        ],
+        "correctAnswer": "Contour plowing",
+        "status": false
+    },
+    {
+        "question": "What is the primary purpose of green roofs on buildings?",
+        "options": [
+            "Increase energy consumption",
+            "Enhance stormwater runoff",
+            "Reduce urban heat island effect",
+            "Promote air pollution"
+        ],
+        "correctAnswer": "Reduce urban heat island effect",
+        "status": false
+    },
+    {
+        "question": "Which of these is a benefit of using native plants in landscaping?",
+        "options": [
+            "Require more water",
+            "Increase maintenance costs",
+            "Attract invasive species",
+            "Support local wildlife"
+        ],
+        "correctAnswer": "Support local wildlife",
+        "status": false
+    },
+    {
+        "question": "What is the main advantage of using electric vehicles?",
+        "options": [
+            "Higher fuel costs",
+            "Reduced greenhouse gas emissions",
+            "Increased air pollution",
+            "Limited charging infrastructure"
+        ],
+        "correctAnswer": "Reduced greenhouse gas emissions",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a method of reducing plastic pollution?",
+        "options": [
+            "Single-use plastics",
+            "Plastic recycling",
+            "Dumping plastics in oceans",
+            "Using plastic packaging extensively"
+        ],
+        "correctAnswer": "Plastic recycling",
+        "status": false
+    },
+    {
+        "question": "What is the process of reusing materials to create new products called?",
+        "options": [
+            "Downcycling",
+            "Recycling",
+            "Upcycling",
+            "Landfilling"
+        ],
+        "correctAnswer": "Upcycling",
+        "status": false
+    },
+    {
+        "question": "Which gas contributes most to the greenhouse effect?",
+        "options": [
+            "Carbon dioxide",
+            "Nitrous oxide",
+            "Methane",
+            "Ozone"
+        ],
+        "correctAnswer": "Carbon dioxide",
+        "status": false
+    },
+    {
+        "question": "What is the primary benefit of using renewable energy sources?",
+        "options": [
+            "Increased air pollution",
+            "Energy security",
+            "Higher energy costs",
+            "Depletion of natural resources"
+        ],
+        "correctAnswer": "Energy security",
+        "status": false
+    },
+    {
+        "question": "Which of these is a method of reducing noise pollution?",
+        "options": [
+            "Planting trees",
+            "Installing loudspeakers",
+            "Using noisy machinery",
+            "Banning quiet zones"
+        ],
+        "correctAnswer": "Planting trees",
+        "status": false
+    },
+    {
+        "question": "What is the term for the process of converting waste materials into electricity and heat?",
+        "options": [
+            "Incineration",
+            "Composting",
+            "Recycling",
+            "Anaerobic digestion"
+        ],
+        "correctAnswer": "Incineration",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a sustainable farming practice?",
+        "options": [
+            "Mono-cropping",
+            "Heavy pesticide use",
+            "Genetic modification",
+            "Crop rotation"
+        ],
+        "correctAnswer": "Crop rotation",
+        "status": false
+    },
+    {
+        "question": "What is the primary purpose of using biofilters in water treatment?",
+        "options": [
+            "Increase chemical contamination",
+            "Remove microorganisms",
+            "Promote algal growth",
+            "Reduce odor and pollutants"
+        ],
+        "correctAnswer": "Reduce odor and pollutants",
+        "status": false
+    },
+    {
+        "question": "Which of these is an example of a non-point source of water pollution?",
+        "options": [
+            "Factory discharge pipe",
+            "Sewage treatment plant",
+            "Oil spill from a tanker",
+            "Agricultural runoff"
+        ],
+        "correctAnswer": "Agricultural runoff",
+        "status": false
+    },
+    {
+        "question": "What is the term for the process of restoring degraded land to its original state?",
+        "options": [
+            "Landfilling",
+            "Reforestation",
+            "Reclamation",
+            "Deforestation"
+        ],
+        "correctAnswer": "Reclamation",
+        "status": false
+    },
+    {
+        "question": "Which of the following is a method of reducing indoor air pollution?",
+        "options": [
+            "Proper ventilation",
+            "Burning incense regularly",
+            "Using air fresheners",
+            "Smoking indoors"
+        ],
+        "correctAnswer": "Proper ventilation",
+        "status": false
+    },
+    {
+        "question": "What is the primary benefit of using natural cleaning products?",
+        "options": [
+            "High toxicity",
+            "Environmental harm",
+            "Less chemical exposure",
+            "Rapid degradation"
+        ],
+        "correctAnswer": "Less chemical exposure",
+        "status": false
+    }
+]
