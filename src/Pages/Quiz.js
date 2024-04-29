@@ -24,7 +24,8 @@ const Quiz = () => {
 
         console.log("COMING HERE");
 
-        fetch(`${process.env.REACT_APP_LOCAL_API_URL}/question`)
+        // fetch(`${process.env.REACT_APP_LOCAL_API_URL}/question`)
+        fetch(`${process.env.REACT_APP_DEPLOYED_API_URL}/question`)
             .then((res) => res.json())
             .then((res) => res.data)
             .then((question) => {
@@ -32,7 +33,8 @@ const Quiz = () => {
                 auth.currentUser.getIdToken().then((token) => {
                     let decodedToken = jwtDecode(token);
                     return fetch(
-                        `${process.env.REACT_APP_LOCAL_API_URL}/question/${decodedToken.userId}/answered`,
+                        `${process.env.REACT_APP_DEPLOYED_API_URL}/question/${decodedToken.userId}/answered`,
+                        // `${process.env.REACT_APP_LOCAL_API_URL}/question/${decodedToken.userId}/answered`,
                         {
                             method: "POST",
                             headers: {
@@ -96,7 +98,8 @@ const Quiz = () => {
         };
         auth.currentUser.getIdToken().then((token) => {
             fetch(
-                `${process.env.REACT_APP_LOCAL_API_URL}/question/checkAnswer`,
+                `${process.env.REACT_APP_DEPLOYED_API_URL}/question/checkAnswer`,
+                // `${process.env.REACT_APP_LOCAL_API_URL}/question/checkAnswer`,
                 {
                     method: "POST",
                     headers: {
