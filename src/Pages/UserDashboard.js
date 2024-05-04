@@ -24,6 +24,7 @@ import Maps_DashBoard from "../Components/Maps_Dashboard.js";
 import logo from "../assets/images/logo.png";
 import { RxActivityLog } from "react-icons/rx";
 import Loader from "../assets/images/Animation.gif";
+import { ChatContext } from "../Components/ChatContextProvider.js";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -46,6 +47,7 @@ const UserDashboard = () => {
     const [user, loading, error] = useAuthState(auth);
     // const [profile, setProfile] = useState(person);
     const [communities, setCommunities] = useState([]);
+    const { communities: joinedCommunities } = useContext(ChatContext);
     const [campaigns, setCampaigns] = useState([]);
     const [profile, setProfile] = useContext(ProfileContext);
     const [loader, setLoader] = useState(true);
@@ -239,12 +241,19 @@ const UserDashboard = () => {
                     >
                         <MdOutlineLocalGroceryStore />
                     </Link>
-                    <Link
-                        to="/chat"
+
+                    <button
+                        onClick={() => {
+                            if (joinedCommunities.length > 0) {
+                                window.location.href = "/chat";
+                            } else {
+                                alert("Please join a community first!");
+                            }
+                        }}
                         className="mx-1 sm:mx-3 lg:mx-5 xl:mx-8 cursor-pointer hover:scale-110 duration-300"
                     >
                         <TbMessages />
-                    </Link>
+                    </button>
                     <div className="flex mx-2 sm:mx-5 lg:mx-8 items-center">
                         <Link to="/user/profile">
                             <img

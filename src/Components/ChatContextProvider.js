@@ -59,7 +59,9 @@ export const ChatContextProvider = (props) => {
                         console.log("updatedComms: ", updatedComms);
 
                         setCommunities(updatedComms);
-                        setCurrComm(updatedComms[0]);
+                        if (updatedComms.length > 0) {
+                            setCurrComm(updatedComms[0]);
+                        }
                         setLoader(false);
                     })
                     .catch((err) => {
