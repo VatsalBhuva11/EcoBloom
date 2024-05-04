@@ -27,8 +27,8 @@ const Store = () => {
             console.log("AUTH CURRENT USER");
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
-                if (idTokenResult.role === "org"){
-                    window.location.replace( '/org/dashboard');
+                if (idTokenResult.role === "org") {
+                    window.location.replace("/org/dashboard");
                     // <Navigate to = 'org/dashboard'  replace  = {true}/>
                 }
                 fetch(
@@ -58,7 +58,7 @@ const Store = () => {
                     });
             });
         } else {
-            alert("Not Authorised");
+            alert("IDHAR");
         }
     }, [loading]);
 
@@ -85,7 +85,7 @@ const Store = () => {
                             />
                         </Link>
 
-                        <h1 className="text-3xl md:text-4xl font-bold mt-9 text-[#277868]">
+                        <h1 className="text-3xl md:text-4xl font-bold mt-9 text-[#0F1035]">
                             REWARDS & PRIZES
                         </h1>
                     </div>
@@ -94,7 +94,7 @@ const Store = () => {
                         <p className=" text-xl font-light pt-1 ">
                             Your Points:{" "}
                         </p>
-                        <p className="pl-2 flex text-2xl font-bold   text-[#277868]">
+                        <p className="pl-2 flex text-2xl font-bold   text-[#FF7512]">
                             <SiDogecoin className=" mr-1 mt-1 text-[#FFCC4D]" />{" "}
                             {Number(loggedInUser.points)}
                         </p>
@@ -103,7 +103,7 @@ const Store = () => {
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-12 content-center mt-8 pb-6">
                     <div className="flex justify-center items-center">
-                        <div className="bg-gray-200 rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col justify-center">
+                        <div className="bg-[#DFE4C5] rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col justify-center">
                             <div>
                                 <img src={shirt} className="p-2" alt="tshirt" />
                             </div>
@@ -121,7 +121,7 @@ const Store = () => {
                                                 window.location.href =
                                                     "/store/order?item=tshirt";
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 1000{" "}
@@ -133,7 +133,7 @@ const Store = () => {
                                             onClick={() => {
                                                 setShowMyModal(true);
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 1000{" "}
@@ -147,7 +147,7 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div className="bg-gray-200 rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] rounded-lg hover:scale-105 duration-300 w-fit shadow-2xl flex flex-col">
                             <div>
                                 <img src={cap} className="p-2" alt="cap" />
                             </div>
@@ -164,7 +164,7 @@ const Store = () => {
                                                 window.location.href =
                                                     "/store/order?item=cap";
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 500{" "}
@@ -176,7 +176,7 @@ const Store = () => {
                                             onClick={() => {
                                                 setShowMyModal(true);
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 500{" "}
@@ -190,7 +190,7 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div className="bg-gray-200 w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
                             <div>
                                 <img src={bag} className="p-2" alt="bag" />
                             </div>
@@ -207,7 +207,7 @@ const Store = () => {
                                                 window.location.href =
                                                     "/store/order?item=jutebag";
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 2000{" "}
@@ -219,7 +219,7 @@ const Store = () => {
                                             onClick={() => {
                                                 setShowMyModal(true);
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 2000{" "}
@@ -233,7 +233,7 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div className="bg-gray-200 w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
                             <div>
                                 <img
                                     src={hoodie}
@@ -254,7 +254,7 @@ const Store = () => {
                                                 window.location.href =
                                                     "/store/order?item=hoodie";
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 4000{" "}
@@ -266,7 +266,7 @@ const Store = () => {
                                             onClick={() => {
                                                 setShowMyModal(true);
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 4000{" "}
@@ -280,7 +280,7 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div className="bg-gray-200 w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
                             <div>
                                 <img src={book} className="p-2" alt="book" />
                             </div>
@@ -297,7 +297,7 @@ const Store = () => {
                                                 window.location.href =
                                                     "/store/order?item=book";
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 1500{" "}
@@ -309,7 +309,7 @@ const Store = () => {
                                             onClick={() => {
                                                 setShowMyModal(true);
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 1500{" "}
@@ -323,7 +323,7 @@ const Store = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div className="bg-gray-200 w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
+                        <div className="bg-[#DFE4C5] w-fit hover:scale-105 duration-300 rounded-lg shadow-2xl flex flex-col">
                             <div>
                                 <img
                                     src={keychain}
@@ -344,7 +344,7 @@ const Store = () => {
                                                 window.location.href =
                                                     "/store/order?item=keychain";
                                             }}
-                                            className="bg-[#277868] rounded-lg "
+                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 400{" "}

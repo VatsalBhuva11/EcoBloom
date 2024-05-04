@@ -27,7 +27,7 @@ const ForgetPassword = () => {
     return (
         <div className="h-screen bg-[#fbfbfa] flex justify-around items-center">
             <div className="flex flex-col justify-around items-center sm:items-start h-[30%] xl:h-[40%] ml-5 ">
-                <div className="hidden sm:flex sm:text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-medium text-[#277868]  items-start">
+                <div className="hidden sm:flex sm:text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-medium  items-start">
                     FORGOT <br /> PASSWORD?
                 </div>
                 <div className="flex sm:hidden text-3xl font-medium">
@@ -36,7 +36,7 @@ const ForgetPassword = () => {
                 <div className="flex flex-col items-center sm:items-start gap-2">
                     <input
                         type="email"
-                        className="bg-[#277868] text-white placeholder-[#dbdbdb]  placeholder:xl:text-lg placeholder:lg:text-md placeholder:text-sm h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 rounded-xl p-3 w-80"
+                        className="bg-[#CCD994] text-[#363131] placeholder-gray-700 placeholder-opacity-70 placeholder:xl:text-lg placeholder:lg:text-md placeholder:text-sm h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 rounded-xl p-3 w-80"
                         placeholder="📧 Enter Your E-mail"
                         onChange={(e) => {
                             setEmail(e.target.value);
@@ -45,7 +45,7 @@ const ForgetPassword = () => {
                     {!clicked ? (
                         <button
                             onClick={handlePasswordReset}
-                            className="sm:h-8 md:h-9 lg:h-10 hover:scale-110 duration-300 sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#CB4331] text-[#fbfbfa] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
+                            className="sm:h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#CB4331] text-[#fbfbfa] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
                         >
                             Send reset link!
                         </button>

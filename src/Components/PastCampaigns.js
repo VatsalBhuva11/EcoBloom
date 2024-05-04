@@ -28,7 +28,7 @@ export default function PastCampaigns() {
                 <div className="container mx-auto px-5 lg:px-32">
                     <div className="-m-1 flex flex-wrap md:-m-2">
                         <div className="flex w-1/2 flex-wrap">
-                            <div className="w-1/2 p-1 md:p-2 ">
+                            <div className="w-1/2 p-1 md:p-2">
                                 <img
                                     alt="gallery"
                                     data-aos="zoom-in"

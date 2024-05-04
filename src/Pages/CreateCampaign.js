@@ -1,4 +1,4 @@
-import { React, useState , useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import Create_Campaign_Card from "./Create_Campaign_Card";
@@ -20,32 +20,25 @@ const CreateCampaign = () => {
     const [loader, setLoader] = useState(true);
     const [user, loading, error] = useAuthState(auth);
 
-    useEffect(()=>{
-
+    useEffect(() => {
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
-                if (idTokenResult.role === "user" || !idTokenResult.role){
-                    window.location.replace( '/user/dashboard');
+                if (idTokenResult.role === "user" || !idTokenResult.role) {
+                    window.location.replace("/user/dashboard");
                     // <Navigate to = 'org/dashboard'  replace  = {true}/>
                 } else {
-
-                    setLoader(false)
+                    setLoader(false);
                 }
             });
-            
         }
-       
-
-    },[loading])
+    }, [loading]);
 
     // const handleMarkerClick = (marker) => {
     //     console.log("Marker clicked:", marker);
     //     // Perform actions when a marker is clicked
     // };
-    
-
 
     function handleCreateCampaign(event) {
         event.preventDefault();
