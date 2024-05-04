@@ -251,7 +251,11 @@ export default function BasicDetails({
     };
 
     return (
-        <div className="relative top-4 flex justify-center items-center w-full min-h-fit p-12 py-4 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
+        <div className="relative top-4 flex flex-col justify-center items-center w-1/2 min-h-fit p-12 py-4 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
+            <h1 className="text-xl font-extrabold">
+                Join us as a participant!
+            </h1>
+
             <form className="step relative top-4" id="userSignUpOne">
                 {/* <p className="text-md text-gray-700 leading-tight text-center mt-8 mb-5">
                     Create your account

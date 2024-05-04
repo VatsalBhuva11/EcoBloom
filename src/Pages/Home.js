@@ -58,7 +58,7 @@ export default function Home() {
                         />
                         <Route
                             exact
-                            path="/test"
+                            path="/signup/user"
                             element={
                                 <>
                                     <FreshUserSignUp />
@@ -71,11 +71,11 @@ export default function Home() {
                             path="/signup"
                             element={<SignupInitial />}
                         />
-                        <Route
+                        {/* <Route
                             exact
                             path="/signup/user"
                             element={<UserSignup />}
-                        />
+                        /> */}
 
                         {/* <Route
                             exact

@@ -14,6 +14,9 @@ const FreshUserSignUp = () => {
         photo: null,
     });
 
+    const { stepCount } = step;
+    const { name, email, username, password, photo, confirmPassword } = step;
+
     // go back to previous step
     const prevStep = () => {
         setStep({ ...step, stepCount: step.stepCount - 1 });
@@ -32,13 +35,16 @@ const FreshUserSignUp = () => {
         setStep(newStep);
     };
 
-    const { stepCount } = step;
-    const { name, email, username, password, photo, confirmPassword } = step;
+    if (stepCount === 3) {
+        setTimeout(() => {
+            window.location.replace("/login");
+        }, 2000);
+    }
 
     switch (stepCount) {
         case 1:
             return (
-                <div className="flex flex-col w-full h-screen justify-center items-center">
+                <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
                     <div className="absolute top-5 w-1/2">
                         <MultiStep
                             nextStep={nextStep}
@@ -55,7 +61,7 @@ const FreshUserSignUp = () => {
             );
         case 2:
             return (
-                <div className="flex flex-col w-full h-screen justify-center items-center">
+                <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
                     <div className="absolute top-5 w-1/2">
                         <MultiStep
                             nextStep={nextStep}
@@ -84,9 +90,7 @@ const FreshUserSignUp = () => {
                             stepCount={step.stepCount}
                         />
                     </div>
-                    {setTimeout(() => {
-                        window.location.replace("/login");
-                    }, 2000)}
+
                     <div className="flex flex-col w-full h-screen justify-center items-center">
                         <h1 className="text-6xl text-green-500 text-center font-light">
                             Registered Successfully!
