@@ -399,17 +399,15 @@ const Orgprofile = () => {
                     ) : (
                         <div>
                             {org?.completedCampaigns?.length > 0 ? (
-                                org.completedCampaigns.map((campaign) => {
-                                    return (
-                                        <div className="grid grid-cols-2 gap-5 p-8 place-items-center">
-                                            <div className="flex items-center justify-center">
-                                                <PastCampaignsCards
-                                                    campaign={campaign}
-                                                />
-                                            </div>
-                                        </div>
-                                    );
-                                })
+                                <div className="grid grid-cols-2 gap-5 p-8 place-items-center">
+                                    {org.completedCampaigns.map((campaign) => {
+                                        return (
+                                            <PastCampaignsCards
+                                                campaign={campaign}
+                                            />
+                                        );
+                                    })}
+                                </div>
                             ) : (
                                 <div className="flex justify-start items-center mt-4 ml-4 text-xl">
                                     No campaigns organised yet.

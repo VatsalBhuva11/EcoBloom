@@ -22,56 +22,63 @@ export const ChatContextProvider = (props) => {
         setLoader(true);
         console.log("USEEFFECT: ", auth.currentUser);
         if (auth.currentUser) {
-            auth.currentUser.getIdToken().then((idToken) => {
-                fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/user/communities`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${idToken}`,
-                        },
-                    }
-                )
-                    .then((res) => res.json())
-                    .then(async (data) => {
-                        console.log(data);
-                        let comms = data.data;
-
-                        let logoPromises = comms.map(async (comm) => {
-                            const storageRef = ref(
-                                storage,
-                                comm.organization.logo
-                            );
-                            return getDownloadURL(storageRef);
-                        });
-
-                        let logoPromisesResolved = await Promise.all(
-                            logoPromises
-                        );
-
-                        let updatedComms = comms.map((comm, index) => {
-                            return {
-                                ...comm,
-                                logo: logoPromisesResolved[index],
-                            };
-                        });
-
-                        console.log("updatedComms: ", updatedComms);
-
-                        setCommunities(updatedComms);
-                        if (updatedComms.length > 0) {
-                            setCurrComm(updatedComms[0]);
+            auth.currentUser.getIdTokenResult().then((result) => {
+                console.log("RESULT: ", result);
+                const idToken = result.token;
+                const role = result.claims.role;
+                if (role !== "org") {
+                    fetch(
+                        `${process.env.REACT_APP_DEPLOYED_API_URL}/user/communities`,
+                        {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${idToken}`,
+                            },
                         }
-                        setLoader(false);
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        setLoader(false);
-                        throw new Error(
-                            "Error occurred while fetching communities"
-                        );
-                    });
+                    )
+                        .then((res) => res.json())
+                        .then(async (data) => {
+                            console.log(data);
+                            let comms = data.data;
+
+                            let logoPromises = comms.map(async (comm) => {
+                                const storageRef = ref(
+                                    storage,
+                                    comm.organization.logo
+                                );
+                                return getDownloadURL(storageRef);
+                            });
+
+                            let logoPromisesResolved = await Promise.all(
+                                logoPromises
+                            );
+
+                            let updatedComms = comms.map((comm, index) => {
+                                return {
+                                    ...comm,
+                                    logo: logoPromisesResolved[index],
+                                };
+                            });
+
+                            console.log("updatedComms: ", updatedComms);
+
+                            setCommunities(updatedComms);
+                            if (updatedComms.length > 0) {
+                                setCurrComm(updatedComms[0]);
+                            }
+                            setLoader(false);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            setLoader(false);
+                            throw new Error(
+                                "Error occurred while fetching communities"
+                            );
+                        });
+                } else {
+                    setLoader(false);
+                }
             });
         } else {
             setLoader(false);

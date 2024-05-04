@@ -6,7 +6,7 @@ import moment from "moment";
 
 export default function PastCampaignsCards({ campaign }) {
     return (
-        <div>
+        <div className="flex items-center justify-center">
             <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex flex-col justify-between rounded-lg h-72 lg:h-64">
                 <div className="card">
                     <div className="flex flex-col">
