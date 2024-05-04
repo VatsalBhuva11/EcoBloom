@@ -15,11 +15,42 @@ import Jimp from "jimp";
 dotenv.config();
 const router = express.Router();
 
+router.post("/register/stepOne", async (req, res) => {
+    try {
+        const { name, email } = req.body;
+        if (!name || !email) {
+            throw new Error("Following fields are mandatory: name, email");
+        } else {
+            const checkUser = await User.findOne({ email });
+            if (checkUser) {
+                response_400(res, "User already exists.");
+            } else {
+                const user = await User.create({
+                    email,
+                    name,
+                });
+                if (user) {
+                    console.log("Successfully created user with mail: ", email);
+                    response_200(res, "Successfully created new user!", user);
+                } else {
+                    response_500(
+                        res,
+                        "Error occurred while creating user in DB"
+                    );
+                }
+            }
+        }
+    } catch (err) {
+        console.log("Error occurred while adding basic details: ", err);
+        response_500(res, "Error occurred while creating user in DB", err);
+    }
+});
+
 // Create a new user
-router.post("/register", async (req, res) => {
+router.post("/register/stepTwo", async (req, res) => {
     try {
         //photoURL is sent only when google sign in results in creation of new account.
-        const { name, email, phone, photoURL, firebaseId } = req.body;
+        const { name, email, photoURL, firebaseId } = req.body;
 
         //email variable, update record in DB
         const checkUser = await User.findOne({ email });
@@ -54,7 +85,7 @@ router.post("/register", async (req, res) => {
                         name,
                         email,
                         photoPathFirestore: storagePath,
-                        phone,
+                        // phone,
                     });
                     console.log("Successfully created new user in DB!");
                     response_200(res, "Successfully created new user in DB", {
@@ -67,11 +98,6 @@ router.post("/register", async (req, res) => {
                     );
                 }
             } else {
-                if (!req.files[0]) {
-                    throw new Error(
-                        "Following fields are mandatory: name, email, password, photo"
-                    );
-                }
                 const file = req.files[0];
                 const filename = file.originalname;
                 const extension = filename.split(".").pop();
@@ -124,7 +150,7 @@ router.post("/register", async (req, res) => {
                                         name,
                                         email,
                                         photoPathFirestore: pathToFile,
-                                        phone,
+                                        // phone,
                                     });
                                     console.log(
                                         "Successfully created new user in DB!"

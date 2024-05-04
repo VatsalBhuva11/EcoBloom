@@ -3,6 +3,7 @@ import { Button } from "@material-ui/core";
 
 const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
     const [preview, setPreview] = useState(null);
+    const { stepCount } = values;
     const [selectedFile, setSelectedFile] = useState(null);
     const Continue = (e) => {
         e.preventDefault();
@@ -27,10 +28,14 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
 
     return (
         <div className="flex flex-col justify-center items-center w-screen h-screen gap-12">
+            <h1>
+                Upload your photo!{" "}
+                <span className=" font-bold">(Optional)</span>
+            </h1>
             <div class=" w-80 h-80">
                 <label
                     for="dropzone-file"
-                    class="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 "
+                    class="mb-4 flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 "
                 >
                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
                         <svg
@@ -81,26 +86,27 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
                         accept="image/*"
                     />
                 </label>
-            </div>
-            <div className="flex justify-center items-center gap-4">
-                <Button
-                    onClick={Previous}
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                >
-                    PREV
-                </Button>
-                <Button
-                    onClick={Continue}
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                >
-                    Next
-                </Button>
+                <div className="action-buttons">
+                    <button
+                        id="prev"
+                        disabled={stepCount === 1}
+                        onClick={() => {
+                            prevStep();
+                        }}
+                    >
+                        Prev
+                    </button>
+                    <button
+                        id="next"
+                        disabled={stepCount === 4}
+                        onClick={() => {
+                            // Continue();
+                            nextStep();
+                        }}
+                    >
+                        Next
+                    </button>
+                </div>
             </div>
         </div>
     );
