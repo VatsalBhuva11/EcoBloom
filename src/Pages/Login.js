@@ -338,8 +338,8 @@ export default function Login() {
                                 className="w-full flex justify-center items-center bg-white border border-button-border-light  rounded-lg p-0.5 pr-3 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:scale-105 duration-300"
                                 onClick={googleSignIn}
                             >
-                                <div className="flex items-center justify-center bg-white w-9 h-9 rounded-l">
-                                    {!googleClicked && (
+                                {!googleClicked && (
+                                    <div className="flex items-center justify-center bg-white w-9 h-9 rounded-l">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24"
@@ -364,8 +364,8 @@ export default function Login() {
                                                 className="fill-google-logo-red"
                                             ></path>
                                         </svg>
-                                    )}
-                                </div>
+                                    </div>
+                                )}
                                 <span className="text-sm text-google-text-gray">
                                     {!googleClicked ? (
                                         "Sign in with Google"
