@@ -185,7 +185,7 @@ const UserDashboard = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <img src={Loader} height={150} width={150}></img>
+                <img src={Loader} height={200} width={200}></img>
             </div>
         );
     }

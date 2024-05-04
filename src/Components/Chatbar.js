@@ -57,7 +57,7 @@ export default function Chatbar() {
     useEffect(() => {
         const q = query(
             collection(db, "messages"),
-            orderBy("createdAt", "desc"),
+            orderBy("createdAt", "asc"), // Ensure messages are ordered by timestamp in descending order
             limit(50)
         );
         const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
@@ -65,11 +65,10 @@ export default function Chatbar() {
             QuerySnapshot.forEach((doc) => {
                 fetchedMessages.push({ ...doc.data(), id: doc.id });
             });
-            const sortedMessages = fetchedMessages.sort(
-                (a, b) => a.createdAt - b.createdAt
-            );
-            setMessages(sortedMessages);
-            console.log(sortedMessages);
+            // const sortedMessages = fetchedMessages.sort(
+            //     (a, b) => a.createdAt - b.createdAt // Sort messages in descending order by timestamp
+            // );
+            setMessages(fetchedMessages);
         });
         return () => unsubscribe;
     }, []);
@@ -82,6 +81,7 @@ export default function Chatbar() {
         }
 
         setMessage("");
+
         await addDoc(collection(db, "messages"), {
             text: message,
             name: displayName,
@@ -192,7 +192,7 @@ export default function Chatbar() {
                 ) : null}
             </div>
             <div className="chatbox px-4 h-[75%]  border-black overflow-scroll scrollbar-hide bg-[#fbfbfa]">
-                {messages?.map((message) =>
+                {messages.map((message) =>
                     message.community === currComm?._id ? (
                         message.uid === uid ? (
                             <ChatBubbleDept message={message} />
