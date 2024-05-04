@@ -1,19 +1,32 @@
 import React, { useState } from "react";
 import "./MultiStep.css"; // Import the CSS styles
-
+const steps = [
+    {
+        stepNumber: 1,
+        message: "Basic Info",
+    },
+    {
+        stepNumber: 2,
+        message: "Upload Photo",
+    },
+    {
+        stepNumber: 3,
+        message: "Done!",
+    },
+];
 const MultiStep = ({ stepCount, nextStep, prevStep }) => {
     return (
         <div className="container">
             <div className="steps-container">
-                {[1, 2, 3].map((stepNumber) => (
-                    <span key={stepNumber}>
-                        {stepNumber > 1 && <div className="line"></div>}
+                {steps.map((step) => (
+                    <span key={step.stepNumber}>
+                        {step.stepNumber > 1 && <div className="line"></div>}
                         <span
                             className={`step-circle ${
-                                stepNumber === stepCount ? "active" : ""
+                                step.stepNumber === stepCount ? "active" : ""
                             }`}
                         >
-                            {stepNumber}
+                            {step.stepNumber}
                         </span>
                     </span>
                 ))}

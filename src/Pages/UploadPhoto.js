@@ -6,10 +6,8 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
     const { stepCount } = values;
     const [selectedFile, setSelectedFile] = useState(null);
     const [buttonClicked, setButtonClicked] = useState(null);
-    const Continue = (e) => {
-        e.preventDefault();
-        nextStep();
-    };
+    const [status, setStatus] = useState(null);
+
     const Previous = (e) => {
         e.preventDefault();
         prevStep();
@@ -27,13 +25,58 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
         return () => URL.revokeObjectURL(objectUrl);
     }, [selectedFile]);
 
+    const Continue = (e) => {
+        console.log(e);
+        e.preventDefault();
+        setButtonClicked(true);
+        if (!selectedFile) {
+            nextStep();
+            return;
+        }
+        // console.log("BEFORE VALIDATION");
+        // if (!validateForm()) {
+        //     setSignUpClicked(false);
+        //     return;
+        // }
+        let formData = new FormData(document.getElementById("userSignUpTwo"));
+        formData.append("email", values.email);
+        console.log("OK");
+
+        fetch(
+            `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register/stepTwo`,
+            {
+                method: "POST",
+                body: formData,
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === "error") {
+                    setButtonClicked(false);
+                    console.log(data);
+                    setStatus(data.error);
+                } else {
+                    console.log(data);
+                    setButtonClicked(false);
+                    nextStep();
+                    console.log("Success:", data);
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                console.log("errormessage: ", error.message);
+                setStatus("Error occurred while uploading file.");
+                setButtonClicked(false);
+            });
+    };
+
     return (
         <div className="flex flex-col justify-center items-center w-screen h-screen gap-12">
             <h1>
                 Upload your photo!{" "}
                 <span className=" font-bold">(Optional)</span>
             </h1>
-            <div class=" w-80 h-80">
+            <form class=" w-80 h-80" id="userSignUpTwo">
                 <label
                     for="dropzone-file"
                     class="mb-4 flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 "
@@ -87,9 +130,14 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
                         accept="image/*"
                     />
                 </label>
+                {status !== null && (
+                    <div className="text-center font-light pb-2 text-red-500">
+                        {status}
+                    </div>
+                )}
                 <div className="flex justify-center items-center pb-12 gap-4">
                     <div className="action-buttons">
-                        <button
+                        {/* <button
                             id="prev"
                             disabled={stepCount === 1}
                             onClick={() => {
@@ -97,13 +145,12 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
                             }}
                         >
                             Prev
-                        </button>
+                        </button> */}
                         <button
                             id="next"
                             disabled={stepCount === 4}
-                            onClick={() => {
-                                // Continue();
-                                nextStep();
+                            onClick={(e) => {
+                                Continue(e);
                             }}
                         >
                             {!buttonClicked ? (
@@ -132,7 +179,7 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 };

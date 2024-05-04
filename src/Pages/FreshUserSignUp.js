@@ -84,6 +84,9 @@ const FreshUserSignUp = () => {
                             stepCount={step.stepCount}
                         />
                     </div>
+                    {setTimeout(() => {
+                        window.location.replace("/login");
+                    }, 2000)}
                     <div className="flex flex-col w-full h-screen justify-center items-center">
                         <h1 className="text-6xl text-green-500 text-center font-light">
                             Registered Successfully!

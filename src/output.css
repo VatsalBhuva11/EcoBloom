@@ -655,6 +655,14 @@ video {
   top: 0.75rem;
 }
 
+.top-4{
+  top: 1rem;
+}
+
+.top-5{
+  top: 1.25rem;
+}
+
 .top-\[4\.3rem\]{
   top: 4.3rem;
 }
@@ -1025,10 +1033,6 @@ video {
   display: none;
 }
 
-.h-1\/2{
-  height: 50%;
-}
-
 .h-10{
   height: 2.5rem;
 }
@@ -1219,6 +1223,12 @@ video {
 
 .h-screen{
   height: 100vh;
+}
+
+.min-h-fit{
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 
 .w-1\/2{

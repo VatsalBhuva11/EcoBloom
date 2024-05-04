@@ -45,8 +45,8 @@ body {
 }
 .steps-container .step-circle.active {
     transition-delay: 100ms;
-    border-color: #4070f4;
-    color: #4070f4;
+    border-color: #06c93a;
+    color: #06c93a;
 }
 .steps-container .progress-bar-container {
     position: absolute;
@@ -59,7 +59,7 @@ body {
     position: absolute;
     height: 100%;
     width: 0%;
-    background: #4070f4;
+    background: #06c93a;
     transition: all 300ms ease;
 }
 .action-buttons {
@@ -68,7 +68,7 @@ body {
 }
 .action-buttons button {
     padding: 8px 25px;
-    background: #4070f4;
+    background: #06c93a;
     border: none;
     border-radius: 8px;
     color: #fff;
@@ -78,10 +78,16 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
     transition: all 200ms linear;
 }
+
 .action-buttons button:active {
     transform: scale(0.97);
 }
 .action-buttons button:disabled {
     background: #87a5f8;
     cursor: not-allowed;
+}
+
+.action-buttons:hover {
+    background: #0ee247;
+    border-radius: 8px;
 }

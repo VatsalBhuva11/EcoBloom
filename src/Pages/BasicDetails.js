@@ -153,6 +153,7 @@ export default function BasicDetails({
     }
 
     const Continue = (e) => {
+        console.log(e);
         e.preventDefault();
         setSignUpClicked(true);
         console.log("BEFORE VALIDATION");
@@ -179,7 +180,6 @@ export default function BasicDetails({
                     "setCustomClaims"
                 );
                 formData.append("firebaseId", user.uid);
-                nextStep();
 
                 fetch(
                     `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register/stepOne`,
@@ -207,15 +207,14 @@ export default function BasicDetails({
                                         result
                                     );
                                     console.log(user);
-                                    setShowMyModal(true);
-                                    setSignUpClicked(false);
-                                    setStatus("success");
+                                    nextStep();
                                 })
                                 .catch((err) => {
                                     console.log(err);
+                                    console.log(err.message);
                                     auth.currentUser.delete();
                                     setSignUpClicked(false);
-                                    setStatus("failure");
+                                    setStatus("failure in custom claims");
                                 });
 
                             console.log("Success:", data);
@@ -357,7 +356,7 @@ export default function BasicDetails({
                 )}
                 <div className="flex justify-center items-center pb-12 gap-4">
                     <div className="action-buttons">
-                        <button
+                        {/* <button
                             id="prev"
                             disabled={stepCount === 1}
                             onClick={() => {
@@ -365,13 +364,13 @@ export default function BasicDetails({
                             }}
                         >
                             Prev
-                        </button>
+                        </button> */}
                         <button
                             id="next"
                             disabled={stepCount === 4}
-                            onClick={() => {
-                                // Continue();
-                                nextStep();
+                            onClick={(e) => {
+                                Continue(e);
+                                // nextStep();
                             }}
                         >
                             {!signUpClicked ? (
