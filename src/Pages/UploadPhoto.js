@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "@material-ui/core";
 
 const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
     const [preview, setPreview] = useState(null);
@@ -67,6 +66,7 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
                 console.log("errormessage: ", error.message);
                 setStatus("Error occurred while uploading file.");
                 setButtonClicked(false);
+                setSelectedFile(null);
             });
     };
 

@@ -11,7 +11,6 @@ import "aos/dist/aos.css";
 
 export default function PastCampaigns() {
     useEffect(() => {
-
         Aos.init();
         Aos.refresh();
     }, []);
@@ -20,9 +19,10 @@ export default function PastCampaigns() {
         <div className="w-full bg-[#fbfbfa] justify-between pt-12">
             <div className="max-w-[95%] mx-auto flex flex-col justify-center items-center">
                 <h1
-                data-aos = "fade-up"
-                data-aos-duration = "1500" 
-                className=" text-[#277868] text-4xl md:text-6xl text-center font-bold pb-12">
+                    data-aos="fade-up"
+                    data-aos-duration="1500"
+                    className=" text-[#0F1035] text-4xl md:text-6xl text-center font-bold pb-12"
+                >
                     PAST CAMPAIGNS
                 </h1>
                 <div className="container mx-auto px-5 lg:px-32">
@@ -88,10 +88,11 @@ export default function PastCampaigns() {
                     </div>
                 </div>
                 <a href="https://www.instagram.com/eco_bloom_/" target="_blank">
-                    <button 
-                    data-aos = "fade-up"
-                    data-aos-duration = "1500"
-                    className="flex  justify-center items-center  mt-32 py-2 px-6 text-center md:text-3xl mb-10 text-[#dbdbdb] border bg-[#277868] hover:scale-110 duration-300 font-bold  hover:shadow-lg  rounded-md">
+                    <button
+                        data-aos="fade-up"
+                        data-aos-duration="1500"
+                        className="flex  justify-center items-center  mt-32 py-2 px-6 text-center md:text-3xl mb-10 text-gray-100 border bg-[#0F1035] font-bold hover:bg-[#000000] hover:text-[#ffff] hover:shadow-lg hover:border-indigo-600 rounded-md"
+                    >
                         See More
                         <FaArrowRight
                             className="hidden md:flex ml-4 mt-2 "

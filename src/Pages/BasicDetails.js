@@ -8,7 +8,6 @@ import Login_Card from "./Create_Account_Card.js";
 import Terms_Conditions from "./Terms_Conditions.js";
 import logo from "../assets/images/logo.png";
 import { FaInfoCircle } from "react-icons/fa";
-import { Button } from "@material-ui/core";
 
 export default function BasicDetails({
     nextStep,
