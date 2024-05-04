@@ -7,6 +7,7 @@ import { auth } from "../firebase.js";
 import { ProfileContextProvider } from "../Components/ProfileContextProvider.js";
 import Loader from "../assets/images/Animation.gif";
 import { ChatContextProvider } from "../Components/ChatContextProvider.js";
+import All_User_Communitites from "./All_User_Communities.js";
 
 const HomePage = lazy(() => import("./HomePage.js"));
 const UserSignup = lazy(() => import("./UserSignup"));
@@ -47,189 +48,121 @@ export default function Home() {
         );
     }
     return (
-        <div>
-            <ProfileContextProvider>
-                <ChatContextProvider>
-                    <BrowserRouter>
-                        <Suspense
-                            fallback={
-                                <div className="h-screen flex items-center justify-center">
-                                    <img
-                                        src={Loader}
-                                        height={200}
-                                        width={200}
-                                    ></img>
-                                </div>
-                            }
-                        >
-                            {" "}
-                            {/* You can replace this with any loading indicator you like */}
-                            <Routes>
-                                <Route
-                                    exact
-                                    path="/"
-                                    element={
-                                        <>
-                                            <HomePage />
-                                        </>
-                                    }
-                                />
-                                <Route
-                                    exact
-                                    path="/signup/user"
-                                    element={
-                                        <>
-                                            <FreshUserSignUp />
-                                        </>
-                                    }
-                                />
-                                <Route
-                                    exact
-                                    path="/login"
-                                    element={<Login />}
-                                />
-                                <Route
-                                    exact
-                                    path="/signup"
-                                    element={<SignupInitial />}
-                                />
-                                {/* <Route
+      <div>
+        <ProfileContextProvider>
+          <ChatContextProvider>
+            <BrowserRouter>
+              <Suspense
+                fallback={
+                  <div className="h-screen flex items-center justify-center">
+                    <img src={Loader} height={200} width={200}></img>
+                  </div>
+                }
+              >
+                {" "}
+                {/* You can replace this with any loading indicator you like */}
+                <Routes>
+                  <Route
+                    exact
+                    path="/"
+                    element={
+                      <>
+                        <HomePage />
+                      </>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/signup/user"
+                    element={
+                      <>
+                        <FreshUserSignUp />
+                      </>
+                    }
+                  />
+                  <Route exact path="/login" element={<Login />} />
+                  <Route exact path="/signup" element={<SignupInitial />} />
+                  {/* <Route
                             exact
                             path="/signup/user"
                             element={<UserSignup />}
                         /> */}
 
-                                {/* <Route
+                  {/* <Route
                             exact
                             path="/signup/user"
                             element={<UserAuth />}
                         /> */}
-<<<<<<< Updated upstream
-                                <Route
-                                    exact
-                                    path="/user/dashboard"
-                                    element={<UserDashboard />}
-                                />
-                                <Route
-                                    exact
-                                    path="/user/join"
-                                    element={<Communities />}
-                                />
-                                <Route
-                                    exact
-                                    path="/user/profile"
-                                    element={<UserProfile />}
-                                />
-                                <Route
-                                    exact
-                                    path="/org/edit/profile"
-                                    element={<Edit_Profile_Org />}
-                                />
-                                <Route
-                                    exact
-                                    path="/signup/org"
-                                    element={<OrgSignup />}
-                                />
-=======
-                <Route
-                  exact
-                  path="/user/dashboard"
-                  element={<New_User_Dashboard/>}
-                />
-                <Route exact path="/user/join" element={<Communities />} />
-                <Route exact path="/user/profile" element={<UserProfile />} />
-                <Route
-                  exact
-                  path="/org/edit/profile"
-                  element={<Edit_Profile_Org />}
-                />
-                <Route exact path="/signup/org" element={<OrgSignup />} />
->>>>>>> Stashed changes
+                  <Route
+                    exact
+                    path="/user/dashboard"
+                    element={<New_User_Dashboard />}
+                  />
+                  <Route exact path="/user/orgs" element={<All_User_Communitites/>} />
+                  <Route exact path="/user/join" element={<Communities />} />
+                  <Route exact path="/user/profile" element={<UserProfile />} />
+                  <Route
+                    exact
+                    path="/org/edit/profile"
+                    element={<Edit_Profile_Org />}
+                  />
+                  <Route exact path="/signup/org" element={<OrgSignup />} />
 
-                                <Route
-                                    exact
-                                    path="/org/dashboard"
-                                    element={<Orgdashboard />}
-                                />
-                                <Route
-                                    exact
-                                    path="/org/profile/:orgId"
-                                    element={<Orgprofile />}
-                                />
-                                <Route
-                                    exact
-                                    path="/video"
-                                    element={<Video />}
-                                />
+                  <Route
+                    exact
+                    path="/org/dashboard"
+                    element={<Orgdashboard />}
+                  />
+                  <Route
+                    exact
+                    path="/org/profile/:orgId"
+                    element={<Orgprofile />}
+                  />
+                  <Route exact path="/video" element={<Video />} />
 
-                                <Route
-                                    exact
-                                    path="/store"
-                                    element={<Store />}
-                                />
-                                <Route exact path="/quiz" element={<Quiz />} />
-                                <Route
-                                    exact
-                                    path="/chat"
-                                    element={<CommunityChat />}
-                                />
-                                <Route
-                                    exact
-                                    path="/login/forgetpassword"
-                                    element={<ForgetPassword />}
-                                />
-                                <Route
-                                    exact
-                                    path="/campaign/create"
-                                    element={<CreateCampaign />}
-                                />
-                                <Route
-                                    exact
-                                    path="/campaign/:campaignId"
-                                    element={<CampaignProfile />}
-                                />
-                                <Route
-                                    exact
-                                    path="/org/campaign/:campaignId"
-                                    element={<OrgCampaignProfile />}
-                                />
-                                <Route
-                                    exact
-                                    path="/log"
-                                    element={<Activity_log />}
-                                />
-                                <Route
-                                    exact
-                                    path="/campaigns"
-                                    element={<Badha_Campaigns />}
-                                />
-                                <Route
-                                    exact
-                                    path="/campaign/:campaignId/verify"
-                                    element={<VerifyDummy />}
-                                />
+                  <Route exact path="/store" element={<Store />} />
+                  <Route exact path="/quiz" element={<Quiz />} />
+                  <Route exact path="/chat" element={<CommunityChat />} />
+                  <Route
+                    exact
+                    path="/login/forgetpassword"
+                    element={<ForgetPassword />}
+                  />
+                  <Route
+                    exact
+                    path="/campaign/create"
+                    element={<CreateCampaign />}
+                  />
+                  <Route
+                    exact
+                    path="/campaign/:campaignId"
+                    element={<CampaignProfile />}
+                  />
+                  <Route
+                    exact
+                    path="/org/campaign/:campaignId"
+                    element={<OrgCampaignProfile />}
+                  />
+                  <Route exact path="/log" element={<Activity_log />} />
+                  <Route
+                    exact
+                    path="/campaigns"
+                    element={<Badha_Campaigns />}
+                  />
+                  <Route
+                    exact
+                    path="/campaign/:campaignId/verify"
+                    element={<VerifyDummy />}
+                  />
 
-                                <Route
-                                    exact
-                                    path="/admin"
-                                    element={<Admin />}
-                                />
+                  <Route exact path="/admin" element={<Admin />} />
 
-                                <Route
-                                    exact
-                                    path="/store/order"
-                                    element={<Delhivery />}
-                                />
-                                <Route
-                                    exact
-                                    path="/newuser"
-                                    element={<New_User_Dashboard />}
-                                />
-                            </Routes>
-                        </Suspense>
-                    </BrowserRouter>
-                </ChatContextProvider>
-            </ProfileContextProvider>
-        </div>
+                  <Route exact path="/store/order" element={<Delhivery />} />
+                </Routes>
+              </Suspense>
+            </BrowserRouter>
+          </ChatContextProvider>
+        </ProfileContextProvider>
+      </div>
     );
 }

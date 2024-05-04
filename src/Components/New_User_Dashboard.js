@@ -153,7 +153,7 @@ const New_User_Dashboard = () => {
                       banner: logoPromisesResolved[index],
                     };
                   });
-                  setCommunities(updatedComms);
+                  setCommunities(updatedComms.slice(0, 3));
                   console.log("updated communities: ", updatedComms);
                   setLoader(false);
                   setCampaigns(data[1].data.slice(0, 4));
@@ -375,11 +375,13 @@ const New_User_Dashboard = () => {
           </div>
         </div>
         <div className="mt-[4rem] flex justify-end pr-6 pt-1">
-          <button className="text-[#277868] px-3 py-1 mr-12 border-2 border-[#277868] text-lg rounded-md hover:shadow-xl mt-1">
-            <div className="flex items-center gap-1 font-semibold">
-              View All <FaArrowRightLong />
-            </div>
-          </button>
+          <Link to="/user/orgs">
+            <button className="text-[#277868] px-3 py-1 mr-12 border-2 border-[#277868] text-lg rounded-md hover:shadow-xl mt-1">
+              <div className="flex items-center gap-1 font-semibold">
+                View All <FaArrowRightLong />
+              </div>
+            </button>
+          </Link>
         </div>
         <div className="flex justify-center pr-6 pt-1 pb-3">
           <Link to="/user/join">
