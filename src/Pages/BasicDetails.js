@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import login from "../assets/images/login.png";
 import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { getFunctions, httpsCallable } from "firebase/functions";
-import { useState } from "react";
 import Login_Card from "./Create_Account_Card.js";
 import Terms_Conditions from "./Terms_Conditions.js";
 import logo from "../assets/images/logo.png";
@@ -14,7 +13,7 @@ import { Button } from "@material-ui/core";
 export default function BasicDetails({ nextStep, handleChange, values }) {
     const { email, password, name, confirmPassword } = values;
     const [signUpClicked, setSignUpClicked] = useState(false);
-    const [status, setStatus] = useState("none");
+    const [status, setStatus] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
     function emailSignUp(event) {
@@ -118,6 +117,11 @@ export default function BasicDetails({ nextStep, handleChange, values }) {
             });
     }
 
+    useEffect(() => {
+        if (password && password === confirmPassword)
+            setStatus("Passwords do not match!");
+    }, []);
+
     const [showMyModel, setShowMyModal] = useState(false);
     const [showMyModel1, setShowMyModal1] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
@@ -125,74 +129,197 @@ export default function BasicDetails({ nextStep, handleChange, values }) {
 
     const Continue = (e) => {
         e.preventDefault();
+        let formData = new FormData(document.getElementById("userSignUpOne"));
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed Up
+                console.log("User in Firebase: ", userCredential.user);
+                const user = userCredential.user;
+                const userData = {
+                    role: "user",
+                    firebaseId: user.uid,
+                }; // Include any other relevant user data
+                console.log("userData: ", userData);
+                // Call Cloud Function to handle custom claims and other operations
+                const functions = getFunctions();
+                const setCustomClaims = httpsCallable(
+                    functions,
+                    "setCustomClaims"
+                );
+                formData.append("firebaseId", user.uid);
+
+                fetch(
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
+                    {
+                        method: "POST",
+                        body: formData,
+                    }
+                )
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.status === "error") {
+                            setSignUpClicked(false);
+                            auth.currentUser.delete();
+                            console.log(data);
+                            throw new Error(
+                                "Invalid form input. Please check again,"
+                            );
+                        } else {
+                            console.log("User in DB: ");
+                            console.log(data);
+                            setCustomClaims(userData)
+                                .then((result) => {
+                                    console.log(
+                                        "result from setCustomClaims from client: ",
+                                        result
+                                    );
+                                    console.log(user);
+                                    setShowMyModal(true);
+                                    setSignUpClicked(false);
+                                    setStatus("success");
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                    setSignUpClicked(false);
+                                    setStatus("failure");
+                                });
+
+                            console.log("Success:", data);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        setStatus("failure");
+                        setSignUpClicked(false);
+                    });
+
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(error);
+                setStatus("failure");
+                setSignUpClicked(false);
+            });
         nextStep();
     };
 
     return (
-        <div className="step">
-            <p className="text-md text-gray-700 leading-tight text-center mt-8 mb-5">
-                Create your account
-            </p>
-            <div className="mb-6">
-                <label
-                    class="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="name"
+        <div className="flex justify-center items-center w-1/2 h-1/2 p-12 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
+            <form className="step w-1/2" id="userSignUpOne">
+                <p className="text-md text-gray-700 leading-tight text-center mt-8 mb-5">
+                    Create your account
+                </p>
+                <div className="mb-6">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="name"
+                    >
+                        Name
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        name="name"
+                        id="name"
+                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        onChange={(e) => handleChange(e)}
+                        value={values.name}
+                    />
+                </div>
+                <div className="mb-6">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="email"
+                    >
+                        Email
+                    </label>
+                    <input
+                        type="email"
+                        placeholder="Email Address"
+                        name="email"
+                        id="email"
+                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        onChange={(e) => handleChange(e)}
+                        value={values.email}
+                    />
+                </div>
+                <div className="mb-6">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="password"
+                    >
+                        Password
+                    </label>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        id="password"
+                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        onChange={(e) => {
+                            handleChange(e);
+                            let tempPass = e.target.value;
+                            if (tempPass && tempPass !== confirmPassword) {
+                                setStatus("Passwords do not match.");
+                            } else {
+                                setStatus(null);
+                            }
+                        }}
+                    />
+                </div>
+                <div className="mb-6">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="confirmPassword"
+                    >
+                        Confirm Password
+                    </label>
+                    <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        name="confirmPassword"
+                        id="confirmPassword"
+                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        onChange={(e) => {
+                            handleChange(e);
+                            let tempPass = e.target.value;
+                            if (tempPass && tempPass !== password) {
+                                setStatus("Passwords do not match.");
+                            } else {
+                                setStatus(null);
+                            }
+                        }}
+                    />
+                </div>
+                {status !== null && (
+                    <div className="text-center font-light text-red-500">
+                        {status}
+                    </div>
+                )}
+                <div
+                    className={`flex justify-center items-center pb-12 gap-4 ${
+                        status ? "disabled" : ""
+                    }`}
                 >
-                    Name
-                </label>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    name="name"
-                    id="name"
-                    className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                    oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
-                    onChange={(e) => handleChange(e)}
-                    value={values.name}
-                />
-            </div>
-            <div className="mb-6">
-                <input
-                    type="email"
-                    placeholder="Email Address"
-                    name="email"
-                    className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                    oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
-                    onChange={(e) => handleChange(e)}
-                    value={values.email}
-                />
-            </div>
-            <div className="mb-6">
-                <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                    oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
-                    onChange={(e) => handleChange(e)}
-                />
-            </div>
-            <div className="mb-6">
-                <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    name="password"
-                    className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                    oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
-                    onChange={(e) => handleChange(e)}
-                />
-            </div>
-            <div className="flex justify-center items-center gap-4">
-                <Button
-                    onClick={Continue}
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                >
-                    Next
-                </Button>
-            </div>
+                    <Button
+                        onClick={Continue}
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                    >
+                        Next
+                    </Button>
+                </div>
+            </form>
         </div>
     );
     // return (

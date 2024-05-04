@@ -9,6 +9,7 @@ const FreshUserSignUp = () => {
         email: "",
         name: "",
         password: "",
+        confirmPassword: "",
         phone: "",
         photo: null,
     });
@@ -34,7 +35,7 @@ const FreshUserSignUp = () => {
     };
 
     const { stepCount } = step;
-    const { name, email, username, password, photo } = step;
+    const { name, email, username, password, photo, confirmPassword } = step;
 
     switch (stepCount) {
         case 1:
