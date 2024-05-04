@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  FaFacebookSquare,
-  FaInstagram,
-  FaGithubSquare,
-} from "react-icons/fa";
-
+import { FaFacebookSquare, FaInstagram, FaGithubSquare } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <div className="w-full  bg-[#277868] text-[#dbdbdb] py-8 px-2 ">
-      <div className="max-w-[1240px] mx-auto  grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-600 py-8">
+      <div className="max-w-[1240px] mx-auto  grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-200 py-8">
         <div>
           <h6 className="font-medium uppercase text-gray-200 pt-2">
             Solutions
