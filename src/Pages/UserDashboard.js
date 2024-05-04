@@ -23,6 +23,7 @@ import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import Maps_DashBoard from "../Components/Maps_Dashboard.js";
 import logo from "../assets/images/logo.png";
 import { RxActivityLog } from "react-icons/rx";
+import Loader from "../assets/images/Animation.gif";
 
 const UserDashboard = () => {
     const [nav1, setNav1] = useState(true);
@@ -184,7 +185,7 @@ const UserDashboard = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

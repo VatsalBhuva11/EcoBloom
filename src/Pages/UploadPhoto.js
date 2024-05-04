@@ -72,10 +72,11 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
 
     return (
         <div className="flex flex-col justify-center items-center w-screen h-screen gap-12">
-            <h1>
+            <h1 className="text-white text-3xl font-extrabold">
                 Upload your photo!{" "}
                 <span className=" font-bold">(Optional)</span>
             </h1>
+            <p className="text-white">{"(<= 100kb)"}</p>
             <form class=" w-80 h-80" id="userSignUpTwo">
                 <label
                     for="dropzone-file"

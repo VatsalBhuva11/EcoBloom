@@ -17,6 +17,7 @@ import {
 import { IoArrowBackSharp } from "react-icons/io5";
 import { Link, Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import Loader from "../assets/images/Animation.gif";
 
 const UserProfile = () => {
     const [showMyModel, setShowMyModal] = useState(false);
@@ -41,8 +42,8 @@ const UserProfile = () => {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
-                if (idTokenResult.role === "org"){
-                    window.location.replace( '/org/dashboard');
+                if (idTokenResult.role === "org") {
+                    window.location.replace("/org/dashboard");
                     // <Navigate to = 'org/dashboard'  replace  = {true}/>
                 }
                 fetch(
@@ -102,7 +103,7 @@ const UserProfile = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

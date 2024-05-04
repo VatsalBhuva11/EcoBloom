@@ -9,6 +9,7 @@ import { HashLoader } from "react-spinners";
 import { useNavigate } from "react-router";
 import { jwtDecode } from "jwt-decode";
 import VideoCard from "./VideoCard.js";
+import Loader from "../assets/images/Animation.gif";
 
 export default function VerifyUsers() {
     const navigate = useNavigate();
@@ -91,7 +92,7 @@ export default function VerifyUsers() {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

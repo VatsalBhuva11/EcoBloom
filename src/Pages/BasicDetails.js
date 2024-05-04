@@ -251,7 +251,7 @@ export default function BasicDetails({
     };
 
     return (
-        <div className="relative top-4 flex flex-col justify-center items-center w-1/2 min-h-fit p-12 py-4 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
+        <div className="flex flex-col bottom-0 justify-center items-center w-1/2 min-h-fit p-12 py-4 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
             <h1 className="text-xl font-extrabold">
                 Join us as a participant!
             </h1>

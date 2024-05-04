@@ -13,6 +13,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import moment from "moment";
 import { jwtDecode } from "jwt-decode";
 import { HashLoader } from "react-spinners";
+import Loader from "../assets/images/Animation.gif";
 
 const Badha_Campaigns = () => {
     const [profile, setProfile] = useContext(ProfileContext);
@@ -73,159 +74,165 @@ const Badha_Campaigns = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }
 
     return (
         <>
-        <div className="h-screen w-full bg-[#fbfbfa]">
-            <div className="flex items-center justify-between ">
-                <Link to="/">
-                    <img
-                        className="w-16 md:w-20 lg:w-24  cursor-pointer ml-2 hover:scale-105 duration-300 mt-1"
-                        src={logo_new}
-                        alt=""
-                    />
-                </Link>
-                <div className="flex items-center mr-4 gap-3">
-                    <Link to="/user/profile">
+            <div className="h-screen w-full bg-[#fbfbfa]">
+                <div className="flex items-center justify-between ">
+                    <Link to="/">
                         <img
-                            className="w-9 md:w-12 lg:w-14 h-9 hover:scale-105 duration-300 md:h-12 lg:h-14 rounded-full"
-                            src={profile.url}
+                            className="w-16 md:w-20 lg:w-24  cursor-pointer ml-2 hover:scale-105 duration-300 mt-1"
+                            src={logo_new}
                             alt=""
                         />
                     </Link>
-                    <p className="hidden sm:flex text-xl font-medium">
-                        {profile.name}
-                    </p>
+                    <div className="flex items-center mr-4 gap-3">
+                        <Link to="/user/profile">
+                            <img
+                                className="w-9 md:w-12 lg:w-14 h-9 hover:scale-105 duration-300 md:h-12 lg:h-14 rounded-full"
+                                src={profile.url}
+                                alt=""
+                            />
+                        </Link>
+                        <p className="hidden sm:flex text-xl font-medium">
+                            {profile.name}
+                        </p>
+                    </div>
+                </div>
+                <div className="flex flex-col mt-2 mx-5 gap-2">
+                    <div className="font-bold text-2xl text-[#4D8E11]">
+                        Ongoing Campaigns
+                    </div>
+                    <div className="w-full flex flex-row overflow-scroll gap-24 overflow-y-hidden pb-2 pl-12">
+                        {ongoingCampaigns.map((campaign) => {
+                            return (
+                                <div className="w-[20.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex flex-col justify-between rounded-lg h-64 lg:pb-4">
+                                    <div className="flex flex-col">
+                                        <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                                            <img
+                                                className="rounded-xl bg-cover"
+                                                src={banner}
+                                                alt=""
+                                            />
+                                        </div>
+                                        <div className=" ml-4">
+                                            <div className="text-lg lg:text-xl font-medium">
+                                                {campaign.name}
+                                            </div>
+                                            <div>
+                                                {campaign.organization.name}
+                                            </div>
+                                            <div className="text-xs">
+                                                {campaign.registeredUsersCount}{" "}
+                                                Members
+                                            </div>
+                                            <div className="flex items-center gap-1 text-[#2a7805] font-bold">
+                                                <FaLocationDot />
+                                                {campaign.city},{" "}
+                                                {campaign.country}
+                                            </div>
+                                            <div className="flex items-center gap-1 text-[#2a7805] text-sm">
+                                                <SlCalender />
+                                                {moment(
+                                                    campaign.startDate
+                                                ).format("lll")}{" "}
+                                                -{" "}
+                                                {moment(
+                                                    campaign.endDate
+                                                ).format("lll")}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="w-full flex justify-end pr-3 mb-3 lg:mb-0">
+                                        <button
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "/campaign/" + campaign._id;
+                                            }}
+                                            className="w-36 h-7 text-[16px] text-[#fbfbfa] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
+                                        >
+                                            See Profile{" "}
+                                            <div className="text-md mt-[0.34rem]">
+                                                {" "}
+                                                <FaArrowRightLong />{" "}
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div className="flex flex-col mt-2 mx-5 gap-2">
+                    <div className="font-bold text-2xl text-[#768469]">
+                        Upcoming Campaigns
+                    </div>
+                    <div className="w-full h-60 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-content-between overflow-scroll overflow-x-hidden gap-y-4 pl-12">
+                        {/* div for upcming card */}
+                        {upcomingCampaigns.map((campaign) => {
+                            return (
+                                <div className="w-[20.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex flex-col justify-between rounded-lg h-64 lg:pb-4">
+                                    <div className="flex flex-col">
+                                        <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                                            <img
+                                                className="rounded-xl bg-cover"
+                                                src={banner}
+                                                alt=""
+                                            />
+                                        </div>
+                                        <div className=" ml-4">
+                                            <div className="text-lg lg:text-xl font-medium">
+                                                {campaign.name}
+                                            </div>
+                                            <div>
+                                                {campaign.organization.name}
+                                            </div>
+                                            <div className="text-xs">
+                                                {campaign.registeredUsersCount}{" "}
+                                                Members
+                                            </div>
+                                            <div className="flex items-center gap-1 text-[#768469] font-bold">
+                                                <FaLocationDot />
+                                                {campaign.city},{" "}
+                                                {campaign.country}
+                                            </div>
+                                            <div className="flex items-center gap-1 text-[#768469] text-sm">
+                                                <SlCalender />
+                                                {moment(
+                                                    campaign.startDate
+                                                ).format("lll")}{" "}
+                                                -{" "}
+                                                {moment(
+                                                    campaign.endDate
+                                                ).format("lll")}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="w-full flex justify-end pr-3 mb-3 lg:mb-0">
+                                        <button
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "/campaign/" + campaign._id;
+                                            }}
+                                            className="w-36 h-7 text-[16px] text-[#fbfbfa] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
+                                        >
+                                            See Profile{" "}
+                                            <div className="text-md mt-[0.34rem]">
+                                                {" "}
+                                                <FaArrowRightLong />{" "}
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
-            <div className="flex flex-col mt-2 mx-5 gap-2">
-                <div className="font-bold text-2xl text-[#4D8E11]">
-                    Ongoing Campaigns
-                </div>
-                <div className="w-full flex flex-row overflow-scroll gap-24 overflow-y-hidden pb-2 pl-12">
-                    {ongoingCampaigns.map((campaign) => {
-                        return (
-                            <div className="w-[20.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex flex-col justify-between rounded-lg h-64 lg:pb-4">
-                                <div className="flex flex-col">
-                                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
-                                        <img
-                                            className="rounded-xl bg-cover"
-                                            src={banner}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className=" ml-4">
-                                        <div className="text-lg lg:text-xl font-medium">
-                                            {campaign.name}
-                                        </div>
-                                        <div>{campaign.organization.name}</div>
-                                        <div className="text-xs">
-                                            {campaign.registeredUsersCount}{" "}
-                                            Members
-                                        </div>
-                                        <div className="flex items-center gap-1 text-[#2a7805] font-bold">
-                                            <FaLocationDot />
-                                            {campaign.city}, {campaign.country}
-                                        </div>
-                                        <div className="flex items-center gap-1 text-[#2a7805] text-sm">
-                                            <SlCalender />
-                                            {moment(campaign.startDate).format(
-                                                "lll"
-                                            )}{" "}
-                                            -{" "}
-                                            {moment(campaign.endDate).format(
-                                                "lll"
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="w-full flex justify-end pr-3 mb-3 lg:mb-0">
-                                    <button
-                                        onClick={() => {
-                                            window.location.href =
-                                                "/campaign/" + campaign._id;
-                                        }}
-                                        className="w-36 h-7 text-[16px] text-[#fbfbfa] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
-                                    >
-                                        See Profile{" "}
-                                        <div className="text-md mt-[0.34rem]">
-                                            {" "}
-                                            <FaArrowRightLong />{" "}
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-            <div className="flex flex-col mt-2 mx-5 gap-2">
-                <div className="font-bold text-2xl text-[#768469]">
-                    Upcoming Campaigns
-                </div>
-                <div className="w-full h-60 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-content-between overflow-scroll overflow-x-hidden gap-y-4 pl-12">
-                    {/* div for upcming card */}
-                    {upcomingCampaigns.map((campaign) => {
-                        return (
-                            <div className="w-[20.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex flex-col justify-between rounded-lg h-64 lg:pb-4">
-                                <div className="flex flex-col">
-                                    <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
-                                        <img
-                                            className="rounded-xl bg-cover"
-                                            src={banner}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className=" ml-4">
-                                        <div className="text-lg lg:text-xl font-medium">
-                                            {campaign.name}
-                                        </div>
-                                        <div>{campaign.organization.name}</div>
-                                        <div className="text-xs">
-                                            {campaign.registeredUsersCount}{" "}
-                                            Members
-                                        </div>
-                                        <div className="flex items-center gap-1 text-[#768469] font-bold">
-                                            <FaLocationDot />
-                                            {campaign.city}, {campaign.country}
-                                        </div>
-                                        <div className="flex items-center gap-1 text-[#768469] text-sm">
-                                            <SlCalender />
-                                            {moment(campaign.startDate).format(
-                                                "lll"
-                                            )}{" "}
-                                            -{" "}
-                                            {moment(campaign.endDate).format(
-                                                "lll"
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="w-full flex justify-end pr-3 mb-3 lg:mb-0">
-                                    <button
-                                        onClick={() => {
-                                            window.location.href =
-                                                "/campaign/" + campaign._id;
-                                        }}
-                                        className="w-36 h-7 text-[16px] text-[#fbfbfa] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
-                                    >
-                                        See Profile{" "}
-                                        <div className="text-md mt-[0.34rem]">
-                                            {" "}
-                                            <FaArrowRightLong />{" "}
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-        </div>
         </>
     );
 };

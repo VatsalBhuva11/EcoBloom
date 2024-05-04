@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import topleftLogo from "../assets/images/logo.png";
 import { IoIosSend } from "react-icons/io";
-import { FaPlus} from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
 import PastCampaignsCards from "../Components/PastCampaignsCards";
 import { Link } from "react-router-dom";
 import CommunityJoinedCard from "./Community_Joined_Card";
@@ -13,6 +13,7 @@ import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
 import { useParams } from "react-router";
 import ViewPost from "../Components/ViewPost.js";
+import Loader from "../assets/images/Animation.gif";
 
 import moment from "moment";
 
@@ -173,7 +174,7 @@ const Orgprofile = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

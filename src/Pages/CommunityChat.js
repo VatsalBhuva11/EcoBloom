@@ -5,23 +5,21 @@ import Chatbar from "../Components/Chatbar";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
+import Loader from "../assets/images/Animation.gif";
+
 import {
     ChatContext,
     ChatContextProvider,
 } from "../Components/ChatContextProvider";
 
-
 export default function CommunityChat() {
     const [user, loading, error] = useAuthState(auth);
     //const [loader, setLoader] = useState(false);
-    
-
-
 
     if (loading) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

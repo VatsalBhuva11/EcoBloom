@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { jwtDecode } from "jwt-decode";
 import { HashLoader } from "react-spinners";
 import moment from "moment";
+import Loader from "../assets/images/Animation.gif";
 
 const Activity_log = () => {
     const [activities, setActivities] = useState([]);
@@ -18,7 +19,7 @@ const Activity_log = () => {
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
-                if (idTokenResult.role === "org"){
+                if (idTokenResult.role === "org") {
                     window.location.replace("/org/dashboard");
                 }
                 fetch(
@@ -37,7 +38,7 @@ const Activity_log = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

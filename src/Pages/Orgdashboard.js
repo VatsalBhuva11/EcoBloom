@@ -27,6 +27,7 @@ import { ProfileContext } from "../Components/ProfileContextProvider.js";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import ViewPost from "../Components/ViewPost.js";
 import moment from "moment";
+import Loader from "../assets/images/Animation.gif";
 
 const Orgdashboard = () => {
     const [nav, setNav] = useState(false);
@@ -152,7 +153,7 @@ const Orgdashboard = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

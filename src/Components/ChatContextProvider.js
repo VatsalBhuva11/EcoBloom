@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { HashLoader } from "react-spinners";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
+import Loader from "../assets/images/Animation.gif";
 
 export const ChatContext = createContext();
 
@@ -74,7 +75,7 @@ export const ChatContextProvider = (props) => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

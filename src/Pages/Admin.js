@@ -9,6 +9,8 @@ import { IoLogOutOutline } from "react-icons/io5";
 import moment from "moment";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
+import Loader from "../assets/images/Animation.gif";
+
 const Admin = () => {
     const [search, setSearch] = useState("");
     const [_userAuth, loading, error] = useAuthState(auth);
@@ -117,7 +119,7 @@ const Admin = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

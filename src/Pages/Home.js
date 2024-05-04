@@ -33,12 +33,14 @@ import Admin from "./Admin.js";
 import VerifyDummy from "./VerifyDummy.js";
 import Quiz from "./Quiz.js";
 import FreshUserSignUp from "./FreshUserSignUp.js";
+import Loader from "../assets/images/Animation.gif";
+
 export default function Home() {
     const [user, loading, error] = useAuthState(auth);
     if (loading) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

@@ -20,7 +20,7 @@ import { HashLoader } from "react-spinners";
 import moment from "moment";
 //import { auth } from "../firebase";
 import { jwtDecode } from "jwt-decode";
-
+import Loader from "../assets/images/Animation.gif";
 
 const OrgCampaignProfile = () => {
     const [profile, setProfile] = useContext(ProfileContext);
@@ -35,15 +35,13 @@ const OrgCampaignProfile = () => {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
                 console.log(idTokenResult);
-                if (idTokenResult.role === "user" || !idTokenResult.role){
-                    window.location.replace( '/user/dashboard');
+                if (idTokenResult.role === "user" || !idTokenResult.role) {
+                    window.location.replace("/user/dashboard");
                     // <Navigate to = 'org/dashboard'  replace  = {true}/>
                 } else {
-
-                    setLoader(false)
+                    setLoader(false);
                 }
             });
-            
         }
 
         fetch(
@@ -75,7 +73,7 @@ const OrgCampaignProfile = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

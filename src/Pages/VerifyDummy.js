@@ -10,6 +10,7 @@ import { useNavigate } from "react-router";
 import { jwtDecode } from "jwt-decode";
 import VideoCard from "./VideoCard.js";
 import logo from "../assets/images/logo.png";
+import Loader from "../assets/images/Animation.gif";
 
 const VerifyDummy = () => {
     const [search, setSearch] = useState("");
@@ -91,7 +92,7 @@ const VerifyDummy = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }

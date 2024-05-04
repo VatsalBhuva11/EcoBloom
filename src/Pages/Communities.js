@@ -10,6 +10,7 @@ import { jwtDecode } from "jwt-decode";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
+import Loader from "../assets/images/Animation.gif";
 
 const Communities = () => {
     const [search, setSearch] = useState("");
@@ -77,7 +78,7 @@ const Communities = () => {
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
-                <HashLoader color="#36d7b7" size={100} />
+                <img src={Loader} height={150} width={150}></img>
             </div>
         );
     }
