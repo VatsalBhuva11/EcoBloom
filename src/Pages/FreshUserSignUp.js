@@ -76,13 +76,19 @@ const FreshUserSignUp = () => {
 
         case 3:
             return (
-                <div>
-                    <MultiStep
-                        nextStep={nextStep}
-                        prevStep={prevStep}
-                        stepCount={step.stepCount}
-                    />
-                    <h1>Registered successfully!</h1>
+                <div className="flex flex-col w-full h-screen justify-center items-center">
+                    <div className="absolute top-5 w-1/2">
+                        <MultiStep
+                            nextStep={nextStep}
+                            prevStep={prevStep}
+                            stepCount={step.stepCount}
+                        />
+                    </div>
+                    <div className="flex flex-col w-full h-screen justify-center items-center">
+                        <h1 className="text-6xl text-green-500 text-center font-light">
+                            Registered Successfully!
+                        </h1>
+                    </div>
                 </div>
             );
         // never forget the default case, otherwise VS code would be mad!

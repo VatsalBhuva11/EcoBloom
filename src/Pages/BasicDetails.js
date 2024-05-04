@@ -355,11 +355,7 @@ export default function BasicDetails({
                         {status}
                     </div>
                 )}
-                <div
-                    className={`flex justify-center items-center pb-12 gap-4 ${
-                        status ? "disabled" : ""
-                    }`}
-                >
+                <div className="flex justify-center items-center pb-12 gap-4">
                     <div className="action-buttons">
                         <button
                             id="prev"
