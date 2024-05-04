@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import arrow from "../assets/images/arrow.png";
 import message from "../assets/images/message.png";
-import person from "../assets/images/person.png";
+import person from "../assets/images/unknown.jpg";
 import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";

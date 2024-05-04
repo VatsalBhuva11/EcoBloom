@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import person from "../assets/images/person.png";
+import person from "../assets/images/unknown.jpg";
 import ChatBubbleArrival from "./ChatBubbleArrival";
 import ChatBubbleDept from "./ChatBubbleDept";
 import { CiCirclePlus } from "react-icons/ci";
