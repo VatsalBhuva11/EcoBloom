@@ -121,11 +121,6 @@ export default function Login() {
         //     });
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                // new form data with the email, name, and photo as google photo
-                // register user in the backend, no need to link with existing auth provider
-                // linkWithCredential option once user logged in through google
-                // linkWithGoogle option once user logged in through Creds
                 console.log(result);
 
                 auth.currentUser
