@@ -23,6 +23,8 @@ const User = new Schema({
     photoPathFirestore: {
         type: String,
         required: true,
+        default:
+            "https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/user%2Funknown.jpg?alt=media&token=cbde7ca9-e356-4d34-90f7-1204eadff19d",
     },
     phone: {
         type: String,
