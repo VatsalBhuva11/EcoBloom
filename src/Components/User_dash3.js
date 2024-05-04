@@ -47,6 +47,14 @@ const User_dash3 = () => {
             PAST CAMPAIGNS
           </button>
         </div>
+        <div className="w-full mr-4">
+          <input
+            // onChange={(e) => setSearch(e.target.value.toLowerCase())}
+            type="text"
+            className="h-11 rounded-2xl border-[1.5px] border-[#277868] w-[98%] px-3 text-[#277868]"
+            placeholder="🔍"
+          />
+        </div>
         <div className="h-[90%] overflow-scroll overflow-x-hidden">
           {task === 0 ? (
             <>

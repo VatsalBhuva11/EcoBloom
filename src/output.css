@@ -1063,6 +1063,10 @@ video {
   height: 2.5rem;
 }
 
+.h-11{
+  height: 2.75rem;
+}
+
 .h-12{
   height: 3rem;
 }
@@ -1861,6 +1865,10 @@ video {
 
 .border-4{
   border-width: 4px;
+}
+
+.border-\[1\.5px\]{
+  border-width: 1.5px;
 }
 
 .border-\[1px\]{

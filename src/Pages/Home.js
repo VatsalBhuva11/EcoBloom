@@ -104,6 +104,7 @@ export default function Home() {
                             path="/signup/user"
                             element={<UserAuth />}
                         /> */}
+<<<<<<< Updated upstream
                                 <Route
                                     exact
                                     path="/user/dashboard"
@@ -129,6 +130,21 @@ export default function Home() {
                                     path="/signup/org"
                                     element={<OrgSignup />}
                                 />
+=======
+                <Route
+                  exact
+                  path="/user/dashboard"
+                  element={<New_User_Dashboard/>}
+                />
+                <Route exact path="/user/join" element={<Communities />} />
+                <Route exact path="/user/profile" element={<UserProfile />} />
+                <Route
+                  exact
+                  path="/org/edit/profile"
+                  element={<Edit_Profile_Org />}
+                />
+                <Route exact path="/signup/org" element={<OrgSignup />} />
+>>>>>>> Stashed changes
 
                                 <Route
                                     exact
