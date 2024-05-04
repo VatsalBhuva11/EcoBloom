@@ -62,13 +62,13 @@ const NewPost = ({ visible, onClose }) => {
             onClick={handleOnClose}
             className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
         >
-            <div className="bg-[#CDE1C9] p-2 rounded w-92 flex flex-col justify-center px-20">
-                <div className="text-center font-bold text-lg mb-3">
+            <div className="bg-[#d3d3d3] p-2 rounded w-92 flex flex-col justify-center px-20">
+                <div className="text-center text-[#277868] font-bold text-lg mb-3">
                     ADD A NEW POST
                 </div>
                 <form id="postForm">
                     <input
-                        className="block w-full text-sm  file:bg-[#0f1035] mt-4  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
+                        className="block w-full text-sm file:bg-[#277868] mt-4  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#277868]"
                         type="file"
                         name="photo"
                         accept="image/*"
@@ -77,7 +77,7 @@ const NewPost = ({ visible, onClose }) => {
                     <div className="mt-4">
                         <label
                             for="text"
-                            className="block mb-2 text-sm font-medium text-gray-900 "
+                            className="block mb-2 text-sm font-medium text-[#277868] "
                         >
                             Caption for post
                         </label>
@@ -85,7 +85,7 @@ const NewPost = ({ visible, onClose }) => {
                             type="text"
                             name="caption"
                             id="caption"
-                            className=" bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                            className=" bg-[#DBEAE7] border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
                             required
                         />
                         <div className="flex justify-around mt-7 mb-5">
@@ -95,27 +95,27 @@ const NewPost = ({ visible, onClose }) => {
                                         .getElementById("container")
                                         .click();
                                 }}
-                                className="text-lg bg-[#fbfbfa] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
+                                className="text-lg bg-transparent text-[#277868] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
                             >
                                 Cancel
                             </button>
                             {!clicked && status === null ? (
                                 <button
                                     onClick={handlePostCreation}
-                                    className="text-lg bg-[#0F1035] text-[#fbfbfa] w-32 h-8 rounded-lg"
+                                    className="text-lg bg-[#277868] text-[#fbfbfa] w-32 h-8 rounded-lg"
                                 >
                                     Create Post
                                 </button>
                             ) : clicked && status === null ? (
                                 <button
-                                    className="text-lg bg-[#15174a] text-[#fbfbfa] w-32 h-8 rounded-lg"
+                                    className="text-lg bg-[#277868] text-[#fbfbfa] w-32 h-8 rounded-lg"
                                     disabled
                                 >
                                     Creating...
                                 </button>
                             ) : !clicked && status === true ? (
                                 <button
-                                    className="text-lg bg-[#208445] text-[#ffffff] w-32 h-8 rounded-lg"
+                                    className="text-lg bg-[#277868] text-[#ffffff] w-32 h-8 rounded-lg"
                                     disabled
                                 >
                                     Success!

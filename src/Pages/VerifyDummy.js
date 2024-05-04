@@ -113,7 +113,7 @@ const VerifyDummy = () => {
                     </Link>
                 </div>
                 <div className="w-1/3 flex justify-center">
-                    <p className="text-lg sm:text-2xl md:text-3xl font-bold text-[#191B58] pt-2">
+                    <p className="text-lg sm:text-2xl md:text-3xl font-bold text-[#277868] pt-2">
                         VERIFY USERS
                     </p>
                 </div>
@@ -132,11 +132,11 @@ const VerifyDummy = () => {
             </div>
 
             <div className="flex items-center justify-center">
-                <div className="flex justify-center items-center rounded-3xl px-2 py-1 sm:p-2 md:p-4 bg-gradient-to-r from-[#353657] to-[#404162] w-3/4 mt-4 md:mt-8">
+                <div className="flex justify-center items-center rounded-3xl px-2 py-1 sm:p-2 md:p-4 bg-[#277868] w-3/4 mt-4 md:mt-8">
                     <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-2 md:text-[20px] sm:text-[15px] text-[10px]">
                         <div className="flex justify-center">
                             <p>Submitted: </p>
-                            <p className="pl-2 text-[#EAC5C5]">
+                            <p className="pl-2 text-gray-100">
                                 {campaign.registeredUsersCount}
                             </p>
                         </div>
@@ -145,7 +145,7 @@ const VerifyDummy = () => {
                         <div className="flex justify-center">
                             <p>Accepted: </p>
                             <p
-                                className="pl-2 text-[#EAC5C5]"
+                                className="pl-2 text-gray-100"
                                 id="verifiedUsers"
                             >
                                 {campaign.verifiedUsersCount}
@@ -156,7 +156,7 @@ const VerifyDummy = () => {
                         <div className="flex justify-center">
                             <p>Remaining: </p>
                             <p
-                                className="pl-2 text-[#EAC5C5]"
+                                className="pl-2 text-gray-100"
                                 id="remainingUsers"
                             >
                                 {campaign.registeredUsersCount -
@@ -180,7 +180,7 @@ const VerifyDummy = () => {
                 />
             </div>
             <div className="flex items-center justify-center font-semibold ">
-                <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-gradient-to-r from-[#353657] to-[#404162] w-11/12 mt-2 md:mt-2">
+                <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#277868] w-11/12 mt-2 md:mt-2">
                     <div className="w-full text-gray-100 border-r-2 border-b-gray-700 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
                         <div className="flex justify-center">
                             <p>Name </p>
@@ -216,8 +216,8 @@ const VerifyDummy = () => {
                     console.log("user: ", user);
                     return (
                         <div className="flex items-center justify-center  ">
-                            <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#E4E8D3] w-11/12 mt-3 md:mt-4">
-                                <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                            <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#D7E6E3] w-11/12 mt-3 md:mt-4">
+                                <div className="w-full text-[#277868] border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
                                     <div className="flex justify-center">
                                         <p className="font-semibold">
                                             {" "}
@@ -225,12 +225,12 @@ const VerifyDummy = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                                <div className="w-full text-[#277868] border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
                                     <div className="flex justify-center">
                                         <p>{user.email}</p>
                                     </div>
                                 </div>
-                                <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                                <div className="w-full text-[#277868] border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
                                     <div className="flex justify-center">
                                         <p> {user.phone ? user.phone : "-"}</p>
                                     </div>
@@ -240,7 +240,7 @@ const VerifyDummy = () => {
                                         user._id
                                     ) ? (
                                         <a href="#">
-                                            <button className="hover:scale-105 duration-300  bg-[#6BBE7D] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[14px]">
+                                            <button className="hover:scale-105 duration-300  bg-[#277868] text-[#edede3] w-32 h-8 rounded-2xl  font-medium text-[14px]">
                                                 VERIFIED
                                             </button>
                                         </a>

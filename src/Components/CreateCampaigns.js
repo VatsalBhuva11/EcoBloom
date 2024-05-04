@@ -23,7 +23,7 @@ export default function CreateCampaigns() {
 
     return (
         <div className="w-full h-full bg-[#fbfbfa] justify-between mt-16 bg-opacity-0">
-            <div className="w-full h-[750px] absolute z-0 mx-auto overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat bg-[url('./assets/images/beach_cleaning_edited.jpg')]"></div>
+            <div className="w-full h-[750px] absolute z-0 mx-auto overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat bg-[#277868]"></div>
             <div className="max-w-[1240px] mx-auto justify-center items-center relative z-2">
                 {/* <h1 className="py-3 text-[#0F1035] text-4xl md:text-6xl text-center font-bold">
           About Us
@@ -33,13 +33,13 @@ export default function CreateCampaigns() {
                         <h1
                         data-aos = "fade-up"
                         data-aos-duration = "1000" 
-                        className="text-[#010204] text-4xl md:text-6xl text-left font-bold">
+                        className="text-[#dbdbdb] text-4xl md:text-6xl text-left font-bold">
                             CREATE
                         </h1>
                         <h1
                          data-aos = "fade-up"
                          data-aos-duration = "1000"
-                        className="text-[#277868] text-4xl md:text-6xl text-left font-bold">
+                        className="text-[#dbdbdb] text-4xl md:text-6xl text-left font-bold">
                             CAMPAIGNS
                         </h1>
                         <p
@@ -61,7 +61,7 @@ export default function CreateCampaigns() {
                             }}
                             data-aos = "fade-up"
                         data-aos-duration = "1000"
-                            className="flex mt-8 py-2 px-6 text-center md:text-3xl text-[#dbdbdb] border bg-[#277868] hover:scale-110 duration-300  rounded-md"
+                            className="flex mt-8 py-2 px-6 text-center md:text-3xl bg-[#dbdbdb] border text-[#277868] hover:scale-110 duration-300 hover:shadow-xl rounded-md"
                         >
                             Create Now
                             <FaArrowRight

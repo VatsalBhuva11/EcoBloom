@@ -38,9 +38,9 @@ const Orgdashboard = () => {
     // const [loader, setLoader] = useState(true);
     const [user, loading, error] = useAuthState(auth);
     const [status, setStatus] = useState("about");
-    const [ifBold1, setIfBold1] = useState("bold");
-    const [ifBold2, setIfBold2] = useState("normal");
-    const [ifBold3, setIfBold3] = useState("normal");
+    const [ifBold1, setIfBold1] = useState("277868");
+    const [ifBold2, setIfBold2] = useState("545457");
+    const [ifBold3, setIfBold3] = useState("545457");
     const [showMyModel, setShowMyModal] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
 
@@ -126,25 +126,25 @@ const Orgdashboard = () => {
     }, [org]);
 
     const handleABoutChange = () => {
-        setIfBold1("bold");
-        setIfBold2("normal");
-        setIfBold3("normal");
+        setIfBold1("277868");
+        setIfBold2("545457");
+        setIfBold3("545457");
         //console.log("about")
         setStatus("about");
     };
 
     const handlePastChange = () => {
-        setIfBold1("normal");
-        setIfBold2("normal");
-        setIfBold3("bold");
+        setIfBold3("277868");
+        setIfBold2("545457");
+        setIfBold1("545457");
         //console.log("people")
         setStatus("people");
     };
 
     const handlePostChange = () => {
-        setIfBold1("normal");
-        setIfBold2("bold");
-        setIfBold3("normal");
+        setIfBold2("277868");
+        setIfBold1("545457");
+        setIfBold3("545457");;
         console.log("post page");
         setStatus("post");
     };
@@ -164,14 +164,15 @@ const Orgdashboard = () => {
         <div className="flex">
             <div className=" flex flex-col w-full h-screen lg:w-[75%]">
                 {/* navbar */}
-                <div className="w-full bg-[#0f1035] text-gray-200 flex shadow-2xl justify-between">
+                <div className="w-full bg-[#277868] text-gray-200 flex shadow-2xl justify-between">
                     <div className="flex items-center ">
                         <Link to="/">
                             <img
-                                className="h-12 p-2  hover:scale-105 duration-300 md:h-16 mt-2"
+                                className="h-12 p-2  rounded-lg hover:scale-105 duration-300 md:h-16 mt-2"
                                 src={org_logo}
                                 alt=""
                             />
+    
                         </Link>
                         <h1 className="text-sm sm:text-xl md:text-2xl  ">
                             ORGANISATION DASHBOARD
@@ -185,20 +186,20 @@ const Orgdashboard = () => {
                     </div>
                 </div>
                 {/* navbar */}
-                <div className="w-full h-full bg-[#fbfbfa]">
-                    <div className="mx-2 flex flex-col bg-[#DFE4C5] rounded-lg">
+                <div className="w-full h-full bg-[#e5e5e2]">
+                    <div className="h-[67%] mx-2 flex flex-col bg-[#d3d3d3] border-[1px] border-gray-500 shadow-2xl rounded-lg">
                         <div className="overflow-hidden">
                             <img
-                                className="h-32 sm:h-36 md:h-48 w-full object-cover"
+                                className="h-32 sm:h-36 md:h-48 w-full object-cover rounded-lg"
                                 src={banner}
                                 alt=""
                             />
                         </div>
 
-                        <div className="flex border-b-2 pb-5 border-[#7A7A7A]">
+                        <div  className="flex border-b-2 pb-5 border-[#7A7A7A] ">
                             <div className="w-[20%] md:w-[15%]">
                                 <img
-                                    className="h-16 sm:h-24 md:h-32 mt-[-32px] md:mt-[-48px] pl-4 object-cover absolute"
+                                    className="h-16 sm:h-24 md:h-32 rounded-lg mt-[-32px] md:mt-[-48px] pl-4 object-cover absolute"
                                     src={logo}
                                     alt=""
                                 />
@@ -222,7 +223,7 @@ const Orgdashboard = () => {
                   </Link> */}
                                     <Link to={"/org/edit/profile"}>
                                         {" "}
-                                        <button className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold">
+                                        <button className="bg-[#277868] flex hover:scale-105 duration-300 text-[#e2e2e1] rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold">
                                             <HiPencil
                                                 className="pt-1 sm:flex hidden"
                                                 size={25}
@@ -239,21 +240,21 @@ const Orgdashboard = () => {
                             >
                                 <button onClick={handleABoutChange}>
                                     <p
-                                        className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold1}`}
+                                        className={`text-md sm:text-lg md:text-xl cursor-pointer font-semibold text-[#${ifBold1}]`}
                                     >
                                         ABOUT
                                     </p>
                                 </button>
                                 <button onClick={handlePostChange}>
                                     <p
-                                        className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold2}`}
+                                        className={`text-md sm:text-lg md:text-xl cursor-pointer font-semibold text-[#${ifBold2}]`}
                                     >
                                         POSTS
                                     </p>
                                 </button>
                                 <button onClick={handlePastChange}>
                                     <p
-                                        className={`text-md sm:text-lg md:text-xl cursor-pointer font-${ifBold3}`}
+                                        className={`text-md sm:text-lg md:text-xl cursor-pointer font-semibold text-[#${ifBold3}]`}
                                     >
                                         PAST CAMPAIGNS
                                     </p>
@@ -262,7 +263,7 @@ const Orgdashboard = () => {
                             <div>
                                 <button
                                     onClick={() => setShowMyModal(true)}
-                                    className="bg-[#0f1035] mb-2 flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:px-3  text-md sm:text-lg md:text-lg gap-2 font-semibold"
+                                    className="bg-[#277868] mb-2 flex hover:scale-105 duration-300 text-[#e2e2e1] rounded-3xl py-1 px-3 sm:px-3  text-md sm:text-lg md:text-lg gap-2 font-semibold"
                                 >
                                     <FaPlus className=" mt-1" size={20} /> New
                                     Post
@@ -270,9 +271,10 @@ const Orgdashboard = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="h-[33%] overflow-scroll overflow-x-hidden">
                     {status === "about" ? (
                         <div>
-                            <div className="text-center lg:text-2xl text-lg font-semibold mt-5">
+                            <div className="text-center text-[#277868] lg:text-2xl text-lg font-semibold mt-5">
                                 ABOUT US
                             </div>
                             <div className="mt-4 lg:text-lg text-sm ml-2 p-2 font-medium">
@@ -280,7 +282,7 @@ const Orgdashboard = () => {
                             </div>
                         </div>
                     ) : status === "post" ? (
-                        <div>
+                        <div className="">
                             {posts.length > 0 ? (
                                 posts.map((post) => {
                                     return (
@@ -295,7 +297,7 @@ const Orgdashboard = () => {
                                                 className="cursor-pointer flex items-center justify-center"
                                             >
                                                 <img
-                                                    className="h-full w-full"
+                                                    className="h-[200px] w-2/3"
                                                     src={post.photo}
                                                     alt=""
                                                 />
@@ -310,11 +312,11 @@ const Orgdashboard = () => {
                             )}
                         </div>
                     ) : (
-                        <div>
+                        <div className="grid grid-cols-2">
                             {org?.completedCampaigns?.length > 0 ? (
                                 org.completedCampaigns.map((campaign) => {
                                     return (
-                                        <div className="grid grid-cols-2 gap-5 p-8 place-items-center">
+                                        <div className=" p-8 place-items-center">
                                             <div className="flex items-center justify-center">
                                                 <PastCampaignsCards
                                                     campaign={campaign}
@@ -330,11 +332,12 @@ const Orgdashboard = () => {
                             )}
                         </div>
                     )}
+                    </div>
                 </div>
             </div>
             {/* user profile ends */}
             <div className="hidden lg:flex lg:flex-col lg:w-[25%]">
-                <div className="px-2 w-full h-screen fixed bg-[#0f1035] text-gray-200 shadow-3xl ">
+                <div className="px-2 w-full h-screen fixed bg-[#277868] text-gray-200 shadow-slate-950 shadow-2xl ">
                     {/* search bar */}
 
                     <div className="search w-[98%]  md:ml-4 lg:ml-8 mt-14">

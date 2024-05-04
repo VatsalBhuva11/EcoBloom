@@ -25,7 +25,7 @@ const NewPost = ({ visible, onClose, post, org }) => {
             onClick={handleOnClose}
             className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
         >
-            <div className="bg-[#CDE1C9] p-2 rounded-lg w-[40%] bg-contain flex flex-col justify-center">
+            <div className="bg-[#e2e2e1] p-2 rounded-lg w-[40%] bg-contain flex flex-col justify-center">
                 <div className="flex justify-between">
                     <div className="flex items-center lg:gap-3 p-2 hover:scale-105 duration-300">
                         <img
@@ -41,9 +41,9 @@ const NewPost = ({ visible, onClose, post, org }) => {
                         </div>
                     </div>
                     <div className="flex gap-2 mr-2">
-                        <BsThreeDots className="text-xl" />
+                        
                         <IoMdClose
-                            className="text-xl"
+                            className="text-3xl"
                             onClick={() => {
                                 onClose();
                             }}
@@ -59,7 +59,7 @@ const NewPost = ({ visible, onClose, post, org }) => {
                     <img
                         src={post.photo}
                         alt=".."
-                        className="rounded-lg w-full"
+                        className="rounded-lg w-full h-[400px]"
                     />
                 </div>
                 {/* <div className="flex justify-around mt-2">

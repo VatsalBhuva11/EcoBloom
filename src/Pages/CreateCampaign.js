@@ -95,8 +95,8 @@ const CreateCampaign = () => {
     }
 
     return (
-        <div className="w-screen h-screen p-8 sm:p-12 lg:p-20 bg-[#fbfbfa] flex flex-col justify-evenly gap-1 sm:gap-3">
-            <div className="flex items-center gap-5 text-[#0F1035]">
+        <div className="w-screen h-screen p-8 sm:p-12 lg:p-16 bg-[#fbfbfa] flex flex-col justify-evenly gap-1 sm:gap-3">
+            <div className="flex items-center gap-5 text-[#277868]">
                 <Link
                     to="/org/dashboard"
                     className="text-xl sm:text-3xl lg:text-4xl mt-0 sm:mt-1 lg:mt-2 cursor-pointer hover:scale-110 duration-300"
@@ -114,12 +114,12 @@ const CreateCampaign = () => {
             >
                 <div className="flex gap-5">
                     <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
-                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                             Campaign Name*
                         </div>
                         <div>
                             <input
-                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                                 placeholder="Greenvalley Campaign"
                                 type="text"
                                 name="name"
@@ -133,12 +133,12 @@ const CreateCampaign = () => {
                         </div>
                     </div>
                     <div className="hidden sm:flex flex-col w-[25%] gap-1 lg:gap-1">
-                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                             Start Date*
                         </div>
                         <div>
                             <input
-                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                                 type="datetime-local"
                                 name="startDate"
                                 onChange={(e) => {
@@ -162,12 +162,12 @@ const CreateCampaign = () => {
 
                 <div className="flex gap-5">
                     <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
-                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                             Campaign Address*
                         </div>
                         <div>
                             <input
-                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                                 placeholder="10 Downing Street ,London, United Kingdom"
                                 type="text"
                                 name="address"
@@ -179,9 +179,9 @@ const CreateCampaign = () => {
                                 }}
                             />
                         </div>
-                        <a className="flex text-[#862B2B] text-[1rem] sm:text-lg lg:text-xl font-bold items-center ">
+                        <a className="flex text-[#277868] text-[1rem] sm:text-lg lg:text-xl font-bold items-center cursor-pointer hover:underline">
                             <div
-                                className="cursor-pointer"
+                                className=""
                                 onClick={() => setShowMyModal1(true)}
                             >
                                 <FaLocationDot />
@@ -195,12 +195,12 @@ const CreateCampaign = () => {
                         </a>
                     </div>
                     <div className="hidden sm:flex flex-col w-[25%] gap-1 lg:gap-1">
-                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                        <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                             End Date*
                         </div>
                         <div>
                             <input
-                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                                 type="datetime-local"
                                 name="endDate"
                                 onChange={(e) => {
@@ -220,24 +220,24 @@ const CreateCampaign = () => {
 
                 <div className="flex sm:hidden justify-between">
                     <div className="flex flex-col w-[45%] gap-1 lg:gap-1">
-                        <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                        <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                             Start Date*
                         </div>
                         <div>
                             <input
-                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                                 type="datetime-local"
                                 name="startDate2"
                             />
                         </div>
                     </div>
                     <div className="flex flex-col w-[45%] gap-1 lg:gap-1">
-                        <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                        <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                             End Date*
                         </div>
                         <div>
                             <input
-                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                                className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                                 type="datetime-local"
                                 name="endDate"
                             />
@@ -250,12 +250,12 @@ const CreateCampaign = () => {
                 <div className="flex gap-5 mt-2">
                     <div className="flex w-full sm:w-[74%] justify-between">
                         <div className="flex flex-col w-[48%] gap-1 lg:gap-1">
-                            <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                            <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                                 City*
                             </div>
                             <div>
                                 <input
-                                    className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                                    className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                                     placeholder="London"
                                     type="text"
                                     name="city"
@@ -269,12 +269,12 @@ const CreateCampaign = () => {
                             </div>
                         </div>
                         <div className="flex flex-col w-[48%] gap-1 lg:gap-1">
-                            <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                            <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                                 Country*
                             </div>
                             <div>
                                 <input
-                                    className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                                    className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                                     placeholder="United Kingdom"
                                     type="text"
                                     name="country"
@@ -289,14 +289,14 @@ const CreateCampaign = () => {
                         </div>
                     </div>
                     <div className="flex flex-col w-[25%] gap-1 lg:gap-1">
-                        <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                        <div className="text-[1.0rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                             Location*
                         </div>
 
                         <select
                             name="locationType"
                             id="locationType"
-                            className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                            className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                             onChange={(e) => {
                                 console.log(e.target.value);
                                 setFormData({
@@ -320,12 +320,12 @@ const CreateCampaign = () => {
                 </div>
 
                 <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
-                    <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                    <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                         Campaign Goal*
                     </div>
                     <div>
                         <input
-                            className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                            className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                             placeholder="spread awareness through cleanliness"
                             type="text"
                             name="goal"
@@ -339,12 +339,12 @@ const CreateCampaign = () => {
                     </div>
                 </div>
                 <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">
-                    <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#333333]">
+                    <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
                         Guidelines*
                     </div>
                     <div>
                         <input
-                            className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
+                            className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#DBEAE7] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
                             placeholder="maintain decorum during the campaign"
                             type="text"
                             name="guidelines"
@@ -361,14 +361,14 @@ const CreateCampaign = () => {
                     {!clicked ? (
                         <button
                             onClick={handleCreateCampaign}
-                            className="text-xl sm:text-2xl bg-[#0F1035] text-[#fbfbfa] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
+                            className="text-xl sm:text-2xl bg-[#277868] text-[#fbfbfa] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
                         >
                             CREATE
                         </button>
                     ) : (
                         <button
                             onClick={handleCreateCampaign}
-                            className="text-xl sm:text-2xl bg-[#0f1035e9] text-[#fbfbfa] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
+                            className="text-xl sm:text-2xl bg-[#277868] text-[#fbfbfa] px-2 sm:px-5 w-auto h-12 rounded-lg cursor-pointer hover:scale-110 duration-300"
                             disabled
                         >
                             Creating...
@@ -376,7 +376,7 @@ const CreateCampaign = () => {
                     )}
 
                     <Link to="/org/dashboard">
-                        <button className="text-xl sm:text-2xl bg-[#fbfbfa] text-[#0F1035] px-2 sm:px-5 w-auto h-12 rounded-lg border-2 border-[#0F1035] cursor-pointer hover:scale-110 duration-300">
+                        <button className="text-xl sm:text-2xl bg-[#fbfbfa] text-[#277868] px-2 sm:px-5 w-auto h-12 rounded-lg border-2 border-[#0F1035] cursor-pointer hover:scale-110 duration-300">
                             CANCEL
                         </button>
                     </Link>

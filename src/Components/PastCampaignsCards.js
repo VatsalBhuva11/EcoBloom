@@ -10,18 +10,17 @@ export default function PastCampaignsCards({ campaign }) {
             <div className="w-[21.5rem] lg:w-[24.5rem] bg-[#DFE4C5] flex flex-col justify-between rounded-lg h-72 lg:h-64">
                 <div className="card">
                     <div className="flex flex-col">
-                        <div className="w-[21.5rem] lg:w-[24.5rem] h-20 p-2 overflow-hidden">
+                        <div className="w-[21.5rem] lg:w-[24.5rem] h-28 p-2 overflow-hidden">
                             <img
                                 className="rounded-xl bg-cover"
                                 src={campaignbanner}
                                 alt=""
                             />
                         </div>
-                        <div className=" ml-4">
+                        <div className=" ml-4 ">
                             <div className="text-lg lg:text-xl font-medium">
                                 {campaign.name}
                             </div>
-                            <div>{campaign.goal}</div>
                             <div className="text-xs">
                                 {campaign.registeredUsersCount} registered
                             </div>
@@ -43,7 +42,7 @@ export default function PastCampaignsCards({ campaign }) {
                                 window.location.href =
                                     "/org/campaign/" + campaign._id;
                             }}
-                            className="w-36 h-7 text-[16px] text-[#fbfbfa] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
+                            className="w-36 h-7 mt-4 text-[16px] text-[#fbfbfa] rounded-3xl bg-[#0F1035] hover:scale-105 duration-200 flex justify-center gap-1"
                         >
                             View Details
                             <div className="text-md mt-[0.34rem]">
