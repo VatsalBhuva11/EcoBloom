@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import person from "../assets/images/person.png";
+import person from "../assets/images/unknown.jpg";
 import member from "../assets/images/member.png";
 import deleteicon from "../assets/images/delete.png";
 import { ChatContext } from "./ChatContextProvider";

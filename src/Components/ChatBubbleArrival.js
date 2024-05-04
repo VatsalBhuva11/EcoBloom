@@ -1,5 +1,5 @@
 import React from "react";
-import person from "../assets/images/person.png";
+import person from "../assets/images/unknown.jpg";
 import { useState } from "react";
 
 export default function ChatBubbleArrival({ message }) {
