@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { BsThreeDots } from "react-icons/bs";
-import person from "../assets/images/person.png";
+import person from "../assets/images/unknown.jpg";
 import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import { BiRepost } from "react-icons/bi";
