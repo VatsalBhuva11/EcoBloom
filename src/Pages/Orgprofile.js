@@ -292,7 +292,7 @@ const Orgprofile = () => {
                                                 console.log("u already joined");
                                                 handleLeaveCommunity();
                                             }}
-                                            className="bg-[#e24d4d] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
+                                            className="bg-[#e25050ed] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
                                         >
                                             Leave Community
                                         </button>
