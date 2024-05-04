@@ -16,11 +16,14 @@ import ViewPost from "../Components/ViewPost.js";
 import Loader from "../assets/images/Animation.gif";
 
 import moment from "moment";
+import LeaveCommCard from "./LeaveCommCard.js";
 
 const Orgprofile = () => {
     const params = useParams();
     const [showMyModel, setShowMyModal] = useState(false);
+    const [showMyModel2, setShowMyModel2] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
+    const handleOnClose2 = () => setShowMyModel2(false);
 
     const [status, setStatus] = useState("about");
     const [ifBold1, setIfBold1] = useState("bold");
@@ -171,6 +174,50 @@ const Orgprofile = () => {
         }
     };
 
+    const handleLeaveCommunity = () => {
+        setClicked(true);
+        if (auth.currentUser) {
+            auth.currentUser.getIdToken().then((idToken) => {
+                const idTokenResult = jwtDecode(idToken);
+                if (idTokenResult.role !== "user") {
+                    setJoinCommStatus(false);
+                    setClicked(false);
+                    setShowMyModal(true);
+                    console.log("Please login as a user first.");
+                } else {
+                    fetch(
+                        `${process.env.REACT_APP_DEPLOYED_API_URL}/community/leave/${params.orgId}`,
+                        {
+                            headers: {
+                                authorization: `Bearer ${idToken}`,
+                                "Content-Type": "application/json", //important
+                            },
+                            method: "POST",
+                        }
+                    )
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.status === "OK") {
+                                setJoinCommStatus(false);
+                                if (data.data.status !== "not joined") {
+                                    setShowMyModel2(true);
+                                }
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        })
+                        .finally(() => {
+                            setClicked(false);
+                        });
+                }
+            });
+        } else {
+            setClicked(false);
+            setJoinCommStatus(false);
+        }
+    };
+
     if (loading || loader) {
         return (
             <div className="h-screen flex items-center justify-center">
@@ -239,16 +286,24 @@ const Orgprofile = () => {
                                             Community Chat
                                         </button>
                                     </Link>
-                                    {joinCommStatus ? (
+                                    {joinCommStatus && !clicked ? (
                                         <button
                                             onClick={() => {
                                                 console.log("u already joined");
+                                                handleLeaveCommunity();
                                             }}
-                                            className="bg-[#0f1035] bg-opacity-50 flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
+                                            className="bg-[#e24d4d] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
                                         >
-                                            Joined
+                                            Leave Community
                                         </button>
-                                    ) : !clicked ? (
+                                    ) : joinCommStatus && clicked ? (
+                                        <button
+                                            disabled
+                                            className="bg-red-400 flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
+                                        >
+                                            Leaving...
+                                        </button>
+                                    ) : !joinCommStatus && !clicked ? (
                                         <button
                                             onClick={handleJoinCommunity}
                                             className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
@@ -262,7 +317,7 @@ const Orgprofile = () => {
                                     ) : (
                                         <button
                                             disabled
-                                            className="bg-[#141545] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
+                                            className="bg-[#17184a92] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
                                         >
                                             <FaPlus
                                                 className="pt-1 sm:flex hidden"
@@ -472,6 +527,7 @@ const Orgprofile = () => {
                 post={showMyModel1.post}
                 org={{ name: org.name, logo: logo }}
             />
+            <LeaveCommCard onClose={handleOnClose2} visible={showMyModel2} />
         </div>
     );
 };

@@ -20,6 +20,7 @@ export const ChatContextProvider = (props) => {
 
     useEffect(() => {
         setLoader(true);
+        console.log("USEEFFECT: ", auth.currentUser);
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 fetch(
@@ -72,6 +73,8 @@ export const ChatContextProvider = (props) => {
                         );
                     });
             });
+        } else {
+            setLoader(false);
         }
     }, [loading]);
     if (loading || loader) {

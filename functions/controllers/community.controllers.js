@@ -93,3 +93,69 @@ export const joinCommunity = async (req, res) => {
         response_500(res, "Error occurred while joining community", err);
     }
 };
+
+export const leaveCommunity = async (req, res) => {
+    try {
+        const orgId = req.params.orgId;
+        const userId = req.user.userId;
+        const org = await Organization.findOne({ firebaseId: orgId });
+        if (!org) {
+            response_404(res, "org not found");
+        }
+        const community = await Community.findOne({
+            organization: org._id,
+        });
+        const user = await User.findById(userId);
+
+        if (!community) {
+            response_404(res, "Community not found");
+        } else if (!user) {
+            response_404(res, "User not found");
+        } else {
+            const isUserAlreadyRegistered =
+                community?.joinedUsers?.includes(userId);
+            if (!isUserAlreadyRegistered) {
+                response_200(res, "User is not registered", {
+                    status: "not registered",
+                });
+            } else {
+                const updatedCommunity = await Community.findByIdAndUpdate(
+                    community._id,
+                    {
+                        $pull: {
+                            joinedUsers: userId,
+                        },
+                        userCount: community.userCount - 1,
+                    },
+                    {
+                        new: true,
+                    }
+                );
+                const updatedUser = await User.findByIdAndUpdate(
+                    userId,
+                    {
+                        $pull: { communities: community._id },
+                        $push: {
+                            activityLog: {
+                                type: "leftCommunity",
+                                content: `Successfully left ${community.orgName}'s community!`,
+                                date: new Date(),
+                            },
+                        },
+                    },
+                    {
+                        new: true,
+                    }
+                );
+                response_200(
+                    res,
+                    "Successfully joined the community",
+                    updatedUser
+                );
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        response_500(res, "Error occurred while joining community", err);
+    }
+};
