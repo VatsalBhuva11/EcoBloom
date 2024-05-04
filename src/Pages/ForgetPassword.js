@@ -8,20 +8,23 @@ const ForgetPassword = () => {
     const [email, setEmail] = useState("");
     const [clicked, setClicked] = useState(false);
     const handlePasswordReset = () => {
-        setClicked(true);
-        sendPasswordResetEmail(auth, email)
-            .then(() => {
-                // Password reset email sent!
-                setClicked(false);
-                alert("Password reset email sent!");
-                document.getElementById("backToSignIn").click();
-            })
-            .catch((error) => {
-                setClicked(false);
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-            });
+        if (!email) {
+            alert("Please enter a valid email address!");
+        } else {
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    // Password reset email sent!
+                    alert("Password reset email sent!");
+                    document.getElementById("backToSignIn").click();
+                })
+                .catch((error) => {
+                    setClicked(false);
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                });
+        }
+        setClicked(false);
     };
 
     return (
@@ -36,7 +39,7 @@ const ForgetPassword = () => {
                 <div className="flex flex-col items-center sm:items-start gap-2">
                     <input
                         type="email"
-                        className="bg-[#277868] text-white placeholder-[#dbdbdb]  placeholder:xl:text-lg placeholder:lg:text-md placeholder:text-sm h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 rounded-xl p-3 w-80"
+                        className="bg-[#ffffff] placeholder-black  placeholder:xl:text-lg placeholder:lg:text-md placeholder:text-sm h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 rounded-xl p-3 w-80"
                         placeholder="📧 Enter Your E-mail"
                         onChange={(e) => {
                             setEmail(e.target.value);
@@ -44,7 +47,10 @@ const ForgetPassword = () => {
                     />
                     {!clicked ? (
                         <button
-                            onClick={handlePasswordReset}
+                            onClick={() => {
+                                setClicked(true);
+                                handlePasswordReset();
+                            }}
                             className="sm:h-8 md:h-9 lg:h-10 hover:scale-110 duration-300 sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#CB4331] text-[#fbfbfa] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
                         >
                             Send reset link!
@@ -52,7 +58,7 @@ const ForgetPassword = () => {
                     ) : (
                         <button
                             disabled
-                            className="sm:h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#d55949] text-[#fbfbfa] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
+                            className="sm:h-8 md:h-9 lg:h-10  sm:w-52 md:w-60 lg:w-72 xl:w-96 bg-[#da7366] text-[#fbfbfa] rounded-xl sm:text-sm lg:text-md xl:text-lg w-80 h-8"
                         >
                             Sending...
                         </button>

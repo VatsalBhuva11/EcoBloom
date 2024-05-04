@@ -18,7 +18,11 @@ export default function About() {
             className="w-full bg-[#277868] bg-fixed bg-center bg-no-repeat bg-cover justify-between"
         >
             <div className="max-w-[1240px] mx-auto justify-center items-center">
-                <h1 className="py-8  text-[#fbfbfa] text-4xl md:text-6xl text-center font-bold">
+                <h1
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                    className="py-8  text-[#fbfbfa] text-4xl md:text-6xl text-center font-bold"
+                >
                     ABOUT US
                 </h1>
                 <div className="flex justify-evenly items-center px-2 pb-12">
