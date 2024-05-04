@@ -66,6 +66,7 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
                 console.log("errormessage: ", error.message);
                 setStatus("Error occurred while uploading file.");
                 setButtonClicked(false);
+                setSelectedFile(null);
             });
     };
 
