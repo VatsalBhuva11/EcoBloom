@@ -96,6 +96,14 @@ export default function Chatbar() {
         setNav(!nav);
     };
 
+    if (communities.length === 0) {
+        return (
+            <div className="bg-[#fbfbfa] h-screen w-full flex flex-col justify-center items-center">
+                <h1>Join a community to start chatting with its members!</h1>
+            </div>
+        );
+    }
+
     return (
         <div className="bg-[#fbfbfa] h-screen w-full ">
             <div className=" infobar flex  flex-col">
