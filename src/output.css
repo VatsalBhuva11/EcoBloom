@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -211,8 +211,6 @@ textarea {
   /* 1 */
   line-height: inherit;
   /* 1 */
-  letter-spacing: inherit;
-  /* 1 */
   color: inherit;
   /* 1 */
   margin: 0;
@@ -236,9 +234,9 @@ select {
 */
 
 button,
-input:where([type='button']),
-input:where([type='reset']),
-input:where([type='submit']) {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -487,10 +485,6 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
 }
 
 ::backdrop{
@@ -541,10 +535,6 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
 }
 
 .container{
@@ -2231,10 +2221,6 @@ video {
   background-image: url('./assets/images/quiz_bg.jpg');
 }
 
-.bg-\[url\(\'\.\/assets\/images\/rrootz\.png\'\)\]{
-  background-image: url('./assets/images/rrootz.png');
-}
-
 .bg-gradient-to-b{
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -2872,6 +2858,11 @@ video {
   color: rgb(205 133 33 / var(--tw-text-opacity));
 }
 
+.text-\[\#DBDBDB\]{
+  --tw-text-opacity: 1;
+  color: rgb(219 219 219 / var(--tw-text-opacity));
+}
+
 .text-\[\#EAC5C5\]{
   --tw-text-opacity: 1;
   color: rgb(234 197 197 / var(--tw-text-opacity));
@@ -2915,11 +2906,6 @@ video {
 .text-\[\#eef0e5\]{
   --tw-text-opacity: 1;
   color: rgb(238 240 229 / var(--tw-text-opacity));
-}
-
-.text-\[\#f5d2a8\]{
-  --tw-text-opacity: 1;
-  color: rgb(245 210 168 / var(--tw-text-opacity));
 }
 
 .text-\[\#fbfbfa\]{
@@ -4782,11 +4768,11 @@ html {
   }
 }
 
-.rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]){
+:is(:where([dir="rtl"]) .rtl\:space-x-reverse) > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 1;
 }
 
-.rtl\:text-right:where([dir="rtl"], [dir="rtl"] *){
+:is(:where([dir="rtl"]) .rtl\:text-right){
   text-align: right;
 }
 
