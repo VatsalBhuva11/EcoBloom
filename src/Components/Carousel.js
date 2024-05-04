@@ -63,13 +63,13 @@ export default function Carousel() {
                 <h1 
                 data-aos = "fade-up"
                 data-aos-duration = "1000"
-                className=" text-[#0F1035] text-4xl md:text-6xl text-center font-bold ">
+                className=" text-[#277868] text-4xl md:text-6xl text-center font-bold ">
                     TESTIMONIALS
                 </h1>
                 <p 
                 data-aos = "fade-up"
                 data-aos-duration = "1000"
-                className="text-[#0F1035] text-xl md:text-2xl text-center font-bold">
+                className="text-[#277868] text-xl md:text-2xl text-center font-bold">
                     Others have done it so you can too.
                 </p>
             </div>
@@ -80,7 +80,7 @@ export default function Carousel() {
                             <div 
                             data-aos = "zoom-in"
                             data-aos-duration = "1000"
-                            className="bg-transparent h-[70%] border-solid border-2 border-black hover:shadow-xl  cursor-pointer flex flex-col justify-center items-center text-black rounded-xl gap-4">
+                            className="bg-transparent h-[70%] shadow-lg  border-2 border-[#277868] hover:shadow-xl  cursor-pointer flex flex-col justify-center items-center rounded-xl gap-4">
                                 <div className="h-28 w-full rounded-t-xl justify-center text-center flex items-center">
                                     <img
                                         src={data.img}
@@ -88,15 +88,15 @@ export default function Carousel() {
                                         className="h-20 w-20 rounded-full basis-[25%] md:ml-8 sm:ml-4"
                                     />
                                     <div className="flex flex-col justify-center items-center basis-[75%]">
-                                        <p className="text-xl font-semibold">
+                                        <p className="text-xl font-semibold text-[#277868]">
                                             {data.name}
                                         </p>
-                                        <p className="text-md">
+                                        <p className="text-md text-black">
                                             {data.position}
                                         </p>
                                     </div>
                                 </div>
-                                <div className=" flex flex-col justify-center items-center gap-4 p-4">
+                                <div className=" flex flex-col justify-center items-center gap-4 p-4 text-black">
                                     <p>{data.content}</p>
                                     {/* <button className=" bg-[#304D30] text-white text-lg px-6  py-1 rounded-xl">
                                         Read More!

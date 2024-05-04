@@ -16,7 +16,7 @@ export default function About() {
   return (
     <div
       id="about"
-      className="w-full bg-[url('./assets/images/rrootz.png')] bg-fixed bg-center bg-no-repeat bg-cover justify-between"
+      className="w-full bg-[#277868] bg-fixed bg-center bg-no-repeat bg-cover justify-between"
     >
       <div className="max-w-[1240px] mx-auto justify-center items-center">
         {/* <h1 className="py-3 text-[#fbfbfa] text-4xl md:text-6xl text-center font-bold mt-12">
@@ -26,7 +26,7 @@ export default function About() {
           <p
           data-aos = "fade-up"
           data-aos-duration = "1000" 
-          className="text-sm sm:text-lg md:text-xl px-4 lg:text-2xl tracking-wide text-center  md:mt-12 text-[#f5d2a8] font-semibold mx-8">
+          className="text-sm sm:text-lg md:text-xl px-4 lg:text-2xl tracking-wide text-center  md:mt-12 text-[#DBDBDB] font-semibold mx-8">
             Welcome to EcoBloom, a thriving ecosystem where environmental
             enthusiasts, whether they're grassroots initiatives or established
             entities, come together to make a tangible difference in the world.

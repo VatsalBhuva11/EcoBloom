@@ -33,19 +33,19 @@ export default function CreateCampaigns() {
                         <h1
                         data-aos = "fade-up"
                         data-aos-duration = "1000" 
-                        className="text-[#1d1f5b] text-4xl md:text-6xl text-left font-bold">
+                        className="text-[#010204] text-4xl md:text-6xl text-left font-bold">
                             CREATE
                         </h1>
                         <h1
                          data-aos = "fade-up"
                          data-aos-duration = "1000"
-                        className="text-[#010204] text-4xl md:text-6xl text-left font-bold">
+                        className="text-[#277868] text-4xl md:text-6xl text-left font-bold">
                             CAMPAIGNS
                         </h1>
                         <p
                         data-aos = "fade-up"
                         data-aos-duration = "1000" 
-                        className="mt-12 text-xl md:text-2xl text-[#0F1035] font-medium ">
+                        className="mt-12 text-xl md:text-2xl text-[#dbdbdb] font-medium ">
                             It doesn't matter if you're a grassroots initiative
                             or an established entity. EcoBloom is your canvas to
                             amplify your environmental impact. Join us in this
@@ -61,7 +61,7 @@ export default function CreateCampaigns() {
                             }}
                             data-aos = "fade-up"
                         data-aos-duration = "1000"
-                            className="flex mt-8 py-2 px-6 text-center md:text-3xl text-white border bg-[#0F1035] hover:bg-transparent hover:border-[#0F1035]  rounded-md"
+                            className="flex mt-8 py-2 px-6 text-center md:text-3xl text-[#dbdbdb] border bg-[#277868] hover:scale-110 duration-300  rounded-md"
                         >
                             Create Now
                             <FaArrowRight

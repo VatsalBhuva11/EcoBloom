@@ -29,13 +29,13 @@ export default function JoinUs() {
                     <h2 
                     data-aos = "fade-up"
                     data-aos-duration = "1500"
-                    className=" z-2 text-[#0F1035] text-4xl md:text-6xl text-center font-bold">
+                    className=" z-2 text-[#277868] text-4xl md:text-6xl text-center font-bold">
                         JOIN US NOW
                     </h2>
                     <button 
                     data-aos = "fade-up"
                     data-aos-duration = "1000"
-                    className=" flex  justify-center items-center git mt-32 py-2 px-6 text-center md:text-3xl mb-10 text-gray-100 border bg-[#0F1035] font-bold hover:bg-[#000000] hover:text-[#ffff] hover:shadow-lg hover:border-indigo-600 rounded-md">
+                    className=" flex  justify-center items-center git mt-32 py-2 px-6 text-center md:text-3xl mb-10 text-[#dbdbdb]  border bg-[#277868] font-bold  hover:shadow-lg hover:scale-110 duration-300 rounded-md">
                         <Link
                             to={
                                 (!role && user) || role === "user"

@@ -8,7 +8,7 @@ import {
 
 export default function Footer() {
   return (
-    <div className="w-full  bg-[#0F1035] text-gray-300 py-8 px-2 ">
+    <div className="w-full  bg-[#277868] text-[#dbdbdb] py-8 px-2 ">
       <div className="max-w-[1240px] mx-auto  grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-600 py-8">
         <div>
           <h6 className="font-medium uppercase text-gray-200 pt-2">
@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h6 className="font-medium uppercase pt-2 text-gray-200">Company</h6>
+          <h6 className="font-medium uppercase pt-2 text-{#dbdbdb">Company</h6>
           <div className="flex flex-col justify-center">
             <a
               className="py-2 text-sm cursor-pointer"
@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h6 className="pt-2 uppercase font-medium text-gray-200">Legal</h6>
+          <h6 className="pt-2 uppercase font-medium text-[#dbdbdb]">Legal</h6>
           <div className="flex flex-col justify-center" href="" target="_blank">
             <a
               className="py-2 text-sm cursor-pointer"
@@ -132,7 +132,7 @@ export default function Footer() {
           </form>
         </div>
       </div>
-      <div className="mt-2 flex flex-col  max-w-[1240px] m-auto justify-between sm:flex-row text-center text-gray-500">
+      <div className="mt-2 flex flex-col  max-w-[1240px] m-auto justify-between sm:flex-row text-center text-[#dbdbdb]">
         <p>EcoBloom - All rights reserverved</p>
         <div className="justify-evenly sm:w-[300px]  flex gap-2 mt-2">
           <a
