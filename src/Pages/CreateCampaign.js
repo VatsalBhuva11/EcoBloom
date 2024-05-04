@@ -174,7 +174,7 @@ const CreateCampaign = () => {
                         <div>
                             <input
                                 className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
-                                placeholder="Greenvalley Campaign"
+                                placeholder="10 Downing Street ,London, United Kingdom"
                                 type="text"
                                 name="address"
                                 onChange={(e) => {
@@ -262,7 +262,7 @@ const CreateCampaign = () => {
                             <div>
                                 <input
                                     className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
-                                    placeholder="Greenvalley Campaign"
+                                    placeholder="London"
                                     type="text"
                                     name="city"
                                     onChange={(e) => {
@@ -281,7 +281,7 @@ const CreateCampaign = () => {
                             <div>
                                 <input
                                     className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
-                                    placeholder="Greenvalley Campaign"
+                                    placeholder="United Kingdom"
                                     type="text"
                                     name="country"
                                     onChange={(e) => {
@@ -332,7 +332,7 @@ const CreateCampaign = () => {
                     <div>
                         <input
                             className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
-                            placeholder="Greenvalley Campaign"
+                            placeholder="spread awareness through cleanliness"
                             type="text"
                             name="goal"
                             onChange={(e) => {
@@ -351,7 +351,7 @@ const CreateCampaign = () => {
                     <div>
                         <input
                             className="w-full h-[40px] sm:h-[50px] rounded-lg bg-[#CFD6DE] px-2 sm:px-4 text-xl sm:text-[1.4rem] hover:scale-103 duration-300"
-                            placeholder="Greenvalley Campaign"
+                            placeholder="maintain decorum during the campaign"
                             type="text"
                             name="guidelines"
                             onChange={(e) => {

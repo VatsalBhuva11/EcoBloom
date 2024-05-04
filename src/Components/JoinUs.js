@@ -28,7 +28,7 @@ export default function JoinUs() {
                 <div className="px-4 py-12 flex flex-col justify-center items-center">
                     <h2 
                     data-aos = "fade-up"
-                    data-aos-duration = "1000"
+                    data-aos-duration = "1500"
                     className=" z-2 text-[#0F1035] text-4xl md:text-6xl text-center font-bold">
                         JOIN US NOW
                     </h2>
@@ -43,7 +43,10 @@ export default function JoinUs() {
                                     : "/signup/user"
                             }
                         >
-                            <div className="flex justify-center items-center">
+                            <div 
+                            data-aos = "fade-up"
+                            data-aos-duration = "1000"
+                            className="flex justify-center items-center">
                                 JOIN COMMUNITY{" "}
                                 <IoIosPeople
                                     className="hidden md:flex ml-4 mt-1 "
