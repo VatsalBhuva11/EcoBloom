@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import topleftLogo from "../assets/images/logo.png";
 import { IoIosSend } from "react-icons/io";
@@ -17,6 +17,7 @@ import Loader from "../assets/images/Animation.gif";
 
 import moment from "moment";
 import LeaveCommCard from "./LeaveCommCard.js";
+import { ChatContext } from "../Components/ChatContextProvider.js";
 
 const Orgprofile = () => {
     const params = useParams();
@@ -24,6 +25,9 @@ const Orgprofile = () => {
     const [showMyModel2, setShowMyModel2] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
     const handleOnClose2 = () => setShowMyModel2(false);
+
+    const { communities: joinedCommunities } = useContext(ChatContext);
+    const [commsJoined, setCommsJoined] = useState(joinedCommunities.length);
 
     const [status, setStatus] = useState("about");
     const [ifBold1, setIfBold1] = useState("bold");
@@ -154,6 +158,8 @@ const Orgprofile = () => {
                         .then((data) => {
                             if (data.status === "OK") {
                                 setJoinCommStatus(true);
+                                setCommsJoined(commsJoined + 1);
+                                console.log(commsJoined + 1);
                                 if (data.data.status !== "already registered") {
                                     setShowMyModal(true);
                                 }
@@ -199,6 +205,9 @@ const Orgprofile = () => {
                         .then((data) => {
                             if (data.status === "OK") {
                                 setJoinCommStatus(false);
+                                setCommsJoined(commsJoined - 1);
+                                console.log(commsJoined - 1);
+
                                 if (data.data.status !== "not joined") {
                                     setShowMyModel2(true);
                                 }
@@ -277,15 +286,24 @@ const Orgprofile = () => {
                                     {org.communityUsersCount} Members
                                 </p>
                                 <div className="flex pt-3 md:pt-6  gap-3 sm:gap-4 md:gap-6 ">
-                                    <Link to="/chat">
-                                        <button className="border-solid border-2 border-[#0f1035] hover:scale-105 duration-300 bg-transparent  flex text-[#0f1035] rounded-3xl py-1 px-3 sm:py-1.5 sm:px-4 text-md sm:text-lg md:text-xl sm:gap-1 md:gap-2 font-semibold ">
-                                            <IoIosSend
-                                                className="sm:flex hidden"
-                                                size={30}
-                                            />{" "}
-                                            Community Chat
-                                        </button>
-                                    </Link>
+                                    <button
+                                        onClick={() => {
+                                            if (commsJoined > 0) {
+                                                window.location.href = "/chat";
+                                            } else {
+                                                alert(
+                                                    "Please join a community first!"
+                                                );
+                                            }
+                                        }}
+                                        className="border-solid border-2 border-[#0f1035] hover:scale-105 duration-300 bg-transparent  flex text-[#0f1035] rounded-3xl py-1 px-3 sm:py-1.5 sm:px-4 text-md sm:text-lg md:text-xl sm:gap-1 md:gap-2 font-semibold "
+                                    >
+                                        <IoIosSend
+                                            className="sm:flex hidden"
+                                            size={30}
+                                        />{" "}
+                                        Community Chat
+                                    </button>
                                     {joinCommStatus && !clicked ? (
                                         <button
                                             onClick={() => {
