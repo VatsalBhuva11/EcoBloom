@@ -144,7 +144,7 @@ const Orgdashboard = () => {
     const handlePostChange = () => {
         setIfBold2("277868");
         setIfBold1("545457");
-        setIfBold3("545457");;
+        setIfBold3("545457");
         console.log("post page");
         setStatus("post");
     };
@@ -172,7 +172,6 @@ const Orgdashboard = () => {
                                 src={org_logo}
                                 alt=""
                             />
-    
                         </Link>
                         <h1 className="text-sm sm:text-xl md:text-2xl  ">
                             ORGANISATION DASHBOARD
@@ -196,7 +195,7 @@ const Orgdashboard = () => {
                             />
                         </div>
 
-                        <div  className="flex border-b-2 pb-5 border-[#7A7A7A] ">
+                        <div className="flex border-b-2 pb-5 border-[#7A7A7A] ">
                             <div className="w-[20%] md:w-[15%]">
                                 <img
                                     className="h-16 sm:h-24 md:h-32 rounded-lg mt-[-32px] md:mt-[-48px] pl-4 object-cover absolute"
@@ -272,66 +271,66 @@ const Orgdashboard = () => {
                         </div>
                     </div>
                     <div className="h-[33%] overflow-scroll overflow-x-hidden">
-                    {status === "about" ? (
-                        <div>
-                            <div className="text-center text-[#277868] lg:text-2xl text-lg font-semibold mt-5">
-                                ABOUT US
-                            </div>
-                            <div className="mt-4 lg:text-lg text-sm ml-2 p-2 font-medium">
-                                {org.description}
-                            </div>
-                        </div>
-                    ) : status === "post" ? (
-                        <div className="">
-                            {posts.length > 0 ? (
-                                posts.map((post) => {
-                                    return (
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
-                                            <div
-                                                onClick={() => {
-                                                    setShowMyModal1({
-                                                        status: true,
-                                                        post: post,
-                                                    });
-                                                }}
-                                                className="cursor-pointer flex items-center justify-center"
-                                            >
-                                                <img
-                                                    className="h-[200px] w-2/3"
-                                                    src={post.photo}
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <div className="flex justify-start items-center ml-4 mt-4 text-xl">
-                                    No posts yet.
+                        {status === "about" ? (
+                            <div>
+                                <div className="text-center text-[#277868] lg:text-2xl text-lg font-semibold mt-5">
+                                    ABOUT US
                                 </div>
-                            )}
-                        </div>
-                    ) : (
-                        <div className="grid grid-cols-2">
-                            {org?.completedCampaigns?.length > 0 ? (
-                                org.completedCampaigns.map((campaign) => {
-                                    return (
-                                        <div className=" p-8 place-items-center">
-                                            <div className="flex items-center justify-center">
-                                                <PastCampaignsCards
-                                                    campaign={campaign}
-                                                />
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <div className="flex justify-start items-center mt-4 ml-4 text-xl">
-                                    No campaigns organised yet.
+                                <div className="mt-4 lg:text-lg text-sm ml-2 p-2 font-medium">
+                                    {org.description}
                                 </div>
-                            )}
-                        </div>
-                    )}
+                            </div>
+                        ) : status === "post" ? (
+                            <div className="">
+                                {posts.length > 0 ? (
+                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
+                                        {posts.map((post) => {
+                                            return (
+                                                <div
+                                                    onClick={() => {
+                                                        setShowMyModal1({
+                                                            status: true,
+                                                            post: post,
+                                                        });
+                                                    }}
+                                                    className="cursor-pointer flex items-center justify-center"
+                                                >
+                                                    <img
+                                                        className="h-[200px] w-2/3"
+                                                        src={post.photo}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                ) : (
+                                    <div className="flex justify-start items-center ml-4 mt-4 text-xl">
+                                        No posts yet.
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="grid grid-cols-2">
+                                {org?.completedCampaigns?.length > 0 ? (
+                                    org.completedCampaigns.map((campaign) => {
+                                        return (
+                                            <div className=" p-8 place-items-center">
+                                                <div className="flex items-center justify-center">
+                                                    <PastCampaignsCards
+                                                        campaign={campaign}
+                                                    />
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                ) : (
+                                    <div className="flex justify-start items-center mt-4 ml-4 text-xl">
+                                        No campaigns organised yet.
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

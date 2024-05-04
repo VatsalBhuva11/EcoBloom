@@ -369,9 +369,9 @@ const Orgprofile = () => {
                     ) : status === "post" ? (
                         <div>
                             {posts.length > 0 ? (
-                                posts.map((post) => {
-                                    return (
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-6">
+                                    {posts.map((post) => {
+                                        return (
                                             <div
                                                 onClick={() => {
                                                     setShowMyModal1({
@@ -387,9 +387,9 @@ const Orgprofile = () => {
                                                     alt=""
                                                 />
                                             </div>
-                                        </div>
-                                    );
-                                })
+                                        );
+                                    })}
+                                </div>
                             ) : (
                                 <div className="flex justify-start items-center ml-4 mt-4 text-xl">
                                     No posts yet.
