@@ -357,7 +357,6 @@ export default function BasicDetails({
                         <button
                             id="next"
                             disabled={stepCount === 4}
-                            className="bg-[#144a14]"
                             onClick={(e) => {
                                 Continue(e);
                                 // nextStep();

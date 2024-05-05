@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { getFunctions, httpsCallable } from "firebase/functions";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function OrgBasicDetails({
     nextStep,
@@ -138,10 +140,14 @@ export default function OrgBasicDetails({
     };
 
     return (
-        <div className="flex flex-col bottom-0 justify-center items-center w-1/2 min-h-fit p-12 py-4 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
-            <h1 className="text-xl font-extrabold">
-                Join us as an organization!
-            </h1>
+        <div className="flex flex-col mt-[3.5rem]  px-6 py-8 w-[50rem]  items-center justify-center md:h-screen lg:py-0">
+            <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-[#9db39b]">
+            <div  className="p-6  sm:p-8">
+                <Link to='/'> <FaArrowLeft className=" text-xl cursor-pointer"/>   </Link>     
+                                <div className="flex flex-col">
+                                    <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">Join Us For A Better Cause!</h1>
+                                <p className=" text-xs text-center">Just some details to get you in!</p>
+                                </div>
 
             <form className="step relative top-4" id="orgSignUpOne">
                 {/* <p className="text-md text-gray-700 leading-tight text-center mt-8 mb-5">
@@ -152,15 +158,16 @@ export default function OrgBasicDetails({
                         class="block text-gray-700 text-sm font-bold mb-2"
                         htmlFor="name"
                     >
-                        Org. Name
+                        Organisation Name
                     </label>
                     <input
                         type="text"
                         placeholder="Name"
                         name="name"
                         id="name"
-                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        className="bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        // className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        // oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
                         onChange={(e) => handleChange(e)}
                         value={values.name}
                         required
@@ -178,8 +185,9 @@ export default function OrgBasicDetails({
                         placeholder="Email Address"
                         name="email"
                         id="email"
-                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        className="bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        // className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        // oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
                         onChange={(e) => handleChange(e)}
                         value={values.email}
                         required
@@ -194,11 +202,12 @@ export default function OrgBasicDetails({
                     </label>
                     <input
                         type="password"
-                        placeholder="Password"
+                        placeholder="••••••••"
                         name="password"
                         id="password"
-                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        className="bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        // className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        // oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
                         onChange={(e) => {
                             handleChange(e);
                             let tempPass = e.target.value;
@@ -221,11 +230,12 @@ export default function OrgBasicDetails({
                     </label>
                     <input
                         type="password"
-                        placeholder="Confirm Password"
+                        placeholder="••••••••"
                         name="confirmPassword"
                         id="confirmPassword"
-                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        className="bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        // className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        // oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
                         onChange={(e) => {
                             handleChange(e);
                             let tempPass = e.target.value;
@@ -290,6 +300,8 @@ export default function OrgBasicDetails({
                     </div>
                 </div>
             </form>
+            </div>
+            </div>
         </div>
     );
 }

@@ -57,74 +57,74 @@ const FreshUserSignUp = () => {
     }, 2000);
   }
 
-  switch (stepCount) {
-    case 1:
-      return (
-        <div>
-          <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
-            <img
-              src={logo}
-              height={50}
-              width={70}
-              className=" cursor-pointer hover:scale-105 lg:duration-300"
-              onClick={() => {
-                window.location.href = "/signup";
-              }}
-            />
-            <p>Back to Signup</p>
-          </div>
-          <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
-            <div className="absolute top-5 w-1/2 flex justify-center items-center">
-              <MultiStep
-                nextStep={nextStep}
-                prevStep={prevStep}
-                stepCount={step.stepCount}
-                steps={steps}
-              />
-            </div>
-            <BasicDetails
-              nextStep={nextStep}
-              handleChange={handleChange}
-              values={step}
-            />
-          </div>
-        </div>
-      );
-    case 2:
-      return (
-        <div>
-          <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
-            <img
-              src={logo}
-              height={50}
-              width={70}
-              className=" cursor-pointer hover:scale-105 lg:duration-300"
-              onClick={() => {
-                window.location.href = "/signup";
-              }}
-            />
-            <p>Back to Signup</p>
-          </div>
-          <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
-            <div className="absolute top-5 w-1/2 flex justify-center items-center">
-              <MultiStep
-                nextStep={nextStep}
-                prevStep={prevStep}
-                stepCount={step.stepCount}
-                steps={steps}
-              />
-            </div>
-            <div className="flex flex-col w-full h-screen justify-center items-center ">
-              <UploadPhoto
-                nextStep={nextStep}
-                prevStep={prevStep}
-                values={step}
-                handleChange={handleChange}
-              />
-            </div>
-          </div>
-        </div>
-      );
+    switch (stepCount) {
+        case 1:
+            return (
+                <div>
+                    {/* <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
+                        <img
+                            src={logo}
+                            height={50}
+                            width={70}
+                            className=" cursor-pointer hover:scale-105 lg:duration-300"
+                            onClick={() => {
+                                window.location.href = "/signup";
+                            }}
+                        />
+                        <p>Back to Signup</p>
+                    </div> */}
+                    <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
+                        <div className="absolute top-5 w-1/2 flex justify-center items-center">
+                            <MultiStep
+                                nextStep={nextStep}
+                                prevStep={prevStep}
+                                stepCount={step.stepCount}
+                                steps={steps}
+                            />
+                        </div>
+                        <BasicDetails
+                            nextStep={nextStep}
+                            handleChange={handleChange}
+                            values={step}
+                        />
+                    </div>
+                </div>
+            );
+        case 2:
+            return (
+                <div>
+                    {/* <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
+                        <img
+                            src={logo}
+                            height={50}
+                            width={70}
+                            className=" cursor-pointer hover:scale-105 lg:duration-300"
+                            onClick={() => {
+                                window.location.href = "/signup";
+                            }}
+                        />
+                        <p>Back to Signup</p>
+                    </div> */}
+                    <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
+                        <div className="absolute top-5 w-1/2 flex justify-center items-center">
+                            <MultiStep
+                                nextStep={nextStep}
+                                prevStep={prevStep}
+                                stepCount={step.stepCount}
+                                steps={steps}
+                            />
+                        </div>
+                        <div className="flex flex-col w-full h-screen justify-center items-center">
+                            <UploadPhoto
+                                nextStep={nextStep}
+                                prevStep={prevStep}
+                                values={step}
+                                handleChange={handleChange}
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
 
     case 3:
       return (
@@ -138,17 +138,17 @@ const FreshUserSignUp = () => {
             />
           </div>
 
-          <div className="flex flex-col w-full h-screen justify-center items-center">
-            <h1 className="text-6xl text-[#277868] text-center font-light">
-              Registered Successfully!
-            </h1>
-          </div>
-        </div>
-      );
-    // never forget the default case, otherwise VS code would be mad!
-    default:
-      return null;
-  }
+                    <div className='flex flex-col w-full bg-[url("./assets/images/authBg.jpg")] h-screen justify-center items-center'>
+                        <h1 className="text-6xl text-[#277868] text-center font-bold">
+                            Registered Successfully!
+                        </h1>
+                    </div>
+                </div>
+            );
+        // never forget the default case, otherwise VS code would be mad!
+        default:
+            return null;
+    }
 };
 
 export default FreshUserSignUp;

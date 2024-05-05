@@ -55,7 +55,7 @@ export default function AddDesc({ nextStep, prevStep, handleChange, values }) {
     };
 
     return (
-        <div className="flex flex-col bottom-0 justify-center items-center w-1/2 min-h-fit p-12 py-4 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
+        <div className="flex flex-col bottom-0 justify-center items-center w-1/2 min-h-fit p-12 py-4 shadow-md rounded-2xl bg-[#9db39b] mx-auto  mb-8">
             <h1 className="text-xl font-extrabold">
                 Describe your organization!
             </h1>
@@ -80,8 +80,9 @@ export default function AddDesc({ nextStep, prevStep, handleChange, values }) {
                         rows={4}
                         name="description"
                         id="description"
-                        className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
-                        oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
+                        className="bg-transparent border border-black text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5 placeholder-gray-700 placeholder-opacity-70"
+                        // className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
+                        // oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
                         onChange={(e) => {
                             setDesc(e.target.value);
                             handleChange(e);

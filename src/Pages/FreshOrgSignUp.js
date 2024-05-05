@@ -30,7 +30,7 @@ const FreshUserSignUp = () => {
         setStep({ ...step, stepCount: step.stepCount + 1 });
     };
 
-    const handleChange = (e, value = e.target.value.trim()) => {
+    const handleChange = (e, value = e.target.value) => {
         let newStep = Object.assign({}, step);
         let input = e.target.name;
         console.log(e);
@@ -64,7 +64,7 @@ const FreshUserSignUp = () => {
         case 1:
             return (
                 <div>
-                    <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
+                    {/* <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
                         <img
                             src={logo}
                             height={50}
@@ -75,7 +75,7 @@ const FreshUserSignUp = () => {
                             }}
                         />
                         <p>Back to Signup</p>
-                    </div>
+                    </div> */}
                     <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
                         <div className="absolute top-5 w-full flex justify-center items-center">
                             <MultiStep
@@ -131,7 +131,7 @@ const FreshUserSignUp = () => {
         case 3:
             return (
                 <div>
-                    <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
+                    {/* <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
                         <img
                             src={logo}
                             height={50}
@@ -142,7 +142,7 @@ const FreshUserSignUp = () => {
                             }}
                         />
                         <p>Back to Signup</p>
-                    </div>
+                    </div> */}
                     <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
                         <div className="absolute top-5 w-1/2 flex justify-center items-center">
                             <MultiStep
@@ -176,8 +176,8 @@ const FreshUserSignUp = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col w-full h-screen justify-center items-center">
-                        <h1 className="text-6xl text-green-500 text-center font-light">
+                    <div className='flex flex-col w-full bg-[url("./assets/images/authBg.jpg")] h-screen justify-center items-center'>
+                        <h1 className="text-6xl text-[#277868] text-center font-bold">
                             Registered Successfully!
                         </h1>
                     </div>

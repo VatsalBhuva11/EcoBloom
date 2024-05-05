@@ -61,7 +61,7 @@ const UploadDocs = ({ nextStep, prevStep, handleChange, values }) => {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center w-screen h-screen gap-8">
+        <div className="flex flex-col justify-center items-center  w-screen h-screen gap-8">
             <div className="text-center">
                 <h1 className="text-white text-3xl font-extrabold">
                     Just some documents!{" "}
@@ -71,13 +71,13 @@ const UploadDocs = ({ nextStep, prevStep, handleChange, values }) => {
                 </h2>
             </div>
             <form
-                class=" w-100 gap-4 flex flex-col bg-white p-12 rounded-lg"
+                class=" w-100 bg-[#9db39b] gap-4 flex flex-col  p-12 rounded-lg"
                 id="orgSignUpThree"
             >
                 <p className="font-bold pb-4 text-center">
                     {"File sizes should be less than 100kb"}
                 </p>
-                <div className=" flex flex-col justify-center items-start">
+                <div className=" flex flex-col b justify-center items-start">
                     <label
                         class="block mb-2 text-sm font-medium text-gray-700 "
                         for="document"
