@@ -379,7 +379,7 @@ const New_User_Dashboard = () => {
                         JOINED COMMUNITITES
                     </div>
                     <div className="relative w-full flex justify-around px-12">
-                        {communities ? (
+                        {communities.length > 0 ? (
                             communities.map((community, key) => (
                                 <a
                                     className="bg-gradient-to-br from-[#407D71] to-[#064236] flex-col rounded-lg pb-4 h-[12.5rem] w-[30%]"
@@ -407,8 +407,8 @@ const New_User_Dashboard = () => {
                                 </a>
                             ))
                         ) : (
-                            <div className="text-4xl flex justify-center font-semibold text-[#d85f5f]">
-                                NO JOINED COMMUNITITES
+                            <div className="text-4xl flex justify-center font-semibold text-[#b4d688]">
+                                No communities joined yet!
                             </div>
                         )}
                     </div>
