@@ -50,7 +50,7 @@ const Activity_log = () => {
     }
 
     return (
-        <div className="bg-[#fbfbfa] w-screen h-screen">
+        <div className=' bg-[#fbfbfa] w-screen h-screen'>
             <div className="flex items-center gap-5 text-[#0F1035] ml-5 pt-2">
                 <Link
                     to="/user/dashboard"

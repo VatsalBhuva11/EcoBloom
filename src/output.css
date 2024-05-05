@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -211,8 +211,6 @@ textarea {
   /* 1 */
   line-height: inherit;
   /* 1 */
-  letter-spacing: inherit;
-  /* 1 */
   color: inherit;
   /* 1 */
   margin: 0;
@@ -236,9 +234,9 @@ select {
 */
 
 button,
-input:where([type='button']),
-input:where([type='reset']),
-input:where([type='submit']) {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -487,10 +485,6 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
 }
 
 ::backdrop{
@@ -541,10 +535,6 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
 }
 
 .container{
@@ -1605,12 +1595,6 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.scale-125{
-  --tw-scale-x: 1.25;
-  --tw-scale-y: 1.25;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .transform{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -2436,6 +2420,12 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-\[\#277868\]{
+  --tw-gradient-from: #277868 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(39 120 104 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .from-\[\#335252\]{
   --tw-gradient-from: #335252 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(51 82 82 / 0) var(--tw-gradient-to-position);
@@ -2477,6 +2467,10 @@ video {
 
 .to-\[\#064236\]{
   --tw-gradient-to: #064236 var(--tw-gradient-to-position);
+}
+
+.to-\[\#3a7a6d\]{
+  --tw-gradient-to: #3a7a6d var(--tw-gradient-to-position);
 }
 
 .to-\[\#404162\]{
@@ -3162,6 +3156,11 @@ video {
 .text-\[\#FFCC4D\]{
   --tw-text-opacity: 1;
   color: rgb(255 204 77 / var(--tw-text-opacity));
+}
+
+.text-\[\#b4d688\]{
+  --tw-text-opacity: 1;
+  color: rgb(180 214 136 / var(--tw-text-opacity));
 }
 
 .text-\[\#c1c1c1\]{
@@ -5081,11 +5080,11 @@ html {
   }
 }
 
-.rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]){
+:is(:where([dir="rtl"]) .rtl\:space-x-reverse) > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 1;
 }
 
-.rtl\:text-right:where([dir="rtl"], [dir="rtl"] *){
+:is(:where([dir="rtl"]) .rtl\:text-right){
   text-align: right;
 }
 
