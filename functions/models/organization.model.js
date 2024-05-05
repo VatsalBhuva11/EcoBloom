@@ -38,7 +38,7 @@ const Organization = new Schema({
         type: String,
         required: false,
         default:
-            "https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/org%2FdefaultBanner.jpg?alt=media&token=4d38c61b-fe9b-4071-94a1-177b449693a3",
+            "https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/org%2Fspring-green-fields-landscape-with-mountain-blue-sky-and-clouds-background-panorama-peaceful-rural-nature-in-springtime-with-green-grass-land-cartoon-illustration-for-spring-and-summer-banner-vector.jpg?alt=media&token=cb7f0718-af0d-44ad-9af1-da7179bf39f7",
     },
     document: {
         type: String,
