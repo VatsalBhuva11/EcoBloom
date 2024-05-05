@@ -206,9 +206,19 @@ router.post("/register/stepThree", async (req, res) => {
                 const filesToUpload = [];
                 const paths = {};
                 for (let i = 0; i < files.length; i++) {
-                    paths[
-                        files[i].fieldname
-                    ] = `org/${email}/${files[i].fieldname}.${extensions[i]}`;
+                    if (
+                        extensions[i] === "jpg" ||
+                        extensions[i] === "jpeg" ||
+                        extensions[i] === "png"
+                    ) {
+                        paths[
+                            files[i].fieldname
+                        ] = `org/${email}/${files[i].fieldname}.jpeg`;
+                    } else {
+                        paths[
+                            files[i].fieldname
+                        ] = `org/${email}/${files[i].fieldname}.${extensions[i]}`;
+                    }
                     if (extensions[i] === "pdf") {
                         filesToUpload.push(
                             await uploadPdf(

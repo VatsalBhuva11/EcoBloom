@@ -235,7 +235,7 @@ const New_User_Dashboard = () => {
     return (
         <div>
             <div className="h-screen bg-[#277868]">
-                <div className="w-full bg-[#277868] text-white flex justify-between h-[10%] shadow-2xl mb-2">
+                <div className="w-full bg-[#277868] text-white flex justify-between h-[8%] shadow-2xl mb-2">
                     <div className="flex items-center justify-center">
                         <Link to="/">
                             <img
@@ -272,7 +272,7 @@ const New_User_Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex w-full h-[88%]">
+                <div className="flex w-full h-[87%]">
                     <div className="h-full ml-1 overflow-hidden w-[75%]">
                         <Maps_DashBoard
                             markers={markers}
@@ -374,9 +374,9 @@ const New_User_Dashboard = () => {
                 </div>
             </div>
             <div className="h-full">
-                <div className="bg-[#277868] pt-[1.3rem] pb-[10.3rem] h-[15rem]">
-                    <div className="text-4xl flex justify-center font-semibold text-[#D1D1D1] pb-[2.6rem]">
-                        JOINED COMMUNITITES
+                <div className="  bg-[#277868] pt-[1.3rem] pb-[10.3rem] h-[15rem]">
+                    <div className=" relative bottom-8 text-4xl flex justify-center font-semibold text-[#D1D1D1] pb-[2.6rem]">
+                        JOINED COMMUNITIES
                     </div>
                     <div className="relative w-full flex justify-around px-12">
                         {communities.length > 0 ? (
@@ -412,24 +412,24 @@ const New_User_Dashboard = () => {
                             </div>
                         )}
                     </div>
-                </div>
-                <div className="mt-[4rem] flex justify-end pr-6 pt-1">
-                    <Link to="/user/orgs">
-                        <button className="text-[#277868] px-3 py-1 mr-12 border-2 border-[#277868] text-lg rounded-md hover:shadow-xl mt-1">
-                            <div className="flex items-center gap-1 font-semibold">
-                                View All <FaArrowRightLong />
-                            </div>
-                        </button>
-                    </Link>
-                </div>
-                <div className="flex justify-center pr-6 pt-1 pb-3">
-                    <Link to="/user/join">
-                        <button className="bg-[#277868] text-[#FBFBFA] px-3 py-1 border border-[#277868] text-xl font-semibold rounded-md hover:shadow-xl">
-                            <div className="flex items-center gap-1">
-                                <FaPlus /> Join Community
-                            </div>
-                        </button>
-                    </Link>
+                    <div className="flex justify-end pr-6 pt-1">
+                        <Link to="/user/orgs">
+                            <button className="text-[#277868] px-3 py-1 mr-12 border-2 border-[#277868] text-lg rounded-md hover:shadow-xl mt-1">
+                                <div className="flex items-center gap-1 font-semibold">
+                                    View All <FaArrowRightLong />
+                                </div>
+                            </button>
+                        </Link>
+                    </div>
+                    <div className="flex justify-center pr-6 pt-1 pb-3">
+                        <Link to="/user/join">
+                            <button className="bg-[#164d42] text-[#FBFBFA] px-3 py-1 border border-[#277868] text-xl font-semibold rounded-md hover:shadow-xl">
+                                <div className="flex items-center gap-1">
+                                    <FaPlus /> Join Community
+                                </div>
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
             <div className="h-screen w-full px-8 py-6">
@@ -571,7 +571,12 @@ const New_User_Dashboard = () => {
                                                 </div>
                                             </div>
                                             <div>
-                                                <button className="px-3 py-1 text-[#EEEEEE] bg-[#277868] text-lg rounded-lg mr-3 hover:shadow-xl">
+                                                <button
+                                                    onClick={() => {
+                                                        window.location.href = `/campaign/${campaign._id}`;
+                                                    }}
+                                                    className="px-3 py-1 text-[#EEEEEE] bg-[#277868] text-lg rounded-lg mr-3 hover:shadow-xl"
+                                                >
                                                     EXPLORE
                                                 </button>
                                             </div>

@@ -31,10 +31,14 @@ const Organization = new Schema({
     logo: {
         type: String,
         required: false,
+        default:
+            "https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/user%2Funknown.jpg?alt=media&token=cbde7ca9-e356-4d34-90f7-1204eadff19d",
     },
     banner: {
         type: String,
         required: false,
+        default:
+            "https://firebasestorage.googleapis.com/v0/b/ecobloom-gdsc-challenge.appspot.com/o/org%2FdefaultBanner.jpg?alt=media&token=4d38c61b-fe9b-4071-94a1-177b449693a3",
     },
     document: {
         type: String,
