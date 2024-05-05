@@ -98,60 +98,56 @@ const Change_profile = ({ visible, onClose }) => {
     }
 
     return (
-        <div
-            id="container"
-            onClick={handleOnClose}
-            className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
-        >
-            <div className="bg-[#CDE1C9] p-7 rounded w-96 flex flex-col justify-center mt-7 gap-3">
-                <form
-                    className="space-y-2 md:space-y-4"
-                    action="#"
-                    id="emailSignUp"
-                >
-                    <label
-                        className="block mb-2 text-sm font-medium text-[#0f1035]"
-                        for="file_input"
-                    >
-                        Upload Photo<sup>*</sup>
-                    </label>
-                    <input
-                        className="block w-full text-sm  file:bg-[#0f1035]  file:text-white file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#0f1035]"
-                        aria-describedby="file_input_help"
-                        id="profile"
-                        name="profile"
-                        type="file"
-                        accept="image/*"
-                        required
-                    />
-                </form>
-                <div className="flex justify-around mt-7 mb-5">
-                    <button
-                        onClick={() => {
-                            document.getElementById("container").click();
-                        }}
-                        className="text-lg bg-[#fbfbfa] text-[#0F1035] w-32 h-8 rounded-lg border-2 border-[#0F1035]"
-                    >
-                        Cancel
-                    </button>
-                    {!clicked ? (
-                        <button
-                            onClick={updateLogo}
-                            className="text-lg bg-[#0F1035] text-[#fbfbfa] w-32 h-8 rounded-lg"
-                        >
-                            Update
-                        </button>
-                    ) : (
-                        <button
-                            disabled
-                            className="text-lg bg-[#0f1035cd] text-[#fbfbfa] w-32 h-8 rounded-lg"
-                        >
-                            Updating...
-                        </button>
-                    )}
-                </div>
-            </div>
+      <div
+        id="container"
+        onClick={handleOnClose}
+        className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
+      >
+        <div className="bg-[#E1E1E0] p-7 rounded w-96 flex flex-col justify-center mt-7 gap-3">
+          <form className="space-y-2 md:space-y-4" action="#" id="emailSignUp">
+            <label
+              className="block mb-2 text-sm font-medium text-[#277868]"
+              for="file_input"
+            >
+              Upload Photo<sup>*</sup>
+            </label>
+            <input
+              className="block w-full text-sm  file:bg-[#277868]  file:text-[#E9E9E9] file:p-2 file:rounded-lg file:font-bold file:hover:scale-105 file:duration-300 rounded-lg cursor-pointer focus:outline-none bg-transparent text-[#277868]"
+              aria-describedby="file_input_help"
+              id="profile"
+              name="profile"
+              type="file"
+              accept="image/*"
+              required
+            />
+          </form>
+          <div className="flex justify-around mt-7 mb-5">
+            <button
+              onClick={() => {
+                document.getElementById("container").click();
+              }}
+              className="text-lg text-[#E9E9E9] bg-[#277868] w-32 h-8 rounded-lg "
+            >
+              Cancel
+            </button>
+            {!clicked ? (
+              <button
+                onClick={updateLogo}
+                className="text-lg bg-[#277868] text-[#E9E9E9] w-32 h-8 rounded-lg"
+              >
+                Update
+              </button>
+            ) : (
+              <button
+                disabled
+                className="text-lg bg-[#277868] text-[#E9E9E9] w-32 h-8 rounded-lg"
+              >
+                Updating...
+              </button>
+            )}
+          </div>
         </div>
+      </div>
     );
 };
 

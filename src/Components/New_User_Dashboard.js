@@ -209,7 +209,7 @@ const New_User_Dashboard = () => {
   return (
     <div>
       <div className="h-screen bg-[#277868]">
-        <div className="w-full bg-[#277868] text-white flex justify-between h-[8%] shadow-2xl mb-2">
+        <div className="w-full bg-[#277868] text-white flex justify-between h-[8.5%] shadow-2xl mb-2 ">
           <div className="flex items-center justify-center">
             <Link to="/">
               <img

@@ -1273,12 +1273,20 @@ video {
   height: 7rem;
 }
 
-.h-\[8\%\]{
-  height: 8%;
+.h-\[8\.5\%\]{
+  height: 8.5%;
 }
 
 .h-\[8\.5rem\]{
   height: 8.5rem;
+}
+
+.h-\[800px\]{
+  height: 800px;
+}
+
+.h-\[82\%\]{
+  height: 82%;
 }
 
 .h-\[800px\]{
@@ -2168,11 +2176,6 @@ video {
   background-color: rgb(203 67 49 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#CDE1C9\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(205 225 201 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#D2D5D4\]{
   --tw-bg-opacity: 1;
   background-color: rgb(210 213 212 / var(--tw-bg-opacity));
@@ -2280,6 +2283,11 @@ video {
 .bg-\[\#eef0e5\]{
   --tw-bg-opacity: 1;
   background-color: rgb(238 240 229 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f5fbf5\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 251 245 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#f5fbf5\]{
@@ -3068,9 +3076,9 @@ video {
   color: rgb(20 74 20 / var(--tw-text-opacity));
 }
 
-.text-\[\#191B58\]{
+.text-\[\#144a14\]{
   --tw-text-opacity: 1;
-  color: rgb(25 27 88 / var(--tw-text-opacity));
+  color: rgb(20 74 20 / var(--tw-text-opacity));
 }
 
 .text-\[\#1C1C1C\]{
@@ -3096,6 +3104,11 @@ video {
 .text-\[\#444743\]{
   --tw-text-opacity: 1;
   color: rgb(68 71 67 / var(--tw-text-opacity));
+}
+
+.text-\[\#4A4A4A\]{
+  --tw-text-opacity: 1;
+  color: rgb(74 74 74 / var(--tw-text-opacity));
 }
 
 .text-\[\#4D8E11\]{
@@ -3138,6 +3151,11 @@ video {
   color: rgb(219 219 219 / var(--tw-text-opacity));
 }
 
+.text-\[\#E9E9E9\]{
+  --tw-text-opacity: 1;
+  color: rgb(233 233 233 / var(--tw-text-opacity));
+}
+
 .text-\[\#EAC5C5\]{
   --tw-text-opacity: 1;
   color: rgb(234 197 197 / var(--tw-text-opacity));
@@ -3151,11 +3169,6 @@ video {
 .text-\[\#EEEEEE\]{
   --tw-text-opacity: 1;
   color: rgb(238 238 238 / var(--tw-text-opacity));
-}
-
-.text-\[\#EEF0E5\]{
-  --tw-text-opacity: 1;
-  color: rgb(238 240 229 / var(--tw-text-opacity));
 }
 
 .text-\[\#FA9A0F\]{
@@ -3550,6 +3563,16 @@ html {
   font-weight: 700;
 }
 
+.file\:text-\[\#E9E9E9\]::-webkit-file-upload-button{
+  --tw-text-opacity: 1;
+  color: rgb(233 233 233 / var(--tw-text-opacity));
+}
+
+.file\:text-\[\#E9E9E9\]::file-selector-button{
+  --tw-text-opacity: 1;
+  color: rgb(233 233 233 / var(--tw-text-opacity));
+}
+
 .file\:text-white::-webkit-file-upload-button{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -3571,6 +3594,11 @@ html {
 .placeholder\:text-sm::placeholder{
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.placeholder\:text-\[\#4A4A4A\]::placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(74 74 74 / var(--tw-text-opacity));
 }
 
 .placeholder\:text-gray-600::placeholder{
