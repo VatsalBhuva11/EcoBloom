@@ -172,7 +172,7 @@ const Orgdashboard = () => {
                         <Link to="/">
                             <img
                                 className="h-12 p-2  rounded-lg hover:scale-105 duration-300 md:h-16 mt-2"
-                                src={org_logo}
+                                src={mainlogo}
                                 alt=""
                             />
     
