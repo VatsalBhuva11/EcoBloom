@@ -21,7 +21,7 @@ import moment from "moment";
 //import { auth } from "../firebase";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../assets/images/Animation.gif";
-
+import { GrMapLocation } from "react-icons/gr";
 
 const OrgCampaignProfile = () => {
     const [profile, setProfile] = useContext(ProfileContext);
@@ -79,8 +79,6 @@ const OrgCampaignProfile = () => {
         );
     }
 
-
-
     return (
         <div className="flex flex-col w-full h-full bg-[#fbfbfa] ">
             {/* navbar */}
@@ -130,7 +128,10 @@ const OrgCampaignProfile = () => {
                                 </div>
                             </h1>
                             <p className="text-[16px] text-[#277868] sm:text-xl md:text-2xl  md:pt-1 sm:pt-1">
-                                {campaign?.organization?.name}
+                                Organized By:{" "}
+                                <span className="font-bold">
+                                    {campaign?.organization?.name}
+                                </span>
                             </p>
                             <p className="text-[16px] sm:text-xl md:text-2xl  md:pt-3 sm:pt-3 text-[#277868] flex font-semibold">
                                 <FaLocationDot className="mt-1 pr-1" />
@@ -175,13 +176,15 @@ const OrgCampaignProfile = () => {
                             </div>
 
                             <div className="flex text-[#277868]">
-                                <IoEyeSharp
+                                <GrMapLocation
                                     size={40}
                                     className="md:mr-4 mr-2"
                                 />
                                 <div className="text-md md:text-xl lg:text-2xl">
-                                    <p className="font-bold">Impressions</p>
-                                    <p className="mt-[-4px] md:mt-[0]">2135</p>
+                                    <p className="font-bold">Location Type</p>
+                                    <p className="mt-[-4px] md:mt-[0]">
+                                        {campaign.locationType}
+                                    </p>
                                 </div>
                             </div>
 
