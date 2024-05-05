@@ -6,6 +6,7 @@ import { jwtDecode } from "jwt-decode";
 import { HashLoader } from "react-spinners";
 import Loader from "../assets/images/Animation.gif";
 
+
 export default function Video({ userId, campaignId }) {
     console.log(userId, " from Video");
     const [status, setStatus] = useState(null);
@@ -111,6 +112,8 @@ export default function Video({ userId, campaignId }) {
             </div>
         );
     }
+
+
 
     const videoConstraints = {
         width: 540,

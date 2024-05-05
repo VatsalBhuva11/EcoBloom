@@ -5,6 +5,7 @@ import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
 import Loader from "../assets/images/Animation.gif";
 
+
 export const ChatContext = createContext();
 
 export const ChatContextProvider = (props) => {
@@ -91,6 +92,8 @@ export const ChatContextProvider = (props) => {
             </div>
         );
     }
+
+
     return (
         <ChatContext.Provider
             value={{

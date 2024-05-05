@@ -16,6 +16,7 @@ import Change_banner from "./Change_banner.js";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../assets/images/Animation.gif";
 
+
 const Edit_Profile_Org = () => {
     const [showMyModel, setShowMyModal] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
@@ -57,6 +58,8 @@ const Edit_Profile_Org = () => {
             </div>
         );
     }
+
+
     if (!loading && !user) {
         window.location.replace("/login");
     }

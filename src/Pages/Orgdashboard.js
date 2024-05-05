@@ -29,6 +29,7 @@ import ViewPost from "../Components/ViewPost.js";
 import moment from "moment";
 import Loader from "../assets/images/Animation.gif";
 
+
 const Orgdashboard = () => {
   const [nav, setNav] = useState(false);
 
@@ -149,48 +150,54 @@ const Orgdashboard = () => {
     setStatus("post");
   };
 
-  // if (loading || loader) {
-  if (loading || loader) {
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <img src={Loader} height={200} width={200}></img>
-      </div>
-    );
-  }
-  if (!loading && !user) {
-    window.location.replace("/login");
-  }
-  return (
-    <div className="flex">
-      <div className=" flex flex-col w-full h-screen lg:w-[75%]">
-        {/* navbar */}
-        <div className="w-full bg-[#277868] text-gray-200 flex shadow-2xl justify-between">
-          <div className="flex items-center ">
-            <Link to="/">
-              <img
-                className="h-12 p-2  rounded-lg hover:scale-105 duration-300 md:h-16 mt-2"
-                src={mainlogo}
-                alt=""
-              />
-            </Link>
-            <h1 className="text-sm sm:text-xl md:text-2xl  ">
-              ORGANISATION DASHBOARD
-            </h1>
-          </div>
-          <div onClick={handleNav} className="text-2xl flex lg:hidden p-4 ">
-            {nav ? <AiOutlineClose /> : <AiOutlineMenu />}
-          </div>
-        </div>
-        {/* navbar */}
-        <div className="w-full h-full bg-[#e5e5e2]">
-          <div className="h-[67%] mx-2 flex flex-col bg-[#d3d3d3] border-[1px] border-gray-500 shadow-2xl rounded-lg">
-            <div className="overflow-hidden">
-              <img
-                className="h-32 sm:h-36 md:h-48 w-full object-cover rounded-lg"
-                src={banner}
-                alt=""
-              />
+    // if (loading || loader) {
+    if (loading || loader) {
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <img src={Loader} height={200} width={200}></img>
             </div>
+        );
+    }
+
+
+    if (!loading && !user) {
+        window.location.replace("/login");
+    }
+    return (
+        <div className="flex">
+            <div className=" flex flex-col w-full h-screen lg:w-[75%]">
+                {/* navbar */}
+                <div className="w-full bg-[#277868] text-gray-200 flex shadow-2xl justify-between">
+                    <div className="flex items-center ">
+                        <Link to="/">
+                            <img
+                                className="h-12 p-2  rounded-lg hover:scale-105 duration-300 md:h-16 mt-2"
+                                src={org_logo}
+                                alt=""
+                            />
+    
+                        </Link>
+                        <h1 className="text-sm sm:text-xl md:text-2xl  ">
+                            ORGANISATION DASHBOARD
+                        </h1>
+                    </div>
+                    <div
+                        onClick={handleNav}
+                        className="text-2xl flex lg:hidden p-4 "
+                    >
+                        {nav ? <AiOutlineClose /> : <AiOutlineMenu />}
+                    </div>
+                </div>
+                {/* navbar */}
+                <div className="w-full h-full bg-[#e5e5e2]">
+                    <div className="h-[67%] mx-2 flex flex-col bg-[#d3d3d3] border-[1px] border-gray-500 shadow-2xl rounded-lg">
+                        <div className="overflow-hidden">
+                            <img
+                                className="h-32 sm:h-36 md:h-48 w-full object-cover rounded-lg"
+                                src={banner}
+                                alt=""
+                            />
+                        </div>
 
             <div className="flex border-b-2 pb-5 border-[#7A7A7A] ">
               <div className="w-[20%] md:w-[15%]">

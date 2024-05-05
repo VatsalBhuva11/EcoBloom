@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../assets/images/Animation.gif";
 
+
 import Maps_Card from "./Map_Card.js";
 
 const CreateCampaign = () => {
@@ -93,6 +94,8 @@ const CreateCampaign = () => {
             </div>
         );
     }
+
+
 
     return (
         <div className="w-screen h-screen p-8 sm:p-12 lg:p-16 bg-[#fbfbfa] flex flex-col justify-evenly gap-1 sm:gap-3">
@@ -179,7 +182,7 @@ const CreateCampaign = () => {
                                 }}
                             />
                         </div>
-                        <a className="flex text-[#277868] text-[1rem] sm:text-lg lg:text-xl font-bold items-center cursor-pointer hover:underline">
+                        {/* <a className="flex text-[#277868] text-[1rem] sm:text-lg lg:text-xl font-bold items-center cursor-pointer hover:underline">
                             <div
                                 className=""
                                 onClick={() => setShowMyModal1(true)}
@@ -192,7 +195,7 @@ const CreateCampaign = () => {
                             >
                                 Mark Location On Map
                             </div>
-                        </a>
+                        </a> */}
                     </div>
                     <div className="hidden sm:flex flex-col w-[25%] gap-1 lg:gap-1">
                         <div className="text-[1.30rem] sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
@@ -317,6 +320,20 @@ const CreateCampaign = () => {
                             <option value="Other">Other</option>
                         </select>
                     </div>
+                    <div className="flex flex-col items-center w-[48%] gap-1 lg:gap-1">
+                            <div className="text-[1.0rem] items-center sm:text-[1.50rem] lg:text-[1.6rem] font-semibold text-[#277868]">
+                                Mark Location on Map*
+                            </div>
+                            <button
+                             onClick={() => setShowMyModal1(true)}
+                            className="flex items-center bg-[#277868] mt-3 text-[#fbfbfa] p-2 rounded-lg"
+                            >
+                                <div><FaLocationDot /></div>
+                                <div>Mark Location</div>
+                                </button>
+                        
+                    </div>
+
                 </div>
 
                 <div className="flex flex-col w-full sm:w-[74%] gap-1 lg:gap-1">

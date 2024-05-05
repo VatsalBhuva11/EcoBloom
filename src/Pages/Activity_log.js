@@ -10,6 +10,7 @@ import { HashLoader } from "react-spinners";
 import moment from "moment";
 import Loader from "../assets/images/Animation.gif";
 
+
 const Activity_log = () => {
     const [activities, setActivities] = useState([]);
     const [user, loading, error] = useAuthState(auth);
@@ -42,6 +43,8 @@ const Activity_log = () => {
             </div>
         );
     }
+
+
     if (!loading && !user) {
         window.location.replace("/login");
     }

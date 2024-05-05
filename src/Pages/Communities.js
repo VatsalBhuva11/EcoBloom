@@ -12,6 +12,7 @@ import { auth, storage } from "../firebase.js";
 import { getDownloadURL, ref } from "firebase/storage";
 import Loader from "../assets/images/Animation.gif";
 
+
 const Communities = () => {
     const [search, setSearch] = useState("");
     const [profile, setProfile] = useContext(ProfileContext);
@@ -82,6 +83,8 @@ const Communities = () => {
             </div>
         );
     }
+
+
     return (
         <div className="h-screen w-full bg-[#fbfbfa]">
             <div className="flex items-center justify-between ">

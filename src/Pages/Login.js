@@ -15,6 +15,7 @@ import Terms_Conditions from "./Terms_Conditions.js";
 import logo from "../assets/images/logo.png";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Verification from "./Verfication.js";
+import { FaArrowLeft } from "react-icons/fa";
 
 export default function Login() {
     const [showMyModel1, setShowMyModal1] = useState(false);
@@ -219,26 +220,16 @@ export default function Login() {
     }
 
     return (
-        <div className=" bg-[#fbfbfa] h-screen w-screen flex">
-            <img
-                className=" hiddenlg:h-12 cursor-pointer lg:hover:scale-105 lg:duration-300 md:h-16 "
-                src={logo}
-                onClick={() => {
-                    window.location.href = "/";
-                }}
-                alt=""
-            />
-            <div className=" flex md:justify-between h-screen w-screen justify-center items-center">
+        <div className=' absolute -z-10 bg-[url("./assets/images/authBg.jpg")]  h-full w-screen r'>
+            <div className=" flex justify-center items-center">
                 <div className="flex flex-col  px-6 py-8 w-[50rem]  items-center justify-center md:h-screen lg:py-0 ">
-                    <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">
+                    <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-[#9db39b] ">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                            <div className="content">
-                                <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                                    Login
-                                </h1>
-                                <p className=" text-xs">Glad you're back!</p>
-                            </div>
-
+                        <FaArrowLeft className=" text-xl"/>        
+                                <div className="flex flex-col">
+                                    <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">Login</h1>
+                                <p className=" text-xs text-center">Glad you're back!</p>
+                                </div>
                             <form
                                 className="space-y-4 md:space-y-6"
                                 action="#"
@@ -318,7 +309,7 @@ export default function Login() {
                                 {!clicked ? (
                                     <button
                                         type="submit"
-                                        className="w-full bg-[#0F1035] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                        className="w-full bg-[#144a14] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
                                         onClick={emailSignIn}
                                     >
                                         Sign in
@@ -450,13 +441,13 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                <div className="image">
+                {/* <div className="image">
                     <img
                         src={login}
                         alt=".."
                         className="  hidden md:flex md:w-[50rem] md:h-auto"
                     />
-                </div>
+                </div> */}
             </div>
             <Terms_Conditions onClose={handleOnClose} visible={showMyModel} />
             <Verification onClose={handleOnClose1} visible={showMyModel1} />

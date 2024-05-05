@@ -27,7 +27,7 @@ const FreshUserSignUp = () => {
         setStep({ ...step, stepCount: step.stepCount + 1 });
     };
 
-    const handleChange = (e, value = e.target.value.trim()) => {
+    const handleChange = (e, value = e.target.value) => {
         let newStep = Object.assign({}, step);
         let input = e.target.name;
         console.log(e);

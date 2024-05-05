@@ -19,6 +19,7 @@ import { Link, Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../assets/images/Animation.gif";
 
+
 const UserProfile = () => {
     const [showMyModel, setShowMyModal] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
@@ -107,6 +108,8 @@ const UserProfile = () => {
             </div>
         );
     }
+
+
     if (!loading && !user) {
         window.location.replace("/login");
     }

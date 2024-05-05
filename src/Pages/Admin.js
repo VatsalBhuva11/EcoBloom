@@ -11,6 +11,7 @@ import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import Loader from "../assets/images/Animation.gif";
 
+
 const Admin = () => {
     const [search, setSearch] = useState("");
     const [_userAuth, loading, error] = useAuthState(auth);
@@ -123,6 +124,8 @@ const Admin = () => {
             </div>
         );
     }
+
+
 
     if (!loading && !user) {
         window.location.replace("/login");

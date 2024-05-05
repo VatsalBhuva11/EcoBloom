@@ -19,6 +19,7 @@ import { jwtDecode } from "jwt-decode";
 import moment from "moment";
 import Loader from "../assets/images/Animation.gif";
 
+
 const CampaignProfile = () => {
     const params = useParams();
 
@@ -143,6 +144,8 @@ const CampaignProfile = () => {
             </div>
         );
     }
+
+
     if (!loading && !user) {
         window.location.replace("/login");
     }

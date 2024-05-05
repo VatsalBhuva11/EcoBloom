@@ -22,6 +22,7 @@ import moment from "moment";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../assets/images/Animation.gif";
 
+
 const OrgCampaignProfile = () => {
     const [profile, setProfile] = useContext(ProfileContext);
     const [campaign, setCampaign] = useState({});
@@ -77,6 +78,8 @@ const OrgCampaignProfile = () => {
             </div>
         );
     }
+
+
 
     return (
         <div className="flex flex-col w-full h-full bg-[#fbfbfa] ">

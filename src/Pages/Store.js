@@ -15,6 +15,7 @@ import { HashLoader } from "react-spinners";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../assets/images/Animation.gif";
 
+
 const Store = () => {
     const [showMyModel, setShowMyModal] = useState(false);
     const handleOnClose = () => setShowMyModal(false);
@@ -70,6 +71,8 @@ const Store = () => {
             </div>
         );
     }
+
+
     if (!loading && !user) {
         window.location.replace("/login");
     }

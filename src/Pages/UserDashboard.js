@@ -24,6 +24,7 @@ import Maps_DashBoard from "../Components/Maps_Dashboard.js";
 import logo from "../assets/images/logo.png";
 import { RxActivityLog } from "react-icons/rx";
 import Loader from "../assets/images/Animation.gif";
+
 import { ChatContext } from "../Components/ChatContextProvider.js";
 
 const UserDashboard = () => {
@@ -191,6 +192,8 @@ const UserDashboard = () => {
             </div>
         );
     }
+
+
     if (!loading && !user) {
         window.location.replace("/login");
     }

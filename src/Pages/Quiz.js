@@ -8,6 +8,7 @@ import { auth } from "../firebase.js";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../assets/images/Animation.gif";
 
+
 const Quiz = () => {
     const [user, loading, error] = useAuthState(auth);
 
@@ -133,6 +134,8 @@ const Quiz = () => {
             </div>
         );
     }
+
+
     return (
         <div className="bg-cover bg-fixed bg-center bg-no-repeat bg-[url('./assets/images/quiz_bg.jpg')] h-screen">
             <img

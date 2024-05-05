@@ -11,6 +11,7 @@ import { jwtDecode } from "jwt-decode";
 import VideoCard from "./VideoCard.js";
 import Loader from "../assets/images/Animation.gif";
 
+
 export default function VerifyUsers() {
     const navigate = useNavigate();
     const [profile, setProfile] = useContext(ProfileContext);
@@ -96,6 +97,8 @@ export default function VerifyUsers() {
             </div>
         );
     }
+
+
     if (!loading && !user) {
         window.location.replace("/login");
     }

@@ -15,6 +15,7 @@ import { jwtDecode } from "jwt-decode";
 import { HashLoader } from "react-spinners";
 import Loader from "../assets/images/Animation.gif";
 
+
 const Badha_Campaigns = () => {
     const [profile, setProfile] = useContext(ProfileContext);
     const [campaigns, setCampaigns] = useState([]);
@@ -78,6 +79,8 @@ const Badha_Campaigns = () => {
             </div>
         );
     }
+
+
 
     return (
         <>

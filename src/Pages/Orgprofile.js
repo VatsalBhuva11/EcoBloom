@@ -15,6 +15,7 @@ import { useParams } from "react-router";
 import ViewPost from "../Components/ViewPost.js";
 import Loader from "../assets/images/Animation.gif";
 
+
 import moment from "moment";
 import LeaveCommCard from "./LeaveCommCard.js";
 import { ChatContext } from "../Components/ChatContextProvider.js";
@@ -235,11 +236,13 @@ const Orgprofile = () => {
         );
     }
 
+
+
     return (
         <div className="flex">
             <div className=" flex flex-col w-full h-screen lg:w-[75%]">
                 {/* navbar */}
-                <div className="w-full bg-[#0f1035]  text-gray-200 flex shadow-2xl h-[10%] ">
+                <div className="w-full bg-[#277868]  text-gray-200 flex shadow-2xl h-[10%] ">
                     <div className="flex items-center ">
                         <Link to="/user/dashboard">
                             <img
@@ -258,7 +261,7 @@ const Orgprofile = () => {
                 </div>
                 {/* navbar */}
                 <div className="w-full h-full bg-[#fbfbfa]">
-                    <div className="mx-2 flex flex-col bg-[#DFE4C5] rounded-lg">
+                    <div className="mx-2 flex flex-col bg-[#d3d3d3] rounded-lg">
                         <div className="overflow-hidden">
                             <img
                                 className="h-32 sm:h-36 md:h-48 w-full object-cover"
@@ -276,7 +279,7 @@ const Orgprofile = () => {
                                 />
                             </div>
                             <div className="flex flex-col pt-2 pl-2 md:pl-4 ">
-                                <h1 className="text-[#0f1035] md:pt-4 font-bold text-xl sm:text-2xl md:text-4xl">
+                                <h1 className="text-[#277868] md:pt-4 font-bold text-xl sm:text-2xl md:text-4xl">
                                     {org.name}
                                 </h1>
                                 <p className="text-[14px] sm:text-lg md:text-2xl pt-1 sm:pt-3">
@@ -324,13 +327,14 @@ const Orgprofile = () => {
                                     ) : !joinCommStatus && !clicked ? (
                                         <button
                                             onClick={handleJoinCommunity}
-                                            className="bg-[#0f1035] flex hover:scale-105 duration-300 text-gray-200 rounded-3xl py-1 px-3 sm:py-1.5 sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
+                                            className="bg-[#277868] flex hover:scale-105 duration-300 text-[#d3d3d3] rounded-3xl py-1 px-3 sm:py-1.5 items-center justify-center sm:px-6 text-md sm:text-lg md:text-xl sm:gap-3 md:gap-4 font-semibold"
                                         >
-                                            <FaPlus
+                                            <div><FaPlus
                                                 className="pt-1 sm:flex hidden"
                                                 size={28}
-                                            />{" "}
-                                            Join Community
+                                            /></div>{" "}
+                                            <div>Join Community</div>
+                                            
                                         </button>
                                     ) : (
                                         <button
@@ -437,7 +441,7 @@ const Orgprofile = () => {
             </div>
             {/* user profile ends */}
             <div className="hidden lg:flex lg:flex-col lg:w-[25%]">
-                <div className="w-full h-screen fixed bg-[#0f1035] text-gray-200 shadow-3xl ">
+                <div className="w-full h-screen fixed bg-[#277868] text-gray-200 shadow-2xl ">
                     {/* search bar */}
 
                     <div className="justify-center items-center mt-10 md:ml-4 lg:ml-14"></div>

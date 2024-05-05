@@ -12,6 +12,7 @@ import VideoCard from "./VideoCard.js";
 import logo from "../assets/images/logo.png";
 import Loader from "../assets/images/Animation.gif";
 
+
 const VerifyDummy = () => {
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
@@ -96,6 +97,8 @@ const VerifyDummy = () => {
             </div>
         );
     }
+
+
     if (!loading && !user) {
         window.location.replace("/login");
     }
