@@ -225,20 +225,11 @@ export default function Login() {
                 <div className="flex flex-col  px-6 py-8 w-[50rem]  items-center justify-center md:h-screen lg:py-0 ">
                     <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-[#9db39b] ">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                            <FaArrowLeft
-                                onClick={() => {
-                                    window.location.href = "/";
-                                }}
-                                className=" scale-125 duration-150 cursor-pointer text-xl"
-                            />
-                            <div className="flex flex-col">
-                                <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                                    Login
-                                </h1>
-                                <p className=" text-xs text-center">
-                                    Glad you're back!
-                                </p>
-                            </div>
+                       <Link to='/'> <FaArrowLeft className=" text-xl cursor-pointer"/>   </Link>     
+                                <div className="flex flex-col">
+                                    <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">Login</h1>
+                                <p className=" text-xs text-center">Glad you're back!</p>
+                                </div>
                             <form
                                 className="space-y-4 md:space-y-6"
                                 action="#"
