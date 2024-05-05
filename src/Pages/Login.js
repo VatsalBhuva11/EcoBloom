@@ -220,13 +220,14 @@ export default function Login() {
 
     return (
         <div className=" bg-[#fbfbfa] h-screen w-screen flex">
-            <Link to="/">
-                <img
-                    className=" hiddenlg:h-12  lg:hover:scale-105 lg:duration-300 md:h-16 "
-                    src={logo}
-                    alt=""
-                />
-            </Link>
+            <img
+                className=" hiddenlg:h-12 cursor-pointer lg:hover:scale-105 lg:duration-300 md:h-16 "
+                src={logo}
+                onClick={() => {
+                    window.location.href = "/";
+                }}
+                alt=""
+            />
             <div className=" flex md:justify-between h-screen w-screen justify-center items-center">
                 <div className="flex flex-col  px-6 py-8 w-[50rem]  items-center justify-center md:h-screen lg:py-0 ">
                     <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-b from-[#9db39b] to-transparent">

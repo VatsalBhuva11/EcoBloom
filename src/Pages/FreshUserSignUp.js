@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BasicDetails from "./BasicDetails";
 import UploadPhoto from "./UploadPhoto";
 import MultiStep from "./MultiStep";
+import logo from "../assets/images/leftArrow.svg";
 
 const FreshUserSignUp = () => {
     const [step, setStep] = useState({
@@ -59,40 +60,68 @@ const FreshUserSignUp = () => {
     switch (stepCount) {
         case 1:
             return (
-                <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
-                    <div className="absolute top-5 w-1/2">
-                        <MultiStep
+                <div>
+                    <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
+                        <img
+                            src={logo}
+                            height={50}
+                            width={70}
+                            className=" cursor-pointer hover:scale-105 lg:duration-300"
+                            onClick={() => {
+                                window.location.href = "/signup";
+                            }}
+                        />
+                        <p>Back to Signup</p>
+                    </div>
+                    <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
+                        <div className="absolute top-5 w-1/2 flex justify-center items-center">
+                            <MultiStep
+                                nextStep={nextStep}
+                                prevStep={prevStep}
+                                stepCount={step.stepCount}
+                                steps={steps}
+                            />
+                        </div>
+                        <BasicDetails
                             nextStep={nextStep}
-                            prevStep={prevStep}
-                            stepCount={step.stepCount}
-                            steps={steps}
+                            handleChange={handleChange}
+                            values={step}
                         />
                     </div>
-                    <BasicDetails
-                        nextStep={nextStep}
-                        handleChange={handleChange}
-                        values={step}
-                    />
                 </div>
             );
         case 2:
             return (
-                <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
-                    <div className="absolute top-5 w-1/2">
-                        <MultiStep
-                            nextStep={nextStep}
-                            prevStep={prevStep}
-                            stepCount={step.stepCount}
-                            steps={steps}
+                <div>
+                    <div className="absolute flex justify-center items-center flex-col text-white top-4 left-8">
+                        <img
+                            src={logo}
+                            height={50}
+                            width={70}
+                            className=" cursor-pointer hover:scale-105 lg:duration-300"
+                            onClick={() => {
+                                window.location.href = "/signup";
+                            }}
                         />
+                        <p>Back to Signup</p>
                     </div>
-                    <div className="flex flex-col w-full h-screen justify-center items-center">
-                        <UploadPhoto
-                            nextStep={nextStep}
-                            prevStep={prevStep}
-                            values={step}
-                            handleChange={handleChange}
-                        />
+                    <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
+                        <div className="absolute top-5 w-1/2 flex justify-center items-center">
+                            <MultiStep
+                                nextStep={nextStep}
+                                prevStep={prevStep}
+                                stepCount={step.stepCount}
+                                steps={steps}
+                            />
+                        </div>
+                        <div className="flex flex-col w-full h-screen justify-center items-center">
+                            <UploadPhoto
+                                nextStep={nextStep}
+                                prevStep={prevStep}
+                                values={step}
+                                handleChange={handleChange}
+                            />
+                        </div>
                     </div>
                 </div>
             );
@@ -100,7 +129,7 @@ const FreshUserSignUp = () => {
         case 3:
             return (
                 <div className="flex flex-col w-full h-screen justify-center items-center">
-                    <div className="absolute top-5 w-1/2">
+                    <div className="absolute top-5 w-1/2 flex justify-center items-center">
                         <MultiStep
                             nextStep={nextStep}
                             prevStep={prevStep}
