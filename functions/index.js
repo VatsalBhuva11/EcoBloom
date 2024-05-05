@@ -21,7 +21,9 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// ensure modularity by abstracting away the database connection.
 connectDB();
+
 //https://ecobloom-rsxx5czyua-uc.a.run.app
 app.get("/", (req, res) => {
     const message = "EcoBloom API at /";
@@ -43,6 +45,8 @@ export const ecobloom = onRequest({ cors: true }, app);
 export const setCustomClaims = onCall(async (data, context) => {
     try {
         // Set custom claims for the user
+        // extract the role and firebaseId from the data object
+        // role can be either "org", or "user", or "admin" (requires to be done manually for admin)
         const { role, firebaseId } = data.data;
         const uid = firebaseId;
         console.log("data: ", data.data);

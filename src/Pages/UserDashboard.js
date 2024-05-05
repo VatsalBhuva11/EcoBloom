@@ -53,7 +53,6 @@ const UserDashboard = () => {
     const [profile, setProfile] = useContext(ProfileContext);
     const [loader, setLoader] = useState(true);
     const [markers, setMarkers] = useState([]);
-
     const handleMarkerClick = (marker) => {
         console.log("Marker clicked:", marker);
         // Perform actions when a marker is clicked
@@ -192,7 +191,6 @@ const UserDashboard = () => {
             </div>
         );
     }
-
 
     if (!loading && !user) {
         window.location.replace("/login");

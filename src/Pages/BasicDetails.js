@@ -376,18 +376,25 @@ export default function BasicDetails({
                         >
                             Prev
                         </button> */}
-                                <button
-                                    className="flex justify-center items-center w-full bg-[#277868] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
-                                    id="next"
-                                    disabled={stepCount === 4}
-                                    onClick={(e) => {
-                                        Continue(e);
-                                        // nextStep();
-                                    }}
-                                >
-                                    {!signUpClicked ? (
+
+                                {!signUpClicked ? (
+                                    <button
+                                        className="flex justify-center items-center w-full bg-[#277868] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                        id="next"
+                                        disabled={stepCount === 4}
+                                        onClick={(e) => {
+                                            Continue(e);
+                                            // nextStep();
+                                        }}
+                                    >
                                         "Next"
-                                    ) : (
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="disabled flex justify-center items-center w-full bg-[#277868] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
+                                        id="next"
+                                        disabled={stepCount === 4}
+                                    >
                                         <div role="status">
                                             <svg
                                                 aria-hidden="true"
@@ -409,8 +416,8 @@ export default function BasicDetails({
                                                 Loading...
                                             </span>
                                         </div>
-                                    )}
-                                </button>
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </form>
