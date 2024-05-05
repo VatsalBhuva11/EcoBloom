@@ -46,6 +46,7 @@ export default function Chatbar() {
         if (auth.currentUser) {
             auth.currentUser.getIdToken().then((idToken) => {
                 const idTokenResult = jwtDecode(idToken);
+                console.log("IDTOKEN: ", idTokenResult);
                 setSender({
                     name: idTokenResult.name,
                     userId: idTokenResult.userId,
