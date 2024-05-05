@@ -122,8 +122,8 @@ const OrgCampaignProfile = () => {
                         <div className="flex flex-col pt-2 pl-2 md:pl-4 ">
                             <h1 className="text-[#277868] md:pt-4 font-bold text-xl sm:text-2xl md:text-3xl flex">
                                 <div className="flex items-center">
-                                {/* <LuTrophy className="mt-1 text-4xl mr-1 md:mt-2  md:mr-2" />{" "} */}
-                                {campaign?.name}
+                                    {/* <LuTrophy className="mt-1 text-4xl mr-1 md:mt-2  md:mr-2" />{" "} */}
+                                    {campaign?.name}
                                 </div>
                             </h1>
                             <p className="text-[16px] text-[#277868] sm:text-xl md:text-2xl  md:pt-1 sm:pt-1">
@@ -138,8 +138,8 @@ const OrgCampaignProfile = () => {
                     </div>
                 </div>
                 {/* main profile */}
-                <div className="mt-4 rounded-lg backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-transaprent  border-b border-[#8c858544] shadow-md w-full">
-                    <div className="bg-[#d3d3d3] flex-col w-full  items-center h-[160px] p-2 rounded-lg ">
+                <div className="mt-4 bg-[#d3d3d3] pb-12 mb-4 rounded-lg backdrop-filter backdrop-blur-lg z-30 bg-transaprent  border-b border-[#8c858544] shadow-md w-full">
+                    <div className=" flex-col w-full  items-center h-[160px] p-2 rounded-lg ">
                         <div className="mt-4 flex justify-between w-full">
                             <h1 className="ml-6 md:ml-10 lg:ml-10 font-bold text-xl sm:text-2xl md:text-3xl flex text-[#277868]">
                                 <SlCalender className="mr-2 md:mr-4 mt-1" />
@@ -215,7 +215,8 @@ const OrgCampaignProfile = () => {
                     <div className="flex ml-4 md:ml-10 lg:ml-10 font-bold text-xl sm:text-2xl md:text-3xl text-[#CD8521] mt-4">
                         <h1>Participate and Earn :</h1>
                         <p className="pl-2 lg:ml-4 md:ml-2 flex font-bold  text-[#FA9A0F]">
-                            <SiDogecoin className=" mr-1 mt-1 " /> {campaign.points}
+                            <SiDogecoin className=" mr-1 mt-1 " />{" "}
+                            {campaign.points}
                         </p>
                     </div>
                     {/* points */}
@@ -236,7 +237,7 @@ const OrgCampaignProfile = () => {
                                 Guidelines
                             </h1>
                             <div className="md:text-xl  text-[#277868] ml-10 text-md lg:text-2xl mt-4 lg:mt-6 list-disc">
-                               {campaign.guidelines}
+                                {campaign.guidelines}
                             </div>
                         </div>
                     </div>

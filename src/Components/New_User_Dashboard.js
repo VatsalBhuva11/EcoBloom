@@ -520,7 +520,12 @@ const New_User_Dashboard = () => {
                                                 </div>
                                             </div>
                                             <div>
-                                                <button className="px-3 py-1 text-[#EEEEEE] bg-[#277868] text-lg rounded-lg mr-3 hover:shadow-xl">
+                                                <button
+                                                    onClick={() => {
+                                                        window.location.href = `/campaign/${campaign._id}`;
+                                                    }}
+                                                    className="px-3 py-1 text-[#EEEEEE] bg-[#277868] text-lg rounded-lg mr-3 hover:shadow-xl"
+                                                >
                                                     EXPLORE
                                                 </button>
                                             </div>

@@ -209,7 +209,7 @@ const CampaignProfile = () => {
                     </div>
                 </div>
                 {/* main profile */}
-                <div className="mt-4 rounded-lg backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#bebaba] border-t border-b border-[#8c858544] shadow-md w-full">
+                <div className="mt-4 pb-4 rounded-lg backdrop-filter backdrop-blur-lg z-30 bg-opacity-30 bg-[#bebaba] border-t border-b border-[#8c858544] shadow-md w-full">
                     <div className="bg-transparent flex-col w-full  items-center h-[160px] ">
                         <div className="mt-4 flex justify-between w-full">
                             <h1 className="ml-6 md:ml-10 lg:ml-10 font-bold text-xl sm:text-2xl md:text-3xl flex text-[#686968]">
