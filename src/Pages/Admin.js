@@ -134,20 +134,22 @@ const Admin = () => {
     return (
         <div className="bg-[#fbfbfa] h-screen flex flex-col ">
             <div className="flex justify-between">
-                <div>
-                    <div className="flex items-center pt-3 md:pt-6">
+                    <div className="flex items-center pt-3 ">
                         <Link to="/home">
                             <img
-                                className="h-16 hover:scale-105 duration-300 mt-4 ml-4 sm:ml-8 md:ml-12"
+                                className="h-16 hover:scale-105 duration-300"
                                 src={logo}
                                 alt=""
                             />
                         </Link>
-                        <p className="text-lg sm:text-2xl md:text-3xl font-bold text-[#191B58] pt-2">
+                        
+                    </div>
+                    <div className="flex justify-center mt-16   ">
+                    <p className="text-lg  sm:text-2xl md:text-3xl font-bold text-[#277868] pt-2">
                             VERIFY ORGANIZATION
                         </p>
-                    </div>
-                </div>
+                        </div>
+               
                 <div className=" cursor-pointer hover:scale-105 text-xl sm:text-2xl md:text-4xl lg:text-5xl flex justify-center items-center lg:mr-10 md:mr-8 sm:mr-6 mr-3">
                     <button
                         onClick={() => {
@@ -160,11 +162,11 @@ const Admin = () => {
                 </div>
             </div>
             <div className="flex items-center justify-center">
-                <div className="flex justify-center items-center rounded-3xl p-2 md:p-4 bg-gradient-to-r from-[#353657] to-[#404162] w-3/4 mt-4 md:mt-8">
+                <div className="flex justify-center items-center rounded-3xl p-2 md:p-4 bg-[#277868] w-3/4 mt-4 md:mt-8">
                     <div className="w-full text-gray-100 border-r-2 border-b-gray-100 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
                         <div className="flex justify-center">
                             <p>Accepted: </p>
-                            <p className="pl-2 text-[#EAC5C5]">
+                            <p className="pl-2">
                                 {orgsInfo.accepted}
                             </p>
                         </div>
@@ -180,7 +182,7 @@ const Admin = () => {
                     <div className="w-full text-gray-100 border-b-gray-100 p-2  md:text-[20px] sm:text-[15px] text-[13px]">
                         <div className="flex justify-center">
                             <p>Unreviewed: </p>
-                            <p className="pl-2 text-[#EAC5C5]">
+                            <p className="pl-2 ">
                                 {orgsInfo.unreviewed}
                             </p>
                         </div>
@@ -198,7 +200,7 @@ const Admin = () => {
             {/* 
       search */}
             <div className="flex items-center justify-center font-semibold ">
-                <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-gradient-to-r from-[#353657] to-[#404162] w-11/12">
+                <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#277868] w-11/12">
                     <div className="w-full text-gray-100 border-r-2 border-b-gray-700 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
                         <div className="flex justify-center">
                             <p>Name </p>
@@ -231,15 +233,15 @@ const Admin = () => {
                     .map((org, key) => {
                         return (
                             <div className="flex items-center justify-center  ">
-                                <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#E4E8D3] w-11/12 mt-3 md:mt-4">
-                                    <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                                <div className="flex justify-center items-center rounded-xl p-1 md:p-2 bg-[#D7E6E3] w-11/12 mt-3 md:mt-4">
+                                    <div className="w-full text-[#277868] border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
                                         <div className="flex justify-center">
                                             <p className="font-semibold">
                                                 {org.name}{" "}
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="w-full text-gray-700 border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
+                                    <div className="w-full text-[#277868] border-r-2 border-gray-500 p-2 md:text-[20px] sm:text-[15px] text-[13px]">
                                         <div className="flex justify-center">
                                             <p>
                                                 {moment(org.applyDate).format(
