@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function ChatBubbleDept({ message }) {
+    console.log("MESSAGE DEPT: ", message);
+
     return (
         <div className="flex justify-end">
             <div className="flex w-fit max-w-[35%]   gap-2.5 mt-2 mb-2 mr-4">

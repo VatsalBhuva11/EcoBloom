@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function ChatBubbleArrival({ message }) {
     const [isOpen, setIsOpen] = useState(false);
+    console.log("MESSAGE ARR: ", message);
     return (
         <div>
             <div className="flex items-start gap-2.5 mt-2 mb-2 ">
