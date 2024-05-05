@@ -124,28 +124,28 @@ const data = [
     name: "Emily Chen",
     img: emilychen,
     content:
-      "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiative which improves sustainability.",
+      "As a student and eco-enthusiast, EcoBloom empowers me to engage my local community in eco-friendly initiatives, contributing to improved sustainability.",
     position: "Student and Eco-Enthusiast",
   },
   {
     name: "James Anderson",
     img: james,
     content:
-      "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiative which improves sustainability.",
+      "As a tech entrepreneur, EcoBloom provides me with the platform to involve my local community in eco-friendly initiatives, thereby advancing sustainability goals.",
     position: "Tech Entrepreneur",
   },
   {
     name: "Dr. Maria Garcia",
     img: maria,
     content:
-      "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiative which improves sustainability.",
+      "As an environmental scientist, EcoBloom enables me to engage my local community in eco-friendly initiatives, driving forward sustainability efforts.",
     position: "Environmental Scientist",
   },
   {
     name: "Raj Patel",
     img: raj,
     content:
-      "As a small business owner committed to sustainability, EcoBloom has allowed me to engage my local community in eco-friendly initiative which improves sustainability.",
+      "As a small business owner, EcoBloom allows me to involve my local community in eco-friendly initiatives, enhancing sustainability efforts and goals.",
     position: "Small Business Owner",
   },
 ];
