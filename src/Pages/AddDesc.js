@@ -55,7 +55,7 @@ export default function AddDesc({ nextStep, prevStep, handleChange, values }) {
     };
 
     return (
-        <div className="flex flex-col bottom-0 justify-center items-center w-1/2 min-h-fit p-12 py-4 shadow-md rounded-2xl bg-[#9db39b] mx-auto  mb-8">
+        <div className="bg-[#9db39b] flex flex-col bottom-0 justify-center items-center w-[40%] min-h-fit py-4 shadow-md rounded-2xl mx-auto mb-8">
             <h1 className="text-xl font-extrabold">
                 Describe your organization!
             </h1>
@@ -108,6 +108,7 @@ export default function AddDesc({ nextStep, prevStep, handleChange, values }) {
                             Prev
                         </button> */}
                         <button
+                            className="flex justify-center items-center w-full bg-[#277868] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
                             id="next"
                             disabled={stepCount === 4}
                             onClick={(e) => {

@@ -224,7 +224,7 @@ export default function Login() {
         <div className=' absolute -z-10 bg-[url("./assets/images/authBg.jpg")]  h-full w-screen r'>
             <div className=" flex justify-center items-center">
                 <div className="flex flex-col  px-6 py-8 w-[50rem]  items-center justify-center md:h-screen lg:py-0 ">
-                    <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-[#f5fbf5] ">
+                    <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-[#9db39b] ">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                             <FaArrowLeft
                                 onClick={() => {

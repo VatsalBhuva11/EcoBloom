@@ -248,7 +248,7 @@ export default function BasicDetails({
                 <div className="p-6  sm:p-8">
                     <Link to="/">
                         {" "}
-                        <FaArrowLeft className=" text-xl cursor-pointer" />{" "}
+                        <FaArrowLeft className=" hover:scale-105 duration-150 text-xl cursor-pointer" />{" "}
                     </Link>
                     <div className="flex flex-col">
                         <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
@@ -366,7 +366,7 @@ export default function BasicDetails({
                             </div>
                         )}
                         <div className="flex justify-center items-center pb-12 gap-4">
-                            <div className="action-buttons">
+                            <div className="action-buttons w-1/2">
                                 {/* <button
                             id="prev"
                             disabled={stepCount === 1}
@@ -377,6 +377,7 @@ export default function BasicDetails({
                             Prev
                         </button> */}
                                 <button
+                                    className="flex justify-center items-center w-full bg-[#277868] text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 duration-300"
                                     id="next"
                                     disabled={stepCount === 4}
                                     onClick={(e) => {

@@ -175,9 +175,8 @@ const FreshUserSignUp = () => {
                             steps={steps}
                         />
                     </div>
-
-                    <div className='flex flex-col w-full bg-[url("./assets/images/authBg.jpg")] h-screen justify-center items-center'>
-                        <h1 className="text-6xl text-[#277868] text-center font-bold">
+                    <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
+                        <h1 className="text-6xl text-white text-center font-bold">
                             Registered Successfully!
                         </h1>
                     </div>
