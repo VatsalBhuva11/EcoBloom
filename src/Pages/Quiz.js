@@ -113,6 +113,9 @@ const Quiz = () => {
                 .then((res) => res.json())
                 .then((res) => {
                     console.log(res);
+                    setTimeout(() => {
+                        window.location.href = "/user/dashboard";
+                    }, 3000);
                 })
                 .catch((err) => {
                     console.log(

@@ -6,11 +6,19 @@ export default function AddDesc({ nextStep, prevStep, handleChange, values }) {
     const formBasic = { email, password, name, confirmPassword };
     const [signUpClicked, setSignUpClicked] = useState(false);
     const [status, setStatus] = useState(null);
+    const [desc, setDesc] = useState("");
 
     const Continue = (e) => {
         console.log(e);
         e.preventDefault();
         setSignUpClicked(true);
+        setStatus(null);
+
+        if (!desc || desc.length === 0) {
+            nextStep();
+            setSignUpClicked(false);
+            return;
+        }
         let formData = new FormData(document.getElementById("orgSignUpTwo"));
         formData.append("email", email);
         console.log("OK");
@@ -67,14 +75,17 @@ export default function AddDesc({ nextStep, prevStep, handleChange, values }) {
                         Description
                     </label>
                     <textarea
-                        placeholder="Committed towards a cleaner and greener world!"
+                        placeholder="We are committed towards making this world a better place for everyone!"
                         type="text"
                         rows={4}
                         name="description"
                         id="description"
                         className="w-full focus:text-gray-800 px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200"
                         oninput="this.className = 'w-full px-4 py-3 rounded-md text-gray-700 font-medium border-solid border-2 border-gray-200'"
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => {
+                            setDesc(e.target.value);
+                            handleChange(e);
+                        }}
                         required
                     />
                 </div>

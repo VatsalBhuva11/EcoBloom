@@ -19,14 +19,13 @@ const UploadDocs = ({ nextStep, prevStep, handleChange, values }) => {
         console.log(e);
         e.preventDefault();
         setButtonClicked(true);
+        setStatus(null);
         console.log(selectedFiles);
-        // if (!selectedFiles) {
-        //     return;
-        // }
-        // if (!selectedFiles.document) {
-        //     setButtonClicked(false);
-        //     setStatus("Document should be mandatorily uploaded.");
-        // }
+        if (!selectedFiles || !selectedFiles.document) {
+            setButtonClicked(false);
+            setStatus("Document should be mandatorily uploaded.");
+            return;
+        }
         let formData = new FormData(document.getElementById("orgSignUpThree"));
         formData.append("email", values.email);
         console.log("OK");
@@ -120,7 +119,7 @@ const UploadDocs = ({ nextStep, prevStep, handleChange, values }) => {
                     <input
                         class="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none "
                         id="logo"
-                        name="logo"
+                        name="optionalLogo"
                         accept="image/jpeg, image/jpg, image/png"
                         type="file"
                         onChange={(e) => {
@@ -144,7 +143,7 @@ const UploadDocs = ({ nextStep, prevStep, handleChange, values }) => {
                     <input
                         class="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none "
                         id="banner"
-                        name="banner"
+                        name="optionalBanner"
                         accept="image/*, application/pdf"
                         type="file"
                         onChange={(e) => {

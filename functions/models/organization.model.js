@@ -26,7 +26,7 @@ const Organization = new Schema({
         type: String,
         required: true,
         default:
-            "We are committed towards helping this world a better place for everyone!",
+            "We are committed towards making this world a better place for everyone!",
     },
     logo: {
         type: String,

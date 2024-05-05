@@ -28,7 +28,11 @@ const UploadPhoto = ({ nextStep, prevStep, handleChange, values }) => {
         console.log(e);
         e.preventDefault();
         setButtonClicked(true);
+        setStatus(null);
+
         if (!selectedFile) {
+            nextStep();
+            setButtonClicked(false);
             return;
         }
         // console.log("BEFORE VALIDATION");

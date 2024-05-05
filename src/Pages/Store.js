@@ -357,7 +357,7 @@ const Store = () => {
                                             onClick={() => {
                                                 setShowMyModal(true);
                                             }}
-                                            className="bg-[#F0904B] rounded-lg hover:bg-[#EE731A]"
+                                            className="bg-[#277868] rounded-lg"
                                         >
                                             <a className="flex text-white text-sm md:text-xl px-2 py-1 ">
                                                 400{" "}
