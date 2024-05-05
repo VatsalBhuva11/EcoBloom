@@ -412,24 +412,24 @@ const New_User_Dashboard = () => {
                             </div>
                         )}
                     </div>
-                    <div className="flex justify-end pr-6 pt-1">
-                        <Link to="/user/orgs">
-                            <button className="text-[#277868] px-3 py-1 mr-12 border-2 border-[#277868] text-lg rounded-md hover:shadow-xl mt-1">
-                                <div className="flex items-center gap-1 font-semibold">
-                                    View All <FaArrowRightLong />
-                                </div>
-                            </button>
-                        </Link>
-                    </div>
-                    <div className="flex justify-center pr-6 pt-1 pb-3">
-                        <Link to="/user/join">
-                            <button className="bg-[#164d42] text-[#FBFBFA] px-3 py-1 border border-[#277868] text-xl font-semibold rounded-md hover:shadow-xl">
-                                <div className="flex items-center gap-1">
-                                    <FaPlus /> Join Community
-                                </div>
-                            </button>
-                        </Link>
-                    </div>
+                </div>
+                <div className="flex justify-end pr-6 pt-1">
+                    <Link to="/user/orgs">
+                        <button className="text-[#277868] px-3 py-1 mr-12 border-2 border-[#277868] text-lg rounded-md hover:shadow-xl mt-1">
+                            <div className="flex items-center gap-1 font-semibold">
+                                View All <FaArrowRightLong />
+                            </div>
+                        </button>
+                    </Link>
+                </div>
+                <div className="flex justify-center pr-6 pt-1 pb-3">
+                    <Link to="/user/join">
+                        <button className="bg-[#164d42] text-[#FBFBFA] px-3 py-1 border border-[#277868] text-xl font-semibold rounded-md hover:shadow-xl">
+                            <div className="flex items-center gap-1">
+                                <FaPlus /> Join Community
+                            </div>
+                        </button>
+                    </Link>
                 </div>
             </div>
             <div className="h-screen w-full px-8 py-6">
