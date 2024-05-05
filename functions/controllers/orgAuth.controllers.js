@@ -89,6 +89,172 @@ async function uploadFile(email, file, paths) {
     }
 }
 
+router.post("/register/stepOne", async (req, res) => {
+    try {
+        const { name, email, firebaseId } = req.body;
+        if (!name || !email || !firebaseId) {
+            throw new Error(
+                "Following fields are mandatory: name, email, firebaseId"
+            );
+        } else {
+            const checkUser = await Organization.findOne({ email });
+            if (checkUser) {
+                response_400(res, "Organization already exists.");
+            } else {
+                const org = await Organization.create({
+                    email,
+                    name,
+                    firebaseId,
+                });
+                const community = await Community.create({
+                    organization: org._id,
+                    orgName: org.name,
+                });
+                if (org) {
+                    console.log("Successfully created org with mail: ", email);
+                    response_200(res, "Successfully created new org!", org);
+                } else {
+                    response_500(
+                        res,
+                        "Error occurred while creating org in DB"
+                    );
+                }
+            }
+        }
+    } catch (err) {
+        console.log("Error occurred while adding basic details for org: ", err);
+        response_500(res, "Error occurred while creating org in DB", err);
+    }
+});
+router.post("/register/stepTwo", async (req, res) => {
+    try {
+        const { email, description } = req.body;
+        console.log("EMAIL: ", email);
+        console.log("description: ", description);
+        const checkOrg = await Organization.findOne({ email });
+        if (!checkOrg) {
+            response_400(res, "No such organization exists.");
+        } else {
+            const org = await Organization.updateOne(
+                {
+                    email,
+                },
+                { description },
+                { new: true }
+            );
+            if (org) {
+                console.log("Successfully updated org with mail: ", email);
+                response_200(
+                    res,
+                    "Successfully updated description of org!",
+                    org
+                );
+            } else {
+                response_500(res, "Error occurred while updating org in DB");
+            }
+        }
+    } catch (err) {
+        console.log("Error occurred while updating description for org: ", err);
+        response_500(
+            res,
+            "Error occurred while updating org's desc in DB",
+            err
+        );
+    }
+});
+
+router.post("/register/stepThree", async (req, res) => {
+    try {
+        const { email } = req.body;
+        const files = req.files; //logo, banner, document
+        console.log("FILES: ", files);
+        const check = files.filter((file) => file.size > 100000);
+        if (check.length > 0) {
+            response_400(res, "File sizes should be less than 100kb.");
+        } else {
+            const extensions = files.map((file) =>
+                file.originalname.split(".").pop()
+            );
+            const validate = extensions.filter(
+                (extension) =>
+                    extension !== "jpg" &&
+                    extension !== "png" &&
+                    extension !== "jpeg" &&
+                    extension !== "pdf"
+            );
+
+            const docUploaded = files.filter((file) =>
+                file.fieldname.includes("document")
+            );
+            //email variable, update record in DB
+
+            if (validate.length > 0) {
+                response_400(
+                    res,
+                    "Invalid file format. Only .jpg, .png, .jpeg, .pdf files are allowed"
+                );
+            } else if (docUploaded.length === 0) {
+                response_400(
+                    res,
+                    "Uploading document is mandatory for verification."
+                );
+            } else {
+                // const pathToLogo = `/org/${email}/logo_${Date.now()}.jpg`;
+                // const pathToBanner = `/org/${email}/banner_${Date.now()}.jpg`;
+                // const pathToDocument = `/org/${email}/document_${Date.now()}.jpg`;
+
+                const filesToUpload = [];
+                const paths = {};
+                for (let i = 0; i < files.length; i++) {
+                    paths[
+                        files[i].fieldname
+                    ] = `org/${email}/${files[i].fieldname}.${extensions[i]}`;
+                    if (extensions[i] === "pdf") {
+                        filesToUpload.push(
+                            await uploadPdf(
+                                email,
+                                files[i],
+                                extensions[i],
+                                paths
+                            )
+                        );
+                    } else {
+                        filesToUpload.push(
+                            await uploadFile(email, files[i], paths)
+                        );
+                    }
+                }
+
+                Promise.all(filesToUpload)
+                    .then((values) => {
+                        console.log(values);
+                    })
+                    .then(async (values) => {
+                        console.log("PATHS:::", paths);
+                        console.log("VALUES::: ", values);
+                        const org = await Organization.updateOne(
+                            { email },
+                            { ...paths, applyDate: new Date() }
+                        );
+
+                        response_200(
+                            res,
+                            "Successfully updated organization docs in DB",
+                            org
+                        );
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        response_500(res, "Error creating organization", err);
+                    });
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        res.send(err);
+    }
+});
+
 router.post("/register", async (req, res) => {
     try {
         const { name, email, password, description, firebaseId } = req.body;

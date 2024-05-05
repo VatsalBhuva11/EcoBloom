@@ -26,7 +26,7 @@ export const ChatContextProvider = (props) => {
                 console.log("RESULT: ", result);
                 const idToken = result.token;
                 const role = result.claims.role;
-                if (role !== "org") {
+                if (role === "user") {
                     fetch(
                         `${process.env.REACT_APP_DEPLOYED_API_URL}/user/communities`,
                         {

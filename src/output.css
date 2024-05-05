@@ -1271,16 +1271,16 @@ video {
   height: 75%;
 }
 
-.h-\[750px\]{
-  height: 750px;
-}
-
 .h-\[7rem\]{
   height: 7rem;
 }
 
 .h-\[8\.5rem\]{
   height: 8.5rem;
+}
+
+.h-\[800px\]{
+  height: 800px;
 }
 
 .h-\[83\%\]{
@@ -2760,6 +2760,10 @@ video {
   padding-right: 1.5rem;
 }
 
+.pt-0{
+  padding-top: 0px;
+}
+
 .pt-1{
   padding-top: 0.25rem;
 }
@@ -3393,6 +3397,7 @@ video {
 } */
 
 .slick-slide > div {
+  height: 100%;
   margin: 0 10px;
 }
 
@@ -5062,6 +5067,11 @@ html {
     background-color: rgb(75 85 99 / var(--tw-bg-opacity));
   }
 
+  .dark\:bg-gray-700{
+    --tw-bg-opacity: 1;
+    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  }
+
   .dark\:text-gray-400{
     --tw-text-opacity: 1;
     color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -5070,6 +5080,16 @@ html {
   .dark\:text-gray-600{
     --tw-text-opacity: 1;
     color: rgb(75 85 99 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-white{
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+
+  .dark\:placeholder-gray-400::placeholder{
+    --tw-placeholder-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-placeholder-opacity));
   }
 
   .dark\:hover\:border-gray-500:hover{

@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
-import login from "../assets/images/login.png";
-import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { getFunctions, httpsCallable } from "firebase/functions";
-import Login_Card from "./Create_Account_Card.js";
-import Terms_Conditions from "./Terms_Conditions.js";
-import logo from "../assets/images/logo.png";
-import { FaInfoCircle } from "react-icons/fa";
 
-export default function BasicDetails({
+export default function OrgBasicDetails({
     nextStep,
     prevStep,
     handleChange,
@@ -19,99 +13,11 @@ export default function BasicDetails({
     const formBasic = { email, password, name, confirmPassword };
     const [signUpClicked, setSignUpClicked] = useState(false);
     const [status, setStatus] = useState(null);
-    const [isOpen, setIsOpen] = useState(false);
-
-    function emailSignUp(event) {
-        event.preventDefault();
-        setSignUpClicked(true);
-        setStatus("none");
-        // let files = document.querySelector('input[type="file"]').files;
-        let formData = new FormData(document.getElementById("emailSignUp"));
-
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed Up
-                console.log("User in Firebase: ", userCredential.user);
-                const user = userCredential.user;
-                const userData = {
-                    role: "user",
-                    firebaseId: user.uid,
-                }; // Include any other relevant user data
-                console.log("userData: ", userData);
-                // Call Cloud Function to handle custom claims and other operations
-                const functions = getFunctions();
-                const setCustomClaims = httpsCallable(
-                    functions,
-                    "setCustomClaims"
-                );
-                formData.append("firebaseId", user.uid);
-
-                fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register`,
-                    {
-                        method: "POST",
-                        body: formData,
-                    }
-                )
-                    .then((response) => response.json())
-                    .then((data) => {
-                        if (data.status === "error") {
-                            setSignUpClicked(false);
-                            auth.currentUser.delete();
-                            console.log(data);
-                            throw new Error(
-                                "Invalid form input. Please check again,"
-                            );
-                        } else {
-                            console.log("User in DB: ");
-                            console.log(data);
-                            setCustomClaims(userData)
-                                .then((result) => {
-                                    console.log(
-                                        "result from setCustomClaims from client: ",
-                                        result
-                                    );
-                                    console.log(user);
-                                    setShowMyModal(true);
-                                    setSignUpClicked(false);
-                                    setStatus("success");
-                                })
-                                .catch((err) => {
-                                    console.log(err);
-                                    setSignUpClicked(false);
-                                    setStatus("failure");
-                                });
-
-                            console.log("Success:", data);
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                        setStatus("failure");
-                        setSignUpClicked(false);
-                    });
-
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-                console.log(error);
-                setStatus("failure");
-                setSignUpClicked(false);
-            });
-    }
 
     useEffect(() => {
         if (password && password !== confirmPassword)
             setStatus("Passwords do not match!");
     }, []);
-
-    const [showMyModel, setShowMyModal] = useState(false);
-    const [showMyModel1, setShowMyModal1] = useState(false);
-    const handleOnClose = () => setShowMyModal(false);
-    const handleOnClose1 = () => setShowMyModal1(false);
 
     function validateForm() {
         if (Object.values(formBasic).some((x) => x === null || x === "")) {
@@ -141,15 +47,15 @@ export default function BasicDetails({
             setSignUpClicked(false);
             return;
         }
-        let formData = new FormData(document.getElementById("userSignUpOne"));
+        let formData = new FormData(document.getElementById("orgSignUpOne"));
         console.log("OK");
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed Up
-                console.log("User in Firebase: ", userCredential.user);
+                console.log("Org in Firebase: ", userCredential.user);
                 const user = userCredential.user;
                 const userData = {
-                    role: "user",
+                    role: "org",
                     firebaseId: user.uid,
                 }; // Include any other relevant user data
                 console.log("userData: ", userData);
@@ -162,7 +68,7 @@ export default function BasicDetails({
                 formData.append("firebaseId", user.uid);
 
                 fetch(
-                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/user/register/stepOne`,
+                    `${process.env.REACT_APP_DEPLOYED_API_URL}/auth/org/register/stepOne`,
                     {
                         method: "POST",
                         body: formData,
@@ -234,10 +140,10 @@ export default function BasicDetails({
     return (
         <div className="flex flex-col bottom-0 justify-center items-center w-1/2 min-h-fit p-12 py-4 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
             <h1 className="text-xl font-extrabold">
-                Join us as a participant!
+                Join us as an organization!
             </h1>
 
-            <form className="step relative top-4" id="userSignUpOne">
+            <form className="step relative top-4" id="orgSignUpOne">
                 {/* <p className="text-md text-gray-700 leading-tight text-center mt-8 mb-5">
                     Create your account
                 </p> */}
@@ -246,7 +152,7 @@ export default function BasicDetails({
                         class="block text-gray-700 text-sm font-bold mb-2"
                         htmlFor="name"
                     >
-                        Name
+                        Org. Name
                     </label>
                     <input
                         type="text"

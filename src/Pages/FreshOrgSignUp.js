@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import BasicDetails from "./BasicDetails";
 import UploadPhoto from "./UploadPhoto";
 import MultiStep from "./MultiStep";
+import OrgBasicDetails from "./OrgBasicDetails";
+import AddDesc from "./AddDesc";
+import UploadDocs from "./UploadDocs";
 
 const FreshUserSignUp = () => {
     const [step, setStep] = useState({
@@ -42,15 +45,15 @@ const FreshUserSignUp = () => {
         },
         {
             stepNumber: 2,
-            message: "Upload Photo",
+            message: "Add Description",
         },
         {
             stepNumber: 3,
-            message: "Done!",
+            message: "Upload Documents",
         },
+        { stepNumber: 4, message: "Done!" },
     ];
-
-    if (stepCount === 3) {
+    if (stepCount === 4) {
         setTimeout(() => {
             window.location.replace("/login");
         }, 2000);
@@ -60,7 +63,7 @@ const FreshUserSignUp = () => {
         case 1:
             return (
                 <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
-                    <div className="absolute top-5 w-1/2">
+                    <div className="absolute top-5 w-full flex justify-center items-center">
                         <MultiStep
                             nextStep={nextStep}
                             prevStep={prevStep}
@@ -68,7 +71,7 @@ const FreshUserSignUp = () => {
                             steps={steps}
                         />
                     </div>
-                    <BasicDetails
+                    <OrgBasicDetails
                         nextStep={nextStep}
                         handleChange={handleChange}
                         values={step}
@@ -78,7 +81,7 @@ const FreshUserSignUp = () => {
         case 2:
             return (
                 <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
-                    <div className="absolute top-5 w-1/2">
+                    <div className="absolute top-5 w-1/2 flex justify-center items-center">
                         <MultiStep
                             nextStep={nextStep}
                             prevStep={prevStep}
@@ -87,7 +90,28 @@ const FreshUserSignUp = () => {
                         />
                     </div>
                     <div className="flex flex-col w-full h-screen justify-center items-center">
-                        <UploadPhoto
+                        <AddDesc
+                            nextStep={nextStep}
+                            prevStep={prevStep}
+                            values={step}
+                            handleChange={handleChange}
+                        />
+                    </div>
+                </div>
+            );
+        case 3:
+            return (
+                <div className='absolute -z-10 bg-[url("./assets/images/authBg.jpg")] flex flex-col w-full h-screen justify-center items-center'>
+                    <div className="absolute top-5 w-1/2 flex justify-center items-center">
+                        <MultiStep
+                            nextStep={nextStep}
+                            prevStep={prevStep}
+                            stepCount={step.stepCount}
+                            steps={steps}
+                        />
+                    </div>
+                    <div className="flex flex-col w-full h-screen justify-center items-center">
+                        <UploadDocs
                             nextStep={nextStep}
                             prevStep={prevStep}
                             values={step}
@@ -97,10 +121,10 @@ const FreshUserSignUp = () => {
                 </div>
             );
 
-        case 3:
+        case 4:
             return (
                 <div className="flex flex-col w-full h-screen justify-center items-center">
-                    <div className="absolute top-5 w-1/2">
+                    <div className="absolute top-5 w-1/2 flex justify-center items-center">
                         <MultiStep
                             nextStep={nextStep}
                             prevStep={prevStep}

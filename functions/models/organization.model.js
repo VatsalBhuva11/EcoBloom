@@ -38,7 +38,7 @@ const Organization = new Schema({
     },
     document: {
         type: String,
-        required: true,
+        required: false,
     },
     isVerified: {
         type: Boolean,

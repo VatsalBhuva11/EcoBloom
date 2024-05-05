@@ -1,20 +1,7 @@
 import React, { useState } from "react";
 import "./MultiStep.css"; // Import the CSS styles
-const steps = [
-    {
-        stepNumber: 1,
-        message: "Basic Info",
-    },
-    {
-        stepNumber: 2,
-        message: "Upload Photo",
-    },
-    {
-        stepNumber: 3,
-        message: "Done!",
-    },
-];
-const MultiStep = ({ stepCount, nextStep, prevStep }) => {
+
+const MultiStep = ({ stepCount, nextStep, prevStep, steps }) => {
     return (
         <div className="container">
             <div className="steps-container">
@@ -34,7 +21,9 @@ const MultiStep = ({ stepCount, nextStep, prevStep }) => {
                     <span
                         className="progress-indicator"
                         style={{
-                            width: `${(stepCount - 1) * 50}%`,
+                            width: `${
+                                (stepCount - 1) * (100 / (steps.length - 1))
+                            }%`,
                         }}
                     ></span>
                 </div>
