@@ -637,6 +637,10 @@ video {
   bottom: 2rem;
 }
 
+.bottom-\[11rem\]{
+  bottom: 11rem;
+}
+
 .bottom-\[3rem\]{
   bottom: 3rem;
 }
@@ -651,6 +655,10 @@ video {
 
 .left-8{
   left: 2rem;
+}
+
+.left-3{
+  left: 0.75rem;
 }
 
 .left-\[-200\%\]{
@@ -877,6 +885,10 @@ video {
 
 .ml-2{
   margin-left: 0.5rem;
+}
+
+.ml-24{
+  margin-left: 6rem;
 }
 
 .ml-3{
@@ -1289,10 +1301,6 @@ video {
 
 .h-\[8\.5rem\]{
   height: 8.5rem;
-}
-
-.h-\[800px\]{
-  height: 800px;
 }
 
 .h-\[83\%\]{
@@ -2077,14 +2085,14 @@ video {
   background-color: rgb(19 21 68 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#144a14\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 74 20 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#151414\]{
   --tw-bg-opacity: 1;
   background-color: rgb(21 20 20 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#164d42\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 77 66 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#17184a92\]{
@@ -2144,6 +2152,11 @@ video {
 .bg-\[\#6BBE7D\]{
   --tw-bg-opacity: 1;
   background-color: rgb(107 190 125 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#9db39b\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(157 179 155 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#BE7F6B\]{
@@ -2278,11 +2291,6 @@ video {
 .bg-\[\#eef0e5\]{
   --tw-bg-opacity: 1;
   background-color: rgb(238 240 229 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#f8fbf7\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 251 247 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#fbfbfa\]{
@@ -3156,11 +3164,6 @@ video {
   color: rgb(255 204 77 / var(--tw-text-opacity));
 }
 
-.text-\[\#b3d38f\]{
-  --tw-text-opacity: 1;
-  color: rgb(179 211 143 / var(--tw-text-opacity));
-}
-
 .text-\[\#c1c1c1\]{
   --tw-text-opacity: 1;
   color: rgb(193 193 193 / var(--tw-text-opacity));
@@ -3169,6 +3172,11 @@ video {
 .text-\[\#d3d3d3\]{
   --tw-text-opacity: 1;
   color: rgb(211 211 211 / var(--tw-text-opacity));
+}
+
+.text-\[\#d85f5f\]{
+  --tw-text-opacity: 1;
+  color: rgb(216 95 95 / var(--tw-text-opacity));
 }
 
 .text-\[\#dbdbdb\]{
@@ -4411,6 +4419,10 @@ html {
 }
 
 @media (min-width: 1024px){
+  .lg\:bottom-\[10rem\]{
+    bottom: 10rem;
+  }
+
   .lg\:bottom-\[rem\]{
     bottom: rem;
   }

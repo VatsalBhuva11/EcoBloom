@@ -103,7 +103,7 @@ export default function Home() {
                             element={<UserSignup />}
                         /> */}
 
-                                {/* <Route
+                  {/* <Route
                             exact
                             path="/signup/user"
                             element={<UserAuth />}
@@ -139,74 +139,54 @@ export default function Home() {
                                     element={<FreshOrgSignUp />}
                                 />
 
-                                <Route
-                                    exact
-                                    path="/org/dashboard"
-                                    element={<Orgdashboard />}
-                                />
-                                <Route
-                                    exact
-                                    path="/org/profile/:orgId"
-                                    element={<Orgprofile />}
-                                />
-                                <Route
-                                    exact
-                                    path="/video"
-                                    element={<Video />}
-                                />
+                  <Route
+                    exact
+                    path="/org/dashboard"
+                    element={<Orgdashboard />}
+                  />
+                  <Route
+                    exact
+                    path="/org/profile/:orgId"
+                    element={<Orgprofile />}
+                  />
+                  <Route exact path="/video" element={<Video />} />
 
-                                <Route
-                                    exact
-                                    path="/store"
-                                    element={<Store />}
-                                />
-                                <Route exact path="/quiz" element={<Quiz />} />
-                                <Route
-                                    exact
-                                    path="/chat"
-                                    element={<CommunityChat />}
-                                />
-                                <Route
-                                    exact
-                                    path="/login/forgetpassword"
-                                    element={<ForgetPassword />}
-                                />
-                                <Route
-                                    exact
-                                    path="/campaign/create"
-                                    element={<CreateCampaign />}
-                                />
-                                <Route
-                                    exact
-                                    path="/campaign/:campaignId"
-                                    element={<CampaignProfile />}
-                                />
-                                <Route
-                                    exact
-                                    path="/org/campaign/:campaignId"
-                                    element={<OrgCampaignProfile />}
-                                />
-                                <Route
-                                    exact
-                                    path="/log"
-                                    element={<Activity_log />}
-                                />
-                                <Route
-                                    exact
-                                    path="/campaigns"
-                                    element={<Badha_Campaigns />}
-                                />
-                                <Route
-                                    exact
-                                    path="/campaign/:campaignId/verify"
-                                    element={<VerifyDummy />}
-                                />
+                  <Route exact path="/store" element={<Store />} />
+                  <Route exact path="/quiz" element={<Quiz />} />
+                  <Route exact path="/chat" element={<CommunityChat />} />
+                  <Route
+                    exact
+                    path="/login/forgetpassword"
+                    element={<ForgetPassword />}
+                  />
+                  <Route
+                    exact
+                    path="/campaign/create"
+                    element={<CreateCampaign />}
+                  />
+                  <Route
+                    exact
+                    path="/campaign/:campaignId"
+                    element={<CampaignProfile />}
+                  />
+                  <Route
+                    exact
+                    path="/org/campaign/:campaignId"
+                    element={<OrgCampaignProfile />}
+                  />
+                  <Route exact path="/log" element={<Activity_log />} />
+                  <Route
+                    exact
+                    path="/campaigns"
+                    element={<Badha_Campaigns />}
+                  />
+                  <Route
+                    exact
+                    path="/campaign/:campaignId/verify"
+                    element={<VerifyDummy />}
+                  />
 
-                                <Route
-                                    exact
-                                    path="/admin"
-                                    element={<Admin />}
-                                />
+                  <Route exact path="/admin" element={<Admin />} />
 
                                 <Route
                                     exact

@@ -8,8 +8,8 @@ import leaf from "../assets/images/leaf.png";
 import plant from "../assets/images/plant.png";
 import sky from "../assets/images/sky.jpg";
 import { useEffect  } from "react";
-import Aos from "aos";
-import "aos/dist/aos.css"
+// import Aos from "aos";
+// import "aos/dist/aos.css"
 
 
 export default function Parallax() {
@@ -37,8 +37,8 @@ export default function Parallax() {
 
 
     useEffect(() => {
-      Aos.init();
-      Aos.refresh();
+      // Aos.init();
+      // Aos.refresh();
         window.addEventListener("scroll", scrollUpdate);
         return () => {
             window.removeEventListener("scroll", scrollUpdate);
@@ -87,8 +87,8 @@ export default function Parallax() {
             id="parallaxTree"
           ></img>
           <h2
-            data-aos = "zoom-in"
-            data-aos-duration = "1000"
+            // data-aos = "zoom-in"
+            // data-aos-duration = "1000"
             id="parallaxText"
             className="font-bold drop-shadow-md font-serif absolute text-[3rem] lg:text-[4em] xl:text-[5em] text-white"
           >
