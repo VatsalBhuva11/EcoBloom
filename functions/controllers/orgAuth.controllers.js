@@ -213,11 +213,19 @@ router.post("/register/stepThree", async (req, res) => {
                     ) {
                         paths[
                             files[i].fieldname
-                        ] = `org/${email}/${files[i].fieldname}.jpeg`;
+                                .replace("optional", "")
+                                .toLowerCase()
+                        ] = `org/${email}/${files[i].fieldname
+                            .replace("optional", "")
+                            .toLowerCase()}.jpeg`;
                     } else {
                         paths[
                             files[i].fieldname
-                        ] = `org/${email}/${files[i].fieldname}.${extensions[i]}`;
+                                .replace("optional", "")
+                                .toLowerCase()
+                        ] = `org/${email}/${files[i].fieldname
+                            .replace("optional", "")
+                            .toLowerCase()}.${extensions[i]}`;
                     }
                     if (extensions[i] === "pdf") {
                         filesToUpload.push(

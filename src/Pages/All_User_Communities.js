@@ -170,9 +170,6 @@ const All_User_Communitites = () => {
                         src={profile.url}
                         alt=""
                     />
-                    <p className="hidden sm:flex text-xl font-medium">
-                        {profile.name}
-                    </p>
                 </div>
             </div>
             <div className="mx-8 my-3">
