@@ -15,7 +15,7 @@ export default function Carousel() {
   //   const y = useParallax(scrollYProgress, 300);
 
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,

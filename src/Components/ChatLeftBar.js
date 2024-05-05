@@ -17,7 +17,7 @@ export default function ChatLeftBar() {
     return (
         <div className="h-screen w-full">
             <div className="flex">
-                <div className=" left-sidebar lg:flex bg-[#0F1035] w-[100%] flex-col h-screen pb-2  border-[#fbfbfa]">
+                <div className=" left-sidebar lg:flex bg-[#277868] w-[100%] flex-col h-screen pb-2 shadow-xl ">
                     {/* <div className="Peoples flex justify-around items-center mt-5 mb-5 p-[1.5rem] border-b-2 border-b-gray-300">
                         <img className='w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] cursor-pointer rounded-full hover:scale-105 duration-300' src={person} alt="" />
                         <img className='w-[50px] h-[50px] 2xl:w-[60px] 2xl:h-[60px] cursor-pointer rounded-full hover:scale-105 duration-300' src={person} alt="" />
@@ -47,7 +47,7 @@ export default function ChatLeftBar() {
                                         <input
                                             type="search"
                                             id="default-search"
-                                            className="block w-[90%] p-2  text-xl text-gray-900 rounded-lg bg-[#353657] focus:ring-blue-500 focus:border-blue-500"
+                                            className="block w-[90%] p-2  text-xl text-gray-900 rounded-lg bg-[#1E695A] focus:ring-blue-500 focus:border-blue-500"
                                             placeholder="search"
                                         />
                                     </div>
@@ -56,7 +56,7 @@ export default function ChatLeftBar() {
                         </div>
 
                         <div className="grpmsgs h-[25%] mt-5">
-                            <div className="text-[1.25rem] text-gray-300 font-inter mt-5">
+                            <div className="text-[1.25rem] text-[#fbfbfa] font-inter mt-5">
                                 {" "}
                                 Groups & Messages
                             </div>
@@ -69,10 +69,10 @@ export default function ChatLeftBar() {
                                             alt=""
                                         />
                                         <div className="flex flex-col">
-                                            <p className="text-gray-300 text-[0.88rem] xl:text-xl mt-1 xl:mt-0">
+                                            <p className="text-[#fbfbfa] text-[0.88rem] xl:text-xl mt-1 xl:mt-0">
                                                 {currComm?.orgName}
                                             </p>
-                                            <p className="text-gray-300 text-[0.75rem] xl:text-[1rem]">
+                                            <p className="text-[#fbfbfa] text-[0.75rem] xl:text-[1rem]">
                                                 {currComm?.userCount} members
                                             </p>
                                         </div>
@@ -86,7 +86,7 @@ export default function ChatLeftBar() {
                             </div>
                         </div>
                     </div>
-                    <div className="text-[1.5rem] text-gray-300 font-inter ">
+                    <div className="text-[1.5rem] text-[#fbfbfa] font-inter ">
                         All messages
                     </div>
                     <div className="mt-5 h-[70%] overflow-scroll overflow-x-hidden scrollbar-hide">
