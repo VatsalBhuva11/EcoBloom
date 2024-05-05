@@ -174,9 +174,7 @@ export default function BasicDetails({
                             setSignUpClicked(false);
                             auth.currentUser.delete();
                             console.log(data);
-                            throw new Error(
-                                "Invalid form input. Please check again,"
-                            );
+                            throw new Error(data.error);
                         } else {
                             console.log("User in DB: ");
                             console.log(data);
@@ -204,7 +202,7 @@ export default function BasicDetails({
                         console.error("Error:", error);
                         console.log("errormessage: ", error.message);
                         auth.currentUser.delete();
-                        setStatus("failure");
+                        setStatus(error.message);
                         setSignUpClicked(false);
                     });
             })
