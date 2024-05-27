@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import logo from "../assets/images/logo_new.png";
 import { RxActivityLog } from "react-icons/rx";
 import face from "../assets/images/face.jpg";
-import map from "../assets/images/map_img.png";
 import { FaArrowRight } from "react-icons/fa6";
 import quiz from "../assets/images/Quiz_logo.png";
 import store from "../assets/images/Store_logo.png";
@@ -35,7 +34,6 @@ const New_User_Dashboard = () => {
     // const [profile, setProfile] = useState(person);
     const [communities, setCommunities] = useState([]);
     const { communities: joinedCommunities } = useContext(ChatContext);
-    const [campaigns, setCampaigns] = useState([]);
     const [profile, setProfile] = useContext(ProfileContext);
     const [loader, setLoader] = useState(true);
     const [markers, setMarkers] = useState([]);
@@ -65,7 +63,6 @@ const New_User_Dashboard = () => {
                     .then((res) => res.json())
                     .then((campaigns) => {
                         console.log(campaigns);
-                        setCampaigns(campaigns.data);
                         let ongoing = [];
                         let upcoming = [];
                         let past = [];
@@ -86,6 +83,29 @@ const New_User_Dashboard = () => {
                         setOngoingCampaigns(ongoing);
                         setUpcomingCampaigns(upcoming);
                         setPastCampaigns(past);
+                        setMarkers(
+                            [...ongoing, ...upcoming].map((campaign) => {
+                                return {
+                                    campaignId: campaign._id,
+                                    campaignName: campaign.name,
+                                    organizationName:
+                                        campaign.organization.name,
+                                    location: {
+                                        lat: campaign.latitude,
+                                        lng: campaign.longitude,
+                                    },
+                                    startDate: campaign.startDate,
+                                    endDate: campaign.endDate,
+                                    locationType: campaign.locationType,
+                                    address: campaign.address,
+                                    city: campaign.city,
+                                    country: campaign.country,
+                                    registeredUsersCount:
+                                        campaign.registeredUsersCount,
+                                };
+                            })
+                        );
+
                         console.log(ongoing);
                         console.log(upcoming);
                         setLoader(false);
@@ -117,20 +137,13 @@ const New_User_Dashboard = () => {
                     return tokenResult.claims.user_id;
                 })
                 .then((userId) => {
-                    Promise.all([
-                        fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
-                        ),
-                        fetch(
-                            `${process.env.REACT_APP_DEPLOYED_API_URL}/campaign/upcoming`
-                        ),
-                    ])
+                    fetch(
+                        `${process.env.REACT_APP_DEPLOYED_API_URL}/user/${userId}`
+                    )
                         .then((responses) => {
                             // responses[0] corresponds to the result of the first fetch
                             // responses[1] corresponds to the result of the second fetch
-                            return Promise.all(
-                                responses.map((response) => response.json())
-                            );
+                            return responses.json();
                         })
                         .then((data) => {
                             // data[0] contains the parsed JSON from the first response
@@ -138,23 +151,23 @@ const New_User_Dashboard = () => {
                             console.log(data);
                             const storageRef = ref(
                                 storage,
-                                data[0].data.photoPathFirestore
+                                data.data.photoPathFirestore
                             );
                             getDownloadURL(storageRef)
                                 .then(async function (url) {
                                     setProfile({
                                         url,
-                                        name: data[0].data.name,
+                                        name: data.data.name,
                                     });
                                     localStorage.setItem(
                                         "profile",
                                         JSON.stringify({
                                             profileUrl: url,
-                                            profileName: data[0].data.name,
+                                            profileName: data.data.name,
                                         })
                                     );
                                     // setName(data[0].data.name);
-                                    const comms = data[0].data.communities;
+                                    const comms = data.data.communities;
                                     console.log("COMMS: ", comms);
                                     const logoPromises = comms.map((comm) => {
                                         const storageRef = ref(
@@ -181,31 +194,6 @@ const New_User_Dashboard = () => {
                                         updatedComms
                                     );
                                     setLoader(false);
-                                    setCampaigns(data[1].data.slice(0, 4));
-                                    setMarkers(
-                                        data[1].data.map((campaign) => {
-                                            return {
-                                                campaignId: campaign._id,
-                                                campaignName: campaign.name,
-                                                organizationName:
-                                                    campaign.organization.name,
-                                                location: {
-                                                    lat: campaign.latitude,
-                                                    lng: campaign.longitude,
-                                                },
-                                                startDate: campaign.startDate,
-                                                endDate: campaign.endDate,
-                                                locationType:
-                                                    campaign.locationType,
-                                                address: campaign.address,
-                                                city: campaign.city,
-                                                country: campaign.country,
-                                                registeredUsersCount:
-                                                    campaign.registeredUsersCount,
-                                            };
-                                        })
-                                    );
-                                    console.log(data[1].data);
                                 })
                                 .catch(function (error) {
                                     console.error(error);

@@ -387,7 +387,7 @@ export default function BasicDetails({
                                             // nextStep();
                                         }}
                                     >
-                                        "Next"
+                                        Next
                                     </button>
                                 ) : (
                                     <button

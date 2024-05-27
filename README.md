@@ -41,6 +41,13 @@ To set up EcoBloom locally, follow these steps:
    npm install
    cd functions && npm install
 
+3. Testing Credentials
+    1. User:
+       email: testing@gmail.com
+       password: testing
+    2. Organisation:
+       email: greenpeacuk@gmail.com
+       password: testing
 
 ### Configuration
 

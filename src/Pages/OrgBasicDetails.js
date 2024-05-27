@@ -285,7 +285,7 @@ export default function OrgBasicDetails({
                                             // nextStep();
                                         }}
                                     >
-                                        "Next"
+                                        Next
                                     </button>
                                 ) : (
                                     <button
