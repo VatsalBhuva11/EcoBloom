@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+    # server service
+    backend:
+        build:
+            context: .
+            dockerfile: functions/Dockerfile
+        container_name: backend
+        ports:
+            - 4000:4000 # **UI_PORT**
+            - 4400:4400 # **EMULATOR_HUB**
+            - 5001:5001 # **FUNCTIONS_PORT**
+        env_file: functions/.env
+    # frontend service
+    frontend:
+        build:
+            context: .
+            dockerfile: frontend/Dockerfile
+
+        container_name: frontend
+        ports:
+            - "3000:3000"
+        env_file: frontend/.env
+        depends_on:
+            - backend
+
+volumes:
+    mydata:

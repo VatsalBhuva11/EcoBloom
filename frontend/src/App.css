@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .slick-arrow.slick-prev{
+    @apply text-xl,
+} */
+
+.slick-slide > div {
+    margin: 0 10px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #e7e9de;
+    border-radius: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c6cca9;
+    border-radius: 50px;
+}
+
+.map-campaign-container {
+    height: 500px;
+    width: 100%;
+}
+
+.maps-campaign-outer {
+    height: 70%;
+}
+
+@media screen and (min-width: 1000px) {
+    .map-campaign-outer {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 685px) {
+    .maps-campaign-outer {
+        width: 70%;
+    }
+}

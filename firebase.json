@@ -1,61 +1,68 @@
 {
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ],
-      "timeoutSeconds": 120
-    }
-  ],
-  "hosting": {
-    "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "functions": [
+        {
+            "source": "functions",
+            "codebase": "default",
+            "ignore": [
+                "node_modules",
+                ".git",
+                "firebase-debug.log",
+                "firebase-debug.*.log"
+            ],
+            "timeoutSeconds": 120
+        }
     ],
-    "rewrites": [
-      {
-        "source": "/api/**",
-        "function": "api"
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  },
-  "storage": {
-    "rules": "storage.rules"
-  },
-  "emulators": {
-    "auth": {
-      "port": 9099
-    },
-    "functions": {
-      "port": 5001
-    },
     "hosting": {
-      "port": 5000
+        "public": "build",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "rewrites": [
+            {
+                "source": "/api/**",
+                "function": "api"
+            },
+            {
+                "source": "**",
+                "destination": "/index.html"
+            }
+        ]
     },
     "storage": {
-      "port": 9199
+        "rules": "storage.rules"
     },
-    "ui": {
-      "enabled": true
+    "emulators": {
+        "auth": {
+            "port": 9099,
+            "host": "0.0.0.0"
+        },
+        "firestore": {
+            "port": 8080,
+            "host": "0.0.0.0"
+        },
+        "ui": {
+            "enabled": true,
+            "port": 4000,
+            "host": "0.0.0.0"
+        },
+        "hub": {
+            "port": 4400,
+            "host": "0.0.0.0"
+        },
+        "logging": {
+            "port": 4600,
+            "host": "0.0.0.0"
+        },
+        "functions": {
+            "port": 5001,
+            "host": "0.0.0.0"
+        },
+        "singleProjectMode": true
     },
-    "singleProjectMode": true,
-    "pubsub": {
-      "port": 8085
+    "firestore": {
+        "rules": "firestore.rules",
+        "indexes": "firestore.indexes.json"
     }
-  },
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  }
 }
